@@ -3,11 +3,6 @@
 """
 Z世代 Signal Atlas - Build Script
 docx -> JSON -> HTML を自動生成する
-
-使い方:
-  python scripts/build.py
-
-data/zgene.docx を読み込んで dist/index.html を生成する
 """
 
 import os
@@ -127,24 +122,50 @@ def extract_articles(text):
 
     return results
 
-# ── Q1考察を抽出 ──────────────────────────────────────────────
-def extract_q1(text):
-    m = re.search(r'2026年Q1 総合考察.+?\n\n(.+?)(?=✅ Z世代)', text, re.DOTALL)
-    if not m:
-        return None
-    q1_text = m.group(1)
-
-    soron_m = re.search(r'Z世代は「(.+?)」から\n「(.+?)」へ移行した', q1_text)
-    soron = soron_m.group(0).replace('\n', '') if soron_m else ''
-
-    oneliner_m = re.search(r'「([^」]{10,60})」が標準になった', q1_text)
-    oneliner = '「' + oneliner_m.group(1) + '」が標準になった四半期' if oneliner_m else ''
-
-    return {'soron': soron, 'oneliner': oneliner}
+# ── Q総括を抽出（アコーディオン用） ──────────────────────────────
+def extract_quarters(text):
+    pattern = r'🧠\s*(\d{4}年Q\d)\s*総合考察.*?\n(.*?)(?=✅\s*Z世代|🧠\s*\d{4}年Q\d\s*総合考察|\Z)'
+    matches = re.finditer(pattern, text, re.DOTALL)
+    
+    quarters = []
+    for m in matches:
+        q_title = m.group(1)
+        q_body = m.group(2).strip()
+        
+        html_lines = []
+        for line in q_body.split('\n'):
+            line = line.strip()
+            if not line:
+                continue
+                
+            if re.match(r'^[📊🔍🌐🔮📌]', line):
+                html_lines.append(f'<h3 style="margin-top:28px; margin-bottom:14px; color:var(--green-d); font-size:16px; border-bottom: 2px solid var(--green-l); padding-bottom:6px; display:flex; align-items:center; gap:6px;">{line}</h3>')
+            elif re.match(r'^[①②③④⑤⑥⑦⑧⑨⑩]', line):
+                html_lines.append(f'<h4 style="margin-top:20px; margin-bottom:10px; color:var(--tx); font-size:15px; font-weight:bold; padding-left:8px; border-left:4px solid var(--green);">{line}</h4>')
+            elif line.startswith('🔎'):
+                html_lines.append(f'<h5 style="margin-top:14px; margin-bottom:6px; color:var(--ts); font-size:13px; font-weight:bold;">{line}</h5>')
+            elif line.startswith('👉'):
+                html_lines.append(f'<div style="margin:12px 0; padding:12px 16px; background:var(--green-xl); border-radius:10px; font-weight:bold; color:var(--green-d); font-size:13px; box-shadow:0 2px 8px rgba(76,175,80,0.1);">{line}</div>')
+            elif line.startswith('・') and 'http' in line:
+                parts = line.split('http')
+                if len(parts) >= 2:
+                    url = 'http' + parts[1]
+                    title = parts[0].strip('・ ')
+                    html_lines.append(f'<div style="margin-bottom:6px; font-size:12px; padding-left:12px; position:relative;"><span style="position:absolute; left:0; color:var(--ts);">•</span><a href="{url}" target="_blank" style="color:var(--green-d); text-decoration:none; font-weight:500;">{title}</a></div>')
+                else:
+                    html_lines.append(f'<div style="line-height:1.7; margin-bottom:6px; font-size:13px; color:var(--tx);">{line}</div>')
+            else:
+                html_lines.append(f'<div style="line-height:1.7; margin-bottom:6px; font-size:13px; color:var(--tx);">{line}</div>')
+                
+        quarters.append({
+            'title': q_title,
+            'html': ''.join(html_lines)
+        })
+        
+    return quarters
 
 # ── メイン処理 ──────────────────────────────────────────────
 def main():
-    # docxファイルを探す
     docx_files = glob.glob('data/*.docx')
     if not docx_files:
         print("❌ data/ フォルダに .docx ファイルが見つかりません")
@@ -153,32 +174,27 @@ def main():
     docx_path = docx_files[0]
     print(f"📄 読み込み: {docx_path}")
 
-    # テキスト抽出
     text = docx_to_text(docx_path)
     print(f"   テキスト: {len(text):,} 文字")
 
-    # データ抽出
     weeks_data = extract_weeks(text)
     articles_data = extract_articles(text)
-    q1_data = extract_q1(text)
+    quarters_data = extract_quarters(text)
 
     themed = sum(1 for w in weeks_data if w['theme'])
-    print(f"   週数: {len(weeks_data)}  考察付き: {themed}  記事: {len(articles_data)}")
+    print(f"   週数: {len(weeks_data)}  考察付き: {themed}  記事: {len(articles_data)}  Q総括: {len(quarters_data)}")
 
-    # JS データブロック生成
     raw_js = 'const RAW=' + json.dumps(weeks_data, ensure_ascii=False, separators=(',', ':')) + ';'
     articles_js = 'const ARTICLES=' + json.dumps(articles_data, ensure_ascii=False, separators=(',', ':')) + ';'
-    data_js = raw_js + '\n' + articles_js
+    quarters_js = 'const QUARTERS=' + json.dumps(quarters_data, ensure_ascii=False, separators=(',', ':')) + ';'
+    data_js = raw_js + '\n' + articles_js + '\n' + quarters_js
 
-    # テンプレート読み込み
     template_path = os.path.join(os.path.dirname(__file__), 'template.html')
     with open(template_path, encoding='utf-8') as f:
         html = f.read()
 
-    # データ埋め込み
     html = html.replace('// DATA_PLACEHOLDER', data_js)
 
-    # 出力
     os.makedirs('dist', exist_ok=True)
     out_path = 'dist/index.html'
     with open(out_path, 'w', encoding='utf-8') as f:
@@ -189,3 +205,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+

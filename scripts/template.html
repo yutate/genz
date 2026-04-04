@@ -527,10 +527,13 @@ footer {
     </div>
 
 
-    <!-- PAGE: Q1総括 -->
-    <div class="page" id="p-q1">
-      <div class="sec">
-        <div class="sec-hd"><div class="sec-emoji">🌐</div><h2>2026年Q1 Z世代総括</h2></div>
+    <!-- PAGE: Q総括 -->
+    <div class="page" id="p-qsummary">
+  <div class="sec">
+    <div class="sec-hd"><div class="sec-emoji">🌐</div><h2>Q総括（四半期ハイライト）</h2></div>
+    <div id="qsummary-container"></div>
+  </div>
+</div>
         <div class="cbox" style="background:linear-gradient(135deg,#E8F5E9,#FFFDE7);margin-bottom:20px">
           <div style="font-size:11px;font-weight:900;color:var(--ts);letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px">📌 総論</div>
           <div style="font-size:17px;font-weight:700;color:var(--tx);line-height:1.5;margin-bottom:12px">Z世代は「適応する世代」から<br>「失敗しない社会を設計する世代」へ移行した</div>
@@ -666,10 +669,10 @@ footer {
         <div class="snav-emoji">📖</div>
         <div class="snav-text">テーマ変遷</div>
       </a>
-      <a class="snav-item" data-page="p-q1" onclick="navTo('p-q1',this);return false" href="#">
-        <div class="snav-emoji">🌐</div>
-        <div class="snav-text">Q1総括</div>
-      </a>
+      <a class="snav-item" data-page="p-qsummary" onclick="navTo('p-qsummary',this);return false" href="#">
+  <div class="snav-emoji">🌐</div>
+  <div class="snav-text">Q総括</div>
+</a>
       <a class="snav-item" data-page="p-search" onclick="navTo('p-search',this);return false" href="#">
         <div class="snav-emoji">🔍</div>
         <div class="snav-text">記事検索</div>
@@ -692,9 +695,9 @@ footer {
   <button class="bnav-item" data-page="p-narrative" onclick="navTo('p-narrative',this)">
     <span class="bnav-emoji">📖</span><span>変遷</span>
   </button>
-  <button class="bnav-item" data-page="p-q1" onclick="navTo('p-q1',this)">
-    <span class="bnav-emoji">🌐</span><span>Q1</span>
-  </button>
+<button class="bnav-item" data-page="p-qsummary" onclick="navTo('p-qsummary',this)">
+  <span class="bnav-emoji">🌐</span><span>Q総括</span>
+</button>
   <button class="bnav-item" data-page="p-search" onclick="navTo('p-search',this)">
     <span class="bnav-emoji">🔍</span><span>検索</span>
   </button>
@@ -1007,6 +1010,53 @@ rcat(CATS);
   };
   filterArticles();
 })();
+// PAGE: Q総括 (Accordion)
+(function(){
+  const qContainer = document.getElementById('qsummary-container');
+  if (typeof QUARTERS !== 'undefined' && QUARTERS.length > 0) {
+    QUARTERS.forEach((q, index) => {
+      const details = document.createElement('details');
+      details.style.marginBottom = '16px';
+      details.style.background = 'var(--card)';
+      details.style.borderRadius = '16px';
+      details.style.border = '1.5px solid var(--bd)';
+      details.style.boxShadow = 'var(--shadow)';
+      details.style.overflow = 'hidden';
+      // デフォルトで最新（先頭）を開く
+      if (index === 0) details.open = true;
+
+      const summary = document.createElement('summary');
+      summary.style.padding = '18px 20px';
+      summary.style.fontWeight = '900';
+      summary.style.fontSize = '16px';
+      summary.style.cursor = 'pointer';
+      summary.style.background = 'linear-gradient(135deg, #E8F5E9, #FFFDE7)';
+      summary.style.color = 'var(--tx)';
+      summary.style.display = 'flex';
+      summary.style.justifyContent = 'space-between';
+      summary.style.alignItems = 'center';
+      summary.style.listStyle = 'none';
+      
+      summary.innerHTML = `<span>🌐 ${q.title}</span><span class="q-toggle" style="color:var(--green-d); font-size:12px;">▼ 展開</span>`;
+      
+      details.addEventListener('toggle', () => {
+        const t = details.querySelector('.q-toggle');
+        t.textContent = details.open ? '▲ 閉じる' : '▼ 展開';
+      });
+
+      const content = document.createElement('div');
+      content.style.padding = '20px';
+      content.innerHTML = q.html;
+
+      details.appendChild(summary);
+      details.appendChild(content);
+      qContainer.appendChild(details);
+    });
+  } else if (qContainer) {
+    qContainer.innerHTML = '<div class="cbox">データがありません</div>';
+  }
+})();
+
 </script>
 </body>
 </html>
