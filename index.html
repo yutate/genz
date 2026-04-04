@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Z世代 Signal Atlas</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Kaisei+Decol:wght@700&display=swap" rel="stylesheet">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Kaisei+Decol:wght@700&display=swap');
+:root {
+  --bg: #F6FBF4;
+  --bg2: #FFFDE7;
+  --card: #FFFFFF;
+  --bd: #DCEDC8;
+  --bd2: #FFF9C4;
+  --tx: #1B3A2A;
+  --ts: #7A9A84;
+  --green: #4CAF50;
+  --green-d: #388E3C;
+  --green-l: #A5D6A7;
+  --green-xl: #E8F5E9;
+  --yellow: #FDD835;
+  --yellow-l: #FFF9C4;
+  --yellow-d: #F9A825;
+  --accent: #43A047;
+  --coral: #EF5350;
+  --sky: #29B6F6;
+  --purple: #AB47BC;
+  --orange: #FFA726;
+  --shadow: 0 2px 16px rgba(76,175,80,0.1);
+  --shadow-lg: 0 6px 28px rgba(76,175,80,0.18);
+  --nav-w: 220px;
+  --bottom-h: 64px;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--tx);
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(76,175,80,0.06) 1px, transparent 1px);
+  background-size: 30px 30px;
+  pointer-events: none; z-index: 0;
+}
+
+/* ── HEADER ── */
+header {
+  background: linear-gradient(135deg, #66BB6A 0%, #AED581 45%, #FDD835 100%);
+  padding: 32px 24px 28px;
+  position: relative;
+  overflow: hidden;
+}
+
+header::before {
+  content: '';
+  position: absolute;
+  width: 240px; height: 240px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.12);
+  top: -80px; right: -60px;
+}
+
+header::after {
+  content: '';
+  position: absolute;
+  width: 110px; height: 110px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+  bottom: -35px; right: 110px;
+}
+
+.hd-badges { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+
+.hd-badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  background: rgba(255,255,255,0.28);
+  color: #1B3A2A;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 4px 12px; border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.4);
+}
+
+.hd-eyebrow {
+  font-size: 11px; font-weight: 700;
+  color: rgba(27,58,42,0.7);
+  letter-spacing: 0.15em; text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+h1 {
+  font-family: 'Kaisei Decol', 'Noto Sans JP', serif;
+  font-size: clamp(26px, 5.5vw, 44px);
+  font-weight: 700;
+  color: #1B3A2A;
+  line-height: 1.15;
+  margin-bottom: 8px;
+  text-shadow: 0 1px 6px rgba(255,255,255,0.4);
+}
+
+h1 em {
+  font-style: normal;
+  background: rgba(255,255,255,0.3);
+  border-radius: 8px;
+  padding: 0 8px;
+}
+
+.hd-sub { color: rgba(27,58,42,0.75); font-size: 13px; font-weight: 500; margin-bottom: 16px; }
+
+.hd-chips { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.hd-chip {
+  background: rgba(255,255,255,0.25);
+  color: #1B3A2A;
+  font-size: 12px; font-weight: 700;
+  padding: 4px 12px; border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.35);
+}
+
+.hd-chip strong { font-weight: 900; }
+
+/* ── LAYOUT ── */
+.layout { display: flex; align-items: flex-start; position: relative; z-index: 1; }
+
+/* ── SIDE NAV ── */
+.sidenav {
+  width: var(--nav-w);
+  flex-shrink: 0;
+  position: sticky;
+  top: 20px;
+  padding: 20px 20px 20px 16px;
+  display: none;
+}
+
+.sidenav-inner {
+  background: var(--card);
+  border-radius: 18px;
+  padding: 14px 10px;
+  box-shadow: var(--shadow);
+  border: 1.5px solid var(--bd);
+}
+
+.sidenav-label {
+  font-size: 10px; font-weight: 900;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--ts);
+  padding: 0 8px; margin-bottom: 10px;
+}
+
+.snav-item {
+  display: flex; align-items: center; gap: 9px;
+  padding: 9px 10px; border-radius: 10px;
+  cursor: pointer;
+  border: 1.5px solid transparent;
+  transition: all .18s; margin-bottom: 3px;
+  text-decoration: none;
+  color: var(--ts); font-size: 13px; font-weight: 500;
+}
+
+.snav-item:hover { background: var(--green-xl); color: var(--green-d); }
+.snav-item.on {
+  background: var(--green-xl);
+  border-color: var(--green-l);
+  color: var(--green-d);
+  font-weight: 700;
+}
+
+.snav-emoji {
+  font-size: 16px; width: 28px; height: 28px;
+  display: flex; align-items: center; justify-content: center;
+  background: #F5F5F5; border-radius: 8px; flex-shrink: 0;
+}
+
+.snav-item.on .snav-emoji { background: #C8E6C9; }
+.snav-text { flex: 1; font-size: 12px; line-height: 1.3; }
+
+/* ── MAIN ── */
+.main { flex: 1; min-width: 0; padding: 24px 20px 24px 0; }
+@media(max-width: 767px) { .main { padding: 20px 16px 80px; } }
+
+/* ── PAGES ── */
+.page { display: none; }
+.page.on { display: block; }
+
+/* ── STATS ── */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px; margin-bottom: 28px;
+}
+
+.stat {
+  background: var(--card); border-radius: 14px;
+  padding: 18px 14px; text-align: center;
+  box-shadow: var(--shadow); border: 1.5px solid var(--bd);
+  transition: transform .18s, box-shadow .18s;
+}
+
+.stat:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.stat:nth-child(1) { border-color: var(--green-l); background: linear-gradient(150deg,#fff 50%,#E8F5E9); }
+.stat:nth-child(2) { border-color: #FFE082; background: linear-gradient(150deg,#fff 50%,#FFFDE7); }
+.stat:nth-child(3) { border-color: #80DEEA; background: linear-gradient(150deg,#fff 50%,#E0F7FA); }
+.stat:nth-child(4) { border-color: #CE93D8; background: linear-gradient(150deg,#fff 50%,#F3E5F5); }
+
+.stat-emoji { font-size: 22px; margin-bottom: 5px; }
+.stat-num { font-family:'Kaisei Decol',serif; font-size:28px; font-weight:700; line-height:1; margin-bottom:4px; color:var(--tx); }
+.stat-lbl { font-size:11px; color:var(--ts); font-weight:500; }
+
+/* ── SECTION ── */
+.sec { margin-bottom: 32px; }
+
+.sec-hd { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+
+.sec-emoji {
+  font-size: 18px; width: 34px; height: 34px;
+  background: var(--card); border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: var(--shadow); border: 1.5px solid var(--bd);
+  flex-shrink: 0;
+}
+
+h2 { font-size: 15px; font-weight: 700; color: var(--tx); }
+
+/* ── CARD BOX ── */
+.cbox {
+  background: var(--card); border-radius: 16px;
+  padding: 20px; box-shadow: var(--shadow);
+  border: 1.5px solid var(--bd);
+}
+
+.cbox canvas { max-height: 300px; }
+
+/* ── SUB TABS ── */
+.tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+
+.tab {
+  font-size: 12px; font-weight: 700;
+  padding: 5px 13px; border-radius: 16px;
+  border: 1.5px solid var(--bd);
+  background: #fff; color: var(--ts);
+  cursor: pointer; transition: all .18s;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+.tab:hover { border-color: var(--green); color: var(--green-d); }
+.tab.on { background: var(--green); border-color: var(--green); color: #fff; }
+
+/* ── HEATMAP ── */
+.hmscroll { overflow-x: auto; }
+.hmtbl { min-width: 640px; border-collapse: separate; border-spacing: 3px; }
+.hmtbl td, .hmtbl th { padding: 0; line-height: 1; }
+.hmcat { font-size: 11px; color: var(--ts); font-weight: 500; padding-right: 10px !important; white-space: nowrap; text-align: right; vertical-align: middle; }
+.hmcell { width: 24px; height: 24px; border-radius: 5px; font-size: 8px; color: rgba(255,255,255,.9); text-align: center; vertical-align: middle; cursor: default; transition: transform .1s; }
+.hmcell:hover { transform: scale(1.2); z-index: 5; position: relative; }
+.hmwl { font-size: 9px; color: var(--ts); writing-mode: vertical-rl; height: 52px; vertical-align: bottom; padding-bottom: 4px; white-space: nowrap; }
+
+/* ── TIMELINE ── */
+.tl { display: flex; flex-direction: column; }
+.tli { display: grid; grid-template-columns: 130px 1fr; border-bottom: 1.5px dashed var(--bd); }
+.tli:last-child { border-bottom: none; }
+.tld { font-size: 11px; font-weight: 700; color: var(--ts); padding: 14px 12px 14px 0; border-right: 1.5px dashed var(--bd); display: flex; flex-direction: column; gap: 5px; }
+.tla { background: var(--green); color: #fff; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 10px; width: fit-content; }
+.tlb { padding: 14px 0 14px 14px; }
+.tlt { font-size: 13px; line-height: 1.6; color: var(--ts); margin-bottom: 7px; }
+.tlt.on { color: var(--tx); font-weight: 700; background: linear-gradient(135deg,#E8F5E9,#FFFDE7); padding: 7px 11px; border-radius: 10px; border-left: 3px solid var(--green); }
+.tlt.on::before { content:'💬 '; }
+.tlbars { display: flex; gap: 5px; flex-wrap: wrap; }
+.bc { font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 10px; display: flex; align-items: center; gap: 3px; }
+
+/* ── INSIGHTS ── */
+.ins { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 14px; }
+.ic { background: var(--card); border-radius: 16px; padding: 18px; box-shadow: var(--shadow); border: 1.5px solid var(--bd); transition: transform .18s; }
+.ic:hover { transform: translateY(-2px); }
+.ic:nth-child(1) { border-color: var(--green-l); }
+.ic:nth-child(2) { border-color: #FFE082; }
+.ic:nth-child(3) { border-color: #80DEEA; }
+.ic:nth-child(4) { border-color: #CE93D8; }
+.ic-tag { font-size: 10px; font-weight: 900; letter-spacing:.1em; text-transform:uppercase; margin-bottom:7px; }
+.ic:nth-child(1) .ic-tag { color:var(--green-d); }
+.ic:nth-child(2) .ic-tag { color:var(--yellow-d); }
+.ic:nth-child(3) .ic-tag { color:var(--sky); }
+.ic:nth-child(4) .ic-tag { color:var(--purple); }
+.ic-title { font-size: 13px; font-weight: 700; margin-bottom: 7px; line-height: 1.5; }
+.ic-body { font-size: 12px; color: var(--ts); line-height: 1.7; }
+
+/* ── MONTHLY ── */
+.month-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px,1fr)); gap: 14px; margin-bottom: 24px; }
+.mcard { background: var(--card); border-radius: 16px; padding: 18px; box-shadow: var(--shadow); border: 1.5px solid var(--bd); transition: transform .18s; }
+.mcard:hover { transform: translateY(-2px); }
+.mcard-hd { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.mcard-month { font-family:'Kaisei Decol',serif; font-size: 17px; font-weight: 700; color: var(--tx); }
+.mcard-count { background: var(--green); color:#fff; font-size:10px; font-weight:700; padding:3px 9px; border-radius:10px; }
+.mcard-top { font-size: 11px; color: var(--ts); margin-bottom: 8px; }
+.mcard-top strong { color: var(--green-d); font-weight: 700; }
+.mbar-wrap { display: flex; flex-direction: column; gap: 4px; }
+.mbar-row { display: flex; align-items: center; gap: 7px; }
+.mbar-label { font-size: 10px; color: var(--ts); width: 105px; flex-shrink:0; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; font-weight:500; }
+.mbar-track { flex:1; height:6px; background:var(--bg); border-radius:3px; overflow:hidden; }
+.mbar-fill { height:100%; border-radius:3px; }
+.mbar-val { font-size:10px; font-weight:700; color:var(--ts); width:20px; text-align:right; }
+.mcard-themes { margin-top:10px; padding-top:10px; border-top:1.5px dashed var(--bd); }
+.mcard-themes-label { font-size:10px; font-weight:900; color:var(--ts); margin-bottom:5px; letter-spacing:.1em; text-transform:uppercase; }
+.mtheme { font-size:11px; color:var(--tx); line-height:1.5; margin-bottom:4px; padding:5px 9px; background:linear-gradient(135deg,#E8F5E9,#FFFDE7); border-radius:8px; border-left:3px solid var(--green); }
+
+/* ── KEYWORD ── */
+.kw-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+@media(max-width:600px){ .kw-grid { grid-template-columns:1fr; } }
+.kw-ranking { display:flex; flex-direction:column; gap:4px; }
+.kw-row { display:flex; align-items:center; gap:9px; padding:8px 11px; border-radius:10px; background:var(--bg); cursor:pointer; border:1.5px solid transparent; transition:all .15s; }
+.kw-row:hover { background:var(--green-xl); border-color:var(--green-l); }
+.kw-row.active { background:var(--green-xl); border-color:var(--green-l); }
+.kw-rank { font-size:10px; font-weight:900; color:var(--ts); width:20px; }
+.kw-word { font-size:13px; font-weight:700; flex:1; color:var(--tx); }
+.kw-count { background:var(--green); color:#fff; font-size:10px; font-weight:700; padding:2px 7px; border-radius:9px; }
+.kw-detail { background:var(--bg); border-radius:14px; padding:18px; border:1.5px solid var(--bd); min-height:200px; }
+.kw-detail-title { font-size:13px; font-weight:700; color:var(--green-d); margin-bottom:12px; }
+.kw-timeline { display:flex; flex-direction:column; gap:7px; }
+.kw-titem { display:flex; gap:9px; align-items:flex-start; }
+.kw-tdate { font-size:10px; font-weight:700; color:var(--ts); white-space:nowrap; padding-top:2px; min-width:72px; }
+.kw-ttheme { font-size:12px; line-height:1.5; color:var(--tx); }
+.kw-highlight { background:rgba(76,175,80,0.15); color:var(--green-d); padding:1px 3px; border-radius:3px; font-weight:700; }
+
+/* ── NARRATIVE ── */
+.narr { display:flex; flex-direction:column; position:relative; }
+.narr::before { content:''; position:absolute; left:17px; top:0; bottom:0; width:2px; background:linear-gradient(to bottom,var(--green),var(--yellow)); border-radius:2px; }
+.phase-hd { display:flex; gap:14px; padding:16px 0 8px; position:relative; z-index:2; }
+.phase-dot { width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:900; color:#fff; flex-shrink:0; box-shadow:0 3px 10px rgba(0,0,0,0.12); }
+.phase-info { flex:1; padding-top:2px; }
+.phase-label { font-size:12px; font-weight:900; margin-bottom:2px; }
+.phase-desc { font-size:11px; color:var(--ts); line-height:1.5; }
+.nitem { display:flex; gap:14px; padding-bottom:16px; position:relative; }
+.ndot-wrap { display:flex; flex-direction:column; align-items:center; flex-shrink:0; width:36px; }
+.ndot { width:12px; height:12px; border-radius:50%; background:var(--bd); border:3px solid var(--bg); flex-shrink:0; margin-top:4px; }
+.ndot.has { background:var(--green); box-shadow:0 0 0 4px rgba(76,175,80,0.15); }
+.nbody { flex:1; }
+.ndate { font-size:10px; font-weight:700; color:var(--ts); margin-bottom:4px; }
+.ntheme { font-size:13px; font-weight:700; line-height:1.6; margin-bottom:6px; padding:7px 10px; border-radius:9px; }
+.ntheme.has { background:linear-gradient(135deg,#E8F5E9,#FFFDE7); color:var(--tx); border-left:3px solid var(--green); }
+.ntheme.none { background:#F5F5F5; color:var(--ts); font-weight:400; font-size:12px; font-style:italic; }
+.ntags { display:flex; gap:4px; flex-wrap:wrap; }
+.ntag { font-size:10px; font-weight:700; padding:2px 7px; border-radius:8px; background:#F5F5F5; color:var(--ts); border:1px solid var(--bd); }
+
+/* ── SEARCH ── */
+.search-bar { display:flex; gap:10px; margin-bottom:14px; flex-wrap:wrap; }
+#sq { flex:1; min-width:180px; background:#fff; border:1.5px solid var(--bd); border-radius:12px; padding:10px 14px; color:var(--tx); font-size:14px; font-family:'Noto Sans JP',sans-serif; outline:none; transition:border-color .18s; }
+#sq:focus { border-color:var(--green); box-shadow:0 0 0 3px rgba(76,175,80,0.1); }
+#sw { background:#fff; border:1.5px solid var(--bd); border-radius:12px; padding:10px 12px; color:var(--tx); font-size:12px; font-family:'Noto Sans JP',sans-serif; font-weight:700; outline:none; cursor:pointer; }
+.s-count { font-size:12px; font-weight:700; color:var(--ts); margin-bottom:10px; }
+.s-results { display:flex; flex-direction:column; gap:7px; }
+.s-item { display:block; background:#fff; border:1.5px solid var(--bd); border-radius:12px; padding:12px 14px; text-decoration:none; transition:all .15s; }
+.s-item:hover { border-color:var(--green); transform:translateX(4px); box-shadow:var(--shadow); }
+.s-title { font-size:13px; font-weight:500; line-height:1.6; color:var(--tx); margin-bottom:5px; }
+.s-meta { display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+.s-week { font-size:10px; font-weight:700; background:var(--green); color:#fff; padding:2px 8px; border-radius:8px; }
+.s-url { font-size:10px; color:var(--ts); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+
+/* ── TOOLTIP ── */
+.tt { position:fixed; background:var(--tx); color:#fff; border-radius:10px; padding:8px 12px; font-size:12px; font-weight:500; pointer-events:none; z-index:300; max-width:220px; display:none; line-height:1.5; box-shadow:0 4px 16px rgba(0,0,0,0.2); }
+.tt-w { font-size:10px; font-weight:700; color:var(--green-l); margin-bottom:2px; }
+
+/* ── BOTTOM NAV ── */
+.bottomnav {
+  display: flex; position: fixed;
+  bottom: 0; left: 0; right: 0;
+  height: var(--bottom-h);
+  background: #fff;
+  border-top: 1.5px solid var(--bd);
+  z-index: 200;
+  box-shadow: 0 -3px 16px rgba(76,175,80,0.1);
+}
+
+.bnav-item {
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 3px; cursor: pointer;
+  border: none; background: transparent;
+  color: var(--ts); font-size: 10px; font-weight: 700;
+  font-family: 'Noto Sans JP', sans-serif;
+  transition: all .18s; padding: 6px 2px; position: relative;
+}
+
+.bnav-item .bnav-emoji { font-size: 20px; transition: transform .18s; }
+.bnav-item:hover { color: var(--green-d); }
+.bnav-item:hover .bnav-emoji { transform: translateY(-2px); }
+.bnav-item.on { color: var(--green-d); }
+.bnav-item.on .bnav-emoji { transform: translateY(-2px); }
+.bnav-item.on::after { content:''; position:absolute; bottom:0; width:32px; height:3px; background:var(--green); border-radius:2px 2px 0 0; }
+
+/* ── PC ── */
+@media(min-width: 768px) {
+  .sidenav { display: block; }
+  .bottomnav { display: none; }
+  .main { padding: 24px 4px 24px 24px; }
+}
+
+/* ── FOOTER ── */
+footer {
+  background: linear-gradient(135deg, #66BB6A, #FDD835);
+  color: rgba(27,58,42,0.85);
+  padding: 18px 24px;
+  font-size: 12px; font-weight: 700;
+  display: flex; justify-content: space-between;
+  flex-wrap: wrap; gap: 8px;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(10px); }
+  to { opacity:1; transform:translateY(0); }
+}
+.page.on > * { animation: fadeUp .3s ease both; }
+.page.on > *:nth-child(1) { animation-delay:.03s; }
+.page.on > *:nth-child(2) { animation-delay:.07s; }
+.page.on > *:nth-child(3) { animation-delay:.11s; }
+.page.on > *:nth-child(4) { animation-delay:.15s; }
+.page.on > *:nth-child(5) { animation-delay:.19s; }
+</style>
+</head>
+<body>
+
+<div class="tt" id="tt"><div class="tt-w" id="ttw"></div><div id="ttv"></div></div>
+
+<!-- HEADER -->
+<header>
+  <div class="hd-badges">
+    <span class="hd-badge">📊 Signal Atlas</span>
+    <span class="hd-badge">🌸 Z世代</span>
+    <span class="hd-badge">2025.09 — 2026.03</span>
+  </div>
+  <div class="hd-eyebrow">Z Generation Weekly Intelligence</div>
+  <h1>Z世代<em>シグナル</em><br>ダッシュボード</h1>
+  <p class="hd-sub">27週分の記事データを可視化・分析</p>
+  <div class="hd-chips">
+    <span class="hd-chip">📅 27週</span>
+    <span class="hd-chip">📰 <strong id="ctotal">—</strong></span>
+    <span class="hd-chip">💬 考察 <strong id="cthemed">—</strong>週</span>
+    <span class="hd-chip">🔗 記事 <strong>1,157</strong>件</span>
+  </div>
+</header>
+
+<!-- LAYOUT -->
+<div class="layout">
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- PAGE: 概要 -->
+    <div class="page on" id="p-overview">
+      <div class="stats">
+        <div class="stat"><div class="stat-emoji">📅</div><div class="stat-num">27</div><div class="stat-lbl">週分のデータ</div></div>
+        <div class="stat"><div class="stat-emoji">🏆</div><div class="stat-num" id="stop">—</div><div class="stat-lbl">最多カテゴリ</div></div>
+        <div class="stat"><div class="stat-emoji">🔥</div><div class="stat-num" id="strend">—</div><div class="stat-lbl">直近上昇テーマ</div></div>
+        <div class="stat"><div class="stat-emoji">📰</div><div class="stat-num" id="savg">—</div><div class="stat-lbl">週平均記事数</div></div>
+      </div>
+      <div class="sec">
+        <div class="sec-hd"><div class="sec-emoji">📊</div><h2>週次記事量の推移</h2></div>
+        <div class="cbox"><canvas id="vol"></canvas></div>
+      </div>
+      <div class="sec">
+        <div class="sec-hd"><div class="sec-emoji">📉</div><h2>カテゴリ別トレンド（構成比%）</h2></div>
+        <div class="tabs" id="tabs"></div>
+        <div class="cbox"><canvas id="cat"></canvas></div>
+      </div>
+      <div class="sec">
+        <div class="sec-hd"><div class="sec-emoji">🗺️</div><h2>カテゴリ × 週次 ヒートマップ</h2></div>
+        <div class="cbox hmscroll"><table class="hmtbl" id="hm"></table></div>
+      </div>
+      <div class="sec">
+        <div class="sec-hd"><div class="sec-emoji">📋</div><h2>週次考察タイムライン</h2></div>
+        <div class="cbox"><div class="tl" id="tl"></div></div>
+      </div>
+      <div class="sec">
+        <div class="sec-hd"><div class="sec-emoji">💡</div><h2>自動抽出インサイト</h2></div>
+        <div class="ins" id="ins"></div>
+      </div>
+    </div>
+
+    <!-- PAGE: 月次 -->
+    <div class="page" id="p-monthly">
+      <div class="sec">
+        <div class="sec-hd"><div class="sec-emoji">📊</div><h2>月別記事量・カテゴリ構成</h2></div>
+        <div class="cbox" style="margin-bottom:18px"><canvas id="mchart" style="max-height:260px"></canvas></div>
+      </div>
+      <div class="sec">
+        <div class="sec-hd"><div class="sec-emoji">📋</div><h2>月次カード</h2></div>
+        <div class="month-grid" id="mgrid"></div>
+      </div>
+    </div>
+
+    <!-- PAGE: キーワード -->
+    <div class="page" id="p-keywords">
+      <div class="sec">
+        <div class="sec-hd"><div class="sec-emoji">📈</div><h2>キーワード出現タイムライン</h2></div>
+        <div class="cbox" style="margin-bottom:18px"><canvas id="kwchart" style="max-height:260px"></canvas></div>
+      </div>
+      <div class="sec">
+        <div class="sec-hd"><div class="sec-emoji">🏅</div><h2>頻度ランキング ／ 初出タイムライン</h2></div>
+        <div class="cbox">
+          <div class="kw-grid">
+            <div class="kw-ranking" id="kwrank"></div>
+            <div class="kw-detail" id="kwdetail"><div style="color:var(--ts);font-size:13px">← キーワードを選んでね 🌸</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE: ナラティブ -->
+    <div class="page" id="p-narrative">
+      <div class="sec">
+        <div class="sec-hd"><div class="sec-emoji">📖</div><h2>週次テーマ変遷ストーリー</h2></div>
+        <div style="background:linear-gradient(135deg,#FFE8F2,#FFF0E8);border-radius:12px;padding:12px 16px;margin-bottom:18px;font-size:13px;color:var(--tx);line-height:1.7;font-weight:500">
+          🌸 ピンク●が考察あり週。言葉がどう変化したか時系列で追える。
+        </div>
+        <div class="cbox"><div class="narr" id="narr"></div></div>
+      </div>
+    </div>
+
+
+    <!-- PAGE: Q1総括 -->
+    <div class="page" id="p-q1">
+      <div class="sec">
+        <div class="sec-hd"><div class="sec-emoji">🌐</div><h2>2026年Q1 Z世代総括</h2></div>
+        <div class="cbox" style="background:linear-gradient(135deg,#E8F5E9,#FFFDE7);margin-bottom:20px">
+          <div style="font-size:11px;font-weight:900;color:var(--ts);letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px">📌 総論</div>
+          <div style="font-size:17px;font-weight:700;color:var(--tx);line-height:1.5;margin-bottom:12px">Z世代は「適応する世代」から<br>「失敗しない社会を設計する世代」へ移行した</div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px">
+            <span style="background:#4CAF50;color:#fff;font-size:12px;font-weight:700;padding:5px 14px;border-radius:16px">1月：壊れない</span>
+            <span style="background:#FDD835;color:#1B3A2A;font-size:12px;font-weight:700;padding:5px 14px;border-radius:16px">2月：自分で選ぶ</span>
+            <span style="background:#FF7043;color:#fff;font-size:12px;font-weight:700;padding:5px 14px;border-radius:16px">3月：外さない</span>
+          </div>
+          <div style="font-size:13px;color:var(--tx);background:rgba(255,255,255,0.6);padding:10px 14px;border-radius:10px;border-left:3px solid var(--green)">
+            💡 一言：<strong>「間違えない人生」が標準になった四半期</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-hd"><div class="sec-emoji">📊</div><h2>月別フェーズ</h2></div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px">
+          <div class="cbox">
+            <div style="font-size:22px;margin-bottom:8px">🛡️</div>
+            <div style="font-size:13px;font-weight:900;color:var(--green-d);margin-bottom:6px">1月：自己防衛フェーズ</div>
+            <div style="font-size:12px;color:var(--ts);line-height:1.7">距離を取る／消耗を避ける／AIは補助線／推しは安定装置</div>
+            <div style="margin-top:8px;background:var(--green-xl);padding:5px 10px;border-radius:8px;font-size:12px;font-weight:700;color:var(--green-d)">KW：壊れない</div>
+          </div>
+          <div class="cbox">
+            <div style="font-size:22px;margin-bottom:8px">⚖️</div>
+            <div style="font-size:13px;font-weight:900;color:#F9A825;margin-bottom:6px">2月：納得主権フェーズ</div>
+            <div style="font-size:12px;color:var(--ts);line-height:1.7">世代内分岐／消費の意味化／推し活の制度化／関係の合理化</div>
+            <div style="margin-top:8px;background:#FFFDE7;padding:5px 10px;border-radius:8px;font-size:12px;font-weight:700;color:#F9A825">KW：自分で選ぶ</div>
+          </div>
+          <div class="cbox">
+            <div style="font-size:22px;margin-bottom:8px">🎯</div>
+            <div style="font-size:13px;font-weight:900;color:#E64A19;margin-bottom:6px">3月：失敗回避フェーズ</div>
+            <div style="font-size:12px;color:var(--ts);line-height:1.7">うま確消費／AI意思決定／投稿削減／推し管理／非選択戦略</div>
+            <div style="margin-top:8px;background:#FBE9E7;padding:5px 10px;border-radius:8px;font-size:12px;font-weight:700;color:#E64A19">KW：外さない</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-hd"><div class="sec-emoji">🔍</div><h2>テーマ別考察</h2></div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div class="cbox">
+            <div style="font-size:11px;font-weight:900;color:var(--green-d);letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px">① 失敗回避社会の成立</div>
+            <div style="font-size:14px;font-weight:700;margin-bottom:6px">「何を選ぶか」ではなく「どうすれば外さないか」で動く</div>
+            <div style="font-size:13px;color:var(--ts);line-height:1.7">うま確フード、AI意思決定、定価で買わない——これらは不安ではなく合理性の進化。Z世代は選択コストを最小化する社会設計者になった。</div>
+          </div>
+          <div class="cbox">
+            <div style="font-size:11px;font-weight:900;color:#29B6F6;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px">② AIは「補助線」から「現実代替」へ</div>
+            <div style="font-size:14px;font-weight:700;margin-bottom:6px">1月補助線 → 2月共存設計 → 3月代替手段</div>
+            <div style="font-size:13px;color:var(--ts);line-height:1.7">AI利用率8割超。恋愛相談、音楽生成、意思決定——AIはもはや「ツール」ではなく「人間関係の一部」になりつつある。</div>
+          </div>
+          <div class="cbox">
+            <div style="font-size:11px;font-weight:900;color:#AB47BC;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px">③ 推し活の完全インフラ化</div>
+            <div style="font-size:14px;font-weight:700;margin-bottom:6px">情熱 → 持続 → 管理 の最終形へ</div>
+            <div style="font-size:13px;color:var(--ts);line-height:1.7">市場4.1兆円。「推し活」という言葉への違和感も登場。生活インフラとして完全定着し、燃え尽きない設計が当たり前になった。</div>
+          </div>
+          <div class="cbox">
+            <div style="font-size:11px;font-weight:900;color:#FF7043;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px">④ 表現の削減・ノイズレス文化</div>
+            <div style="font-size:14px;font-weight:700;margin-bottom:6px">「投稿ゼロ」「BeReal」「匿名化」が加速</div>
+            <div style="font-size:13px;color:var(--ts);line-height:1.7">見せすぎない。語らない。盛らない。自己表現の主戦場がSNSから「選ばれた少人数との空間」へ移行している。</div>
+          </div>
+          <div class="cbox">
+            <div style="font-size:11px;font-weight:900;color:#26A69A;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px">⑤ 人間関係の再設計（軽接続社会）</div>
+            <div style="font-size:14px;font-weight:700;margin-bottom:6px">深くつながらず、壊れない距離を設計する</div>
+            <div style="font-size:13px;color:var(--ts);line-height:1.7">「搭子文化」「メンパ」「距離感設計」——強い絆より安全な接続を好む。関係は維持するが常駐しない、という構造が定着。</div>
+          </div>
+          <div class="cbox">
+            <div style="font-size:11px;font-weight:900;color:#FFA726;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px">⑥ 消費は「意味投資」へ</div>
+            <div style="font-size:14px;font-weight:700;margin-bottom:6px">コスパでも衝動でもなく「納得パ」で動く</div>
+            <div style="font-size:13px;color:var(--ts);line-height:1.7">高級ヘッドホンは買う、飲み会は断る。消費は自己肯定と生活安定のための配分行為。「選別投資」「意味消費」がZ世代の新常識。</div>
+          </div>
+          <div class="cbox">
+            <div style="font-size:11px;font-weight:900;color:#EC407A;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px">⑦ 働き方の再定義（非選択戦略）</div>
+            <div style="font-size:14px;font-weight:700;margin-bottom:6px">自由より「わかりやすさ」を選ぶ世代</div>
+            <div style="font-size:13px;color:var(--ts);line-height:1.7">AIマネジメント希望6割、「指示待ち」ではなく「設計された自由」を求める。裁量より構造化された安心を重視する働き方へ。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-hd"><div class="sec-emoji">🏁</div><h2>Q1総括</h2></div>
+        <div class="cbox" style="background:linear-gradient(135deg,#E8F5E9,#FFFDE7)">
+          <div style="font-size:15px;font-weight:700;color:var(--tx);line-height:1.6;margin-bottom:12px">
+            Z世代は「拡張社会」を終わらせ、<br>「最適化された安心社会」を作り始めた
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="font-size:13px;color:var(--ts);line-height:1.7;background:rgba(255,255,255,0.7);padding:10px 14px;border-radius:10px">
+              📌 <strong>マーケター視点</strong>：Z世代は「拡張・熱狂・正解」ではなく「最小失敗・安心・納得」を設計する。ブランドに求めるのは感動より安心感。
+            </div>
+            <div style="font-size:13px;color:var(--ts);line-height:1.7;background:rgba(255,255,255,0.7);padding:10px 14px;border-radius:10px">
+              📌 <strong>組織・採用視点</strong>：「自由な職場」より「わかりやすい職場」。AI活用、フィードバック設計、心理的安全が採用競争力の核心。
+            </div>
+            <div style="font-size:13px;color:var(--ts);line-height:1.7;background:rgba(255,255,255,0.7);padding:10px 14px;border-radius:10px">
+              📌 <strong>社会設計視点</strong>：失敗を回避する世代が増えると、社会の「変化耐性」が下がる可能性も。これはZ世代だけの問題ではなく、社会設計の問題でもある。
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE: 記事検索 -->
+    <div class="page" id="p-search">
+      <div class="sec">
+        <div class="sec-hd"><div class="sec-emoji">🔍</div><h2>記事検索（1,157件）</h2></div>
+        <div class="search-bar">
+          <input id="sq" type="text" placeholder="🔍 キーワードで検索..." oninput="filterArticles()">
+          <select id="sw" onchange="filterArticles()"><option value="">📅 すべての週</option></select>
+        </div>
+        <div class="s-count" id="scount"></div>
+        <div class="s-results" id="sresults"></div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- SIDE NAV (PC) - RIGHT -->
+  <aside class="sidenav" id="sidenav">
+    <div class="sidenav-inner">
+      <div class="sidenav-label">CONTENTS</div>
+      <a class="snav-item on" data-page="p-overview" onclick="navTo('p-overview',this);return false" href="#">
+        <div class="snav-emoji">📈</div>
+        <div class="snav-text">概要</div>
+      </a>
+      <a class="snav-item" data-page="p-monthly" onclick="navTo('p-monthly',this);return false" href="#">
+        <div class="snav-emoji">📅</div>
+        <div class="snav-text">月次サマリー</div>
+      </a>
+      <a class="snav-item" data-page="p-keywords" onclick="navTo('p-keywords',this);return false" href="#">
+        <div class="snav-emoji">🔑</div>
+        <div class="snav-text">考察キーワード</div>
+      </a>
+      <a class="snav-item" data-page="p-narrative" onclick="navTo('p-narrative',this);return false" href="#">
+        <div class="snav-emoji">📖</div>
+        <div class="snav-text">テーマ変遷</div>
+      </a>
+      <a class="snav-item" data-page="p-q1" onclick="navTo('p-q1',this);return false" href="#">
+        <div class="snav-emoji">🌐</div>
+        <div class="snav-text">Q1総括</div>
+      </a>
+      <a class="snav-item" data-page="p-search" onclick="navTo('p-search',this);return false" href="#">
+        <div class="snav-emoji">🔍</div>
+        <div class="snav-text">記事検索</div>
+      </a>
+    </div>
+  </aside>
+</div>
+
+<!-- BOTTOM NAV (mobile) -->
+<nav class="bottomnav">
+  <button class="bnav-item on" data-page="p-overview" onclick="navTo('p-overview',this)">
+    <span class="bnav-emoji">📈</span><span>概要</span>
+  </button>
+  <button class="bnav-item" data-page="p-monthly" onclick="navTo('p-monthly',this)">
+    <span class="bnav-emoji">📅</span><span>月次</span>
+  </button>
+  <button class="bnav-item" data-page="p-keywords" onclick="navTo('p-keywords',this)">
+    <span class="bnav-emoji">🔑</span><span>KW</span>
+  </button>
+  <button class="bnav-item" data-page="p-narrative" onclick="navTo('p-narrative',this)">
+    <span class="bnav-emoji">📖</span><span>変遷</span>
+  </button>
+  <button class="bnav-item" data-page="p-q1" onclick="navTo('p-q1',this)">
+    <span class="bnav-emoji">🌐</span><span>Q1</span>
+  </button>
+  <button class="bnav-item" data-page="p-search" onclick="navTo('p-search',this)">
+    <span class="bnav-emoji">🔍</span><span>検索</span>
+  </button>
+</nav>
+
+<footer>
+  <span>✨ Z世代 Signal Atlas v5.0</span>
+  <span>Data: 2025.09 — 2026.03 ｜ 27 weeks</span>
+</footer>
+
+<script>
+const RAW=[{"week":"2026年3月30日〜4月3日","articles":61,"theme":"Z世代は「選択する世代」から「外さない設計を使う世代」へ進化した","categories":{"SNS・デジタル疲れ":10,"推し活・オタク":30,"AI・テクノロジー":29,"消費・購買":11,"働き方・キャリア":4,"価値観・アイデンティティ":9,"恋愛・人間関係":13,"金融・お金":3}},{"week":"2026年3月23日〜3月27日","articles":99,"theme":"3/23–3/27のZ世代を総括すると、","categories":{"SNS・デジタル疲れ":31,"推し活・オタク":44,"AI・テクノロジー":37,"消費・購買":18,"働き方・キャリア":9,"価値観・アイデンティティ":12,"恋愛・人間関係":8,"金融・お金":7}},{"week":"2026年3月16日〜3月19日","articles":73,"theme":"関与は続けるが、没入はしない」","categories":{"SNS・デジタル疲れ":18,"推し活・オタク":45,"AI・テクノロジー":12,"消費・購買":3,"働き方・キャリア":6,"価値観・アイデンティティ":14,"恋愛・人間関係":0,"金融・お金":3}},{"week":"2026年3月9日〜3月13日","articles":70,"theme":"3/9–3/13のZ世代動向をまとめると","categories":{"SNS・デジタル疲れ":13,"推し活・オタク":29,"AI・テクノロジー":33,"消費・購買":8,"働き方・キャリア":0,"価値観・アイデンティティ":4,"恋愛・人間関係":4,"金融・お金":2}},{"week":"2026年3月2日〜3月6日","articles":90,"theme":null,"categories":{"SNS・デジタル疲れ":0,"推し活・オタク":64,"AI・テクノロジー":30,"消費・購買":13,"働き方・キャリア":1,"価値観・アイデンティティ":5,"恋愛・人間関係":0,"金融・お金":11}},{"week":"2026年2月24日〜2月27日","articles":30,"theme":"Z世代は「何が正しいか」ではなく「自分が納得できるか」で世界を再編している","categories":{"SNS・デジタル疲れ":0,"推し活・オタク":38,"AI・テクノロジー":12,"消費・購買":4,"働き方・キャリア":3,"価値観・アイデンティティ":5,"恋愛・人間関係":3,"金融・お金":3}},{"week":"2026年2月16日〜2月20日","articles":60,"theme":"Z世代は、社会を盛り上げるのではなく、社会を“持続可能に再設計する側”に回った。","categories":{"SNS・デジタル疲れ":1,"推し活・オタク":43,"AI・テクノロジー":35,"消費・購買":10,"働き方・キャリア":6,"価値観・アイデンティティ":6,"恋愛・人間関係":0,"金融・お金":7}},{"week":"2026年2月9日〜2月13日","articles":50,"theme":"Z世代は、つながりは維持しながら、摩擦だけを削る社会を作ろうとしている","categories":{"SNS・デジタル疲れ":1,"推し活・オタク":29,"AI・テクノロジー":13,"消費・購買":13,"働き方・キャリア":3,"価値観・アイデンティティ":3,"恋愛・人間関係":2,"金融・お金":4}},{"week":"2026年2月2日〜2月6日","articles":76,"theme":"2026年2月初週のZ世代は、「盛り上げないことで文化を守る」フェーズに入った","categories":{"SNS・デジタル疲れ":14,"推し活・オタク":79,"AI・テクノロジー":21,"消費・購買":18,"働き方・キャリア":1,"価値観・アイデンティティ":6,"恋愛・人間関係":3,"金融・お金":7}},{"week":"2026年1月26日〜1月30日","articles":39,"theme":"Z世代は「全力で好きになる」より、「長く壊れず関わる」を選んだ","categories":{"SNS・デジタル疲れ":4,"推し活・オタク":24,"AI・テクノロジー":6,"消費・購買":7,"働き方・キャリア":2,"価値観・アイデンティティ":2,"恋愛・人間関係":1,"金融・お金":4}},{"week":"2026年1月19日〜1月23日","articles":49,"theme":"2026年初頭のZ世代・α世代は、","categories":{"SNS・デジタル疲れ":15,"推し活・オタク":2,"AI・テクノロジー":22,"消費・購買":4,"働き方・キャリア":1,"価値観・アイデンティティ":5,"恋愛・人間関係":1,"金融・お金":1}},{"week":"2026年1月13日〜1月16日","articles":45,"theme":"Z世代は「全部を自分で決める」時代を終わらせに来ている","categories":{"SNS・デジタル疲れ":2,"推し活・オタク":18,"AI・テクノロジー":24,"消費・購買":9,"働き方・キャリア":0,"価値観・アイデンティティ":7,"恋愛・人間関係":4,"金融・お金":0}},{"week":"2026年1月5日〜1月9日","articles":48,"theme":"年明けのZ世代は「もう無理に選ばなくていい世界」を求めている","categories":{"SNS・デジタル疲れ":6,"推し活・オタク":45,"AI・テクノロジー":23,"消費・購買":10,"働き方・キャリア":3,"価値観・アイデンティティ":6,"恋愛・人間関係":11,"金融・お金":4}},{"week":"2025年12月22日〜12月29日","articles":43,"theme":null,"categories":{"SNS・デジタル疲れ":10,"推し活・オタク":23,"AI・テクノロジー":6,"消費・購買":15,"働き方・キャリア":2,"価値観・アイデンティティ":2,"恋愛・人間関係":2,"金融・お金":3}},{"week":"2025年12月15日〜12月19日","articles":63,"theme":"Z世代は「不安の時代」を、関係性と選択を“軽くする”ことで生き延びている","categories":{"SNS・デジタル疲れ":2,"推し活・オタク":30,"AI・テクノロジー":17,"消費・購買":17,"働き方・キャリア":3,"価値観・アイデンティティ":4,"恋愛・人間関係":5,"金融・お金":6}},{"week":"2025年12月8日〜12月12日","articles":40,"theme":"Z世代は今、社会の“大きすぎる正しさ”から距離を置き、","categories":{"SNS・デジタル疲れ":7,"推し活・オタク":33,"AI・テクノロジー":20,"消費・購買":15,"働き方・キャリア":0,"価値観・アイデンティティ":8,"恋愛・人間関係":0,"金融・お金":4}},{"week":"2025年12月1日〜12月5日","articles":68,"theme":"“Z世代は、不確実性の時代に自分の輪郭を守るための方法を次々に発明している”","categories":{"SNS・デジタル疲れ":3,"推し活・オタク":45,"AI・テクノロジー":24,"消費・購買":13,"働き方・キャリア":9,"価値観・アイデンティティ":6,"恋愛・人間関係":2,"金融・お金":7}},{"week":"2025年11月25日〜11月28日","articles":37,"theme":"2025年11月最終週のZ世代は、","categories":{"SNS・デジタル疲れ":5,"推し活・オタク":23,"AI・テクノロジー":14,"消費・購買":8,"働き方・キャリア":1,"価値観・アイデンティティ":8,"恋愛・人間関係":2,"金融・お金":1}},{"week":"2025年11月17日〜11月21日","articles":81,"theme":null,"categories":{"SNS・デジタル疲れ":5,"推し活・オタク":30,"AI・テクノロジー":19,"消費・購買":10,"働き方・キャリア":5,"価値観・アイデンティティ":2,"恋愛・人間関係":2,"金融・お金":3}},{"week":"2025年11月10日〜11月14日","articles":37,"theme":null,"categories":{"SNS・デジタル疲れ":2,"推し活・オタク":24,"AI・テクノロジー":15,"消費・購買":3,"働き方・キャリア":4,"価値観・アイデンティティ":3,"恋愛・人間関係":0,"金融・お金":1}},{"week":"2025年11月4日〜11月7日","articles":48,"theme":"2025年10月のZ世代は、「過剰な最適化の時代から、心の最適化の時代へ」移行している。","categories":{"SNS・デジタル疲れ":8,"推し活・オタク":37,"AI・テクノロジー":28,"消費・購買":17,"働き方・キャリア":2,"価値観・アイデンティティ":7,"恋愛・人間関係":1,"金融・お金":6}},{"week":"2025年10月27日〜10月31日","articles":40,"theme":"今週のZ世代を貫くキーワードは 「曖昧さの中にある安心」 である。","categories":{"SNS・デジタル疲れ":2,"推し活・オタク":31,"AI・テクノロジー":11,"消費・購買":12,"働き方・キャリア":0,"価値観・アイデンティティ":2,"恋愛・人間関係":5,"金融・お金":4}},{"week":"2025年10月20日〜10月24日","articles":47,"theme":"今週のZ世代は、「効率と感情の折り合い」をつける成熟期に入っている。","categories":{"SNS・デジタル疲れ":3,"推し活・オタク":27,"AI・テクノロジー":17,"消費・購買":12,"働き方・キャリア":3,"価値観・アイデンティティ":4,"恋愛・人間関係":1,"金融・お金":4}},{"week":"2025年10月14日〜10月17日","articles":28,"theme":"今週のZ世代を貫くキーワードは、「自分の輪郭を守る」である。","categories":{"SNS・デジタル疲れ":2,"推し活・オタク":4,"AI・テクノロジー":13,"消費・購買":9,"働き方・キャリア":0,"価値観・アイデンティティ":1,"恋愛・人間関係":0,"金融・お金":2}},{"week":"2025年10月5日〜10月10日","articles":27,"theme":"今週のZ世代は、「感情の可視化」「消費の熟考」「AIや推しによる孤独の再構築」「やわらかい共感」という4つの軸で動いていた。","categories":{"SNS・デジタル疲れ":1,"推し活・オタク":11,"AI・テクノロジー":5,"消費・購買":12,"働き方・キャリア":0,"価値観・アイデンティティ":2,"恋愛・人間関係":7,"金融・お金":0}},{"week":"2025年9月29日〜10月3日","articles":34,"theme":null,"categories":{"SNS・デジタル疲れ":1,"推し活・オタク":25,"AI・テクノロジー":16,"消費・購買":14,"働き方・キャリア":1,"価値観・アイデンティティ":3,"恋愛・人間関係":2,"金融・お金":4}},{"week":"2025年9月21日〜26日","articles":27,"theme":null,"categories":{"SNS・デジタル疲れ":1,"推し活・オタク":13,"AI・テクノロジー":3,"消費・購買":5,"働き方・キャリア":0,"価値観・アイデンティティ":4,"恋愛・人間関係":0,"金融・お金":6}},{"week":"2025年9月16日〜19日","articles":188,"theme":null,"categories":{"SNS・デジタル疲れ":10,"推し活・オタク":29,"AI・テクノロジー":42,"消費・購買":49,"働き方・キャリア":7,"価値観・アイデンティティ":29,"恋愛・人間関係":2,"金融・お金":14}}];
+const ARTICLES=[{"title":"Ｚ世代はＴｉｋＴｏｋで勉強する！？","url":"https://news.yahoo.co.jp/articles/4ecf2dad689a09800ace264b79d8b2a016b41ea2","week":"2026年3月30日〜4月3日"},{"title":"日経クロストレンド: 【マンガ】タイパより優先の「メンパ」とは デジタル疲れで消費に変化","url":"https://xtrend.nikkei.com/atcl/contents/18/00831/00031/","week":"2026年3月30日〜4月3日"},{"title":"Business Insider Japan: 恋愛するのは面倒だけど、恋愛トークはしたい…","url":"https://www.businessinsider.jp/article/2603-reality-dating-show/","week":"2026年3月30日〜4月3日"},{"title":"ニコニコニュース: 「ME TOKYO EMOTION RESEARCH」、「Z世代女子トレンド調査」を発表","url":"https://news.nicovideo.jp/watch/nw19109420","week":"2026年3月30日〜4月3日"},{"title":"@DIME: Z世代の新入社員で「出世したい」と考えている人はどれくらいいる？","url":"https://dime.jp/genre/2098999/","week":"2026年3月30日〜4月3日"},{"title":"seikyoonline.com: Z世代は「越冬世代」","url":"https://www.seikyoonline.com/summarize/seikyo-campus-13513.html","week":"2026年3月30日〜4月3日"},{"title":"3人に1人、推し活グッズよる部屋の圧迫を経験","url":"https://ovo.kyodo.co.jp/news/culture/a-2081056","week":"2026年3月30日〜4月3日"},{"title":"「BL作品」が「読書体験」を継承？","url":"https://magmix.jp/post/346795","week":"2026年3月30日〜4月3日"},{"title":"美容予約もAI検索の時代へ。セルフケア予約の4件に1件がAI経由","url":"https://tabi-labo.com/312381/freshaaibooking","week":"2026年3月30日〜4月3日"},{"title":"実在しないのに数百万フォロワーを持つ「インフルエンサー」が増加中","url":"https://nazology.kusuguru.co.jp/archives/193575","week":"2026年3月30日〜4月3日"},{"title":"Z世代×企業トップが激論！ デロイト トーマツ「夜明け会議」","url":"https://article.auone.jp/detail/1/3/6/218_6_r_20260401_1775009957023118","week":"2026年3月30日〜4月3日"},{"title":"AI時代の小学校英語《何を手放し､何を残すか》","url":"https://toyokeizai.net/articles/-/937850","week":"2026年3月30日〜4月3日"},{"title":"Z家族 データが示す「若者と親」の近すぎる関係","url":"https://www.hakuhodo.co.jp/news/publications/119172/","week":"2026年3月30日〜4月3日"},{"title":"\"Z世代はニュースをどこで見る？ 高校生は「テレビ」、大学生男子は「X」がトップ【LINEリサーチ調べ】\"","url":"https://l.smartnews.com/m-7sbL1Iru/w3bW49","week":"2026年3月30日〜4月3日"},{"title":"Z世代のファストフード選びは”バズ消費”！　マクドナルドが1位、バーガーキングが2位に選ばれた理由とは？ | AppBank","url":"https://www.appbank.net/2026/04/01/casual-food/2962301.php","week":"2026年3月30日〜4月3日"},{"title":"「キャッシュレス決済」初めて使った年齢は何歳? - 若年層の\"早期化\"実態が明らかに | マイナビニュース","url":"https://news.mynavi.jp/article/20260326-4259762/?lead=&utm_source=smartnews&utm_medium=android&utm_…","week":"2026年3月30日〜4月3日"},{"title":"2026年トレンドの「苦労キャンセル」消費、その新市場と背景は？｜mymo マイモ","url":"https://mymo-ibank.com/money/9660","week":"2026年3月30日〜4月3日"},{"title":"「AIを使いこなせ」vs「社会を支えろ」2026年入社式で分かれた企業の本音 | TECH+（テックプラス）","url":"https://news.mynavi.jp/techplus/article/20260401-4284186/?lead=&utm_source=smartnews&utm_medium=and…","week":"2026年3月30日〜4月3日"},{"title":"AI時代の小学校英語《何を手放し､何を残すか》再考が必要､｢得意な子どもと苦手な子どもに開き｣指導者に負担感 | 東洋経済education×ICT | 東洋経済オンライン","url":"https://toyokeizai.net/articles/-/937850?utm_source=smartnews&utm_medium=http&utm_campaign=link_bac…","week":"2026年3月30日〜4月3日"},{"title":"RBB TODAY: ドコモグループ入社式の様子にネット「昭和回帰」「社畜感すごい」","url":"https://www.rbbtoday.com/article/2026/04/01/246048.html","week":"2026年3月30日〜4月3日"},{"title":"AdverTimes.（アドタイ） by 宣伝会議: 表参道に「SUMADORI Meets」開業 若年層へのアプローチを強化し、「スマドリ」体験を次段階へ","url":"https://www.advertimes.com/20260402/article540018/?utm_source=feed&page=2","week":"2026年3月30日〜4月3日"},{"title":"AdverTimes.（アドタイ） by 宣伝会議: 入社式で企業のトップが新入社員に「贈った言葉」","url":"https://www.advertimes.com/20260402/article539946/?utm_source=feed&page=2","week":"2026年3月30日〜4月3日"},{"title":"Business Insider Japan: AI時代に将来性がある2つのタイプとは…パランティアCEOが指摘","url":"https://www.businessinsider.jp/article/2604-alex-karp-future-ai-neurodivergent-vocational-skills/","week":"2026年3月30日〜4月3日"},{"title":"DIGIDAY［日本版］: パメラ・アンダーソンが宣言「これは AI じゃ作れない」 エアリーが AI 生成のモデルを全面禁止へ","url":"https://digiday.jp/glossy/pamela-anderson-fronts-aeries-anti-ai-push-as-it-bans-generated-bodies/","week":"2026年3月30日〜4月3日"},{"title":"Yahoo!ニュース: 「ビジュいいじゃん」はもう古い? Z世代が支持する“盛らない・隠さない・飾らない”価値観とは（ピンズバNEWS） - Yahoo!ニュース","url":"https://news.yahoo.co.jp/articles/e82aa7ee76aedf2c7a0da0dc5a638ea7b9a4cf0c","week":"2026年3月30日〜4月3日"},{"title":"PR TIMES: 【Simejiランキング】Z世代が選ぶ!!「担任の先生になってほしい有名人TOP10」","url":"https://prtimes.jp/main/html/rd/p/000000956.000006410.html","week":"2026年3月30日〜4月3日"},{"title":"Forbes JAPAN: Z世代が求める金融サービスの本質──従来型銀行への警鐘","url":"https://forbesjapan.com/articles/detail/95014","week":"2026年3月30日〜4月3日"},{"title":"繊研新聞: エモ消費の奥にあった、4つの「迷い」と「動機」。おしゃれなZ世代78名の声から読み解く本音","url":"https://senken.co.jp/prtimes/aHR0cHM6Ly9wcnRpbWVzLmpwL21haW4vaHRtbC9yZC9wLzAwMDAwMDAxNi4wMDAxNTIxNz…","week":"2026年3月30日〜4月3日"},{"title":"マイナビニュース: Z世代とミレニアル世代の74%が離職を検討する理由とは。AIを活用したスキル中心の人事DX戦略に迫る","url":"https://news.mynavi.jp/techplus/kikaku/20260402-4284939/","week":"2026年3月30日〜4月3日"},{"title":"ネットショップ担当者フォーラム: 【推し活調査】市場規模は約4.1兆円と推定。「推し活」しているは3割、使う金額は月1万円未満が7割超","url":"https://netshop.impress.co.jp/n/2026/03/31/15839","week":"2026年3月30日〜4月3日"},{"title":"TBS NEWS DIG: Z世代の6割超が「スマホ疲れ」…","url":"https://newsdig.tbs.co.jp/articles/-/2567895","week":"2026年3月30日〜4月3日"},{"title":"産経ニュース: Z世代に説教くさいエコはもう響かない！？","url":"https://www.sankei.com/pressrelease/prtimes/PJ6SZWCQ7JKEJES3M4NO7LJH2I/","week":"2026年3月30日〜4月3日"},{"title":"eltha: MERY Z世代研究所 カフェ利用調査","url":"https://beauty.oricon.co.jp/pressrelease/2755793/","week":"2026年3月30日〜4月3日"},{"title":"TRILL: Z世代女子701名の感情データから見えた2026年5つのトレンド！","url":"https://trilltrill.jp/articles/4658402","week":"2026年3月30日〜4月3日"},{"title":"PR TIMES: Z世代の旅行は「圧倒的安心感」と「ポイ活・コスパ」へ二極化！","url":"https://prtimes.jp/main/html/rd/p/000000071.000104461.html","week":"2026年3月30日〜4月3日"},{"title":"ファイナンシャルフィールド: 20代の推し活支出が突出して高い理由","url":"https://financial-field.com/living/entry-495201","week":"2026年3月30日〜4月3日"},{"title":"マナミナ: Z世代の55%がAIに「人間関係」を相談！？","url":"https://manamina.valuesccg.com/articles/4938","week":"2026年3月30日〜4月3日"},{"title":"ja.laodong.vn: Z世代の女性は金を貯め、結婚前に積極的に経済基盤を構築する","url":"https://ja.laodong.vn/gia-dinh-hon-nhan/phu-nu-gen-z-tich-vang-chu-dong-xay-dung-nen-tang-tai-chinh-truoc-hon-nhan-1677692.ldo","week":"2026年3月30日〜4月3日"},{"title":"TABI LABO: 美容目的の旅行「グロウケーション」がZ世代のトレンドに","url":"https://tabi-labo.com/312379/glowmadscations","week":"2026年3月30日〜4月3日"},{"title":"自由と流動性──Z世代が描く恋愛・結婚の新ルール","url":"https://tabi-labo.com/312375/genzromancerules","week":"2026年3月30日〜4月3日"},{"title":"英国で若者の「料理離れ」深刻化","url":"https://nordot.app/1407488321531085626","week":"2026年3月30日〜4月3日"},{"title":"ニコニコニュース: Z世代を対象としたシンクタンク組織『Z総研』が…","url":"https://news.nicovideo.jp/watch/nw19097091","week":"2026年3月30日〜4月3日"},{"title":"タイパ至上主義のZ世代部下に「背中を見て覚えろ」が100％通じない理由","url":"https://news.careerconnection.jp/column/241340/","week":"2026年3月30日〜4月3日"},{"title":"約700万人の感情データからZ世代を読み解く！","url":"https://trilltrill.jp/articles/4654581","week":"2026年3月30日〜4月3日"},{"title":"Z世代の42%が商品の改善でイメージ爆上げ","url":"https://prtimes.jp/main/html/rd/p/000000069.000104461.html","week":"2026年3月30日〜4月3日"},{"title":"TikTokで歴史を学ぶ……Z世代クリエイターが広める「ショート動画の歴史教育」","url":"https://tabi-labo.com/312377/tktkhistoryclass","week":"2026年3月30日〜4月3日"},{"title":"観光は「不安の時代」にどう応えるか？ 若者の安定志向…","url":"https://www.travelvoice.jp/20260330-159453","week":"2026年3月30日〜4月3日"},{"title":"AI疲れの反動？2026年最新トレンド『昭和レトロ』がZ世代とシニアを繋ぐ","url":"https://news.jp/i/1410387046849380850","week":"2026年3月30日〜4月3日"},{"title":"“推し活×マーケティング”の可能性","url":"https://money-bu-jpx.com/news/article067026/","week":"2026年3月30日〜4月3日"},{"title":"“Copilot Cowork”と“3つのIQ”で人らしい仕事に専念","url":"https://news.yahoo.co.jp/articles/9e220aa2763c812fea11861538a4af3903711546","week":"2026年3月30日〜4月3日"},{"title":"よく使うECサイト・アプリ…AIショッピングの利用経験は2割強","url":"https://netshop.impress.co.jp/n/2026/03/30/15828","week":"2026年3月30日〜4月3日"},{"title":"Z世代に広がる「スマホ疲れ」","url":"https://news.yahoo.co.jp/pickup/6574587","week":"2026年3月30日〜4月3日"},{"title":"Z世代に広がる“スマホ疲れ”　SNSと完全に切れてしまうのも不安だが…　いい距離感でリフレッシュする「アテンション・デトックス」とは？","url":"https://news.yahoo.co.jp/articles/a4733a15a0c4d957f8b67fe27e8a3819d98fe323","week":"2026年3月30日〜4月3日"},{"title":"newspicks.com: 【急増中】「無敵化」する若者は、先輩世代の写し鏡だった","url":"https://newspicks.com/news/16331727/body/","week":"2026年3月30日〜4月3日"},{"title":"Yahoo!ニュース: 「スキップ前提」の世代に広告は届くのか Ｚ世代が拒むもの、受け入れるもの","url":"https://news.yahoo.co.jp/articles/97df9abfe3060e530e40cfd886ebc8e86479c766","week":"2026年3月30日〜4月3日"},{"title":"ネットショップ担当者フォーラム: ZOZOが始めた“作る＋売る体験”ができる教育プロジェクト「ZOZOEDUCATION つくっちゃお！」とは","url":"https://netshop.impress.co.jp/n/2026/03/27/15821","week":"2026年3月30日〜4月3日"},{"title":"Yahoo!ニュース: Z世代を中心に191万人が熱狂するウェス・アンダーソン。人気の理由は「完璧にパッキングされた世界観」","url":"https://news.yahoo.co.jp/expert/articles/8bb9bb0b49a1a453a40ce3d5ce07e8a07c8facdd","week":"2026年3月30日〜4月3日"},{"title":"10代・20代を中心に急成長中の日本産SNS「am（アム）」、投稿者の“本音”をAIが代弁する新機能「Echo（エコー）」を公開！ #日本産SNS #国産SNS | 株式会社Tecrestのプレスリリース","url":"https://prtimes.jp/main/html/rd/p/000000005.000172974.html","week":"2026年3月23日〜3月27日"},{"title":"KAI-YOU: めっちゃ映えるSNSプロフィールカードが流行中 生成AI「Nano Banana」が起点に","url":"https://kai-you.net/article/94964","week":"2026年3月23日〜3月27日"},{"title":"Web担当者Forum: “映え疲れ”のZ世代に人気「BeReal.」 企業が次世代ファンを育成するためのSNS戦略","url":"https://webtan.impress.co.jp/e/2026/03/25/51738","week":"2026年3月23日〜3月27日"},{"title":"prtimes.jp: Z世代の81%がPR表記に警戒感。商品選びはメガインフルエンサー(27%)より専門性・人柄(44%)重視。Z世代の情報信頼度についての実態調査をZ-SOZOKEN（Z世代創造性研究所）が実施。","url":"https://prtimes.jp/main/html/rd/p/000000065.000104461.html","week":"2026年3月23日〜3月27日"},{"title":"繊研新聞: リップは“香りで選ぶ”が今っぽい！Z世代がハマる新トレンドへ”最大35万人フォロワーのインフルエンサーが集結する「RE FASHION MARKET」開催","url":"https://senken.co.jp/prtimes/aHR0cHM6Ly9wcnRpbWVzLmpwL21haW4vaHRtbC9yZC9wLzAwMDAwMDAwNy4wMDAxNjYyMD…","week":"2026年3月23日〜3月27日"},{"title":"時事ドットコム: ＜イベントレポート＞Z世代向けマネーリテラシー講座「今日から実践！ワークショップで学ぶMONEY基礎講座」を開催 渋谷女子インターナショナルスクールの生徒を中心に、Z世代25名が参加：時事ドットコム","url":"https://www.jiji.com/jc/article?k=000000020.000108728&g=prt","week":"2026年3月23日〜3月27日"},{"title":"ニコニコニュース: 【2026年版】Z世代の「クルマ離れ」が進行か、地方では2022年比で2倍に。一方で所有意欲は都内6割超、地方7割超を維持","url":"https://news.nicovideo.jp/watch/nw19073492?news_ref=watch_20_nw17926041","week":"2026年3月23日〜3月27日"},{"title":"音楽業界総合情報サイト: Z世代、TikTokなお利用も信頼せず 米ハリス・ポール調査","url":"https://www.musicman.co.jp/business/717991","week":"2026年3月23日〜3月27日"},{"title":"arabnews.jp: 「パーフェクト・ジャパン」投稿がZ世代のソーシャルメディア反発を呼ぶ","url":"https://www.arabnews.jp/article/arts-culture/article_172467/","week":"2026年3月23日〜3月27日"},{"title":"株式会社ヴァリューズ: 「Z世代の消費行動」を現役大学生にインタビュー｜5千円の飲み会は渋り、5万円のWBCは即決？ | ［マナミナ］まなべるみんなのデータマーケティング・マガジン","url":"https://manamina.valuesccg.com/articles/4905","week":"2026年3月23日〜3月27日"},{"title":"子供たちはなぜキッズ向けYouTubeに夢中なのか　テレビ世代の親たちには理解不能な背景を若者文化に詳しいアナリストが解説｜概要｜ニュース｜ピンズバNEWS","url":"https://pinzuba.news/articles/-/14942","week":"2026年3月23日〜3月27日"},{"title":"世代別の「思い出の卒業ソング」ランキング、昭和世代と平成世代の1位になった楽曲は？｜@DIME アットダイム","url":"https://dime.jp/genre/2097369/","week":"2026年3月23日〜3月27日"},{"title":"MarkeZine: Z世代・α世代が企業・ブランドに求めるものとは？Pacsun、COACHの取り組みに見る若者の価値観","url":"https://markezine.jp/article/detail/50501?","week":"2026年3月23日〜3月27日"},{"title":"prtimes.jp: Z世代当事者がリアルなインサイトを発掘！Z世代特化のシンクタンクZ-SOZOKEN（Z世代創造性研究所）が、当事者目線で熱量と文脈を解明する「Z世代調査研究メニュー」の提供を開始。","url":"https://prtimes.jp/main/html/rd/p/000000064.000104461.html","week":"2026年3月23日〜3月27日"},{"title":"繊研新聞: 「Z世代はひとつじゃない」20代女性1000人調査で見えた美容購買行動の分化──20代前半と後半で情報源が分かれ、韓国コスメも二極化","url":"https://senken.co.jp/prtimes/aHR0cHM6Ly9wcnRpbWVzLmpwL21haW4vaHRtbC9yZC9wLzAwMDAwMDAwNS4wMDAxMDA5Nz…","week":"2026年3月23日〜3月27日"},{"title":"DXマガジン: Z世代の62.2％が「スマホ疲れ」を自覚。主因の8割はSNS、渋谷調査で判明した“アテンション地獄”の実態","url":"https://dxmagazine.jp/news/2612mm15/","week":"2026年3月23日〜3月27日"},{"title":"Vogue Japan: 「退屈な仕事」はなぜ人気？──Z世代が、あえて“地味な仕事”を選ぶ背景","url":"https://www.vogue.co.jp/article/genz-boring-job","week":"2026年3月23日〜3月27日"},{"title":"Business Insider Japan: AIに関する認識で親と子に大きなギャップ…最新の調査で明らかに","url":"https://www.businessinsider.jp/article/2603-parents-youth-families-ai-survey/","week":"2026年3月23日〜3月27日"},{"title":"電通報: 「一周回ってアナログ回帰」？ ― 若者とシニアの意外な共通点 ―","url":"https://dentsu-ho.com/articles/9669","week":"2026年3月23日〜3月27日"},{"title":"Yahoo!ニュース: α世代の小学生が「平和」と「AIにはできない新しい仕事」について日本語と英語で議論。「AIに何ができるか？」さまざまな意見が飛び出す（TOKYO HEADLINE WEB）","url":"https://news.yahoo.co.jp/articles/7b6f39c3d99f5198eb4d7b56edf40d0bf451fa48","week":"2026年3月23日〜3月27日"},{"title":"PRESIDENT Online（プレジデントオンライン）: 役に立たないことを愛してほしい…｢スマホの奴隷｣になった女子高生の娘にエンジニアの父がそう語った理由","url":"https://president.jp/articles/-/110583?page=1","week":"2026年3月23日〜3月27日"},{"title":"恋愛や仕事「AIに相談」するZ世代は3人に1人　推し活やバーチャル恋愛・疑似恋愛は6割以上が「リアルな恋愛と”線引き”ができている」（まいどなニュース）","url":"https://news.yahoo.co.jp/articles/ae173567321b3e52caf68a08a876e89f16b4a3bb","week":"2026年3月23日〜3月27日"},{"title":"若者の行動を変える「アテンション・デトックス」とは | Forbes JAPAN 公式サイト（フォーブス ジャパン）","url":"https://forbesjapan.com/articles/detail/93370","week":"2026年3月23日〜3月27日"},{"title":"生成AIの利用率、中学生は4割超で親世代越え〝生成AIネイティブ世代〟の最新事情｜@DIME アットダイム","url":"https://dime.jp/genre/2095906/","week":"2026年3月23日〜3月27日"},{"title":"Z世代がAI雇用危機を乗り越える秘策──「社会への還元」が武器になる | Forbes JAPAN 公式サイト（フォーブス ジャパン）","url":"https://forbesjapan.com/articles/detail/94143","week":"2026年3月23日〜3月27日"},{"title":"アメリカの若者が「中国人化」を目指す謎のトレンド『Chinamaxxing』が拡大。自国への失望から共産圏の生活をロマン化する異様な光景。 | TABI LABO","url":"https://tabi-labo.com/312354/chinamaxxing","week":"2026年3月23日〜3月27日"},{"title":"チャットボットに恋する時代：拡大する「ディジセクシャル」文化の実態 | TABI LABO","url":"https://tabi-labo.com/312421/worldtrend-felt-in-love-with-ai","week":"2026年3月23日〜3月27日"},{"title":"若者が今、服を買う場所は ４０代の記者が探ってみた | カナロコ by 神奈川新聞","url":"https://www.kanaloco.jp/news/life/article-1256113.html","week":"2026年3月23日〜3月27日"},{"title":"SNSのフィルターバブルに閉じこもったほうが幸せだ…科学者がそう考えるワケ（ダイヤモンド・オンライン）","url":"https://news.yahoo.co.jp/articles/80da11a0c8cd41bc14b921adcbf62d62cbd26af3","week":"2026年3月23日〜3月27日"},{"title":"明治の「煩悶青年」は、現代の「クネクネ」のルーツであるーー『「いまどきの若者」の150年史』を読む｜Real Sound｜リアルサウンド ブック","url":"https://realsound.jp/book/2026/03/post-2341510.html","week":"2026年3月23日〜3月27日"},{"title":"文末の「。」が威圧感を与える？　20代の約半数が気にする“マルハラ”を防ぎ、チャットで好印象を与える3つの工夫 - ITmedia Mobile","url":"https://www.itmedia.co.jp/mobile/articles/2603/25/news115.html","week":"2026年3月23日〜3月27日"},{"title":"Z世代の8割が「独身税」に反対。子どもがいない層の「不公平感」が浮き彫りに | DXマガジン","url":"https://dxmagazine.jp/news/2611ko08/","week":"2026年3月23日〜3月27日"},{"title":"【書評】『無敵化する若者たち』　上の世代の現状維持体質が招いた「絶食化」","url":"https://www.news-postseven.com/archives/20260325_2099110.html?DETAIL","week":"2026年3月23日〜3月27日"},{"title":"ｄメニューニュース: 「独身税」が若者の心を動かさない理由　Ｚ世代２０００人調査に見る制度と感情のズレ","url":"https://topics.smt.docomo.ne.jp/article/hochi/nation/hochi-20260325-OHT1T51213","week":"2026年3月23日〜3月27日"},{"title":"zakⅡ: 「ほめられると気まずい」Z世代の本音とは？ 職場の世代間ギャップを解く一冊","url":"https://www.zakzak.co.jp/article/20260325-Y743VP3CTJDZPFQQBZHCZHT3HI/","week":"2026年3月23日〜3月27日"},{"title":"ログミーBusiness: 就社意識は高いがキャリア意欲は高くない Z世代新入社員の8つの特徴とリスク","url":"https://logmi.jp/brandtopics/333201/page2","week":"2026年3月23日〜3月27日"},{"title":"ニコニコニュース: 大人の8割が知らないZ世代のメンヘラ消費。82%が親や教師には秘密。企業の病みかわアピールを30%が一刀両断。","url":"https://news.nicovideo.jp/watch/nw19076640?news_ref=20_20","week":"2026年3月23日〜3月27日"},{"title":"GLOBAL PRODUCE: 「参加したい」or「正直しんどい」Z世代のイベント観","url":"https://www.global-produce.jp/gpjournal/trend/the-gen-z-take-on-corporate-events/","week":"2026年3月23日〜3月27日"},{"title":"日経クロストレンド: 女子高生646人調査で見えた「直感型消費」 瞬間的な“ときめき”で購買","url":"https://xtrend.nikkei.com/atcl/contents/18/00683/00024/","week":"2026年3月23日〜3月27日"},{"title":"MarkeZine: 楽しみから義務としての「美しさ」へ。データと先進ブランド事例にみる価値観の変化 (1/4)","url":"https://markezine.jp/article/detail/50562","week":"2026年3月23日〜3月27日"},{"title":"AdverTimes.（アドタイ） by 宣伝会議: 『THE FRONTLINE GENERATION 令和シニア なぜいまZ世代マーケターは60代に「未来」を見るのか？』本日発売","url":"https://www.advertimes.com/20260325/article537475/?utm_source=feed","week":"2026年3月23日〜3月27日"},{"title":"Weverse、米Fast Company誌「2026年版 世界で最も革新的な企業」ソーシャルメディア部門に選出","url":"https://www.musicman.co.jp/business/718365?utm_source=feed_smartnews&utm_medium=rss&utm_campaign=feed_outsource","week":"2026年3月23日〜3月27日"},{"title":"The Guardian: Meta and YouTube designed addictive products that harmed young people, jury finds","url":"https://www.theguardian.com/media/2026/mar/25/jury-verdict-us-first-social-media-addiction-trial-meta-youtube","week":"2026年3月23日〜3月27日"},{"title":"スマホ画面を見続ける習慣から逃れるための「アナログバッグ」トレンド | TABI LABO","url":"https://tabi-labo.com/312366/nothingnewjustsameanalogcrt","week":"2026年3月23日〜3月27日"},{"title":"Google、全国の大学生向け「AIコミュニティ」を開放。Gemini活用術を学生同士で共有 | DXマガジン","url":"https://dxmagazine.jp/news/2611ko54-2/","week":"2026年3月23日〜3月27日"},{"title":"世界幸福度報告、フィンランドが9年連続首位　欧米の若者の幸福感低下、SNSが影響 ｜ Euronews (Japanese)","url":"https://nordot.app/1407385429071364260","week":"2026年3月23日〜3月27日"},{"title":"推し活グッズを捨てる罪悪感は8割、収納と金銭の限界に悩むファンの実態 | Forbes JAPAN","url":"https://forbesjapan.com/articles/detail/94305","week":"2026年3月23日〜3月27日"},{"title":"英国のZ世代がレトロ文脈で「ビンゴ」に熱狂。ナイトクラブに代わる安全な社交場として拡大中 | TABI LABO","url":"https://tabi-labo.com/312368/bingobaebae","week":"2026年3月23日〜3月27日"},{"title":"Real Sound｜リアルサウンド: 長田麻衣、Z世代と上司世代のギャップを読み解く実用書を刊行","url":"https://realsound.jp/book/2026/03/post-2345407.html","week":"2026年3月23日〜3月27日"},{"title":"Bloomberg.com: 中国でZ世代の株トレーダー台頭－親世代と一線画すAI投資に強み「市場力学を変える」","url":"https://www.bloomberg.com/jp/news/articles/2026-03-26/TBO0W1T96OSG00","week":"2026年3月23日〜3月27日"},{"title":"レスポンス（Response.jp）: Z世代クルマ離れ加速、都内67.6%・地方47.6%が自覚…KINTO調査","url":"https://s.response.jp/article/2026/03/26/409156.html","week":"2026年3月23日〜3月27日"},{"title":"PR TIMES: Z世代の47%が企業の中途半端な復刻に拒否感。懐かしさ消費の原動力は自己肯定感（36%）","url":"https://prtimes.jp/main/html/rd/p/000000067.000104461.html","week":"2026年3月23日〜3月27日"},{"title":"osaka style: 「ME TOKYO EMOTION RESEARCH」を設立し、“イマのリアル”を明らかにした「Z世代女子トレンド調査」を発表！","url":"https://osaka.style/news/pressrelease/63068/","week":"2026年3月23日〜3月27日"},{"title":"日経クロストレンド: 遠隔で「推し会」ができる未来？ “横のインティマシー”を再現する技術","url":"https://xtrend.nikkei.com/atcl/contents/18/00105/00238/","week":"2026年3月23日〜3月27日"},{"title":"千葉テレビ放送: 「ゆとり世代、Z世代はダメだ」と新人を一括りに馬鹿にする社員。だが、新人の正論で状況が一変","url":"https://www.chiba-tv.com/plus/detail/2026031449671","week":"2026年3月23日〜3月27日"},{"title":"応援広告市場のポテンシャルは1283億円規模","url":"https://www.advertimes.com/20260326/article538602/","week":"2026年3月23日〜3月27日"},{"title":"「推し活」が自己成長の原動力に、新挑戦への意欲２・２倍","url":"https://www.shijyukukai.jp/2026/03/29877","week":"2026年3月23日〜3月27日"},{"title":"高学歴は“推し活”しない？ 年収「103万以下」が最多？ 推し活する人の職業“分布図” | オトナンサー","url":"https://otonanswer.jp/post/346410/","week":"2026年3月16日〜3月19日"},{"title":"Z世代が選んだビジネス『10の謎習慣』から読み解く職場文化の世代ギャップ　後編 | ニッセイ基礎研究所","url":"https://www.nli-research.co.jp/report/detail/id=84900?site=nli","week":"2026年3月16日〜3月19日"},{"title":"若者に「ヤンキー人気」勃発 SNS世代が共感するワケを分析","url":"https://xtrend.nikkei.com/atcl/contents/18/00019/00063/","week":"2026年3月16日〜3月19日"},{"title":"推し活貧乏、推し愛のスコア化… 熱狂が生む未来「5つのキーワード」","url":"https://xtrend.nikkei.com/atcl/contents/18/01346/00004/","week":"2026年3月16日〜3月19日"},{"title":"日テレNEWS NNN: 若者の地元愛あふれるおにぎり販売へ 潟上市「Z世代活躍課」がコンビニ大手などと共同開発 中身は“あの秋田名物” 秋田","url":"https://news.ntv.co.jp/n/abs/category/economy/ab86964b23ffe943a6a2020550fe17c4ce","week":"2026年3月16日〜3月19日"},{"title":"朝日新聞: 【Simejiランキング】Z世代が選ぶ!!「好きな駄菓子TOP10」","url":"https://www.asahi.com/and/pressrelease/16417945","week":"2026年3月16日〜3月19日"},{"title":"時事ドットコム: 【Youth Now!若年層トレンド調査】α・Z世代は「広告」と分かった瞬間に離脱するインフルエンサーが語る、“PRが嫌われない投稿設計”の新常識：時事ドットコム","url":"https://www.jiji.com/jc/article?k=000000042.000129874&g=prt","week":"2026年3月16日〜3月19日"},{"title":"【日経ギャルズ】Z世代女子大生の本音!「メンパ旅」ってマジ？JTB調査に物申す！最新旅行トレンドをYukikaが解説✨EMMARY（エマリー） by TeamCinderella","url":"https://emmary.jp/ngals/20260318-129828/","week":"2026年3月16日〜3月19日"},{"title":"1店舗で月売上1億円超え…「相席屋はオワコン」の裏で、若者たちが『オリエンタルラウンジ』に熱狂する意外な理由（我妻 弘崇） | 現代ビジネス | 講談社","url":"https://gendai.media/articles/-/165015","week":"2026年3月16日〜3月19日"},{"title":"20代の読書率は7割以上！韓国の若者が起こした文学書の大ブーム「テキストヒップ」の実態（金 敬哲） | 現代ビジネス | 講談社","url":"https://gendai.media/articles/-/165133","week":"2026年3月16日〜3月19日"},{"title":"【ギガ消費ゼロで映画見放題】通勤・通学の10分が至高の映画館に！超話題のアプリがオフライン対応！！ #Z世代Pick | 大学入学・新生活 | 学生トレンド・流行 | マイナビ 学生の窓口","url":"https://gakumado.mynavi.jp/gmd/articles/87051","week":"2026年3月16日〜3月19日"},{"title":"自分の行動を「データで管理する」Z世代 “アルゴリズミック・セルフ”が広がる理由とは | AMPアンプ - 人生の豊かさを生む瞬間を情報でつくりだす新世代向けビジネスメディア","url":"https://ampmedia.jp/2026/03/18/algorithmic-self/","week":"2026年3月16日〜3月19日"},{"title":"【Z世代哲学】若者による\"若者の読書離れ\"の捉え方｜さゆ/自己分析サポーター","url":"https://note.com/sayu_0606/n/nb37e773e5bd9?external_type=smart_news&external_position=original_link&rt=external&sub_rt=smart_news","week":"2026年3月16日〜3月19日"},{"title":"「SNS時間を減らしたい」Z世代の67％ 広がる“スマホ疲れ”のリアル（ITmedia ビジネスオンライン）","url":"https://news.yahoo.co.jp/articles/808ebd7937f0e272d16123127c1c3a624ad1328b","week":"2026年3月16日〜3月19日"},{"title":"なぜZ世代は「たばこ」に憧れるのか？...SNSで再燃する「喫煙美学」とは","url":"https://diamond.jp/articles/-/385636","week":"2026年3月16日〜3月19日"},{"title":"Ｚ世代にとってサステナビリティは本当に「意識高い系」なのか（２）－データで見る「責任意識」から「サステナ行動」へ至る経路と構造","url":"https://www.nli-research.co.jp/report/detail/id=84904?site=nli","week":"2026年3月16日〜3月19日"},{"title":"米Z世代、TikTok利用続くも「信頼」低下　SNS疲れと依存のパラドックス ｜ The Independent (Japanese)","url":"https://nordot.app/1405300113436148571","week":"2026年3月16日〜3月19日"},{"title":"TikTok、2026年の世界の注目クリエイター50組を紹介する「The Discover List 2026」を公開。日本からは「けんご小説紹介【紙上健吾】」が選出！#Z世代Pick | 大学入学・新生活 | 学生トレンド・流行 | マイ","url":"https://gakumado.mynavi.jp/gmd/articles/86872","week":"2026年3月16日〜3月19日"},{"title":"中高生の生成AIサービス利用率ランキング！ 実は「Siri」が上位に？【サイバーエージェント調べ】 | Web担当者Forum","url":"https://webtan.impress.co.jp/n/2026/03/16/52304","week":"2026年3月16日〜3月19日"},{"title":"【日本一面白いと大反響！】テレビとスマホを消して親と語る！蔦屋書店「ペア読」の新体験に大感動！！ #Z世代Pick | 大学入学・新生活 | 学生トレンド・流行 | マイナビ 学生の窓口","url":"https://gakumado.mynavi.jp/gmd/articles/87040","week":"2026年3月16日〜3月19日"},{"title":"若者が「NISA貧乏」で“生活苦”？将来を不安視…20代の平均投資額「月3.4万円」 無理ない資産形成とは【Nスタ解説】 | TBS NEWS DIG","url":"https://newsdig.tbs.co.jp/articles/-/2536997","week":"2026年3月16日〜3月19日"},{"title":"「話しかけてくるタクシー運転手ってどう思う？」令和の若者6人に聞いたら、大事なのは「KY」と「距離感」だった（carview!） | 自動車情報サイト【新車・中古車】 - carview!","url":"https://carview.yahoo.co.jp/article/detail/61de188fc58e2a3c69e0b96a4474762ca3fa4af9/","week":"2026年3月16日〜3月19日"},{"title":"「感情ミュート社会」突入 気持ちを出す機会も相手も「減った」が多数","url":"https://xtrend.nikkei.com/atcl/contents/18/00401/00069/","week":"2026年3月16日〜3月19日"},{"title":"「大相撲がイケてる」 スマートな10代を沼らせたABEMA、2つの仕掛け","url":"https://xtrend.nikkei.com/atcl/contents/18/00622/00041/?i_cid=nbpnxr_top_tre","week":"2026年3月16日〜3月19日"},{"title":"【チャッピーに相談】高校生にとってAIってどんな存在？女の子は気軽に使いまくってるけど「現実的に不要」と考えている男の子もいるみたい | Pouch［ポーチ］","url":"https://youpouch.com/2026/03/16/1333824/","week":"2026年3月16日〜3月19日"},{"title":"今、東京を目指さない若者が増えている。地方を舞台にキャリアと事業を始める「Day1ローカル」という流れ | Business Insider Japan","url":"https://www.businessinsider.jp/article/2603-day1-local/","week":"2026年3月16日〜3月19日"},{"title":"buzzfeed.com/jp/nananishizaki/oshikatsu-homeru-nihongo","url":"https://www.buzzfeed.com/jp/nananishizaki/oshikatsu-homeru-nihongo","week":"2026年3月16日〜3月19日"},{"title":"Gen Z careers and strategy: NextGen Marketing Playbook - Ad Age","url":"https://adage.com/events-awards/gen-z-alpha-marketing/aa-nextgen-playbook-key-insights/","week":"2026年3月16日〜3月19日"},{"title":"How Gen Z advertising employees evaluate job employers - Ad Age","url":"https://adage.com/events-awards/gen-z-alpha-marketing/aa-what-agency-leaders-must-know-employee-retention/","week":"2026年3月16日〜3月19日"},{"title":"digiday.jp: TikTok の「正直レビュー」がZ世代の心を掴む 美容小売業界を動かす最新製品とマーケ戦略","url":"https://digiday.jp/glossy/inside-the-new-era-of-long-wear-makeup/","week":"2026年3月16日〜3月19日"},{"title":"【推し活】1回の遠征にかかる平均予算はいくら? - チケット代やグッズ代以外にも重い負担が…… | マイナビニュース","url":"https://news.mynavi.jp/article/20260313-4212475/?lead=&utm_source=smartnews&utm_medium=android&utm_campaign=sp_app","week":"2026年3月16日〜3月19日"},{"title":"ジェーン・スー　若者に「まだ先は明るそうだな」と感じてほしい　「半径5メートル」でできることとは | 概要 | AERA DIGITAL（アエラデジタル）","url":"https://dot.asahi.com/articles/-/277606","week":"2026年3月16日〜3月19日"},{"title":"【現行車と同列で古いクルマが選択肢に､ネットを駆使した現代の選び方】自分より年上､旧車好きの若者が増える不思議 | トレンド | 東洋経済オンライン","url":"https://toyokeizai.net/articles/-/937445?utm_source=smartnews&utm_medium=http&utm_campaign=link_back&utm_content=article","week":"2026年3月16日〜3月19日"},{"title":"“最近の若者”は本当に意欲がない？——世代を超えてチームワークを育むための3つの視点 - ミーツキャリアbyマイナビ転職","url":"https://meetscareer.tenshoku.mynavi.jp/entry/data-59","week":"2026年3月16日〜3月19日"},{"title":"人気AI、10代の若者に「栄養不足な過激ダイエット」を勧めてしまう | Merkystyle","url":"https://mama.smt.docomo.ne.jp/merkystyle/articles/320101/","week":"2026年3月16日〜3月19日"},{"title":"Yahoo!ニュース: AIの不安と疲労で、iPodやデジカメ、携帯電話を使っていたシンプルな時代へのノスタルジーが広がっている（海外）（BUSINESS INSIDER JAPAN）","url":"https://news.yahoo.co.jp/articles/7c2223a8cef410f84355a9ab5bed4ccbc1537e7f","week":"2026年3月16日〜3月19日"},{"title":"Yahoo!ニュース: 子供服を買い漁る“大人女子”が急増中…Z世代に20年ぶり「チビT」ブームが起きた裏側","url":"https://news.yahoo.co.jp/articles/2907620f7ba31790adda7fbf274a532ef433d4a5","week":"2026年3月9日〜3月13日"},{"title":"産経ニュース: Z世代のアテンション・デトックスに関する調査","url":"https://www.sankei.com/pressrelease/prtimes/RXDEO7VEZ5J3ZJRJLUDU7OA5FI/","week":"2026年3月9日〜3月13日"},{"title":"FNNプライムオンライン: 株式会社テスティー、2026年春 Z世代のトレンド＆映画鑑賞に関する調査を実施","url":"https://www.fnn.jp/articles/-/1014172","week":"2026年3月9日〜3月13日"},{"title":"オリコンニュース: 【Simejiランキング】Z世代が選ぶ!!「好きな駄菓子TOP10」","url":"http://www.oricon.co.jp/pressrelease/2727261/","week":"2026年3月9日〜3月13日"},{"title":"PR TIMES: Z世代の72%がデコで自己肯定感・モチベーション向上を実感。","url":"https://prtimes.jp/main/html/rd/p/000000058.000104461.html","week":"2026年3月9日〜3月13日"},{"title":"Vietnam.vn: ソーシャルメディアは、Z世代にとって主要な選挙情報チャネルとなっている。","url":"https://www.vietnam.vn/ja/mang-xa-hoi-tro-thanh-kenh-thong-tin-bau-cu-cua-gen-z","week":"2026年3月9日〜3月13日"},{"title":"Storm.mg: ADK MS、GirlsAwardでBeRealと初連携 リアルな投稿を生かしたZ世代向け企画始動","url":"https://japan.storm.mg/articles/1104100","week":"2026年3月9日〜3月13日"},{"title":"日経クロストレンド: オタク文化とは何が違う？ 精神科医が指摘する「推し活」リスク","url":"https://xtrend.nikkei.com/atcl/contents/18/01346/00003/?i_cid=nbpnxr_top_tre","week":"2026年3月9日〜3月13日"},{"title":"日経クロストレンド: 『にゃんこ大戦争』が西武渋谷店で展示 13年目で過去最高収益の鍵は？","url":"https://xtrend.nikkei.com/atcl/contents/18/01182/00057/?i_cid=nbpnxr_index","week":"2026年3月9日〜3月13日"},{"title":"アヲハタ、Z世代と商品開発 若年層との接点拡大へ","url":"https://news.yahoo.co.jp/articles/650af337a9b2b4283c9cae095183556fabcb8ef1","week":"2026年3月9日〜3月13日"},{"title":"盛るためから自分を語るためのツールへ。Z-SOZOKEN（Z世代創造性研究所）が第3章インサイトサマリーを公開。","url":"https://prtimes.jp/main/html/rd/p/000000057.000104461.html","week":"2026年3月9日〜3月13日"},{"title":"昔と同じく３割が経験？ Z・α世代もハマる「第二ボタン」の風習…","url":"https://topics.smt.docomo.ne.jp/article/friday/life/friday-460470?page=1","week":"2026年3月9日〜3月13日"},{"title":"サイバーエージェント次世代生活研究所、「α世代の生成AI利用実態調査」を発表！","url":"https://www.cyberagent.co.jp/news/detail/id=33016","week":"2026年3月9日〜3月13日"},{"title":"“居場所のない若者たち”支援へ超党派の議連設立　10代後半～20代前半の若者中心に支援へ | TBS NEWS DIG","url":"https://newsdig.tbs.co.jp/articles/-/2527084","week":"2026年3月9日〜3月13日"},{"title":"昭和の時代､父親たちは驚くほど家事も育児もしなかったーー昭和の｢疑似家族ドラマ｣にZ世代が衝撃を受けたワケ","url":"https://toyokeizai.net/articles/-/937812?utm_source=smartnews&utm_medium=http&utm_campaign=link_bac…","week":"2026年3月9日〜3月13日"},{"title":"ミレニアル＆Z世代男性の「美容意識」の変化が米調査で明らかに。","url":"https://www.harpersbazaar.com/jp/lifestyle/daily-life/a70404627/gen-z-millennial-men-are-taking-car…","week":"2026年3月9日〜3月13日"},{"title":"「SNSによく出てくる」昭和レトロ喫茶がブーム　多くの若者も来店　常連客からも「うれしい」の声｜FNNプライムオンライン","url":"https://www.fnn.jp/articles/FNN/1014824","week":"2026年3月9日〜3月13日"},{"title":"ダイヤモンド・オンライン: そりゃマザコンは死語だわ…Z世代の7割が母を全面的に信頼するワケ","url":"https://diamond.jp/articles/-/384491","week":"2026年3月9日〜3月13日"},{"title":"「スポーツケーション」が中国の若者の新たなトレンドに―香港メディア","url":"https://www.recordchina.co.jp/b971247-s25-c30-d0192.html","week":"2026年3月9日〜3月13日"},{"title":"【アーカイブ動画も公開！】ViVi×SHIBUYA109 共催ウェビナー　セミナーレポート｜バズの時代が終了!?　2026年「若者トレンド」最前線 | 講談社Cステーション","url":"https://cstation.kodansha.co.jp/article/16590","week":"2026年3月9日〜3月13日"},{"title":"《SHIBUYA109ラボ所長の#これ知ってないと気まずい》若者が「じぶん探し消費」へ　アルゴリズムに疲れと不安 | 繊研新聞","url":"https://senken.co.jp/posts/shibuya109lab-260311","week":"2026年3月9日〜3月13日"},{"title":"CDが売れない時代の生存戦略：タワレコの「推し活ハック」と店舗作り｜あや@推し活ネキ💛","url":"https://note.com/oshikatsuneki/n/na97996fbbad6?external_type=smart_news&external_position=original_…","week":"2026年3月9日〜3月13日"},{"title":"【コラム】推しがいるだけで毎日が少し楽しい——今どきの応援スタイルを考える | Merkystyle","url":"https://mama.smt.docomo.ne.jp/merkystyle/articles/309477/","week":"2026年3月9日〜3月13日"},{"title":"東京一極集中の真実とは？若者流出という物語を疑う | 住まいの本当と今を伝える情報サイト【LIFULL HOME'S PRESS】","url":"https://www.homes.co.jp/cont/press/opinion/opinion_00450/","week":"2026年3月9日〜3月13日"},{"title":"NTTドコモ、触覚共有技術「FEEL TECH」を活用した推し活支援システムを開発 ホロライブEnglishと連携しSXSW2026で展示 | Musicman","url":"https://www.musicman.co.jp/business/715929?utm_source=feed_smartnews&utm_medium=rss&utm_campaign=fe…","week":"2026年3月9日〜3月13日"},{"title":"｢筆者の初任給は13万円だった｣｢約7割の企業が新卒初任給を引き上げ｣…　昭和世代とは大違い､今時の若者の｢贅沢の仕方｣ | トクを積む習慣 | 東洋経済オンライン","url":"https://toyokeizai.net/articles/-/936608?utm_source=smartnews&utm_medium=http&utm_campaign=link_bac…","week":"2026年3月9日〜3月13日"},{"title":"なぜ炎上→謝罪…JALは何を読み違えた？「マイル修行」沖縄に殺到で露呈した大誤算（ビジネス＋IT）","url":"https://news.yahoo.co.jp/articles/d8e35603921b008ecaf4e8ce4772f8fb4e2fee54","week":"2026年3月9日〜3月13日"},{"title":"Yahoo!ニュース: 同じZ世代でもこんなに違う？ 高校生は“直感型”、大学生は“情報探索型”？ 消費行動の世代内ギャップ【GMO NIKKO調べ】（Web担当者Forum） - Yahoo!ニュース","url":"https://news.yahoo.co.jp/articles/7ef23e1845a3f66344a079a21480bc28b5f811e6","week":"2026年3月9日〜3月13日"},{"title":"Vietnam.vn: Gen Z 世代の学生は大学入学カウンセリング フェアで何を求めているのでしょうか?","url":"https://www.vietnam.vn/ja/thi-sinh-the-he-cuoi-gen-z-tim-gi-tai-ngay-hoi-tu-van-tuyen-sinh","week":"2026年3月9日〜3月13日"},{"title":"琉球新報：Z世代38％「旅先で働きたい」","url":"https://ryukyushimpo.jp/economics/entry-5086676.html","week":"2026年3月2日〜3月6日"},{"title":"FASHIONSNAP：韓国Z世代が熱狂する「ランニングコア」","url":"https://www.fashionsnap.com/article/korea-run-culture/","week":"2026年3月2日〜3月6日"},{"title":"ニフティ（プレスリリース）：国際女性デー「同意」意識（Z世代の57％が信頼を深める）","url":"https://news.nifty.com/article/economy/business/12365-4996974/","week":"2026年3月2日〜3月6日"},{"title":"ITmedia Mobile：LINEの既読/未読文化と、既読機能を消さない真意","url":"https://www.itmedia.co.jp/mobile/articles/2603/02/news091.html","week":"2026年3月2日〜3月6日"},{"title":"Popteen：よく使う絵文字ランキング","url":"https://popteen.co.jp/media/83382/","week":"2026年3月2日〜3月6日"},{"title":"スポーツ報知：若者に分からない「MD」","url":"https://hochi.news/articles/20260224-OHT1T51051.html","week":"2026年3月2日〜3月6日"},{"title":"日経クロストレンド：サッポロ「黒ラベル」若者顧客が6割増（コラボ戦略）","url":"https://xtrend.nikkei.com/atcl/contents/casestudy/00012/01821/","week":"2026年3月2日〜3月6日"},{"title":"Z世代はAIをどれくらい信用してる？　社会人と学生で約20ポイント差：マイナビ調査（1/3 ページ） - ITmedia ビジネスオンライン","url":"https://www.itmedia.co.jp/business/articles/2602/21/news001.html","week":"2026年2月24日〜2月27日"},{"title":"広告の新基準を作るZ世代──文化的感度が勝つ時代へ | Forbes JAPAN 公式サイト（フォーブス ジャパン）","url":"https://forbesjapan.com/articles/detail/92245","week":"2026年2月24日〜2月27日"},{"title":"Z世代は“安定志向”じゃない？「1社で長く働きたい」は4割未満","url":"https://news.yahoo.co.jp/articles/c3a4961e1fac8d9dea4783ca244a46971ee5d0e8","week":"2026年2月24日〜2月27日"},{"title":"Z世代の66%「企業の印象を直感で判断しています」","url":"https://news.yahoo.co.jp/articles/9cad485027eaa281b2e78774c6c7f1748d29a00d","week":"2026年2月24日〜2月27日"},{"title":"「推しがいない=つまらない人生？」 TikToker・ゆうにゃんが送る「推しがいない界隈」へのメッセージ！ | arweb","url":"https://ar-mag.jp/articles/-/19483","week":"2026年1月26日〜1月30日"},{"title":"Excite エキサイト: Z世代が選ぶのは「映える旅」より「迷惑をかけない旅」──観光公害時代の新しい旅行観","url":"https://www.excite.co.jp/news/article/AMP_484555/","week":"2026年1月26日〜1月30日"},{"title":"まいどなニュース: 上司「鉛筆なめなめ」→若手社員「キモっ」Z世代には伝わらない？","url":"https://maidonanews.jp/article/16278049","week":"2026年1月26日〜1月30日"},{"title":"日経クロストレンド: テレビCM好感度が示すターゲット攻略の道筋 若年女性なら「推し活」","url":"https://xtrend.nikkei.com/atcl/contents/watch/00013/02801/?i_cid=nbpnxr_index","week":"2026年1月26日〜1月30日"},{"title":"生成AIで「多言語リアルタイム翻訳」が劇的進化　2026年は“英語キャンセル界隈”がトレンドに（ピンズバNEWS） - Yahoo!ニュース","url":"https://news.yahoo.co.jp/articles/bbc51c8ebc21133f2e73b24ad1bc9eb4a8f0ef6f","week":"2026年1月19日〜1月23日"},{"title":"「推し」続けるべきか、悩んでいるあなたへ。『推しとともに去りぬ』が教えてくれたこと。（ひらりさ） | 現代ビジネス","url":"https://gendai.media/articles/-/162666","week":"2026年1月19日〜1月23日"},{"title":"サードニュース: 若者の悩みに寄り添うAI相談窓口、Z世代が切り拓く未来","url":"https://news.3rd-in.co.jp/article/5b0dd25e-f448-11f0-9b03-9ca3ba083d71","week":"2026年1月19日〜1月23日"},{"title":"2026年、新卒採用危機が深刻化──AI不安と「ゴーストジョブ」がZ世代を直撃 | Forbes JAPAN","url":"https://forbesjapan.com/articles/detail/89506","week":"2026年1月19日〜1月23日"},{"title":"ライブドアニュース: 【Z世代】就活生が「この企業はナシ」と判断した3大要因は?","url":"https://news.livedoor.com/article/detail/30397620/","week":"2026年1月19日〜1月23日"},{"title":"TABI LABO: Z世代の日記ブームで再燃、26周年の白い文庫本マイブックが13万部を突破","url":"https://tabi-labo.com/312177/mybooktwentyfifthboom","week":"2026年1月19日〜1月23日"},{"title":"Z世代を覆う「気候不安」をどう救う？北欧フィンランド発、“行動できる若者”を育てる教育モデル | AMP","url":"https://ampmedia.jp/2026/01/11/climate-anxiety/","week":"2026年1月13日〜1月16日"},{"title":"TikTokで映画予告編をバズらせるために、ハリウッドは17歳の若者に約300万円を支払う | Business Insider Japan","url":"https://www.businessinsider.jp/article/2601-hollywood-trailers-tiktok-edits-teen-viral-cartel/","week":"2026年1月13日〜1月16日"},{"title":"SHIBUYA109、トレンド予測2026を発表―Z世代の注目は「アテンション・デトックス」 | 知財図鑑","url":"https://chizaizukan.com/news/3ed6UbVwmo0cKPa2OI5Jfd/","week":"2026年1月13日〜1月16日"},{"title":"2026年「Z世代」が30歳に－Z世代論は誰を守ってきたのか | ニッセイ基礎研究所","url":"https://www.nli-research.co.jp/report/detail/id=84359?site=nli","week":"2026年1月13日〜1月16日"},{"title":"digiday.jp: 「安物を買う」から「賢く選ぶ」へ Z世代 に浸透するデュープ文化","url":"https://digiday.jp/glossy/how-consumer-demand-for-value-is-changing-beauty-shopping/","week":"2026年1月13日〜1月16日"},{"title":"ECzine: 「会員登録＝所属」したくない若者たち Z・α世代が考える「世界観」と求めるブランドとのつながり","url":"https://eczine.jp/article/detail/16046","week":"2026年1月13日〜1月16日"},{"title":"PR TIMES: Z世代・ママ層の購買行動を変える「熱量の高いUGC」…（ママリ口コミ大賞2026関連）","url":"https://prtimes.jp/main/html/rd/p/000000210.000019831.html","week":"2026年1月13日〜1月16日"},{"title":"時事ドットコム: 「働く理由」でZ世代のスイッチを入れる採用ブランディングCM","url":"https://www.jiji.com/jc/article?k=000000237.000038921&g=prt","week":"2026年1月13日〜1月16日"},{"title":"Vietnam.vn: iPhone 4が復活、Z世代は懐かしい写真を撮るために買い求めている。","url":"https://www.vietnam.vn/ja/iphone-4-hoi-sinh-gen-z-san-lung-chup-anh-hoai-co","week":"2026年1月13日〜1月16日"},{"title":"ファミ通: 『リミットゼロ ブレイカーズ』のマーケティング案を高校生が考えたら完成度が高すぎた…","url":"https://www.famitsu.com/article/202601/63040","week":"2026年1月13日〜1月16日"},{"title":"PR TIMES: おしゃれなZ世代のポーチの中身が変わらない理由〜「崩れない仕組み」を朝につくり込んでいる〜","url":"https://prtimes.jp/main/html/rd/p/000000013.000152178.html","week":"2025年12月22日〜12月29日"},{"title":"RBB TODAY: 【アーカイブ配信】バズらせ不要！Z世代に選ばれる採用Instagramの法則 ～正しい指標で成果を出す運用術～","url":"https://www.rbbtoday.com/release/prtimes2-today/20251225/1179994.html","week":"2025年12月22日〜12月29日"},{"title":"マイナビニュース: Z世代の「自然界隈」はなぜ深大寺へ? 都心から30分、名物蕎麦と雑木林の“穴場”を歩いて考えた","url":"https://news.mynavi.jp/article/20251225-3869593/","week":"2025年12月22日〜12月29日"},{"title":"T COM（アットティーコム）: 「アルファ世代」の子どもたちに必要なものは？ “共感”と“主体性”を育むコミュニケーショントイの意義","url":"https://cont.t-com.ne.jp/entame/861552_1.html","week":"2025年12月22日〜12月29日"},{"title":"“推し”から“愛で”へ。人類総推し活時代の応援のあり方｜シティリビングWeb","url":"https://city.living.jp/common/ournews/1656281/","week":"2025年12月22日〜12月29日"},{"title":"なぜZ世代は「ひとり時間」を選ぶのか？ソロ活ブームとエモ消費の関係を読み解く | TABI LABO","url":"https://tabi-labo.com/312140/z-generation-self-expression","week":"2025年12月22日〜12月29日"},{"title":"Z世代トレンド予測2026｜SHIBUYA109 lab.が示す「アテンション・デトックス」と消費行動の変化 | TABI LABO","url":"https://tabi-labo.com/312141/attention-detox-z-generation","week":"2025年12月22日〜12月29日"},{"title":"Z世代は「ご褒美消費」に意欲的 デロイト トーマツが購買行動調査を発表（AdverTimes）","url":"https://www.advertimes.com/20251225/article529443/","week":"2025年12月22日〜12月29日"},{"title":"DIGIDAY［日本版］: なぜ ロブロックス にブランドは集まるのか Z世代の「美意識」が集まる巨大プラットフォーム","url":"https://digiday.jp/glossy/why-brands-are-still-showing-up-on-roblox/","week":"2025年12月22日〜12月29日"},{"title":"おたくま経済新聞: α世代の半数超が1年以内に農業体験 スマホ時間に悩む親の選択肢に","url":"https://otakuma.net/archives/2025122404.html","week":"2025年12月22日〜12月29日"},{"title":"au Webポータル: AIもSNSも使いこなすZ世代が、それでもニュースを読む理由【GenZのリアル】","url":"https://article.auone.jp/detail/1/2/2/497_2_r_20251224_1766547772990126","week":"2025年12月22日〜12月29日"},{"title":"Business Insider Japan: Z世代は「服装が自由な職場」を求めていない。若者にオフィスカジュアルが嫌われる理由","url":"https://www.businessinsider.jp/article/gen-z-is-rejecting-the-flexible-dress-code-why-young-workers…","week":"2025年12月22日〜12月29日"},{"title":"PRESIDENT Online（プレジデントオンライン）: ｢母親と脱毛器をシェアする息子｣も珍しくない…30年前の常識ではありえない｢Z世代と親｣の\"近すぎる距離感\"","url":"https://president.jp/articles/-/106192?page=1","week":"2025年12月22日〜12月29日"},{"title":"グルメや推し活など、8つの遊び方が大集合した｢ファミフェス2025｣が開催!：cocotte","url":"https://coco-tte.jp/2025/12/post_540377.html","week":"2025年12月22日〜12月29日"},{"title":"namcoはガチャ専門店を強化 ゲーセンは今や“推し活”の場に｜日刊ゲンダイDIGITAL","url":"https://www.nikkan-gendai.com/articles/view/money/382137","week":"2025年12月22日〜12月29日"},{"title":"Z世代リーダーが集結「Z ERA FES 2026」品川で開催される次世代カンファレンスを解説 | TABI LABO","url":"https://tabi-labo.com/312139/wtg-shinagawa-z-era-ecosystem","week":"2025年12月22日〜12月29日"},{"title":"テレビで見るか？現地で参戦か？スカパー！が年末年始の「推し活」事情を徹底調査｜@DIME","url":"https://dime.jp/genre/2064059/","week":"2025年12月22日〜12月29日"},{"title":"産経ニュース: いくつ知っていますか？グーグル「界隈」検索、若者のリアル流行語「もんた」「ぷくぷく」","url":"https://www.sankei.com/article/20251223-EGE5PE2HDFMSHC4RJKQGXYI4BE/","week":"2025年12月22日〜12月29日"},{"title":"DIGIDAY［日本版］: Z世代 の新たな「パジャマ」スタイルが普及…","url":"https://digiday.jp/glossy/how-aerie-turned-pajamas-into-an-all-day-year-round-business/","week":"2025年12月22日〜12月29日"},{"title":"東洋経済オンライン: 【2026年トレンド予測】正解はAIに任せればいい。Z世代が｢SNS疲れ｣の果てに見つけた\"ふざける自由\"","url":"https://toyokeizai.net/articles/-/925225?display=b","week":"2025年12月22日〜12月29日"},{"title":"RBB TODAY（PR TIMES）: Nomde Beauty が「Z世代美容トレンド調査」","url":"https://www.rbbtoday.com/release/prtimes2-today/20251224/1178866.html","week":"2025年12月22日〜12月29日"},{"title":"PR TIMES: Z世代の6割が「職場で浮かない服選び」…Z世代のやる気スイッチ、“服”にあり。","url":"https://prtimes.jp/main/html/rd/p/000000018.000040104.html","week":"2025年12月22日〜12月29日"},{"title":"Ipsos: 日本人、将来への見通し「楽観視」が前年比10ポイント上昇ーZ世代とベビーブーマー世代が牽引","url":"https://www.ipsos.com/ja-jp/ipsos-predictions-survey-2026-PR","week":"2025年12月22日〜12月29日"},{"title":"「AI利用はこっそり」 20代の6割が上司や同僚に内緒（TechTargetジャパン） | Yahoo!ニュース","url":"https://news.yahoo.co.jp/articles/5fb7815a8d96b822ba17ce2ee86664e06f4ef9f8","week":"2025年12月22日〜12月29日"},{"title":"Z世代はS（ソーシャル）世代に 大学生意識調査2025発表 | AdverTimes","url":"https://www.advertimes.com/20251222/article528746/?utm_source=feed&page=2","week":"2025年12月22日〜12月29日"},{"title":"10人中6人近くが誰かのために「中古ギフト」を購入する Z世代 が牽引… | DIGIDAY［日本版］","url":"https://digiday.jp/modern-retail/the-year-of-thriftmas-why-secondhand-gifts-could-finally-go-mainst…","week":"2025年12月22日〜12月29日"},{"title":"「クリスマス≠恋人と過ごす」「5割が”推し”とのクリスマスもあり」Z世代発の #ソロホリデー現象 | オリコンニュース","url":"https://www.oricon.co.jp/pressrelease/2619152/","week":"2025年12月22日〜12月29日"},{"title":"「オタク」に関する消費者アンケート調査…「推し」がいるオタクは64.2％… | NEWSjp","url":"https://news.jp/i/1375642932433830074","week":"2025年12月22日〜12月29日"},{"title":"Creative Bloq: What is the yellow font trend, and why is is all over TikTok?","url":"https://www.creativebloq.com/design/fonts-typography/what-is-the-yellow-font-trend-and-why-is-is-al…","week":"2025年12月22日〜12月29日"},{"title":"日経クロストレンド: “若者の恋愛離れ”の正体 調査で見えた恋愛至上主義世代との意識差","url":"https://xtrend.nikkei.com/atcl/contents/18/00401/00067/","week":"2025年12月22日〜12月29日"},{"title":"Bloomberg.com: Z世代の未来に暗雲、中国の過剰生産が直撃","url":"https://www.bloomberg.com/jp/news/articles/2025-12-19/T7EEOCKK3NYR00","week":"2025年12月22日〜12月29日"},{"title":"AERA DIGITAL: Z世代「知り合い」への連絡はLINEよりインスタグラムのDM？ 使い分けの“新習慣”とは | AERA with Kids＋","url":"https://dot.asahi.com/aerakids/articles/-/271699","week":"2025年12月22日〜12月29日"},{"title":"au Webポータル: Z世代にダジャレが流行中 “寒い”が“アツい”に変化した「ネオダジャレ」ブーム","url":"https://article.auone.jp/detail/1/5/9/458_9_r_20251220_1766178474253117","week":"2025年12月22日〜12月29日"},{"title":"LIMO | くらしとお金の経済メディア: 【Z世代】BeRealの使用理由、まさかの「SNS疲れ」？若者世代がSNSに求める価値観の変化に迫る","url":"https://limo.media/articles/-/105794","week":"2025年12月22日〜12月29日"},{"title":"日経クロストレンド: アイドルが出席！ Pontaパスコンシェルジュ会議潜入レポ＆インタビュー","url":"https://xtrend.nikkei.com/atcl/contents/18/01295/00005/?i_cid=nbpnxr_index","week":"2025年12月22日〜12月29日"},{"title":"日経クロストレンド: KDDI×SWEET STEADY アイドルと二人三脚で課題解決に取り組む","url":"https://xtrend.nikkei.com/atcl/contents/18/01295/00004/?i_cid=nbpnxr_top_ent","week":"2025年12月22日〜12月29日"},{"title":"Z世代の人材流出を防ぐ—成長機会の欠如が招く46%の退職意向 | Forbes JAPAN 公式サイト（フォーブス ジャパン）","url":"https://forbesjapan.com/articles/detail/87640","week":"2025年12月22日〜12月29日"},{"title":"Z世代とミレニアル世代、AIスキルアップに熱—キャリア形成の新たな必須条件に | Forbes JAPAN 公式サイト（フォーブス ジャパン）","url":"https://forbesjapan.com/articles/detail/87638","week":"2025年12月22日〜12月29日"},{"title":"「界隈」で今年一番検索されたのは恋リア番組のあの人!?Google検索ランキング発表｜@DIME アットダイム","url":"https://dime.jp/genre/2063004/","week":"2025年12月22日〜12月29日"},{"title":"なぜZ世代は「心理的安全性」より「成長実感」を求めるのか（ダイヤモンド・オンライン）","url":"https://finance.yahoo.co.jp/news/detail/0de937213f54bb27686dcf1b5a06f864b38cc178","week":"2025年11月25日〜11月28日"},{"title":"Z世代に広がる職場の「人の失敗観察」（Forbes JAPAN）","url":"https://forbesjapan.com/articles/detail/85241","week":"2025年11月25日〜11月28日"},{"title":"韓国Z世代でバズる「キムジャンチョッキ」現象（Yahoo!ニュース）","url":"https://news.yahoo.co.jp/expert/articles/b13a85a2fa572ce4e9a3d3a64a696507a9beff7f","week":"2025年11月25日〜11月28日"},{"title":"Z世代のホンネ調査：おしゃれ規制に約5割が不満（毎日新聞／PR TIMES）","url":"https://mainichi.jp/articles/20251124/pr2/00m/020/031000c","week":"2025年11月25日〜11月28日"},{"title":"Z世代の77%が人間関係に疲弊する背景（PR TIMES／Z-SOZOKEN）","url":"https://prtimes.jp/main/html/rd/p/000000044.000104461.html","week":"2025年11月25日〜11月28日"},{"title":"2026年の旅は“生き方”を映す：Z世代がけん引する5つの変化（やまとごころ.jp）","url":"https://yamatogokoro.jp/inbound_data/58490/","week":"2025年11月25日〜11月28日"},{"title":"目的地が異なる Z世代の旅行計画方法（観光経済新聞）","url":"https://www.kankokeizai.com/2511031000etdb/","week":"2025年11月25日〜11月28日"},{"title":"スタバを追い抜く勢い 新興のダッチ・ブロスがZ世代の心を掴んだ理由（クーリエ・ジャポン）","url":"https://courrier.jp/news/archives/421203/","week":"2025年11月25日〜11月28日"},{"title":"「Z世代」は本当に存在するのか（ダイヤモンド・オンライン）","url":"https://diamond.jp/articles/-/375520","week":"2025年11月25日〜11月28日"},{"title":"2026年の旅は“自己表現”が主流に、ミレニアル・Z世代が旅行支出押し上げ ーSkyscanner調査 — やまとごころ","url":"https://yamatogokoro.jp/inbound_data/58534/","week":"2025年11月10日〜11月14日"},{"title":"Z世代の健康不安1位「がん」、2年間で13％増 — Excite","url":"https://www.excite.co.jp/news/article/Prtimes_2025-11-13-122181-137/","week":"2025年11月10日〜11月14日"},{"title":"BeRealの魅力は「比較からの解放」—Z世代の友情が深化（Z-SOZOKEN調査）— PR TIMES","url":"https://prtimes.jp/main/html/rd/p/000000037.000104461.html","week":"2025年11月10日〜11月14日"},{"title":"Z世代が考えた“自分らしい働き方”【ヒューマン調べ】— Yahoo!ニュース（Web担当者Forum）","url":"https://news.yahoo.co.jp/articles/d1a5769ff4dc3322853130339ba2e1342e8e3048","week":"2025年11月10日〜11月14日"},{"title":"トレンド大賞から探る若者の深層心理—日経クロストレンド","url":"https://xtrend.nikkei.com/atcl/contents/casestudy/00012/01764/","week":"2025年11月10日〜11月14日"},{"title":"10代女子のトレンドランキング—MarkeZine","url":"https://markezine.jp/article/detail/50158","week":"2025年11月10日〜11月14日"},{"title":"若者は「電話嫌い」ではない？“声なき電話”— Forbes JAPAN","url":"https://forbesjapan.com/articles/detail/84591","week":"2025年11月10日〜11月14日"},{"title":"「ロジカルショッピング」—Z/Y世代女性の“成分で選ぶ”買い方 — TABI LABO","url":"https://tabi-labo.com/312038/wtg-zy-womens-purchasing-behavior","week":"2025年11月10日〜11月14日"},{"title":"Z世代向け即日投稿＆再生保証プラン（3億IMPトレンドメディア） | RBB TODAY/PR TIMES","url":"https://www.rbbtoday.com/release/prtimes2-today/20251112/1153533.html","week":"2025年11月10日〜11月14日"},{"title":"ViVi×プレミアム・アウトレット：Z世代向けショートトリップ動画 | 船橋経済新聞","url":"https://funabashi.keizai.biz/release/493419/","week":"2025年11月10日〜11月14日"},{"title":"Z世代社員のキャリア不安と経営層ギャップ | @DIME","url":"https://dime.jp/genre/2046441/","week":"2025年11月10日〜11月14日"},{"title":"アイドルへの「心理的所有感」の影響 | 日経クロストレンド","url":"https://xtrend.nikkei.com/atcl/contents/18/01257/00003/?i_cid=nbpnxr_index","week":"2025年11月10日〜11月14日"},{"title":"Z世代の新ブーム「#自然界隈」 | オトナンサー","url":"https://otonanswer.jp/post/312981/","week":"2025年11月10日〜11月14日"},{"title":"20代：3割がAIに悩み相談—“気を遣わなくていい” | ASCII.jp","url":"https://ascii.jp/elem/000/004/350/4350710/","week":"2025年11月10日〜11月14日"},{"title":"Z世代：偶然を選ぶ—スワイプより“出会いの偶発性” | TABI LABO","url":"https://tabi-labo.com/312034/worldtrend-genz-meet-cutes-vibes","week":"2025年11月10日〜11月14日"},{"title":"昭和用語が通じない“地図の話？” | grape","url":"https://grapee.jp/2106709","week":"2025年11月10日〜11月14日"},{"title":"Z世代トレンド大賞—「今これ界隈／くるみちゃんヘアー」ほか | dメニュー（FNN）","url":"https://topics.smt.docomo.ne.jp/article/fnn/life/fnn-958770?fm=latestnews","week":"2025年11月10日〜11月14日"},{"title":"Z世代のファッショントレンドがアパレルを困惑 | Forbes JAPAN","url":"https://forbesjapan.com/articles/detail/84747","week":"2025年11月10日〜11月14日"},{"title":"Z世代向けモバイルプラン（パーソナライズ） | Investing.com","url":"https://jp.investing.com/news/company-news/article-93CH-1320275","week":"2025年11月10日〜11月14日"},{"title":"10代の生成AI実態—スマホ中心 | @DIME","url":"https://dime.jp/genre/2045287/","week":"2025年11月10日〜11月14日"},{"title":"シニア×推し活：平均推し歴14年・年間11万円超 | MarkeZine","url":"https://markezine.jp/article/detail/50083","week":"2025年11月10日〜11月14日"},{"title":"20代正社員の半数が「推し活」—私生活充実で仕事意欲も | NEWSjp","url":"https://news.jp/i/1360524609022460579","week":"2025年11月10日〜11月14日"},{"title":"Z世代：「残業キャンセル界隈」はなぜ生まれたか | @DIME","url":"https://dime.jp/genre/2044991/","week":"2025年11月10日〜11月14日"},{"title":"Z世代：入力中の可視化（Jiffcy）で感情伝達が深まる | マナミナ/ヴァリューズ","url":"https://manamina.valuesccg.com/articles/4627","week":"2025年11月10日〜11月14日"},{"title":"Z世代×就活：価値観でつながるコミュニティ採用 | AMP","url":"https://ampmedia.jp/2025/11/10/baseme/","week":"2025年11月10日〜11月14日"},{"title":"次世代「推し活クレカ」—使うだけで推しに還元 | オタク総研","url":"https://0115765.com/archives/156603","week":"2025年11月10日〜11月14日"},{"title":"BeautyCam「AIネイル」—Z世代でバズり予測 | 時事ドットコム","url":"https://www.jiji.com/jc/article?k=000000007.000147322&g=prt","week":"2025年11月10日〜11月14日"},{"title":"アイドル文化：推しは“最高のコンテンツ”、熱愛は祝福 | コマースピック","url":"https://www.commercepick.com/archives/76868","week":"2025年11月10日〜11月14日"},{"title":"Z世代：親子ギャップ（価値観・距離感） | LIMO","url":"https://limo.media/articles/-/100818","week":"2025年11月10日〜11月14日"},{"title":"なぜZ世代には「正論」より「共感」が響くか | 東洋経済オンライン","url":"https://toyokeizai.net/articles/-/914765","week":"2025年11月10日〜11月14日"},{"title":"10代向け安全基準—OpenAIの「5つの提案」 | GIGAZINE","url":"https://gigazine.net/news/20251107-openai-teen-safety-blueprint/","week":"2025年11月10日〜11月14日"},{"title":"働くZ世代：夢より“自分のペース×タイパ”志向 | マイナビニュース","url":"https://news.mynavi.jp/article/20251106-3628018/","week":"2025年11月10日〜11月14日"},{"title":"推し活は止まらない—物価高でも約9割が継続 | BCN＋R","url":"https://www.bcnretail.com/market/detail/20251107_571622.html","week":"2025年11月10日〜11月14日"},{"title":"Z世代とオトナ世代の“ポイ活スタイル”差 | チバテレ＋プラス","url":"https://www.chiba-tv.com/plus/detail/202511933202","week":"2025年11月10日〜11月14日"},{"title":"エンタメから学ぶビジネス—クラスター×フィードのヒット構造 | 日経クロストレンド","url":"https://xtrend.nikkei.com/atcl/contents/18/00647/00014/","week":"2025年11月10日〜11月14日"},{"title":"推し活人口が増加—物価高でも9割が継続 | AMP","url":"https://ampmedia.jp/2025/11/06/oshikatsu-paidy-2511/","week":"2025年11月4日〜11月7日"},{"title":"“推縁（おしえん）”—推し活ビジネスの最新キーワード | @DIME","url":"https://dime.jp/genre/2040535/","week":"2025年11月4日〜11月7日"},{"title":"Z世代×SDGs・社会貢献の見方 | Mapion","url":"https://www.mapion.co.jp/news/release/000000283.000012939/","week":"2025年11月4日〜11月7日"},{"title":"Z世代女性のハンドメイド経験・関心（SNSの影響） | コマースピック","url":"https://www.commercepick.com/archives/76597","week":"2025年11月4日〜11月7日"},{"title":"Z世代とペットの家族化 | VOIX","url":"https://voix.jp/money/insurance/20933/","week":"2025年11月4日〜11月7日"},{"title":"Z世代に刺さるSNS動向：BeReal 937%増／Threads+1,000万人 | Web担当者Forum","url":"https://webtan.impress.co.jp/n/2025/11/06/50352","week":"2025年11月4日〜11月7日"},{"title":"Threads、日次モバイル利用者でX超え（10月） | Forbes JAPAN","url":"https://forbesjapan.com/articles/detail/84505","week":"2025年11月4日〜11月7日"},{"title":"Z世代：AIマネジメント職場を希望が6割 | ITmedia","url":"https://www.itmedia.co.jp/business/articles/2511/06/news007.html","week":"2025年11月4日〜11月7日"},{"title":"JAL社長も驚く“外に出ないZ世代”？（論考） | 日経ギャルズ","url":"https://emmary.jp/ngals/20251106-123877/","week":"2025年11月4日〜11月7日"},{"title":"PR TIMES：Z世代の33.7%が“自動再生・音あり広告”に不快感 | PR TIMES","url":"https://prtimes.jp/main/html/rd/p/000000122.000047449.html","week":"2025年11月4日〜11月7日"},{"title":"令和女子の“映える”消費行動 | MarkeZine","url":"https://markezine.jp/article/detail/50041","week":"2025年11月4日〜11月7日"},{"title":"CM不要論？—アサヒ×BLACKPINKの投資最適化 | AdverTimes.","url":"https://www.advertimes.com/20251106/article521066/","week":"2025年11月4日〜11月7日"},{"title":"Z世代×ヘアケア戦略—花王・ライオンの新挑戦 | 日経クロストレンド","url":"https://xtrend.nikkei.com/atcl/contents/18/00002/00109/","week":"2025年11月4日〜11月7日"},{"title":"Z世代の“推し活熱”支出額過去最高—“メリハリ消費”のリスク | 日経クロストレンド","url":"https://xtrend.nikkei.com/atcl/contents/18/00607/00060/","week":"2025年11月4日〜11月7日"},{"title":"FNN調査：Z世代の82.4％が“入力中表示”で感情伝達を実感 | FNNプライムオンライン","url":"https://www.fnn.jp/articles/-/956013","week":"2025年11月4日〜11月7日"},{"title":"【推し活】20代の約半数が「している」—8割が“私生活が充実”と回答 | nippon.com","url":"https://www.nippon.com/ja/japan-data/h02593/","week":"2025年11月4日〜11月7日"},{"title":"Z世代「近すぎる親子関係」—“メンターペアレンツ化”の現象 | withnews（Yahoo!ニュース）","url":"https://news.yahoo.co.jp/articles/b826606630f73ce2b8f1abe270063c9176b8837","week":"2025年11月4日〜11月7日"},{"title":"若者の7割が「ドロンします」を知らない—Z世代には死語 | Web担当者Forum","url":"https://webtan.impress.co.jp/n/2025/11/05/50330","week":"2025年11月4日〜11月7日"},{"title":"Tinderが明かすZ世代の理想の“アニメ彼氏”像 | TABI LABO","url":"https://tabi-labo.com/312008/tinderidealboyfriendresearch","week":"2025年11月4日〜11月7日"},{"title":"Z世代・オトナ世代の“ポイ活ギャップ” | AppBank","url":"https://www.appbank.net/2025/11/06/iphone-application/2859617.php","week":"2025年11月4日〜11月7日"},{"title":"Z世代はECモール・公式EC・実店舗を分散利用（PR TIMES調査） | 毎日新聞","url":"https://mainichi.jp/articles/20251105/pr2/00m/020/949000c","week":"2025年11月4日〜11月7日"},{"title":"10代のSNS利用増と認知テストのスコア低下の関連 | NewsPicks","url":"https://newspicks.com/news/15409971/body/","week":"2025年11月4日〜11月7日"},{"title":"マイクロドラマ台頭—広告主が投資拡大 | Digiday","url":"https://digiday.com/marketing/in-graphic-detail-the-rise-of-micro-dramas-that-are-attracting-big-ad-dollars/","week":"2025年11月4日〜11月7日"},{"title":"Z世代に響くサステナブルブランド—戦略と事例 | サライ.jp","url":"https://serai.jp/business/1242058","week":"2025年11月4日〜11月7日"},{"title":"Z世代の情報収集：従来検索よりAI検索を信用する理由 | Forbes JAPAN","url":"https://forbesjapan.com/articles/detail/84237","week":"2025年11月4日〜11月7日"},{"title":"「やらせ」じゃない？ Z世代の約65％が“インフルエンサー広告を信頼” | イチオシ","url":"https://ichioshi.smt.docomo.ne.jp/articles/news/58517","week":"2025年11月4日〜11月7日"},{"title":"「推し」グッズの入手方法は「公式」が71%／女性で“推し”は約半数 | ネットショップ担当者フォーラム","url":"https://netshop.impress.co.jp/node/15015","week":"2025年11月4日〜11月7日"},{"title":"Z世代の働き方—プライベート充実・安定志向（自己実現は少数） | HRzine","url":"https://hrzine.jp/article/detail/7241","week":"2025年11月4日〜11月7日"},{"title":"Z世代が選ぶ2025年冬「観たい映画」ランキング | Excite","url":"https://www.excite.co.jp/news/article/ABEMATIMES_1358268034156085250/","week":"2025年11月4日〜11月7日"},{"title":"Xで拡散：AI雪加工トレンド—冬のSNSを彩るZ世代 | X（トレンド）","url":"https://x.com/i/trending/1985662261596201267","week":"2025年11月4日〜11月7日"},{"title":"企業のZ世代向け施策：スパークス・グループ特設ページ | 時事ドットコム","url":"https://www.jiji.com/jc/article?k=000000042.000121382&g=prt","week":"2025年11月4日〜11月7日"},{"title":"【連載】Z世代が生き急ぐ理由とは | 日経BOOKプラス","url":"https://bookplus.nikkei.com/atcl/column/102200581/102200004/","week":"2025年11月4日〜11月7日"},{"title":"α世代の買い物基準のリアル—「サステナブル」は理由になるのか | AdverTimes.","url":"https://www.advertimes.com/20251104/article519282/","week":"2025年11月4日〜11月7日"},{"title":"若者の25年ヒットトレンド候補—女子157＋男子126種 | 日経クロストレンド","url":"https://xtrend.nikkei.com/atcl/contents/casestudy/00012/01753/","week":"2025年11月4日〜11月7日"},{"title":"世代差を言い訳にせず、Z世代と“一人ひとり”と向き合う | 日経COMEMO","url":"https://comemo.nikkei.com/n/n5361f83972eb","week":"2025年11月4日〜11月7日"},{"title":"AIは10代の脳を再構築している—オックスフォード大学研究 | Business Insider Japan","url":"https://www.businessinsider.jp/article/2510-oxford-warns-ai-making-teens-faster-but-shallower-thinkers/","week":"2025年11月4日〜11月7日"},{"title":"「若さこそが能力のピーク」は本当か？ 20〜80代データで検証 | ITmedia NEWS","url":"https://www.itmedia.co.jp/news/articles/2510/31/news022.html","week":"2025年11月4日〜11月7日"},{"title":"若い世代ほど「情報」に影響されてモノを買う？ 世代比較 | Web担当者Forum","url":"https://webtan.impress.co.jp/n/2025/10/31/50320","week":"2025年11月4日〜11月7日"},{"title":"アドビ、AIで若年層開拓—“映える”画像を作りやすく | ASCII.jp","url":"https://ascii.jp/elem/000/004/343/4343892/","week":"2025年11月4日〜11月7日"},{"title":"Z世代は香りを「集める」—香水の小型化が変えるブランド戦略 | DIGIDAY［日本版］","url":"https://digiday.jp/glossy/should-perfume-bottles-be-smaller/","week":"2025年11月4日〜11月7日"},{"title":"目的地が異なる Z世代の旅行計画方法 | 観光経済新聞","url":"https://www.kankokeizai.com/2511031000etdb/","week":"2025年11月4日〜11月7日"},{"title":"タイパ重視のZ世代が商業施設に長居してしまう理由 | Forbes JAPAN","url":"https://forbesjapan.com/articles/detail/84178","week":"2025年11月4日〜11月7日"},{"title":"ダジャレに夢中になる若者が急増!?「ネオダジャレ」ブームの真相 | @DIME","url":"https://dime.jp/genre/2035408/","week":"2025年11月4日〜11月7日"},{"title":"Z世代女子300人が選ぶ「本当の推しキャラ」 | ｄメニューニュース（デイリー新潮）","url":"https://topics.smt.docomo.ne.jp/article/dailyshincho/entertainment/dailyshincho-1374633","week":"2025年11月4日〜11月7日"},{"title":"［クイズ］「オヤカク」って何？ Z世代の就活常識に | 日経ビジネス電子版","url":"https://business.nikkei.com/atcl/gen/19/00738/102300118/","week":"2025年11月4日〜11月7日"},{"title":"「推せる」と「推せない」の閾（しきい）値 | 日経COMEMO","url":"https://comemo.nikkei.com/n/naafd8f1d8028","week":"2025年11月4日〜11月7日"},{"title":"「Z世代といえば…」それって思い込み？ 親子関係の変化 | withnews","url":"https://withnews.jp/article/f0251104001qq000000000000000W02c10101qq000028357A","week":"2025年11月4日〜11月7日"},{"title":"Business Insider Japan: 大学生が見た「ChatGPTに丸投げ」就活の末路。コピペES、セリフ丸暗記で「思考停止」…AI就活の落とし穴","url":"https://www.businessinsider.jp/article/2510-shukatsu-ai-thinking-stop/","week":"2025年10月20日〜10月24日"},{"title":"先端活用術】大学生が、「本当に役立つAI」を教えます","url":"https://newspicks.com/news/15304361/body/","week":"2025年10月20日〜10月24日"},{"title":"【友情論】悩める女子大生、AIボットから友情を学ぶ","url":"https://newspicks.com/news/15304488/body/","week":"2025年10月20日〜10月24日"},{"title":"電通報: 推し活の行動を変容する。ミージアムが目指すクリエイティブeコマースとは？","url":"https://dentsu-ho.com/articles/9474","week":"2025年10月20日〜10月24日"},{"title":"DIGIDAY［日本版］: 1時間で4000着 米国版シーイン「 サイダー 」がZ世代の心を掴んでいる理由","url":"https://digiday.jp/glossy/the-strategies-behind-ciders-millions-of-monthly-sales-to-gen-z/","week":"2025年10月20日〜10月24日"},{"title":"【徹底解説】結局、縦型ショートドラマはどんな内容が視聴されている？ ｜ビジネス+IT","url":"https://www.sbbit.jp/article/cont1/171606","week":"2025年10月20日〜10月24日"},{"title":"「紙の雑誌」買っている若者は2割…購入理由はほぼ“1点”集中｜よろず〜ニュース","url":"https://yorozoonews.jp/article/16101120","week":"2025年10月20日〜10月24日"},{"title":"日経クロストレンド: 【性別×推し活飢餓感 MAP】 もっとお金を使いたいと思うエンタメは？","url":"https://xtrend.nikkei.com/atcl/contents/18/01244/00006/?i_cid=nbpnxr_index","week":"2025年10月20日〜10月24日"},{"title":"日経クロストレンド: 【性別×支出金額 推し活MAP】 ファンの支出金額が多いエンタメは？","url":"https://xtrend.nikkei.com/atcl/contents/18/01244/00005/","week":"2025年10月20日〜10月24日"},{"title":"キャッシュレス主役交代の予感　デビット・コード決済が若年層を席巻、対面決済でクレカと拮抗 | DXマガジン","url":"https://dxmagazine.jp/news/2547uk32/","week":"2025年10月20日〜10月24日"},{"title":"AIで書き、AIで隠す——中国の大学で広がる「卒論チェック戦争」 | 36Kr Japan | 最大級の中国テック・スタートアップ専門メディア","url":"https://36kr.jp/439585/","week":"2025年10月20日〜10月24日"},{"title":"Z世代は企業の「偽善」を見抜く　社会的発信が購買を左右する時代（Forbes JAPAN）","url":"https://forbesjapan.com/articles/detail/83351","week":"2025年10月14日〜10月17日"},{"title":"【Z世代の利用広告調査】Instagramが最多利用（PR TIMES）","url":"https://prtimes.jp/main/html/rd/p/000000108.000047449.html","week":"2025年10月14日〜10月17日"},{"title":"風呂キャンセル界隈の実態（Business Insider Japan）","url":"https://www.businessinsider.jp/article/the-reality-of-the-bath-cancellation-community-why-young-people-are-skipping-showers/","week":"2025年10月14日〜10月17日"},{"title":"男女・年代別の「推し活」支出と心理（2本・日経クロストレンド）","url":"https://xtrend.nikkei.com/atcl/contents/18/01257/00001/","week":"2025年10月14日〜10月17日"},{"title":"セフォラの「Gen Alpha」戦略（DIGIDAY）","url":"https://digiday.jp/glossy/sephora-welcomes-gen-alpha-shoppers-with-brands-designed-for-them/","week":"2025年10月14日〜10月17日"},{"title":"ついにSNS時代は終了か…課金6.5倍に爆増中、Z世代がハマる「AIコンパニオン」の衝撃（FinTech Journal）","url":"https://www.sbbit.jp/article/fj/172106","week":"2025年10月5日〜10月10日"},{"title":"Z世代向けマーケティングは「自虐と共感」が鍵（TABI LABO）","url":"https://tabi-labo.com/311898/jigyakukyokan-contentmarketing","week":"2025年10月5日〜10月10日"},{"title":"Z世代、推し活は「セルフケア」を実感（マイナビニュース）","url":"https://news.mynavi.jp/article/20251004-3511193/","week":"2025年10月5日〜10月10日"},{"title":"Z世代が変える顧客ロイヤルティの未来（Forbes JAPAN）","url":"https://forbesjapan.com/articles/detail/82611","week":"2025年10月5日〜10月10日"},{"title":"【Z世代のホンネ調査】デュープ品ってアリ？（FNNプライムオンライン）","url":"https://www.fnn.jp/articles/-/941479","week":"2025年10月5日〜10月10日"},{"title":"Z世代狙いで進むスイーツの「不健康化」（SWI swissinfo.ch）","url":"https://www.swissinfo.ch/jpn/%E9%A3%9F%E5%93%81%E5%AE%89%E5%85%A8/z%E4%B8%96%E4%BB%A3%E7%8B%99%E3%81%84%E3%81%A7%E9%80%B2%E3%82%80%E3%82%B9%E3%82%A4%E3%83%BC%E3%83%84%E3%81%AE%E3%80%8C%E4%B8%8D%E5%81%A5%E5%BA%B7%E5%8C%96%E3%80%8D/48550156","week":"2025年10月5日〜10月10日"},{"title":"SNSの使い方にも男女差！男性は「X」で情報収集、女性は「Instagram」で知人の動向チェック（Web担当者Forum）","url":"https://webtan.impress.co.jp/n/2025/10/06/50162","week":"2025年10月5日〜10月10日"},{"title":"Z世代女性の素材・成分チェック率7割超（通販通信ECMO）","url":"https://www.tsuhannews.jp/shopblogs/detail/74861","week":"2025年10月5日〜10月10日"},{"title":"コーチ、Z世代が新規顧客の3分の2に（DIGIDAY）","url":"https://news.yahoo.co.jp/articles/f2f75ef2720a36453fab71b1b96ef1310ec62bc1","week":"2025年10月5日〜10月10日"},{"title":"買い物で素材や成分をチェックするZ・Y世代女性が7割以上（PR TIMES）","url":"https://mainichi.jp/articles/20251006/pr2/00m/020/242000c","week":"2025年10月5日〜10月10日"},{"title":"推し活：4割が“もったいない”と感じ、リユース/交換が浸透（AMP）","url":"https://ampmedia.jp/2025/09/29/zsedai-oshikatsu-2509/","week":"2025年9月29日〜10月3日"},{"title":"Z世代セルフケア白書（PRTIMES）","url":"https://prtimes.jp/main/html/rd/p/000000194.000005551.html","week":"2025年9月29日〜10月3日"},{"title":"SNS利用の世代差（ichioshi）","url":"https://ichioshi.smt.docomo.ne.jp/articles/news/53737","week":"2025年9月29日〜10月3日"},{"title":"AIは相談相手になれたか（Forbes）","url":"https://forbesjapan.com/articles/detail/82854","week":"2025年9月29日〜10月3日"},{"title":"MIT：AIチャットと関係性が親密化の調査（MIT TR）","url":"https://www.technologyreview.jp/s/369591/its-surprisingly-easy-to-stumble-into-a-relationship-with-an-ai-chatbot/","week":"2025年9月29日〜10月3日"},{"title":"人は“名前に似た顔”へ寄る研究（ナゾロジー）","url":"https://nazology.kusuguru.co.jp/archives/157745","week":"2025年9月29日〜10月3日"},{"title":"AIは仕事を変えるかもしれないが、「AIネイティブ」のZ世代は大きな優位性を得る（Business Insider Japan）","url":"https://www.businessinsider.jp/article/2509-handshake-ceo-ai-young-workers-advantage-college-grads-job-transformation/","week":"2025年9月16日〜19日"},{"title":"Z世代が“サステナ行動”をためらう理由（TBS CROSS DIG with Bloomberg）","url":"https://newsdig.tbs.co.jp/articles/withbloomberg/2137623","week":"2025年9月16日〜19日"},{"title":"TikTokでの購買行動調査：男女で異なる参考軸（マナミナ）","url":"https://manamina.valuesccg.com/articles/4484","week":"2025年9月16日〜19日"},{"title":"ストリーミング嫌いのZ世代、音楽発見はYouTubeやTikTok（Musicman）","url":"https://www.musicman.co.jp/business/691176","week":"2025年9月16日〜19日"},{"title":"Z世代は職場で何を隠している？「静かなカバーリング」の実態（Forbes JAPAN）","url":"https://forbesjapan.com/articles/detail/81797","week":"2025年9月16日〜19日"},{"title":"Z世代が「写ルンです」に夢中になる理由（note/misaki）","url":"https://note.com/agile_knot2200/n/n3d6d3921db7d","week":"2025年9月16日〜19日"},{"title":"｢完璧さ｣より｢共感｣ ― SNS時代の｢キラキラ疲れ｣が生んだZ世代の新たな笑いの価値観（FINDERS）","url":"https://finders.me/kqFQxAgm0Dzbj9ZJjQ","week":"2025年9月16日〜19日"},{"title":"2025年第1四半期、日本で最もダウンロードされたアプリは「TikTok」（MarkeZine）","url":"https://markezine.jp/article/detail/49555「フェイクニュースにだまされない！」と自信満々なZ世代ほどだまされる経験が多い（Web担当者Forum）https://webtan.impress.co.jp/n/2025/09/08/50000","week":"2025年9月16日〜19日"},{"title":"Z世代SNSトレンド：エフェメラル＆クローズド、映えより世界観（Agenda note）","url":"https://agenda-note.com/brands/detail/id=7074","week":"2025年9月16日〜19日"},{"title":"「キャッシュオンリーウィークエンド」がZ世代に広がる（AMP）","url":"https://ampmedia.jp/2025/09/08/cash-only-weekend/","week":"2025年9月16日〜19日"},{"title":"Z世代の笑いと自己肯定感に関する追加調査（PR TIMES／Z-SOZOKEN）","url":"https://prtimes.jp/main/html/rd/p/000000029.000104461.html","week":"2025年9月16日〜19日"},{"title":"フェイスブック「Poke」をZ世代向けに復活（CNET Japan）","url":"https://japan.cnet.com/article/35237671/","week":"2025年9月16日〜19日"},{"title":"Z世代との1on1が虚無で終わる理由（東洋経済オンライン）","url":"https://toyokeizai.net/articles/-/902841","week":"2025年9月16日〜19日"},{"title":"「PayPayで送って」とLINEする高校生、デジタルと現金の間で揺れる金銭感覚（ITmediaビジネス）","url":"https://www.itmedia.co.jp/business/articles/2509/11/news010.html","week":"2025年9月16日〜19日"},{"title":"Z世代は「キラキラした理想」より“等身大＆失敗談”に惹かれる（Z-SOZOKEN調査）","url":"https://manamina.valuesccg.com/articles/4488","week":"2025年9月16日〜19日"},{"title":"SHIBUYA109ラボ：若者のSNSはよりクローズドでエフェメラルに","url":"https://senken.co.jp/posts/shibuya109lab-250910","week":"2025年9月16日〜19日"},{"title":"Canva年次調査：Z世代のビジュアルコミュニケーションの重要性","url":"https://voix.jp/business-cards/canva-visual-communication-survey-results/","week":"2025年9月16日〜19日"},{"title":"Z世代の飲食店選びはSNSが主流、グルメサイト離れと“リアル重視”","url":"https://www.shitakoe.com/7250910213","week":"2025年9月16日〜19日"},{"title":"Business Insider：ミレニアルとZ世代の初職の違い（小売→ヘルスケア/テックなど）","url":"https://www.businessinsider.jp/article/2509-millennial-gen-z-entry-level-job-market-shift-economy/生成AI「毎日利用」10〜20代は3割超（ITmediaビジネス）https://www.itmedia.co.jp/business/articles/2508/06/news018.html","week":"2025年9月16日〜19日"},{"title":"Z世代の61%が「大人が考えたZ世代向け広告」に興ざめ（PR TIMES／Z-SOZOKEN）","url":"https://prtimes.jp/main/html/rd/p/000000031.000104461.html","week":"2025年9月16日〜19日"},{"title":"Z世代訪日客は「マンガ・アニメ」志向（MarkeZine／電通調査）","url":"https://markezine.jp/article/detail/49752","week":"2025年9月16日〜19日"},{"title":"新卒の就職動向：Z世代はヘルスケアとテックにシフト（Business Insider Japan）","url":"https://www.businessinsider.jp/article/2509-millennial-gen-z-entry-level-job-market-shift-economy/","week":"2025年9月16日〜19日"},{"title":"ジャックス、若年層向けコンテンツ発信に長谷川あかり・夢眠ねむらを起用（アドタイ）","url":"https://www.advertimes.com/20250912/article512174/","week":"2025年9月16日〜19日"},{"title":"Z世代のサステナブル・マーケティング：ファミリーマート「ぴえんシール」に学ぶ（MarkeZine）","url":"https://markezine.jp/article/detail/49780","week":"2025年9月16日〜19日"},{"title":"「キャラ白玉」にZ世代が夢中（東洋経済オンライン）","url":"https://toyokeizai.net/articles/-/902303","week":"2025年9月16日〜19日"},{"title":"Z世代のカーシェア利用実態：18〜24歳の40.1%が選択（LIMO）","url":"https://limo.media/articles/-/94367","week":"2025年9月16日〜19日"},{"title":"保険離れするZ世代、加入のきっかけ調査（PR TIMES）","url":"https://prtimes.jp/main/html/rd/p/000000196.000071963.html","week":"2025年9月16日〜19日"},{"title":"「おしゃれZ世代」調査：人気はあさぎーにょ、ながら視聴ニーズ（時事ドットコム）","url":"https://www.jiji.com/jc/article?k=000000288.000010360&g=prt","week":"2025年9月16日〜19日"},{"title":"Z世代の笑いと挑戦：自己肯定感の背景に「笑い」がある（マナミナ）","url":"https://manamina.valuesccg.com/articles/4491","week":"2025年9月16日〜19日"}];
+</script>
+<script>
+// Navigation
+function navTo(pageId, el) {
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.snav-item,.bnav-item').forEach(b=>b.classList.remove('on'));
+  document.getElementById(pageId).classList.add('on');
+  document.querySelectorAll(`[data-page="${pageId}"]`).forEach(b=>b.classList.add('on'));
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+const DATA=[...RAW].reverse();
+const CATS=["SNS・デジタル疲れ","推し活・オタク","AI・テクノロジー","消費・購買","働き方・キャリア","価値観・アイデンティティ","恋愛・人間関係","金融・お金"];
+const COLS=["#4CAF50","#FDD835","#29B6F6","#AB47BC","#FF7043","#26A69A","#EC407A","#FFA726"];
+const CAT_BG=["#E8F5E9","#FFFDE7","#E1F5FE","#F3E5F5","#FBE9E7","#E0F2F1","#FCE4EC","#FFF3E0"];
+const KWS=['距離','設計','摩擦','納得','壊れ','持続','安心','疲れ','軽く','自分','関係','感情','社会','守る','移行','不安','輪郭','発明','熱狂','最適化','選ば','盛り上げ','正解','リバランス','持続可能'];
+
+function sw(w){const m=w.match(/(\d+月\d+日)/);return m?m[1].replace('月','/').replace('日',''):w.slice(5,11)}
+function ym(w){const m=w.match(/(\d{4})年(\d+)月/);return m?m[1]+'/'+m[2].padStart(2,'0'):''}
+
+// Stats
+const total=DATA.reduce((s,d)=>s+d.articles,0);
+const themed=DATA.filter(d=>d.theme).length;
+document.getElementById('ctotal').textContent=total.toLocaleString()+'本';
+document.getElementById('cthemed').textContent=themed;
+document.getElementById('savg').textContent=Math.round(total/DATA.length);
+const catT={};CATS.forEach(c=>catT[c]=DATA.reduce((s,d)=>s+(d.categories[c]||0),0));
+const topC=Object.entries(catT).sort((a,b)=>b[1]-a[1])[0][0];
+document.getElementById('stop').textContent=topC.replace('・','/').slice(0,6);
+const r4=DATA.slice(-4),p4=DATA.slice(-8,-4);
+let mg=-Infinity,tc='';
+CATS.forEach(c=>{const r=r4.reduce((s,d)=>s+(d.categories[c]||0),0);const p=p4.reduce((s,d)=>s+(d.categories[c]||0),0)||1;if(r/p>mg){mg=r/p;tc=c;}});
+document.getElementById('strend').textContent=tc.slice(0,5)+'↑';
+
+// Chart defaults
+Chart.defaults.color='#9B7BAD';
+Chart.defaults.borderColor='#FFE0C8';
+Chart.defaults.font.family="'Noto Sans JP',sans-serif";
+Chart.defaults.font.size=11;
+
+const tooltipOpts = {
+  backgroundColor:'#2D1B4E',
+  titleColor:'#66BB6A',
+  bodyColor:'rgba(255,255,255,0.85)',
+  cornerRadius:10,
+  padding:10,
+};
+
+// 01 Volume
+new Chart(document.getElementById('vol'),{
+  type:'bar',
+  data:{
+    labels:DATA.map(d=>sw(d.week)),
+    datasets:[{
+      label:'記事数',
+      data:DATA.map(d=>d.articles),
+      backgroundColor:DATA.map(d=>d.theme?'rgba(76,175,80,0.8)':'rgba(253,216,53,0.6)'),
+      borderColor:DATA.map(d=>d.theme?'#4CAF50':'#FDD835'),
+      borderWidth:2,borderRadius:7,
+    }]
+  },
+  options:{
+    responsive:true,
+    plugins:{
+      legend:{display:false},
+      tooltip:{...tooltipOpts,callbacks:{
+        title:i=>DATA[i[0].dataIndex].week,
+        afterBody:i=>{const d=DATA[i[0].dataIndex];return d.theme?['','💬 '+d.theme]:[];}
+      }}
+    },
+    scales:{
+      x:{ticks:{maxRotation:50,font:{size:10}},grid:{color:'rgba(255,224,200,0.6)'}},
+      y:{beginAtZero:true,grid:{color:'rgba(255,224,200,0.6)'}}
+    }
+  }
+});
+
+// 02 Cat
+let cc=null;
+const tabsEl=document.getElementById('tabs');
+const tdefs=[
+  {l:'🌿 全カテゴリ',c:CATS},
+  {l:'📱 疲れ vs AI',c:['SNS・デジタル疲れ','AI・テクノロジー']},
+  {l:'💜 推し vs 価値観',c:['推し活・オタク','価値観・アイデンティティ']},
+  {l:'🛍 消費 vs 仕事',c:['消費・購買','働き方・キャリア']},
+];
+
+function rcat(cats){
+  if(cc)cc.destroy();
+  cc=new Chart(document.getElementById('cat'),{
+    type:'line',
+    data:{
+      labels:DATA.map(d=>sw(d.week)),
+      datasets:cats.map(cat=>{
+        const ci=CATS.indexOf(cat),col=COLS[ci];
+        return{
+          label:cat,
+          data:DATA.map(d=>{const t=Object.values(d.categories).reduce((s,v)=>s+v,0)||1;return Math.round((d.categories[cat]||0)/t*100);}),
+          borderColor:col,backgroundColor:col+'28',fill:false,tension:.4,
+          pointRadius:4,pointHoverRadius:8,borderWidth:3,
+          pointBackgroundColor:col,pointBorderColor:'#fff',pointBorderWidth:2,
+        };
+      })
+    },
+    options:{
+      responsive:true,
+      plugins:{
+        legend:{display:true,position:'top',labels:{font:{size:11},boxWidth:14,padding:12,usePointStyle:true}},
+        tooltip:{...tooltipOpts,callbacks:{title:i=>DATA[i[0].dataIndex].week}}
+      },
+      scales:{
+        x:{ticks:{maxRotation:50,font:{size:10}},grid:{color:'rgba(255,224,200,0.6)'}},
+        y:{beginAtZero:true,ticks:{callback:v=>v+'%'},grid:{color:'rgba(255,224,200,0.6)'}}
+      }
+    }
+  });
+}
+
+tdefs.forEach((td,i)=>{
+  const b=document.createElement('button');
+  b.className='tab'+(i===0?' on':'');b.textContent=td.l;
+  b.onclick=()=>{document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));b.classList.add('on');rcat(td.c);};
+  tabsEl.appendChild(b);
+});
+rcat(CATS);
+
+// 03 Heatmap
+(function(){
+  const tbl=document.getElementById('hm');
+  const cmax={};CATS.forEach(c=>cmax[c]=Math.max(...DATA.map(d=>d.categories[c]||0)));
+  const hr=document.createElement('tr');hr.appendChild(document.createElement('th'));
+  DATA.forEach(d=>{const th=document.createElement('th');th.className='hmwl';th.textContent=sw(d.week);hr.appendChild(th);});
+  tbl.appendChild(hr);
+  CATS.forEach((cat,ci)=>{
+    const row=document.createElement('tr');
+    const lbl=document.createElement('td');lbl.className='hmcat';lbl.textContent=cat;row.appendChild(lbl);
+    DATA.forEach(d=>{
+      const val=d.categories[cat]||0;
+      const norm=cmax[cat]>0?val/cmax[cat]:0;
+      const td=document.createElement('td');td.className='hmcell';
+      const col=COLS[ci];
+      const r=parseInt(col.slice(1,3),16),g=parseInt(col.slice(3,5),16),b_=parseInt(col.slice(5,7),16);
+      td.style.background=`rgba(${r},${g},${b_},${.1+norm*.82})`;
+      if(val>0)td.textContent=val;
+      td.addEventListener('mouseenter',()=>{const t=document.getElementById('tt');t.style.display='block';document.getElementById('ttw').textContent=d.week;document.getElementById('ttv').textContent=cat+': '+val+'件';});
+      td.addEventListener('mousemove',e=>{const t=document.getElementById('tt');t.style.left=(e.clientX+14)+'px';t.style.top=(e.clientY-36)+'px';});
+      td.addEventListener('mouseleave',()=>{document.getElementById('tt').style.display='none';});
+      row.appendChild(td);
+    });
+    tbl.appendChild(row);
+  });
+})();
+
+// 04 Timeline
+(function(){
+  const tl=document.getElementById('tl');
+  RAW.forEach(d=>{
+    const item=document.createElement('div');item.className='tli';
+    const top4=Object.entries(d.categories).sort((a,b)=>b[1]-a[1]).slice(0,4).filter(([,v])=>v>0);
+    const chips=top4.map(([cat,val])=>{const ci=CATS.indexOf(cat);return`<div class="bc" style="background:${CAT_BG[ci]};color:${COLS[ci]}">${cat} ${val}</div>`;}).join('');
+    const ws=d.week.replace(/\d{4}年/,'').replace(/([〜～])/,' 〜 ');
+    item.innerHTML=`
+      <div class="tld"><span style="font-size:11px">${ws}</span><span class="tla">${d.articles}本</span></div>
+      <div class="tlb">
+        <div class="tlt ${d.theme?'on':''}">${d.theme||'— 考察なし —'}</div>
+        <div class="tlbars">${chips}</div>
+      </div>`;
+    tl.appendChild(item);
+  });
+})();
+
+// 05 Insights
+(function(){
+  const el=document.getElementById('ins');
+  const snsr=DATA.slice(-6).reduce((s,d)=>s+d.categories['SNS・デジタル疲れ'],0);
+  const snsp=DATA.slice(0,6).reduce((s,d)=>s+d.categories['SNS・デジタル疲れ'],0)||1;
+  const snsG=Math.round((snsr/snsp-1)*100);
+  const oshiA=Math.round(DATA.reduce((s,d)=>s+d.categories['推し活・オタク'],0)/DATA.length);
+  const dc=RAW.filter(d=>d.theme&&/距離|設計|摩擦|持続/.test(d.theme)).length;
+  [{tag:'🔥 RISING SIGNAL',t:`SNS・デジタル疲れが直近6週で${snsG>0?'+':''}${snsG}%`,b:'序盤ほぼゼロだったSNS疲れ言及が2月以降に急増。BeReal・アナログ回帰・スマホデトックスが共通語として浮上。'},
+  {tag:'👑 CONSISTENT FORCE',t:`推し活・オタクは週平均${oshiA}件で全期間トップ`,b:'8ヶ月通じて最も安定した強さ。近月は「罪悪感」「管理負荷」など負の感情との共存も増加傾向。'},
+  {tag:'🔄 NARRATIVE SHIFT',t:`週次考察の${dc}週で「距離・設計・摩擦」が共通ワード`,b:'「デジタルネイティブ」という旧来の定義が解体され、「接続の仕方を自分で調整する世代」という新フレームが定着しつつある。'},
+  {tag:'🌱 EMERGING THEME',t:'「納得」が消費・政治・雇用を横断するキーワードに',b:'「正しいか」より「自分が納得できるか」。消費行動、就活観、制度への態度、すべてに共通する意思決定軸として浮上している。'}
+  ].forEach(ins=>{
+    const c=document.createElement('div');c.className='ic';
+    c.innerHTML=`<div class="ic-tag">${ins.tag}</div><div class="ic-title">${ins.t}</div><div class="ic-body">${ins.b}</div>`;
+    el.appendChild(c);
+  });
+})();
+
+// PAGE 2: 月次
+(function(){
+  const months={};
+  DATA.forEach(d=>{
+    const m=ym(d.week);if(!m)return;
+    if(!months[m])months[m]={weeks:0,articles:0,categories:{},themes:[]};
+    months[m].weeks++;months[m].articles+=d.articles;
+    CATS.forEach(c=>months[m].categories[c]=(months[m].categories[c]||0)+(d.categories[c]||0));
+    if(d.theme)months[m].themes.push(d.theme);
+  });
+  const mkeys=Object.keys(months).sort();
+  new Chart(document.getElementById('mchart'),{
+    type:'bar',
+    data:{
+      labels:mkeys.map(m=>m.replace('/','/').replace(/(\d{4})\/(\d{2})/,'$1年$2月')),
+      datasets:CATS.map((cat,ci)=>({label:cat,data:mkeys.map(m=>months[m].categories[cat]||0),backgroundColor:COLS[ci]+'bb',borderColor:COLS[ci],borderWidth:2,borderRadius:5}))
+    },
+    options:{responsive:true,plugins:{legend:{display:true,position:'top',labels:{font:{size:10},boxWidth:12,padding:10,usePointStyle:true}}},scales:{x:{stacked:true},y:{stacked:true,beginAtZero:true}}}
+  });
+  const grid=document.getElementById('mgrid');
+  const bgList=['#FFE8F2','#E8F8EA','#F3E8FF','#FFF8D6','#FFF0E8','#E0F7F6','#FFE8E8'];
+  [...mkeys].reverse().forEach((m,mi)=>{
+    const md=months[m];
+    const sorted=Object.entries(md.categories).sort((a,b)=>b[1]-a[1]);
+    const maxV=sorted[0][1];
+    const bars=sorted.slice(0,5).map(([cat,val])=>{const ci=CATS.indexOf(cat);const pct=Math.round(val/maxV*100);return`<div class="mbar-row"><div class="mbar-label">${cat}</div><div class="mbar-track"><div class="mbar-fill" style="width:${pct}%;background:${COLS[ci]}"></div></div><div class="mbar-val">${val}</div></div>`;}).join('');
+    const themes=md.themes.length>0?md.themes.map(t=>`<div class="mtheme">${t}</div>`).join(''):'<div style="font-size:12px;color:var(--ts)">考察なし</div>';
+    const card=document.createElement('div');card.className='mcard';
+    card.style.background=`linear-gradient(to bottom,${bgList[mi%7]} 0%,#fff 60%)`;
+    card.innerHTML=`<div class="mcard-hd"><div class="mcard-month">${m.replace(/(\d{4})\/(\d{2})/,'$1年$2月')}</div><div class="mcard-count">${md.weeks}週 ${md.articles}本</div></div><div class="mcard-top">最多: <strong>${sorted[0][0]}</strong></div><div class="mbar-wrap">${bars}</div><div class="mcard-themes"><div class="mcard-themes-label">💬 週次考察</div>${themes}</div>`;
+    grid.appendChild(card);
+  });
+})();
+
+// PAGE 3: キーワード
+(function(){
+  const kwData={};
+  KWS.forEach(kw=>{kwData[kw]={count:0,weeks:[]};DATA.forEach(d=>{if(d.theme&&d.theme.includes(kw)){kwData[kw].count++;kwData[kw].weeks.push({week:d.week,theme:d.theme});}});});
+  const sorted=Object.entries(kwData).filter(([,v])=>v.count>0).sort((a,b)=>b[1].count-a[1].count);
+  const top8=sorted.slice(0,8);
+  new Chart(document.getElementById('kwchart'),{
+    type:'line',
+    data:{
+      labels:DATA.map(d=>sw(d.week)),
+      datasets:top8.map(([kw],ki)=>{const col=COLS[ki%COLS.length];return{label:kw,data:DATA.map(d=>d.theme&&d.theme.includes(kw)?1:null),borderColor:col,backgroundColor:col,pointRadius:DATA.map(d=>d.theme&&d.theme.includes(kw)?9:0),pointHoverRadius:12,showLine:false,borderWidth:2,pointBackgroundColor:col,pointBorderColor:'#fff',pointBorderWidth:2};})
+    },
+    options:{responsive:true,plugins:{legend:{display:true,position:'top',labels:{font:{size:11},boxWidth:12,padding:10,usePointStyle:true}},tooltip:{...tooltipOpts,callbacks:{title:i=>DATA[i[0].dataIndex].week,label:i=>{const d=DATA[i[0].dataIndex];return d.theme?'💬 '+d.theme.slice(0,50):'';}}}},scales:{x:{ticks:{maxRotation:50,font:{size:10}}},y:{display:false,min:-0.2,max:1.5}}}
+  });
+  const rankEl=document.getElementById('kwrank');
+  sorted.forEach(([kw,kd],i)=>{
+    const row=document.createElement('div');row.className='kw-row';
+    row.innerHTML=`<div class="kw-rank">${String(i+1).padStart(2,'0')}</div><div class="kw-word">${kw}</div><div class="kw-count">${kd.count}週</div>`;
+    row.onclick=()=>{
+      document.querySelectorAll('.kw-row').forEach(r=>r.classList.remove('active'));row.classList.add('active');
+      const el=document.getElementById('kwdetail');
+      const items=kd.weeks.map(w=>{const hi=w.theme.replace(new RegExp(kw,'g'),`<span class="kw-highlight">${kw}</span>`);const ws=w.week.replace(/\d{4}年/,'').replace(/([〜～])/,' 〜 ');return`<div class="kw-titem"><div class="kw-tdate">${ws}</div><div class="kw-ttheme">${hi}</div></div>`;}).join('');
+      el.innerHTML=`<div class="kw-detail-title">🔑「${kw}」の出現履歴（${kd.count}週）</div><div class="kw-timeline">${items}</div>`;
+    };
+    rankEl.appendChild(row);
+  });
+})();
+
+// PAGE 4: ナラティブ
+(function(){
+  const narr=document.getElementById('narr');
+  const phases=[
+    {months:['2025/09','2025/10'],label:'Phase 1 — 黎明期',color:COLS[1],desc:'消費行動・AI観・SNSとの距離感が個別に語られ始める。'},
+    {months:['2025/11','2025/12'],label:'Phase 2 — 輪郭形成期',color:COLS[2],desc:'「自分の世界を守る」「不安の時代を軽くする」という防衛的構造が浮上。'},
+    {months:['2026/01'],label:'Phase 3 — 離脱宣言期',color:COLS[3],desc:'「全部を自分で決める」時代の終わり。最適化・選択疲れへの反動が言語化される。'},
+    {months:['2026/02'],label:'Phase 4 — 再設計期',color:COLS[4],desc:'「摩擦を削る」「持続可能に設計する」という能動的フレームへ転換。'},
+    {months:['2026/03'],label:'Phase 5 — 定義更新期',color:COLS[0],desc:'「距離を設計する世代」「関係設計者」として新定義が確立される。'},
+  ];
+  let cur=-1;
+  RAW.forEach(d=>{
+    const m=ym(d.week);const pi=phases.findIndex(p=>p.months.includes(m));
+    if(pi>=0&&pi!==cur){cur=pi;const ph=phases[pi];const phEl=document.createElement('div');phEl.className='phase-hd';phEl.innerHTML=`<div class="phase-dot" style="background:${ph.color}">${pi+1}</div><div class="phase-info"><div class="phase-label" style="color:${ph.color}">${ph.label}</div><div class="phase-desc">${ph.desc}</div></div>`;narr.appendChild(phEl);}
+    const item=document.createElement('div');item.className='nitem';
+    const top3=Object.entries(d.categories).sort((a,b)=>b[1]-a[1]).slice(0,3).filter(([,v])=>v>0);
+    const tags=top3.map(([cat])=>{const ci=CATS.indexOf(cat);return`<span class="ntag" style="background:${CAT_BG[ci]};color:${COLS[ci]};border-color:${COLS[ci]}40">${cat}</span>`;}).join('');
+    const ws=d.week.replace(/\d{4}年/,'').replace(/([〜～])/,' 〜 ');
+    item.innerHTML=`<div class="ndot-wrap"><div class="ndot ${d.theme?'has':''}"></div></div><div class="nbody"><div class="ndate">${ws} ／ ${d.articles}本</div><div class="ntheme ${d.theme?'has':'none'}">${d.theme||'（考察なし）'}</div><div class="ntags">${tags}</div></div>`;
+    narr.appendChild(item);
+  });
+})();
+
+// PAGE 5: 記事検索
+(function(){
+  const weeks=[...new Set(ARTICLES.map(a=>a.week))];
+  const sel=document.getElementById('sw');
+  weeks.forEach(w=>{const opt=document.createElement('option');opt.value=w;opt.textContent=w.replace(/\d{4}年/,'').replace(/([〜～])/,' 〜 ');sel.appendChild(opt);});
+  window.filterArticles=function(){
+    const q=document.getElementById('sq').value.toLowerCase().trim();
+    const w=document.getElementById('sw').value;
+    let filtered=ARTICLES;
+    if(w)filtered=filtered.filter(a=>a.week===w);
+    if(q)filtered=filtered.filter(a=>a.title.toLowerCase().includes(q));
+    document.getElementById('scount').textContent=`🔍 ${filtered.length}件ヒット / 全${ARTICLES.length}件`;
+    const res=document.getElementById('sresults');res.innerHTML='';
+    filtered.slice(0,100).forEach(a=>{
+      const item=document.createElement('a');item.href=a.url;item.target='_blank';item.rel='noopener';item.className='s-item';
+      let title=a.title;
+      if(q){const re=new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'gi');title=title.replace(re,m=>`<span class="kw-highlight">${m}</span>`);}
+      const week=a.week.replace(/\d{4}年/,'').replace(/([〜～])/,' 〜 ');
+      item.innerHTML=`<div class="s-title">${title}</div><div class="s-meta"><span class="s-week">${week}</span><span class="s-url">${a.url.replace(/https?:\/\//,'').slice(0,55)}</span></div>`;
+      res.appendChild(item);
+    });
+    if(filtered.length>100){const more=document.createElement('div');more.style.cssText='text-align:center;padding:14px;font-size:13px;color:var(--ts);font-weight:700';more.textContent=`... 他${filtered.length-100}件（キーワードを絞ってみてね 🌸）`;res.appendChild(more);}
+  };
+  filterArticles();
+})();
+</script>
+</body>
+</html>
