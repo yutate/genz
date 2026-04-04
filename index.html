@@ -139,7 +139,7 @@ h1 em {
   flex-shrink: 0;
   position: sticky;
   top: 20px;
-  padding: 20px 16px 20px 20px;
+  padding: 20px 20px 20px 16px;
   display: none;
 }
 
@@ -401,7 +401,7 @@ h2 { font-size: 15px; font-weight: 700; color: var(--tx); }
 @media(min-width: 768px) {
   .sidenav { display: block; }
   .bottomnav { display: none; }
-  .main { padding: 24px 24px 24px 4px; }
+  .main { padding: 24px 4px 24px 24px; }
 }
 
 /* ── FOOTER ── */
@@ -451,33 +451,6 @@ footer {
 
 <!-- LAYOUT -->
 <div class="layout">
-
-  <!-- SIDE NAV (PC) -->
-  <aside class="sidenav">
-    <div class="sidenav-inner">
-      <div class="sidenav-label">CONTENTS</div>
-      <a class="snav-item on" data-page="p-overview" onclick="navTo('p-overview',this);return false" href="#">
-        <div class="snav-emoji">📈</div>
-        <div class="snav-text">概要</div>
-      </a>
-      <a class="snav-item" data-page="p-monthly" onclick="navTo('p-monthly',this);return false" href="#">
-        <div class="snav-emoji">📅</div>
-        <div class="snav-text">月次サマリー</div>
-      </a>
-      <a class="snav-item" data-page="p-keywords" onclick="navTo('p-keywords',this);return false" href="#">
-        <div class="snav-emoji">🔑</div>
-        <div class="snav-text">考察キーワード</div>
-      </a>
-      <a class="snav-item" data-page="p-narrative" onclick="navTo('p-narrative',this);return false" href="#">
-        <div class="snav-emoji">📖</div>
-        <div class="snav-text">テーマ変遷</div>
-      </a>
-      <a class="snav-item" data-page="p-search" onclick="navTo('p-search',this);return false" href="#">
-        <div class="snav-emoji">🔍</div>
-        <div class="snav-text">記事検索</div>
-      </a>
-    </div>
-  </aside>
 
   <!-- MAIN -->
   <main class="main">
@@ -553,6 +526,111 @@ footer {
       </div>
     </div>
 
+
+    <!-- PAGE: Q1総括 -->
+    <div class="page" id="p-q1">
+      <div class="sec">
+        <div class="sec-hd"><div class="sec-emoji">🌐</div><h2>2026年Q1 Z世代総括</h2></div>
+        <div class="cbox" style="background:linear-gradient(135deg,#E8F5E9,#FFFDE7);margin-bottom:20px">
+          <div style="font-size:11px;font-weight:900;color:var(--ts);letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px">📌 総論</div>
+          <div style="font-size:17px;font-weight:700;color:var(--tx);line-height:1.5;margin-bottom:12px">Z世代は「適応する世代」から<br>「失敗しない社会を設計する世代」へ移行した</div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px">
+            <span style="background:#4CAF50;color:#fff;font-size:12px;font-weight:700;padding:5px 14px;border-radius:16px">1月：壊れない</span>
+            <span style="background:#FDD835;color:#1B3A2A;font-size:12px;font-weight:700;padding:5px 14px;border-radius:16px">2月：自分で選ぶ</span>
+            <span style="background:#FF7043;color:#fff;font-size:12px;font-weight:700;padding:5px 14px;border-radius:16px">3月：外さない</span>
+          </div>
+          <div style="font-size:13px;color:var(--tx);background:rgba(255,255,255,0.6);padding:10px 14px;border-radius:10px;border-left:3px solid var(--green)">
+            💡 一言：<strong>「間違えない人生」が標準になった四半期</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-hd"><div class="sec-emoji">📊</div><h2>月別フェーズ</h2></div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px">
+          <div class="cbox">
+            <div style="font-size:22px;margin-bottom:8px">🛡️</div>
+            <div style="font-size:13px;font-weight:900;color:var(--green-d);margin-bottom:6px">1月：自己防衛フェーズ</div>
+            <div style="font-size:12px;color:var(--ts);line-height:1.7">距離を取る／消耗を避ける／AIは補助線／推しは安定装置</div>
+            <div style="margin-top:8px;background:var(--green-xl);padding:5px 10px;border-radius:8px;font-size:12px;font-weight:700;color:var(--green-d)">KW：壊れない</div>
+          </div>
+          <div class="cbox">
+            <div style="font-size:22px;margin-bottom:8px">⚖️</div>
+            <div style="font-size:13px;font-weight:900;color:#F9A825;margin-bottom:6px">2月：納得主権フェーズ</div>
+            <div style="font-size:12px;color:var(--ts);line-height:1.7">世代内分岐／消費の意味化／推し活の制度化／関係の合理化</div>
+            <div style="margin-top:8px;background:#FFFDE7;padding:5px 10px;border-radius:8px;font-size:12px;font-weight:700;color:#F9A825">KW：自分で選ぶ</div>
+          </div>
+          <div class="cbox">
+            <div style="font-size:22px;margin-bottom:8px">🎯</div>
+            <div style="font-size:13px;font-weight:900;color:#E64A19;margin-bottom:6px">3月：失敗回避フェーズ</div>
+            <div style="font-size:12px;color:var(--ts);line-height:1.7">うま確消費／AI意思決定／投稿削減／推し管理／非選択戦略</div>
+            <div style="margin-top:8px;background:#FBE9E7;padding:5px 10px;border-radius:8px;font-size:12px;font-weight:700;color:#E64A19">KW：外さない</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-hd"><div class="sec-emoji">🔍</div><h2>テーマ別考察</h2></div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div class="cbox">
+            <div style="font-size:11px;font-weight:900;color:var(--green-d);letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px">① 失敗回避社会の成立</div>
+            <div style="font-size:14px;font-weight:700;margin-bottom:6px">「何を選ぶか」ではなく「どうすれば外さないか」で動く</div>
+            <div style="font-size:13px;color:var(--ts);line-height:1.7">うま確フード、AI意思決定、定価で買わない——これらは不安ではなく合理性の進化。Z世代は選択コストを最小化する社会設計者になった。</div>
+          </div>
+          <div class="cbox">
+            <div style="font-size:11px;font-weight:900;color:#29B6F6;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px">② AIは「補助線」から「現実代替」へ</div>
+            <div style="font-size:14px;font-weight:700;margin-bottom:6px">1月補助線 → 2月共存設計 → 3月代替手段</div>
+            <div style="font-size:13px;color:var(--ts);line-height:1.7">AI利用率8割超。恋愛相談、音楽生成、意思決定——AIはもはや「ツール」ではなく「人間関係の一部」になりつつある。</div>
+          </div>
+          <div class="cbox">
+            <div style="font-size:11px;font-weight:900;color:#AB47BC;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px">③ 推し活の完全インフラ化</div>
+            <div style="font-size:14px;font-weight:700;margin-bottom:6px">情熱 → 持続 → 管理 の最終形へ</div>
+            <div style="font-size:13px;color:var(--ts);line-height:1.7">市場4.1兆円。「推し活」という言葉への違和感も登場。生活インフラとして完全定着し、燃え尽きない設計が当たり前になった。</div>
+          </div>
+          <div class="cbox">
+            <div style="font-size:11px;font-weight:900;color:#FF7043;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px">④ 表現の削減・ノイズレス文化</div>
+            <div style="font-size:14px;font-weight:700;margin-bottom:6px">「投稿ゼロ」「BeReal」「匿名化」が加速</div>
+            <div style="font-size:13px;color:var(--ts);line-height:1.7">見せすぎない。語らない。盛らない。自己表現の主戦場がSNSから「選ばれた少人数との空間」へ移行している。</div>
+          </div>
+          <div class="cbox">
+            <div style="font-size:11px;font-weight:900;color:#26A69A;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px">⑤ 人間関係の再設計（軽接続社会）</div>
+            <div style="font-size:14px;font-weight:700;margin-bottom:6px">深くつながらず、壊れない距離を設計する</div>
+            <div style="font-size:13px;color:var(--ts);line-height:1.7">「搭子文化」「メンパ」「距離感設計」——強い絆より安全な接続を好む。関係は維持するが常駐しない、という構造が定着。</div>
+          </div>
+          <div class="cbox">
+            <div style="font-size:11px;font-weight:900;color:#FFA726;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px">⑥ 消費は「意味投資」へ</div>
+            <div style="font-size:14px;font-weight:700;margin-bottom:6px">コスパでも衝動でもなく「納得パ」で動く</div>
+            <div style="font-size:13px;color:var(--ts);line-height:1.7">高級ヘッドホンは買う、飲み会は断る。消費は自己肯定と生活安定のための配分行為。「選別投資」「意味消費」がZ世代の新常識。</div>
+          </div>
+          <div class="cbox">
+            <div style="font-size:11px;font-weight:900;color:#EC407A;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px">⑦ 働き方の再定義（非選択戦略）</div>
+            <div style="font-size:14px;font-weight:700;margin-bottom:6px">自由より「わかりやすさ」を選ぶ世代</div>
+            <div style="font-size:13px;color:var(--ts);line-height:1.7">AIマネジメント希望6割、「指示待ち」ではなく「設計された自由」を求める。裁量より構造化された安心を重視する働き方へ。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-hd"><div class="sec-emoji">🏁</div><h2>Q1総括</h2></div>
+        <div class="cbox" style="background:linear-gradient(135deg,#E8F5E9,#FFFDE7)">
+          <div style="font-size:15px;font-weight:700;color:var(--tx);line-height:1.6;margin-bottom:12px">
+            Z世代は「拡張社会」を終わらせ、<br>「最適化された安心社会」を作り始めた
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="font-size:13px;color:var(--ts);line-height:1.7;background:rgba(255,255,255,0.7);padding:10px 14px;border-radius:10px">
+              📌 <strong>マーケター視点</strong>：Z世代は「拡張・熱狂・正解」ではなく「最小失敗・安心・納得」を設計する。ブランドに求めるのは感動より安心感。
+            </div>
+            <div style="font-size:13px;color:var(--ts);line-height:1.7;background:rgba(255,255,255,0.7);padding:10px 14px;border-radius:10px">
+              📌 <strong>組織・採用視点</strong>：「自由な職場」より「わかりやすい職場」。AI活用、フィードバック設計、心理的安全が採用競争力の核心。
+            </div>
+            <div style="font-size:13px;color:var(--ts);line-height:1.7;background:rgba(255,255,255,0.7);padding:10px 14px;border-radius:10px">
+              📌 <strong>社会設計視点</strong>：失敗を回避する世代が増えると、社会の「変化耐性」が下がる可能性も。これはZ世代だけの問題ではなく、社会設計の問題でもある。
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- PAGE: 記事検索 -->
     <div class="page" id="p-search">
       <div class="sec">
@@ -567,6 +645,37 @@ footer {
     </div>
 
   </main>
+
+  <!-- SIDE NAV (PC) - RIGHT -->
+  <aside class="sidenav" id="sidenav">
+    <div class="sidenav-inner">
+      <div class="sidenav-label">CONTENTS</div>
+      <a class="snav-item on" data-page="p-overview" onclick="navTo('p-overview',this);return false" href="#">
+        <div class="snav-emoji">📈</div>
+        <div class="snav-text">概要</div>
+      </a>
+      <a class="snav-item" data-page="p-monthly" onclick="navTo('p-monthly',this);return false" href="#">
+        <div class="snav-emoji">📅</div>
+        <div class="snav-text">月次サマリー</div>
+      </a>
+      <a class="snav-item" data-page="p-keywords" onclick="navTo('p-keywords',this);return false" href="#">
+        <div class="snav-emoji">🔑</div>
+        <div class="snav-text">考察キーワード</div>
+      </a>
+      <a class="snav-item" data-page="p-narrative" onclick="navTo('p-narrative',this);return false" href="#">
+        <div class="snav-emoji">📖</div>
+        <div class="snav-text">テーマ変遷</div>
+      </a>
+      <a class="snav-item" data-page="p-q1" onclick="navTo('p-q1',this);return false" href="#">
+        <div class="snav-emoji">🌐</div>
+        <div class="snav-text">Q1総括</div>
+      </a>
+      <a class="snav-item" data-page="p-search" onclick="navTo('p-search',this);return false" href="#">
+        <div class="snav-emoji">🔍</div>
+        <div class="snav-text">記事検索</div>
+      </a>
+    </div>
+  </aside>
 </div>
 
 <!-- BOTTOM NAV (mobile) -->
@@ -582,6 +691,9 @@ footer {
   </button>
   <button class="bnav-item" data-page="p-narrative" onclick="navTo('p-narrative',this)">
     <span class="bnav-emoji">📖</span><span>変遷</span>
+  </button>
+  <button class="bnav-item" data-page="p-q1" onclick="navTo('p-q1',this)">
+    <span class="bnav-emoji">🌐</span><span>Q1</span>
   </button>
   <button class="bnav-item" data-page="p-search" onclick="navTo('p-search',this)">
     <span class="bnav-emoji">🔍</span><span>検索</span>
