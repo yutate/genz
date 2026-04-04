@@ -612,7 +612,31 @@ footer {
     <div class="sidenav-inner">
       <div class="sidenav-label">CONTENTS</div>
       <!-- SIDENAV_START -->
-<!-- SIDENAV_END -->
+      <a class="snav-item" data-page="p-overview" onclick="navTo('p-overview',this);return false" href="#">
+        <div class="snav-emoji">📈</div>
+        <div class="snav-text">概要</div>
+      </a>
+      <a class="snav-item" data-page="p-monthly" onclick="navTo('p-monthly',this);return false" href="#">
+        <div class="snav-emoji">📅</div>
+        <div class="snav-text">月次サマリー</div>
+      </a>
+      <a class="snav-item" data-page="p-kw" onclick="navTo('p-kw',this);return false" href="#">
+        <div class="snav-emoji">🔑</div>
+        <div class="snav-text">考察キーワード</div>
+      </a>
+      <a class="snav-item" data-page="p-narrative" onclick="navTo('p-narrative',this);return false" href="#">
+        <div class="snav-emoji">📖</div>
+        <div class="snav-text">テーマ変遷</div>
+      </a>
+      <a class="snav-item" data-page="p-q1" onclick="navTo('p-q1',this);return false" href="#">
+        <div class="snav-emoji">🌐</div>
+        <div class="snav-text">Q総括</div>
+      </a>
+      <a class="snav-item" data-page="p-search" onclick="navTo('p-search',this);return false" href="#">
+        <div class="snav-emoji">🔍</div>
+        <div class="snav-text">記事検索</div>
+      </a>
+      <!-- SIDENAV_END -->
 </div>
   </aside>
 </div>
@@ -620,7 +644,25 @@ footer {
 <!-- BOTTOM NAV (mobile) -->
 <nav class="bottomnav">
   <!-- BOTTOMNAV_START -->
-<!-- BOTTOMNAV_END -->
+  <button class="bnav-item" data-page="p-overview" onclick="navTo('p-overview',this)">
+    <span class="bnav-emoji">📈</span><span>概要</span>
+  </button>
+  <button class="bnav-item" data-page="p-monthly" onclick="navTo('p-monthly',this)">
+    <span class="bnav-emoji">📅</span><span>月次</span>
+  </button>
+  <button class="bnav-item" data-page="p-kw" onclick="navTo('p-kw',this)">
+    <span class="bnav-emoji">🔑</span><span>KW</span>
+  </button>
+  <button class="bnav-item" data-page="p-narrative" onclick="navTo('p-narrative',this)">
+    <span class="bnav-emoji">📖</span><span>変遷</span>
+  </button>
+  <button class="bnav-item" data-page="p-q1" onclick="navTo('p-q1',this)">
+    <span class="bnav-emoji">🌐</span><span>Q総括</span>
+  </button>
+  <button class="bnav-item" data-page="p-search" onclick="navTo('p-search',this)">
+    <span class="bnav-emoji">🔍</span><span>検索</span>
+  </button>
+  <!-- BOTTOMNAV_END -->
 </nav>
 
 <footer>
