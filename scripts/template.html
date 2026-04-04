@@ -540,6 +540,24 @@ footer {
       </div>
     </div>
 
+    <!-- PAGE: 月次考察 -->
+    <div class="page" id="p-monthly-review">
+      <div class="sec">
+        <div class="sec-hd"><div class="sec-emoji">📋</div><h2>月次考察 <span style="font-size:13px;font-weight:400;color:var(--ts)"><!-- MONTHLY_COUNT_PLACEHOLDER -->件</span></h2></div>
+        <p style="font-size:13px;color:var(--ts);margin-bottom:16px">各月をタップして展開。最新が先頭に表示されます。</p>
+        <!-- MONTHLY_ACCORDION_PLACEHOLDER -->
+      </div>
+    </div>
+
+    <!-- PAGE: 年次考察 -->
+    <div class="page" id="p-annual-review">
+      <div class="sec">
+        <div class="sec-hd"><div class="sec-emoji">📅</div><h2>年次考察 <span style="font-size:13px;font-weight:400;color:var(--ts)"><!-- ANNUAL_COUNT_PLACEHOLDER -->件</span></h2></div>
+        <p style="font-size:13px;color:var(--ts);margin-bottom:16px">年間を通じたZ世代トレンドの総括。最新が先頭に表示されます。</p>
+        <!-- ANNUAL_ACCORDION_PLACEHOLDER -->
+      </div>
+    </div>
+
     <!-- PAGE: 記事検索 -->
     <div class="page" id="p-search">
       <div class="sec">
@@ -580,6 +598,14 @@ footer {
         <div class="snav-emoji">🌐</div>
         <div class="snav-text">Q総括</div>
       </a>
+      <a class="snav-item" data-page="p-monthly-review" onclick="navTo('p-monthly-review',this);return false" href="#">
+        <div class="snav-emoji">📋</div>
+        <div class="snav-text">月次考察</div>
+      </a>
+      <a class="snav-item" data-page="p-annual-review" onclick="navTo('p-annual-review',this);return false" href="#">
+        <div class="snav-emoji">📅</div>
+        <div class="snav-text">年次考察</div>
+      </a>
       <a class="snav-item" data-page="p-search" onclick="navTo('p-search',this);return false" href="#">
         <div class="snav-emoji">🔍</div>
         <div class="snav-text">記事検索</div>
@@ -606,6 +632,12 @@ footer {
   </button>
   <button class="bnav-item" data-page="p-q1" onclick="navTo('p-q1',this)">
     <span class="bnav-emoji">🌐</span><span>Q総括</span>
+  </button>
+  <button class="bnav-item" data-page="p-monthly-review" onclick="navTo('p-monthly-review',this)">
+    <span class="bnav-emoji">📋</span><span>月次</span>
+  </button>
+  <button class="bnav-item" data-page="p-annual-review" onclick="navTo('p-annual-review',this)">
+    <span class="bnav-emoji">📅</span><span>年次</span>
   </button>
   <button class="bnav-item" data-page="p-search" onclick="navTo('p-search',this)">
     <span class="bnav-emoji">🔍</span><span>検索</span>
