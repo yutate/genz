@@ -219,21 +219,35 @@ def extract_summary_entries(entries, entry_type, id_prefix):
         period = e.get('period', {})
         # ラベル生成
         if entry_type == 'quarterly':
-            label = '{}年Q{}'.format(period.get('year',''), period.get('quarter',''))
+            # period.start から年とQを判定
+            start = period.get('start', '')
+            m = re.match(r'(\d{4})-(\d{2})', start)
+            if m:
+                month = int(m.group(2))
+                q_num = (month - 1) // 3 + 1
+                label = '{}年Q{}'.format(m.group(1), q_num)
+            else:
+                label = e.get('title', '四半期考察')
         elif entry_type == 'monthly':
-            label = '{}年{}月'.format(period.get('year',''), period.get('month',''))
+            start = period.get('start', '')
+            m = re.match(r'(\d{4})-(\d{2})', start)
+            label = '{}年{}月'.format(m.group(1), int(m.group(2))) if m else e.get('title', '月次考察')
         elif entry_type == 'annual':
-            label = '{}年 年次考察'.format(period.get('year',''))
+            start = period.get('start', '')
+            m = re.match(r'(\d{4})', start)
+            label = '{}年 年次考察'.format(m.group(1)) if m else e.get('title', '年次考察')
         else:
             label = str(period)
 
         if label in seen: continue
         seen.add(label)
 
-        summary_raw = clean(e.get('summary', ''))
+        # essayから取得
+        essay = e.get('essay') or {}
+        summary_raw = clean(essay.get('summary', ''))
         soron = summary_raw.split('\n')[0] if summary_raw else ''
-        kikan = clean(e.get('period_definition', '') or '')
-        sections = e.get('sections', [])
+        kikan = clean(essay.get('period_definition', '') or '')
+        sections = essay.get('sections', [])
         themes = sections_to_themes(sections)
 
         # 月別フェーズ（quarterly のみ）
@@ -241,12 +255,12 @@ def extract_summary_entries(entries, entry_type, id_prefix):
         if entry_type == 'quarterly':
             for sec in sections:
                 h = sec.get('heading', '')
-                m = re.match(r'(\d+)月：(\S+フェーズ)', h)
-                if m:
+                m2 = re.match(r'(\d+)月：(\S+フェーズ)', h)
+                if m2:
                     body = sec.get('body', '')
                     items = [l.strip() for l in body.split('\n') if l.strip() and not l.startswith('👉')][:4]
                     kw_m = re.search(r'キーワード[：:]\s*(.+)', body)
-                    phases.append({'name': m.group(2), 'items': items, 'kw': kw_m.group(1).strip() if kw_m else ''})
+                    phases.append({'name': m2.group(2), 'items': items, 'kw': kw_m.group(1).strip() if kw_m else ''})
 
         results.append({
             'label': label,
@@ -269,14 +283,13 @@ def extract_summary_entries(entries, entry_type, id_prefix):
 
 # ── グローバルキーワードリスト生成 ──────────────────────────
 def build_global_kws(entries):
-    """weekly の essay.keywords を集計してトップKWリストを返す"""
+    """全entryのessay.keywordsのユニーク一覧を出現頻度順で返す"""
     kw_counter = Counter()
     for e in entries:
-        if e.get('type') == 'weekly':
-            kws = e.get('essay', {}).get('keywords', [])
-            kw_counter.update(kws)
-    # 出現週数が多い順にTop25
-    return [kw for kw, _ in kw_counter.most_common(25)]
+        kws = e.get('essay', {}).get('keywords', [])
+        kw_counter.update(kws)
+    # 出現頻度順（全KWを返す）
+    return [kw for kw, _ in kw_counter.most_common()]
 
 # ── メイン ────────────────────────────────────────────────
 def main():
