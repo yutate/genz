@@ -2,126 +2,29 @@
 # -*- coding: utf-8 -*-
 """
 Z世代 Signal Atlas - Build Script
-data/zgene.docx -> dist/index.html を自動生成する
+data/zgene.json -> dist/index.html を自動生成する
 
-ヘッダー形式（統一後）:
-  週次記事: YYYY/MM/DD-MM/DD Z世代・若年層関連記事と考察
-  週次考察: YYYY/MM/DD-MM/DD 週次考察  ← 総論/期間定義
-  月次考察: YYYY/MM 月次考察
-  四半期:   YYYY/QN 四半期考察
-  年次考察: YYYY 年次考察
-  ※ 先頭に「# 」が付く場合もある
+JSONスキーマ (v4):
+  weekly[]   : articles + analysis.sections (総論/期間定義)
+  monthly[]  : summary + period_definition
+  quarterly[]: summary + period_definition + sections
+  annual[]   : summary + sections
 """
 
 import os, re, json, glob, html as H
 
-# ── docx -> テキスト ───────────────────────────────────────
-def docx_to_text(path):
-    from docx import Document
-    return "\n".join(p.text.strip() for p in Document(path).paragraphs if p.text.strip())
-
-# ── ヘッダー検索（# 付き/なし両対応）────────────────────────
-HEADER_RE = r'(?:^|\n)#?\s*'
-
-def find_all(pat, text):
-    return list(re.finditer(HEADER_RE + pat, text, re.MULTILINE))
-
-def section_end(text, start, all_headers):
-    """start以降の次のヘッダー位置を返す"""
-    for h in all_headers:
-        if h.start() > start:
-            return h.start()
-    return len(text)
+# ── JSONを読み込む ─────────────────────────────────────────
+def load_json(path):
+    with open(path, encoding='utf-8') as f:
+        return json.load(f)
 
 # ── 共通クリーン ──────────────────────────────────────────
 def clean(s):
-    return re.sub(r'\s+', ' ', re.sub(r'\*\*|\\n|\\\\|\\.', '', str(s))).strip()
-
-# ── 総論・期間定義を抽出 ──────────────────────────────────
-def extract_soron_kikan(sec):
-    soron = kikan = ''
-
-    # 新形式: ## 総論　\n\n### テーマ
-    m = re.search(r'## 総論[\u3000\s]*\n\n### (.{10,150})', sec)
-    if m: soron = clean(m.group(1))
-
-    m = re.search(r'## 期間定義[\u3000\s]*\n\n### (.{10,150})', sec)
-    if m: kikan = clean(m.group(1))
-
-    # docx_to_text形式: 総論\nテーマ（改行1つ）
-    if not soron:
-        m = re.search(r'総論\n(.{10,150})(?:\n|$)', sec)
-        if m:
-            t = clean(m.group(1)).lstrip('「').rstrip('」')
-            if 10 <= len(t) <= 150 and 'http' not in t:
-                soron = t
-
-    if not kikan:
-        m = re.search(r'期間定義\n(.{10,120})(?:\n|$)', sec)
-        if m:
-            t = clean(m.group(1)).lstrip('「').rstrip('」')
-            if 10 <= len(t) <= 120 and 'http' not in t:
-                kikan = t
-
-    # フォールバック（複数パターン対応）
-    if not soron:
-        for pat in [
-            r'総論[\u3000\s]*\n\n「(.{10,150})」',
-            r'総論[\u3000\s]*\n\n(.{10,150}?)(?:\n\n|$)',
-            r'総論[\u3000](.{10,150}?)(?:\n\n|\Z)',
-            r'\*\*総論[\u3000\s](.{10,150}?)\*\*',
-            r'総論\n\n(.{10,150}?)(?:\n\n|\Z)',
-            r'👉\s*\n総論\*\*(.{10,200}?)\*\*',
-            r'総論\*\*(.{10,200}?)\*\*',
-        ]:
-            m = re.search(pat, sec, re.DOTALL)
-            if m:
-                t = clean(m.group(1)).lstrip('「').rstrip('」')
-                if 10 <= len(t) <= 150 and 'http' not in t:
-                    soron = t
-                    break
-
-    if not kikan:
-        for pat in [
-            r'期間定義[\u3000\s]*\n\n「(.{10,120})」',
-            r'期間定義[\u3000\s]*\n\n(.{10,120}?)(?:\n\n|$)',
-            r'期間定義[\u3000](.{10,120}?)(?:\n\n|\Z)',
-        ]:
-            m = re.search(pat, sec, re.DOTALL)
-            if m:
-                t = clean(m.group(1)).lstrip('「').rstrip('」')
-                if 10 <= len(t) <= 120 and 'http' not in t:
-                    kikan = t
-                    break
-
-    return soron, kikan
-
-# ── テーマ抽出 ───────────────────────────────────────────
-THEME_COLORS = ['#388E3C','#29B6F6','#AB47BC','#FF7043','#26A69A','#FFA726','#EC407A']
-
-def extract_themes(sec, max_n=7):
-    themes = []
-    # 番号: **1. 「テーマ」**
-    for tm in list(re.finditer(
-        r'\*\*\d+\.\s*「(.{5,80})」\*\*\n+(.+?)(?=\*\*\d+\.|##|\Z)',
-        sec, re.DOTALL))[:max_n]:
-        title = clean(tm.group(1))
-        body = re.sub(r'\*\*(?:何が起きている|なぜ|具体行動|兆候|ポイント|重要点|成長の定義|理想|求められる)[^\n]*\*\*\n+', '', tm.group(2))
-        body = ' '.join(clean(re.sub(r'\*\*|https?://\S+', '', body)).split())[:100]
-        if len(title) > 3: themes.append({'title': title, 'body': body})
-    if themes: return themes
-
-    # 丸数字: ① テーマ
-    for tm in list(re.finditer(
-        r'[①②③④⑤⑥⑦⑧]\s*(?:\*\*)?「?(.{5,80})」?(?:\*\*)?\n+(.+?)(?=[①②③④⑤⑥⑦⑧]|##|\Z)',
-        sec, re.DOTALL))[:max_n]:
-        title = clean(tm.group(1)).strip('「」')
-        body = ' '.join(clean(re.sub(r'\*\*|https?://\S+', '', tm.group(2))).split())[:100]
-        if len(title) > 3: themes.append({'title': title, 'body': body})
-    return themes
+    if not s: return ''
+    return re.sub(r'\s+', ' ', re.sub(r'\*\*|\\n', '', str(s))).strip()
 
 # ── 週次データ抽出 ─────────────────────────────────────────
-def extract_weeks(text):
+def extract_weeks(data):
     KEYWORDS = {
         'SNS・デジタル疲れ': ['疲れ','スマホ疲れ','SNS疲れ','デトックス','アナログ回帰','レトロ','BeReal'],
         '推し活・オタク':    ['推し活','推し','オタク','ファン','応援広告'],
@@ -133,243 +36,265 @@ def extract_weeks(text):
         '金融・お金':        ['お金','金融','投資','節約','キャッシュレス','独身税'],
     }
 
-    # 全ヘッダーを収集（境界判定用）
-    all_headers = find_all(r'\d{4}/', text)
-
-    # 週次記事ヘッダー
-    art_headers = find_all(r'(\d{4}/\d{2}/\d{2}-\d{2}/\d{2}) Z世代[^\n]+記事と考察', text)
-
     results = []
-    for ah in art_headers:
-        label = ah.group(1) if ah.lastindex >= 1 else re.search(r'\d{4}/\d{2}/\d{2}-\d{2}/\d{2}', ah.group(0)).group(0)
-        s = ah.end()
-        e = section_end(text, ah.start() + 1, all_headers)
-        articles_sec = text[s:e]
+    for w in data['weekly']:
+        period = w.get('period', {})
+        # 表示用ラベル
+        key = period.get('key', '')
+        label = key.replace('_', ' 〜 ').replace('-', '/') if '_' in key else key
 
-        # 対応する週次考察を探す
-        rev_m = re.search(HEADER_RE + re.escape(label) + r' 週次考察', text, re.MULTILINE)
-        theme = kikan = ''
-        if rev_m:
-            rs = rev_m.end()
-            re_end = section_end(text, rev_m.start() + 1, all_headers)
-            soron, kikan = extract_soron_kikan(text[rs:re_end])
-            theme = soron
+        # 総論・期間定義
+        analysis = w.get('analysis') or {}
+        theme = ''
+        kikan = ''
+        if analysis:
+            # sections から総論を取得
+            for sec in analysis.get('sections', []):
+                if sec.get('heading') == '総論':
+                    # bodyの最初の行がテーマ
+                    body = sec.get('body', '')
+                    theme = clean(body.split('\n')[0]) if body else ''
+                    break
+            kikan = clean(analysis.get('period_definition', ''))
 
-        articles_count = len(re.findall(r'https?://', articles_sec))
-        cats = {c: sum(articles_sec.count(kw) for kw in kws) for c, kws in KEYWORDS.items()}
-        results.append({'week': label, 'articles': articles_count, 'theme': theme,
-                        'kikan': kikan, 'categories': cats})
+        # 記事数
+        articles = w.get('articles', [])
+        articles_text = ' '.join(a.get('title', '') for a in articles)
+
+        # カテゴリ集計
+        cats = {c: sum(articles_text.count(kw) for kw in kws) for c, kws in KEYWORDS.items()}
+
+        results.append({
+            'week': label,
+            'articles': w.get('article_count', len(articles)),
+            'theme': theme,
+            'kikan': kikan,
+            'categories': cats,
+        })
+
     return results
 
 # ── 記事データ抽出 ─────────────────────────────────────────
-def extract_articles(text):
+def extract_articles(data):
     results = []
-    all_headers = find_all(r'\d{4}/', text)
-    art_headers = find_all(r'(\d{4}/\d{2}/\d{2}-\d{2}/\d{2}) Z世代[^\n]+記事と考察', text)
+    for w in data['weekly']:
+        period = w.get('period', {})
+        key = period.get('key', '')
+        label = key.replace('_', ' 〜 ').replace('-', '/') if '_' in key else key
 
-    for ah in art_headers:
-        label = re.search(r'\d{4}/\d{2}/\d{2}-\d{2}/\d{2}', ah.group(0)).group(0)
-        s = ah.end()
-        e = section_end(text, ah.start() + 1, all_headers)
-        sec = text[s:e]
-        seen = set()
-        for line in sec.split('\n'):
-            line = line.strip()
-            urls = re.findall(r'https?://[^\s\)\]>]+', line)
-            if not urls: continue
-            url = urls[0].rstrip(')')
-            if url in seen or not url.startswith('http'): continue
-            seen.add(url)
-            t = re.sub(r'\[\[.+', '', line)
-            t = re.sub(r'^[・\-\s★・]+', '', t)
-            t = re.sub(r'\{\.underline\}|\[|\]|\*\*', '', t)
-            t = re.sub(r'https?://\S+', '', t)
-            t = re.sub(r'\s*[-ー]\s*$', '', t.strip().rstrip('\\')).strip()
-            if len(t) >= 8 and not t.startswith('```'):
-                results.append({'title': t[:120], 'url': url, 'week': label})
+        for a in w.get('articles', []):
+            url = a.get('url', '')
+            title = clean(a.get('title', ''))
+            if url and title and len(title) >= 4:
+                results.append({'title': title[:120], 'url': url, 'week': label})
     return results
 
-# ── 四半期考察 抽出 ───────────────────────────────────────
+# ── アコーディオン共通 ──────────────────────────────────────
+THEME_COLORS = ['#388E3C','#29B6F6','#AB47BC','#FF7043','#26A69A','#FFA726','#EC407A']
 PHASE_ICONS  = ['🛡️','⚖️','🎯','🔥','💡','🌊']
 PHASE_COLORS = [('#4CAF50','#E8F5E9'),('#F9A825','#FFFDE7'),('#E64A19','#FBE9E7'),('#1565C0','#E3F2FD')]
 
-def extract_quarters(text):
-    all_headers = find_all(r'\d{4}/', text)
-    q_headers = find_all(r'(\d{4}/Q\d+)[^\n]*(?:四半期|総合)考察', text)
-    results = []
-    for qh in q_headers:
-        label_raw = re.search(r'(\d{4}/Q\d+)', qh.group(0)).group(1)
-        year, q = label_raw.split('/Q')
-        s = qh.end()
-        e = section_end(text, qh.start() + 1, all_headers)
-        sec = text[s:e].strip()
+def sections_to_themes(sections, skip_headings=None):
+    """sections[]からテーマカードリストを生成"""
+    if skip_headings is None:
+        skip_headings = {'総論','期間定義','🌐 Q1総括','🌐 Q総括','🔮 次の論点（Q2に向けて）',
+                         '📊 月別変化（最重要）','🌐 3月総括','📊 Q1全体で見ると','🔧 実務示唆',
+                         '🔎 この週の位置づけ','🔧 実務への示唆','🌐 総括'}
+    themes = []
+    for sec in sections:
+        heading = sec.get('heading', '')
+        if not heading or heading in skip_headings: continue
+        if heading.startswith('🔎') or heading.startswith('🔮'): continue
+        body = clean(sec.get('body', ''))[:100]
+        title = re.sub(r'^[①②③④⑤⑥⑦⑧\d+\.\s]+', '', heading).strip().strip('「」')
+        if len(title) > 3:
+            themes.append({'title': title, 'body': body})
+        if len(themes) >= 7: break
+    return themes
 
-        soron, kikan = extract_soron_kikan(sec)
-        themes = extract_themes(sec)
+def build_accordion_item(qid, is_open, label, subtitle, soron, kikan, phases, themes, wrap, color_primary):
+    html  = '<div class="q-accordion" id="{}">\n'.format(qid)
+    html += '  <div class="q-header" onclick="toggleQ(\'{}\')">\n'.format(qid)
+    html += '    <div style="display:flex;align-items:center;gap:12px;flex:1;flex-wrap:wrap">\n'
+    html += '      <span style="background:{};color:#fff;font-size:11px;font-weight:900;padding:4px 12px;border-radius:12px">{}</span>\n'.format(color_primary, H.escape(label))
+    html += '      <span style="font-size:13px;font-weight:700;color:var(--tx)">{}</span>\n'.format(H.escape(subtitle))
+    html += '    </div>\n'
+    html += '    <span class="q-chevron" id="{}-chev">{}</span>\n'.format(qid, '▲' if is_open else '▼')
+    html += '  </div>\n'
+    html += '  <div class="q-body" id="{}-body" style="display:{}">\n'.format(qid, 'block' if is_open else 'none')
 
-        phases = []
-        for m in re.finditer(r'(\d+)月：(\S+フェーズ)\n(.+?)キーワード[：:]\s*\*\*?([^\n*]+)\*\*?', sec, re.DOTALL):
-            items = re.findall(r'[-・]\s*(.+)', m.group(3).strip())
-            phases.append({'month': m.group(1)+'月', 'name': m.group(2),
-                           'items': [x.strip() for x in items[:4]], 'kw': m.group(4).strip()})
+    # 総論 + 期間定義
+    if soron or kikan:
+        html += '    <div style="background:linear-gradient(135deg,#E8F5E9,#FFFDE7);border-radius:12px;padding:14px 18px;margin-bottom:16px">\n'
+        if soron:
+            html += '      <div style="font-size:10px;font-weight:900;color:var(--ts);letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px">📌 総論</div>\n'
+            html += '      <div style="font-size:14px;font-weight:700;color:var(--tx);line-height:1.6;margin-bottom:{}px">{}</div>\n'.format(10 if kikan else 0, H.escape(soron))
+        if kikan:
+            html += '      <div style="background:rgba(255,255,255,0.7);padding:8px 12px;border-radius:8px;font-size:13px;margin-top:8px">💡 期間定義：<strong>{}</strong></div>\n'.format(H.escape(kikan))
+        html += '    </div>\n'
 
-        wrap_m = re.search(r'Z世代は「拡張社会」を終わらせ[、,]\s*\n?「(.+?)」を作り始めた', sec)
-        wrap = wrap_m.group(0).replace('\n', '') if wrap_m else ''
+    # 月別フェーズ（Q総括のみ）
+    if phases:
+        html += '    <div style="margin-bottom:16px">\n'
+        html += '      <div style="font-size:11px;font-weight:900;color:var(--ts);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px">📊 月別フェーズ</div>\n'
+        html += '      <div style="display:flex;gap:10px;flex-wrap:wrap">\n'
+        for pi, ph in enumerate(phases[:4]):
+            col, bg = PHASE_COLORS[pi % len(PHASE_COLORS)]
+            html += '        <div style="background:#fff;border-radius:12px;padding:14px;border:1.5px solid {};flex:1;min-width:150px">\n'.format(bg)
+            html += '          <div style="font-size:18px;margin-bottom:5px">{}</div>\n'.format(PHASE_ICONS[pi % len(PHASE_ICONS)])
+            html += '          <div style="font-size:12px;font-weight:900;color:{};margin-bottom:4px">{}</div>\n'.format(col, H.escape(ph['name']))
+            html += '          <div style="font-size:11px;color:var(--ts);line-height:1.6;margin-bottom:5px">{}</div>\n'.format('／'.join(H.escape(x) for x in ph.get('items', [])))
+            html += '          <div style="background:{};padding:4px 9px;border-radius:8px;font-size:11px;font-weight:700;color:{}">KW：{}</div>\n'.format(bg, col, H.escape(ph.get('kw', '')))
+            html += '        </div>\n'
+        html += '      </div>\n    </div>\n'
 
-        results.append({'label': '{}年Q{}'.format(year, q), 'year': year, 'q_num': q,
-                        'soron': soron, 'kikan': kikan, 'oneliner': kikan,
-                        'phases': phases, 'themes': themes, 'wrap': wrap})
-    results.sort(key=lambda x: x['label'], reverse=True)
-    return results
+    # テーマ別考察
+    if themes:
+        html += '    <div style="margin-bottom:16px">\n'
+        html += '      <div style="font-size:11px;font-weight:900;color:var(--ts);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px">🔍 テーマ別考察</div>\n'
+        html += '      <div style="display:flex;flex-direction:column;gap:8px">\n'
+        for ti, th in enumerate(themes):
+            col = THEME_COLORS[ti % len(THEME_COLORS)]
+            num = '①②③④⑤⑥⑦'[ti] if ti < 7 else '•'
+            html += '        <div style="background:#fff;border-radius:10px;padding:12px;border:1.5px solid #eee;border-left:3px solid {}">\n'.format(col)
+            html += '          <div style="font-size:10px;font-weight:900;color:{};text-transform:uppercase;margin-bottom:4px">{} {}</div>\n'.format(col, num, H.escape(th['title']))
+            html += '          <div style="font-size:12px;color:var(--ts);line-height:1.6">{}</div>\n'.format(H.escape(th['body']))
+            html += '        </div>\n'
+        html += '      </div>\n    </div>\n'
 
-# ── 月次考察 抽出 ─────────────────────────────────────────
-def extract_monthly_reviews(text):
-    all_headers = find_all(r'\d{4}/', text)
-    m_headers = find_all(r'(\d{4}/\d{2}) 月次考察', text)
-    results = []
-    seen = set()
-    for mh in m_headers:
-        label_raw = re.search(r'\d{4}/\d{2}', mh.group(0)).group(0)
-        if label_raw in seen: continue
-        seen.add(label_raw)
-        s = mh.end()
-        e = section_end(text, mh.start() + 1, all_headers)
-        sec = text[s:e].strip()
+    # 締め
+    if wrap:
+        html += '    <div style="background:linear-gradient(135deg,#E8F5E9,#FFFDE7);border-radius:12px;padding:14px 18px">\n'
+        html += '      <div style="font-size:13px;font-weight:700;color:var(--tx);line-height:1.6">{}</div>\n'.format(H.escape(wrap))
+        html += '    </div>\n'
 
-        soron, kikan = extract_soron_kikan(sec)
-        themes = extract_themes(sec)
+    html += '  </div>\n</div>\n'
+    return html
 
-        wrap_m = re.search(r'## (.{10,80})\n\n## 一言でいうと', sec)
-        wrap = wrap_m.group(1) if wrap_m else ''
-        ol_m = re.search(r'一言でいうと\n\n### (.{10,80})', sec)
-        oneliner = ol_m.group(1) if ol_m else kikan
-
-        year, mon = label_raw.split('/')
-        display = '{}年{}月'.format(year, int(mon))
-        results.append({'label': display, 'soron': soron, 'kikan': kikan,
-                        'themes': themes, 'wrap': wrap, 'oneliner': oneliner, 'phases': []})
-
-    results.sort(key=lambda x: x['label'], reverse=True)
-    return results
-
-# ── 年次考察 抽出 ─────────────────────────────────────────
-def extract_annual_reviews(text):
-    all_headers = find_all(r'\d{4}/', text)
-    a_headers = find_all(r'(\d{4}) 年次考察', text)
-    results = []
-    for ah in a_headers:
-        year = re.search(r'\d{4}', ah.group(0)).group(0)
-        s = ah.end()
-        # 年次考察は週次記事ヘッダーで終端
-        next_art = re.search(HEADER_RE + r'\d{4}/\d{2}/\d{2}', text[s:], re.MULTILINE)
-        e = s + next_art.start() if next_art else len(text)
-        sec = text[s:e].strip()
-
-        soron, kikan = extract_soron_kikan(sec)
-        themes = extract_themes(sec)
-
-        wrap_m = re.search(r'\*\*7\.[^\n]+\*\*\n+(.{20,200}?)(?:\n\n|\Z)', sec, re.DOTALL)
-        wrap = clean(wrap_m.group(1))[:120] if wrap_m else ''
-
-        results.append({'label': '{}年 年次考察'.format(year), 'year': year,
-                        'soron': soron, 'kikan': kikan, 'oneliner': kikan,
-                        'themes': themes, 'wrap': wrap, 'phases': []})
-    results.sort(key=lambda x: x['year'], reverse=True)
-    return results
-
-# ── アコーディオンHTML生成 ─────────────────────────────────
 def build_accordion_html(items, id_prefix, color_primary='var(--green)'):
     if not items:
         return '<div style="color:#888;padding:20px;font-size:14px">データがまだありません</div>'
+    return '\n'.join(
+        build_accordion_item(
+            '{}-{}'.format(id_prefix, i), i == 0,
+            q['label'], q['subtitle'], q['soron'], q['kikan'],
+            q.get('phases', []), q.get('themes', []), q.get('wrap', ''),
+            color_primary
+        )
+        for i, q in enumerate(items)
+    )
 
-    parts = []
-    for i, q in enumerate(items):
-        qid = '{}-{}'.format(id_prefix, i)
-        is_open = (i == 0)
-        label   = H.escape(q['label'])
-        soron   = H.escape(q.get('soron', ''))
-        kikan   = H.escape(q.get('kikan', ''))
-        oneliner = H.escape(q.get('oneliner', ''))
-        subtitle = oneliner if oneliner else (kikan if kikan else label + 'の考察')
+# ── 四半期考察 ─────────────────────────────────────────────
+def extract_quarters(data):
+    results = []
+    for q in data.get('quarterly', []):
+        period = q.get('period', {})
+        year = period.get('year', '')
+        qnum = period.get('quarter', '')
+        label = '{}年Q{}'.format(year, qnum)
 
-        html  = '<div class="q-accordion" id="{}">\n'.format(qid)
-        html += '  <div class="q-header" onclick="toggleQ(\'{}\')">\n'.format(qid)
-        html += '    <div style="display:flex;align-items:center;gap:12px;flex:1;flex-wrap:wrap">\n'
-        html += '      <span style="background:{};color:#fff;font-size:11px;font-weight:900;padding:4px 12px;border-radius:12px">{}</span>\n'.format(color_primary, label)
-        html += '      <span style="font-size:13px;font-weight:700;color:var(--tx)">{}</span>\n'.format(subtitle)
-        html += '    </div>\n'
-        html += '    <span class="q-chevron" id="{}-chev">{}</span>\n'.format(qid, '▲' if is_open else '▼')
-        html += '  </div>\n'
-        html += '  <div class="q-body" id="{}-body" style="display:{}">\n'.format(qid, 'block' if is_open else 'none')
+        soron_lines = clean(q.get('summary', '')).split('\n')
+        soron = soron_lines[0] if soron_lines else ''
+        kikan = clean(q.get('period_definition', '') or '')
 
-        # 総論 + 期間定義
-        if soron or kikan:
-            html += '    <div style="background:linear-gradient(135deg,#E8F5E9,#FFFDE7);border-radius:12px;padding:14px 18px;margin-bottom:16px">\n'
-            if soron:
-                html += '      <div style="font-size:10px;font-weight:900;color:var(--ts);letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px">📌 総論</div>\n'
-                html += '      <div style="font-size:14px;font-weight:700;color:var(--tx);line-height:1.6;margin-bottom:{}px">{}</div>\n'.format(10 if kikan else 0, soron)
-            if kikan:
-                html += '      <div style="background:rgba(255,255,255,0.7);padding:8px 12px;border-radius:8px;font-size:13px;margin-top:8px">💡 期間定義：<strong>{}</strong></div>\n'.format(kikan)
-            html += '    </div>\n'
+        sections = q.get('sections', [])
+        themes = sections_to_themes(sections)
 
         # 月別フェーズ
-        if q.get('phases'):
-            html += '    <div style="margin-bottom:16px">\n'
-            html += '      <div style="font-size:11px;font-weight:900;color:var(--ts);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px">📊 月別フェーズ</div>\n'
-            html += '      <div style="display:flex;gap:10px;flex-wrap:wrap">\n'
-            for pi, ph in enumerate(q['phases'][:4]):
-                col, bg = PHASE_COLORS[pi % len(PHASE_COLORS)]
-                html += '        <div style="background:#fff;border-radius:12px;padding:14px;border:1.5px solid {};flex:1;min-width:150px">\n'.format(bg)
-                html += '          <div style="font-size:18px;margin-bottom:5px">{}</div>\n'.format(PHASE_ICONS[pi % len(PHASE_ICONS)])
-                html += '          <div style="font-size:12px;font-weight:900;color:{};margin-bottom:4px">{}</div>\n'.format(col, H.escape(ph['name']))
-                html += '          <div style="font-size:11px;color:var(--ts);line-height:1.6;margin-bottom:5px">{}</div>\n'.format('／'.join(H.escape(x) for x in ph['items']))
-                html += '          <div style="background:{};padding:4px 9px;border-radius:8px;font-size:11px;font-weight:700;color:{}">KW：{}</div>\n'.format(bg, col, H.escape(ph['kw']))
-                html += '        </div>\n'
-            html += '      </div>\n    </div>\n'
+        phases = []
+        for sec in sections:
+            h = sec.get('heading', '')
+            m = re.match(r'(\d+)月：(\S+フェーズ)', h)
+            if m:
+                body = sec.get('body', '')
+                items = [line.strip() for line in body.split('\n') if line.strip() and not line.startswith('👉')][:4]
+                kw_m = re.search(r'キーワード[：:]\s*(.+)', body)
+                phases.append({
+                    'name': m.group(2),
+                    'items': items,
+                    'kw': kw_m.group(1).strip() if kw_m else '',
+                })
 
-        # テーマ別考察
-        if q.get('themes'):
-            html += '    <div style="margin-bottom:16px">\n'
-            html += '      <div style="font-size:11px;font-weight:900;color:var(--ts);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px">🔍 テーマ別考察</div>\n'
-            html += '      <div style="display:flex;flex-direction:column;gap:8px">\n'
-            for ti, th in enumerate(q['themes']):
-                col = THEME_COLORS[ti % len(THEME_COLORS)]
-                num = '①②③④⑤⑥⑦'[ti] if ti < 7 else '•'
-                html += '        <div style="background:#fff;border-radius:10px;padding:12px;border:1.5px solid #eee;border-left:3px solid {}">\n'.format(col)
-                html += '          <div style="font-size:10px;font-weight:900;color:{};text-transform:uppercase;margin-bottom:4px">{} {}</div>\n'.format(col, num, H.escape(th['title']))
-                html += '          <div style="font-size:12px;color:var(--ts);line-height:1.6">{}</div>\n'.format(H.escape(th['body']))
-                html += '        </div>\n'
-            html += '      </div>\n    </div>\n'
+        results.append({
+            'label': label, 'subtitle': kikan or label + 'の考察',
+            'soron': soron, 'kikan': kikan,
+            'phases': phases, 'themes': themes, 'wrap': ''
+        })
+    return results
 
-        # 締め
-        if q.get('wrap'):
-            html += '    <div style="background:linear-gradient(135deg,#E8F5E9,#FFFDE7);border-radius:12px;padding:14px 18px">\n'
-            html += '      <div style="font-size:13px;font-weight:700;color:var(--tx);line-height:1.6">{}</div>\n'.format(H.escape(q['wrap']))
-            html += '    </div>\n'
+# ── 月次考察 ──────────────────────────────────────────────
+def extract_monthly_reviews(data):
+    results = []
+    for m in data.get('monthly', []):
+        period = m.get('period', {})
+        year = period.get('year', '')
+        month = period.get('month', '')
+        label = '{}年{}月'.format(year, month)
 
-        html += '  </div>\n</div>\n'
-        parts.append(html)
+        soron_lines = clean(m.get('summary', '')).split('\n')
+        soron = soron_lines[0] if soron_lines else ''
+        kikan = clean(m.get('period_definition', '') or '')
 
-    return '\n'.join(parts)
+        sections = m.get('sections', [])
+        themes = sections_to_themes(sections)
+
+        results.append({
+            'label': label, 'subtitle': kikan or label + 'の考察',
+            'soron': soron, 'kikan': kikan,
+            'phases': [], 'themes': themes, 'wrap': ''
+        })
+    results.sort(key=lambda x: x['label'], reverse=True)
+    return results
+
+# ── 年次考察 ──────────────────────────────────────────────
+def extract_annual_reviews(data):
+    results = []
+    for a in data.get('annual', []):
+        period = a.get('period', {})
+        year = period.get('year', '')
+        label = '{}年 年次考察'.format(year)
+
+        soron = clean(a.get('summary', ''))
+        kikan = clean(a.get('period_definition', '') or '')
+
+        sections = a.get('sections', [])
+        themes = sections_to_themes(sections, skip_headings={
+            '総論','期間定義','🌐 総括','🔮 次の論点'
+        })
+
+        # 年次の締め（7番目テーマのbody）
+        wrap = ''
+        for sec in sections:
+            if '一本の思想' in sec.get('heading', '') or '2025年を貫く' in sec.get('heading', ''):
+                body = sec.get('body', '')
+                wrap = clean(body.split('\n')[0])[:120] if body else ''
+                break
+
+        results.append({
+            'label': label, 'subtitle': soron[:60] if soron else label + 'の考察',
+            'soron': soron, 'kikan': kikan,
+            'phases': [], 'themes': themes, 'wrap': wrap
+        })
+    results.sort(key=lambda x: x['label'], reverse=True)
+    return results
 
 # ── メイン ────────────────────────────────────────────────
 def main():
-    docx_files = glob.glob('data/*.docx')
-    if not docx_files:
-        print("❌ data/ フォルダに .docx ファイルが見つかりません"); return
+    json_files = glob.glob('data/*.json')
+    if not json_files:
+        print("❌ data/ フォルダに .json ファイルが見つかりません"); return
 
-    docx_path = docx_files[0]
-    print("📄 読み込み: {}".format(docx_path))
+    json_path = json_files[0]
+    print("📄 読み込み: {}".format(json_path))
 
-    text            = docx_to_text(docx_path)
-    weeks_data      = extract_weeks(text)
-    articles_data   = extract_articles(text)
-    quarters        = extract_quarters(text)
-    monthly_reviews = extract_monthly_reviews(text)
-    annual_reviews  = extract_annual_reviews(text)
+    data            = load_json(json_path)
+    weeks_data      = extract_weeks(data)
+    articles_data   = extract_articles(data)
+    quarters        = extract_quarters(data)
+    monthly_reviews = extract_monthly_reviews(data)
+    annual_reviews  = extract_annual_reviews(data)
 
     themed = sum(1 for w in weeks_data if w['theme'])
-    print("   テキスト: {:,} 文字".format(len(text)))
     print("   週数: {}  考察付き: {}  記事: {}  四半期: {}件  月次: {}件  年次: {}件".format(
         len(weeks_data), themed, len(articles_data),
         len(quarters), len(monthly_reviews), len(annual_reviews)))
