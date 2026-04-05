@@ -667,7 +667,7 @@ const DATA=[...RAW].reverse();
 const CATS=["SNS・デジタル疲れ","推し活・オタク","AI・テクノロジー","消費・購買","働き方・キャリア","価値観・アイデンティティ","恋愛・人間関係","金融・お金"];
 const COLS=["#4CAF50","#FDD835","#29B6F6","#AB47BC","#FF7043","#26A69A","#EC407A","#FFA726"];
 const CAT_BG=["#E8F5E9","#FFFDE7","#E1F5FE","#F3E5F5","#FBE9E7","#E0F2F1","#FCE4EC","#FFF3E0"];
-const KWS=['距離','設計','摩擦','納得','壊れ','持続','安心','疲れ','軽く','自分','関係','感情','社会','守る','移行','不安','輪郭','発明','熱狂','最適化','選ば','盛り上げ','正解','リバランス','持続可能'];
+const KWS=typeof GLOBAL_KWS!=='undefined'?GLOBAL_KWS:['距離','設計','摩擦','納得','壊れ','持続','安心','疲れ','軽く','自分','関係','感情','社会','守る','移行','不安','輪郭','発明','熱狂','最適化','選ば','盛り上げ','正解','リバランス','持続可能'];
 
 function sw(w){
   // 新形式: 2026/03/30 〜 2026/04/03
@@ -892,15 +892,20 @@ rcat(CATS);
 
 // PAGE 3: キーワード
 (function(){
+  // keywords配列がある場合はそれを使い、なければsummary/themeテキストで判定
+  function hasKw(d, kw){
+    if(d.keywords&&d.keywords.length>0) return d.keywords.includes(kw);
+    const txt=(d.summary||d.theme||'');return txt.includes(kw);
+  }
   const kwData={};
-  KWS.forEach(kw=>{kwData[kw]={count:0,weeks:[]};DATA.forEach(d=>{const txt=(d.summary||d.theme||'');if(txt.includes(kw)){kwData[kw].count++;kwData[kw].weeks.push({week:d.week,theme:d.theme||txt.slice(0,80)});}});});
+  KWS.forEach(kw=>{kwData[kw]={count:0,weeks:[]};DATA.forEach(d=>{if(hasKw(d,kw)){kwData[kw].count++;kwData[kw].weeks.push({week:d.week,theme:d.theme||(d.summary||'').slice(0,80)});}});});
   const sorted=Object.entries(kwData).filter(([,v])=>v.count>0).sort((a,b)=>b[1].count-a[1].count);
   const top8=sorted.slice(0,8);
   new Chart(document.getElementById('kwchart'),{
     type:'line',
     data:{
       labels:DATA.map(d=>sw(d.week)),
-      datasets:top8.map(([kw],ki)=>{const col=COLS[ki%COLS.length];return{label:kw,data:DATA.map(d=>{const txt=(d.summary||d.theme||'');return txt.includes(kw)?1:null;}),borderColor:col,backgroundColor:col,pointRadius:DATA.map(d=>{const txt=(d.summary||d.theme||'');return txt.includes(kw)?9:0;}),pointHoverRadius:12,showLine:false,borderWidth:2,pointBackgroundColor:col,pointBorderColor:'#fff',pointBorderWidth:2};})
+      datasets:top8.map(([kw],ki)=>{const col=COLS[ki%COLS.length];return{label:kw,data:DATA.map(d=>hasKw(d,kw)?1:null),borderColor:col,backgroundColor:col,pointRadius:DATA.map(d=>hasKw(d,kw)?9:0),pointHoverRadius:12,showLine:false,borderWidth:2,pointBackgroundColor:col,pointBorderColor:'#fff',pointBorderWidth:2};})
     },
     options:{responsive:true,plugins:{legend:{display:true,position:'top',labels:{font:{size:11},boxWidth:12,padding:10,usePointStyle:true}},tooltip:{...tooltipOpts,callbacks:{title:i=>DATA[i[0].dataIndex].week,label:i=>{const d=DATA[i[0].dataIndex];return d.theme?'💬 '+d.theme.slice(0,50):'';}}}},scales:{x:{ticks:{maxRotation:50,font:{size:10}}},y:{display:false,min:-0.2,max:1.5}}}
   });
@@ -911,7 +916,7 @@ rcat(CATS);
     row.onclick=()=>{
       document.querySelectorAll('.kw-row').forEach(r=>r.classList.remove('active'));row.classList.add('active');
       const el=document.getElementById('kwdetail');
-      const items=kd.weeks.map(w=>{const hi=w.theme.replace(new RegExp(kw,'g'),`<span class="kw-highlight">${kw}</span>`);const ws=w.week.replace(/\d{4}年/,'').replace(/([〜～])/,' 〜 ');return`<div class="kw-titem"><div class="kw-tdate">${ws}</div><div class="kw-ttheme">${hi}</div></div>`;}).join('');
+      const items=kd.weeks.map(w=>{const hi=(w.theme||'').replace(new RegExp(kw,'g'),`<span class="kw-highlight">${kw}</span>`);const ws=w.week.replace(/\d{4}[\/年]/,'').replace(/([〜～])/,' 〜 ');return`<div class="kw-titem"><div class="kw-tdate">${ws}</div><div class="kw-ttheme">${hi}</div></div>`;}).join('');
       el.innerHTML=`<div class="kw-detail-title">🔑「${kw}」の出現履歴（${kd.count}週）</div><div class="kw-timeline">${items}</div>`;
     };
     rankEl.appendChild(row);
