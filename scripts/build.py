@@ -280,10 +280,10 @@ def build_global_kws(entries):
 
 # ── メイン ────────────────────────────────────────────────
 def main():
-    # 新スキーマJSON (zgene_v2.json) を優先、なければ zgene.json
-    json_files = glob.glob('data/zgene_v2.json') or glob.glob('data/*.json')
+    # zgene.json を読み込む
+    json_files = glob.glob('data/zgene.json')
     if not json_files:
-        print("❌ data/ フォルダに .json ファイルが見つかりません"); return
+        print("❌ data/zgene.json が見つかりません"); return
 
     json_path = json_files[0]
     print("📄 読み込み: {}".format(json_path))
