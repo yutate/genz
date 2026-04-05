@@ -669,8 +669,22 @@ const COLS=["#4CAF50","#FDD835","#29B6F6","#AB47BC","#FF7043","#26A69A","#EC407A
 const CAT_BG=["#E8F5E9","#FFFDE7","#E1F5FE","#F3E5F5","#FBE9E7","#E0F2F1","#FCE4EC","#FFF3E0"];
 const KWS=['距離','設計','摩擦','納得','壊れ','持続','安心','疲れ','軽く','自分','関係','感情','社会','守る','移行','不安','輪郭','発明','熱狂','最適化','選ば','盛り上げ','正解','リバランス','持続可能'];
 
-function sw(w){const m=w.match(/(\d+月\d+日)/);return m?m[1].replace('月','/').replace('日',''):w.slice(5,11)}
-function ym(w){const m=w.match(/(\d{4})年(\d+)月/);return m?m[1]+'/'+m[2].padStart(2,'0'):''}
+function sw(w){
+  // 新形式: 2026/03/30 〜 2026/04/03
+  const m1=w.match(/\d{4}\/(\d{2})\/(\d{2})/);
+  if(m1) return m1[1]+'/'+m1[2];
+  // 旧形式: 2026年3月30日
+  const m2=w.match(/(\d+)月(\d+)日/);
+  return m2?m2[1]+'/'+m2[2]:w.slice(5,11);
+}
+function ym(w){
+  // 新形式: 2026/03/30 〜 2026/04/03
+  const m1=w.match(/^(\d{4})\/(\d{2})\//);
+  if(m1) return m1[1]+'/'+m1[2];
+  // 旧形式: 2026年3月...
+  const m2=w.match(/(\d{4})年(\d+)月/);
+  return m2?m2[1]+'/'+m2[2].padStart(2,'0'):'';
+}
 
 // Stats
 const total=DATA.reduce((s,d)=>s+d.articles,0);
