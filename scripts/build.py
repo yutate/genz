@@ -243,8 +243,18 @@ def extract_monthly_reviews(data):
             'soron': soron, 'kikan': kikan,
             'phases': [], 'themes': themes, 'wrap': ''
         })
-    results.sort(key=lambda x: x['label'], reverse=True)
-    return results
+    # 年月の数値順でソート（例: 2026年3月 > 2025年10月）
+    def month_key(r):
+        m = re.match(r'(\d{4})年(\d+)月', r['label'])
+        return (int(m.group(1)), int(m.group(2))) if m else (0, 0)
+    results.sort(key=month_key, reverse=True)
+    seen = set()
+    deduped = []
+    for r in results:
+        if r['label'] not in seen:
+            seen.add(r['label'])
+            deduped.append(r)
+    return deduped
 
 # ── 年次考察 ──────────────────────────────────────────────
 def extract_annual_reviews(data):
