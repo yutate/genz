@@ -47,15 +47,20 @@ def extract_weeks(data):
         analysis = w.get('analysis') or {}
         theme = ''
         kikan = ''
+        summary = ''
         if analysis:
-            # sections から総論を取得
             for sec in analysis.get('sections', []):
                 if sec.get('heading') == '総論':
-                    # bodyの最初の行がテーマ
                     body = sec.get('body', '')
                     theme = clean(body.split('\n')[0]) if body else ''
                     break
             kikan = clean(analysis.get('period_definition', ''))
+            # summary: 全sectionsのbodyを結合（KW検索用・38週フル対応）
+            summary = ' '.join(
+                clean(sec.get('body', ''))
+                for sec in analysis.get('sections', [])
+                if sec.get('body')
+            )[:600]
 
         # 記事数
         articles = w.get('articles', [])
@@ -69,6 +74,7 @@ def extract_weeks(data):
             'articles': w.get('article_count', len(articles)),
             'theme': theme,
             'kikan': kikan,
+            'summary': summary,
             'categories': cats,
         })
 
