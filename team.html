@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Z世代シグナル — チームブリーフィング</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=DM+Serif+Display&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root {
+  --navy: #0F1F3D;
+  --navy-mid: #1E3A5F;
+  --blue: #2463EB;
+  --blue-lt: #E8F0FD;
+  --green: #16A34A;
+  --green-lt: #DCFCE7;
+  --amber: #D97706;
+  --amber-lt: #FEF3C7;
+  --red: #DC2626;
+  --red-lt: #FEE2E2;
+  --gray-50: #F8FAFC;
+  --gray-100: #F1F5F9;
+  --gray-200: #E2E8F0;
+  --gray-400: #94A3B8;
+  --gray-600: #475569;
+  --gray-800: #1E293B;
+  --tx: var(--gray-800);
+  --ts: var(--gray-600);
+  --bd: var(--gray-200);
+  --bg: var(--gray-50);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  background: var(--bg);
+  color: var(--tx);
+  font-size: 14px;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ── HEADER ── */
+.header {
+  background: var(--navy);
+  padding: 20px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.header-left { display: flex; align-items: center; gap: 20px; }
+.header-badge {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  color: #94A3B8;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+.header-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px;
+  color: #fff;
+  letter-spacing: .01em;
+}
+.header-period {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: #64748B;
+  background: rgba(255,255,255,0.06);
+  padding: 4px 12px;
+  border-radius: 4px;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.header-updated {
+  font-size: 11px;
+  color: #64748B;
+}
+
+/* ── MAIN ── */
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 28px 32px 48px;
+}
+
+/* ── THIS WEEK HERO ── */
+.hero {
+  background: var(--navy);
+  border-radius: 12px;
+  padding: 28px 32px;
+  margin-bottom: 24px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: start;
+}
+.hero-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  color: #64748B;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.hero-theme {
+  font-family: 'DM Serif Display', serif;
+  font-size: 24px;
+  color: #fff;
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+.hero-kikan {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(36,99,235,0.2);
+  border: 1px solid rgba(36,99,235,0.3);
+  color: #93C5FD;
+  font-size: 13px;
+  padding: 6px 14px;
+  border-radius: 6px;
+}
+.hero-kikan::before { content: '💡'; font-size: 12px; }
+.hero-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 160px;
+}
+.hero-stat {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  padding: 12px 16px;
+  text-align: center;
+}
+.hero-stat-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 26px;
+  font-weight: 500;
+  color: #fff;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.hero-stat-lbl {
+  font-size: 11px;
+  color: #64748B;
+}
+
+/* ── KW TAGS ── */
+.kw-section {
+  background: #fff;
+  border: 1px solid var(--bd);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 24px;
+}
+.section-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--ts);
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.kw-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.kw-tag {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid;
+}
+.kw-tag .kw-cnt {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  opacity: 0.7;
+}
+.kw-tag.hot   { background: #FEF2F2; border-color: #FECACA; color: #991B1B; }
+.kw-tag.warm  { background: #FFF7ED; border-color: #FED7AA; color: #92400E; }
+.kw-tag.cool  { background: #EFF6FF; border-color: #BFDBFE; color: #1E40AF; }
+.kw-tag.base  { background: var(--gray-100); border-color: var(--gray-200); color: var(--gray-600); }
+
+/* ── 2-COL GRID ── */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+@media(max-width: 768px) { .grid-2 { grid-template-columns: 1fr; } }
+
+/* ── CARD ── */
+.card {
+  background: #fff;
+  border: 1px solid var(--bd);
+  border-radius: 12px;
+  padding: 20px 24px;
+}
+.card-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--tx);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.card-title::before {
+  content: '';
+  display: block;
+  width: 3px;
+  height: 14px;
+  background: var(--blue);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+/* ── CHART ── */
+.chart-wrap { position: relative; height: 200px; }
+
+/* ── WEEKLY SUMMARY ── */
+.weeks-list { display: flex; flex-direction: column; gap: 10px; }
+.week-item {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 12px;
+  align-items: start;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--gray-100);
+  transition: background .15s;
+}
+.week-item:hover { background: var(--gray-50); }
+.week-item.latest {
+  border-color: var(--blue);
+  background: var(--blue-lt);
+}
+.week-date {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--ts);
+  padding-top: 2px;
+}
+.week-item.latest .week-date { color: var(--blue); font-weight: 500; }
+.week-theme {
+  font-size: 12px;
+  color: var(--tx);
+  line-height: 1.5;
+}
+.week-kws {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 5px;
+}
+.wkw {
+  font-size: 10px;
+  padding: 2px 7px;
+  border-radius: 3px;
+  background: var(--gray-100);
+  color: var(--gray-600);
+  font-weight: 500;
+}
+.week-item.latest .wkw {
+  background: rgba(36,99,235,0.12);
+  color: var(--blue);
+}
+
+/* ── INSIGHT CARDS ── */
+.insights { display: flex; flex-direction: column; gap: 10px; }
+.insight-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 12px;
+  border-radius: 8px;
+  background: var(--gray-50);
+  border: 1px solid var(--gray-100);
+}
+.insight-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.insight-body { flex: 1; }
+.insight-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  margin-bottom: 3px;
+}
+.insight-text { font-size: 12px; line-height: 1.55; color: var(--tx); }
+
+/* ── FOOTER ── */
+.footer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  color: var(--gray-400);
+  font-family: 'DM Mono', monospace;
+}
+.footer a {
+  color: var(--blue);
+  text-decoration: none;
+}
+.footer a:hover { text-decoration: underline; }
+
+/* ── RESPONSIVE ── */
+@media(max-width: 640px) {
+  .main { padding: 16px; }
+  .hero { grid-template-columns: 1fr; }
+  .hero-stats { flex-direction: row; }
+  .header { padding: 14px 16px; }
+  .hero-theme { font-size: 18px; }
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-left">
+    <span class="header-badge">Z世代 Signal</span>
+    <h1 class="header-title">チームブリーフィング</h1>
+  </div>
+  <div style="display:flex;align-items:center;gap:12px">
+    <span class="header-period" id="hdr-period">—</span>
+    <span class="header-updated" id="hdr-updated">—</span>
+  </div>
+</header>
+
+<main class="main">
+
+  <!-- HERO: 今週のテーマ -->
+  <section class="hero">
+    <div>
+      <div class="hero-label">今週のシグナル</div>
+      <div class="hero-theme" id="hero-theme">—</div>
+      <div class="hero-kikan" id="hero-kikan">—</div>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num" id="stat-articles">—</div>
+        <div class="hero-stat-lbl">今週の記事数</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num" id="stat-weeks">—</div>
+        <div class="hero-stat-lbl">累計観測週数</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KW: 直近8週の頻出キーワード -->
+  <section class="kw-section">
+    <div class="section-label">直近8週 頻出キーワード</div>
+    <div class="kw-tags" id="kw-tags">—</div>
+  </section>
+
+  <!-- 2カラム: トレンドチャート + 直近考察 -->
+  <div class="grid-2">
+
+    <!-- カテゴリトレンド（直近8週） -->
+    <div class="card">
+      <div class="card-title">カテゴリ別トレンド（直近8週）</div>
+      <div class="chart-wrap">
+        <canvas id="trend-chart"></canvas>
+      </div>
+    </div>
+
+    <!-- 直近3週の考察サマリー -->
+    <div class="card">
+      <div class="card-title">直近の考察サマリー</div>
+      <div class="weeks-list" id="weeks-list">—</div>
+    </div>
+
+  </div>
+
+  <!-- インサイト -->
+  <div class="card" style="margin-bottom:0">
+    <div class="card-title">マーケター視点のシグナル</div>
+    <div class="insights" id="insights">—</div>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <span>Z世代 Signal Atlas — Team View</span>
+  <span><a href="../" target="_blank">→ 詳細ダッシュボード</a></span>
+</footer>
+
+<script>
+// ── DATA ──────────────────────────────────────────────────
+// DATA_PLACEHOLDER
+
+// ── INIT ─────────────────────────────────────────────────
+(function(){
+  const weekly = ZGENE.filter(e => e.type === 'weekly');
+  const latest = weekly[0];
+  const essay  = latest.essay || {};
+
+  const CATS = ['推し活・オタク','AI・テクノロジー','消費・購買','SNS・デジタル疲れ','価値観・アイデンティティ','働き方・キャリア'];
+  const CAT_KWS = {
+    'SNS・デジタル疲れ': ['疲れ','SNS疲れ','デトックス','アナログ回帰','レトロ','BeReal'],
+    '推し活・オタク':    ['推し活','推し','オタク','ファン'],
+    'AI・テクノロジー':  ['AI','生成AI','ChatGPT','Gemini'],
+    '消費・購買':        ['消費','購買','節約','コスパ','タイパ'],
+    '働き方・キャリア':  ['就活','キャリア','転職','働き方'],
+    '価値観・アイデンティティ': ['価値観','本音','盛らない','距離'],
+  };
+  const COLS = ['#6366F1','#2463EB','#059669','#D97706','#8B5CF6','#EC4899'];
+
+  function catCount(w) {
+    const text = (w.articles||[]).map(a=>a.title||'').join(' ');
+    const res = {};
+    CATS.forEach(c => { res[c] = (CAT_KWS[c]||[]).reduce((s,kw)=>s+(text.split(kw).length-1),0); });
+    return res;
+  }
+
+  // ── HEADER ──
+  const p = latest.period;
+  document.getElementById('hdr-period').textContent =
+    p.start.replace(/(\d{4})-(\d{2})-(\d{2})/,'$1/$2/$3') + ' 〜 ' +
+    p.end.replace(/(\d{4})-(\d{2})-(\d{2})/,'$1/$2/$3');
+  document.getElementById('hdr-updated').textContent = '更新: ' + ZGENE_META.generated_at.slice(0,10);
+
+  // ── HERO ──
+  const summary = (essay.summary||'').split('\n')[0];
+  document.getElementById('hero-theme').textContent = summary;
+  const kikan = (essay.period_definition||'').replace(/^「|」$/g,'');
+  document.getElementById('hero-kikan').textContent = kikan || '—';
+  document.getElementById('stat-articles').textContent = (latest.articles||[]).length;
+  document.getElementById('stat-weeks').textContent = weekly.length;
+
+  // ── KW TAGS ──
+  const kwCounter = {};
+  weekly.slice(0,8).forEach(w => {
+    ((w.essay||{}).keywords||[]).forEach(kw => {
+      kwCounter[kw] = (kwCounter[kw]||0) + 1;
+    });
+  });
+  const sorted = Object.entries(kwCounter).sort((a,b)=>b[1]-a[1]);
+  const tagEl = document.getElementById('kw-tags');
+  tagEl.innerHTML = '';
+  sorted.forEach(([kw, cnt], i) => {
+    const cls = i < 2 ? 'hot' : i < 5 ? 'warm' : i < 10 ? 'cool' : 'base';
+    const tag = document.createElement('span');
+    tag.className = 'kw-tag ' + cls;
+    tag.innerHTML = kw + '<span class="kw-cnt">' + cnt + '週</span>';
+    tagEl.appendChild(tag);
+  });
+
+  // ── TREND CHART ──
+  const weeks8 = weekly.slice(0,8).reverse();
+  const labels = weeks8.map(w => w.period.start.slice(5));
+  const datasets = CATS.slice(0,4).map((cat,ci) => ({
+    label: cat,
+    data: weeks8.map(w => catCount(w)[cat] || 0),
+    borderColor: COLS[ci],
+    backgroundColor: COLS[ci] + '22',
+    borderWidth: 2,
+    pointRadius: 3,
+    pointHoverRadius: 5,
+    tension: 0.3,
+    fill: false,
+  }));
+
+  new Chart(document.getElementById('trend-chart'), {
+    type: 'line',
+    data: { labels, datasets },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: {
+          position: 'bottom',
+          labels: { font: { size: 10, family: 'Noto Sans JP' }, boxWidth: 10, padding: 10, usePointStyle: true }
+        },
+        tooltip: { titleFont: { size: 11 }, bodyFont: { size: 11 } }
+      },
+      scales: {
+        x: { grid: { display: false }, ticks: { font: { size: 10, family: 'DM Mono' } } },
+        y: { beginAtZero: true, grid: { color: '#F1F5F9' }, ticks: { font: { size: 10 }, stepSize: 5 } }
+      }
+    }
+  });
+
+  // ── WEEKLY SUMMARY (直近5週) ──
+  const listEl = document.getElementById('weeks-list');
+  listEl.innerHTML = '';
+  weekly.slice(0,5).forEach((w, i) => {
+    const e = w.essay || {};
+    const theme = (e.summary||'').split('\n')[0];
+    if (!theme) return;
+    const kws = (e.keywords||[]).slice(0,3);
+    const item = document.createElement('div');
+    item.className = 'week-item' + (i===0?' latest':'');
+    const label = w.period.start.slice(5) + '〜' + w.period.end.slice(5);
+    item.innerHTML = `
+      <div class="week-date">${label}</div>
+      <div>
+        <div class="week-theme">${theme}</div>
+        <div class="week-kws">${kws.map(k=>`<span class="wkw">${k}</span>`).join('')}</div>
+      </div>`;
+    listEl.appendChild(item);
+  });
+
+  // ── INSIGHTS ──
+  const insightEl = document.getElementById('insights');
+  const w8kws = Object.entries(kwCounter).sort((a,b)=>b[1]-a[1]);
+  const topKw = w8kws[0]?.[0] || '';
+  const topKw2 = w8kws[1]?.[0] || '';
+  const totalArticles = weekly.slice(0,8).reduce((s,w)=>s+(w.articles||[]).length,0);
+  const avgArticles = Math.round(totalArticles / 8);
+
+  const insightData = [
+    {
+      icon: '🔥',
+      bg: '#FEF2F2',
+      tag: 'RISING SIGNAL',
+      tagColor: '#991B1B',
+      text: `「${topKw}」が直近8週で最多出現。マーケ施策・コミュニケーション設計の最優先テーマ。`
+    },
+    {
+      icon: '📊',
+      bg: '#EFF6FF',
+      tag: 'VOLUME',
+      tagColor: '#1E40AF',
+      text: `直近8週の週平均記事数は${avgArticles}件。「${topKw2}」が継続的に出現しトレンドの根拠が厚い。`
+    },
+    {
+      icon: '💡',
+      bg: '#F0FDF4',
+      tag: 'THIS WEEK',
+      tagColor: '#166534',
+      text: `今週の期間定義：${kikan || summary.slice(0,40)}。次のアクションのフレームとして活用可。`
+    },
+  ];
+
+  insightEl.innerHTML = insightData.map(d => `
+    <div class="insight-item">
+      <div class="insight-icon" style="background:${d.bg}">${d.icon}</div>
+      <div class="insight-body">
+        <div class="insight-tag" style="color:${d.tagColor}">${d.tag}</div>
+        <div class="insight-text">${d.text}</div>
+      </div>
+    </div>`).join('');
+
+})();
+</script>
+</body>
+</html>
