@@ -344,5 +344,24 @@ def main():
         f.write(html)
     print("✅ 生成完了: {} ({}KB)".format(out, os.path.getsize(out) // 1024))
 
+    # ── チームダッシュボード生成 ──
+    team_tpl_path = os.path.join(os.path.dirname(__file__), '..', 'team.html')
+    if os.path.exists(team_tpl_path):
+        with open(team_tpl_path, encoding='utf-8') as f:
+            team_html = f.read()
+
+        # JSONデータをそのまま埋め込む（weekly/monthly/quarterly/annualすべて）
+        meta = {'generated_at': load_json(json_path).get('generated_at', '') if isinstance(load_json(json_path), dict) else ''}
+        # entriesはリスト形式なのでそのまま
+        team_js  = 'const ZGENE='      + json.dumps(entries,  ensure_ascii=False, separators=(',', ':')) + ';\n'
+        team_js += 'const ZGENE_META=' + json.dumps({'generated_at': json_path, 'weeks': len(weeks_data)}, ensure_ascii=False) + ';'
+        team_html = team_html.replace('// DATA_PLACEHOLDER', team_js)
+
+        team_out = 'dist/team/index.html'
+        os.makedirs('dist/team', exist_ok=True)
+        with open(team_out, 'w', encoding='utf-8') as f:
+            f.write(team_html)
+        print("✅ チーム用生成: {} ({}KB)".format(team_out, os.path.getsize(team_out) // 1024))
+
 if __name__ == '__main__':
     main()
