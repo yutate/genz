@@ -85,6 +85,7 @@
     display: grid;
     grid-template-columns: 310px 1fr;
     height: calc(100vh - 49px);
+    overflow: hidden;
   }
 
   /* ── Left Panel ── */
@@ -411,9 +412,23 @@
   ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
 
   @media (max-width: 680px) {
-    .layout { grid-template-columns: 1fr; grid-template-rows: auto 1fr; }
-    .left-panel { max-height: 48vh; border-right: none; border-bottom: 1px solid var(--border); padding: 14px; }
-    .right-panel { height: calc(100vh - 49px - 48vh); }
+    .layout {
+      grid-template-columns: 1fr;
+      height: auto;
+      min-height: calc(100vh - 49px);
+    }
+    .left-panel {
+      max-height: none;
+      height: auto;
+      overflow-y: visible;
+      border-right: none;
+      border-bottom: 1px solid var(--border);
+      padding: 16px;
+    }
+    .right-panel {
+      height: 75vh;
+      min-height: 460px;
+    }
   }
 </style>
 </head>
