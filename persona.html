@@ -629,15 +629,25 @@
           <label>関心・ライフスタイル軸</label>
           <div class="quick-tags" id="interest-tags">
             <span class="tag" data-val="推し活・ファンダム">推し活</span>
-            <span class="tag" data-val="セルフケア・メンタル">セルフケア</span>
+            <span class="tag" data-val="セルフケア・メンタルヘルス">セルフケア</span>
             <span class="tag" data-val="ファッション・トレンド">ファッション</span>
             <span class="tag" data-val="節約・コスパ志向">節約</span>
-            <span class="tag" data-val="キャリア・副業">キャリア</span>
+            <span class="tag" data-val="キャリア・副業・就活">キャリア</span>
             <span class="tag" data-val="SNS・デジタル文化">SNS</span>
             <span class="tag" data-val="恋愛・人間関係">恋愛</span>
             <span class="tag" data-val="旅行・体験消費">旅行</span>
-            <span class="tag" data-val="フード・グルメ">フード</span>
+            <span class="tag" data-val="フード・グルメ・カフェ">フード</span>
             <span class="tag" data-val="AI・テクノロジー">テック</span>
+            <span class="tag" data-val="美容・スキンケア">美容</span>
+            <span class="tag" data-val="音楽・ライブ・フェス">音楽</span>
+            <span class="tag" data-val="映画・アニメ・動画">映像</span>
+            <span class="tag" data-val="スポーツ・フィットネス">スポーツ</span>
+            <span class="tag" data-val="読書・学び・自己啓発">学び</span>
+            <span class="tag" data-val="ゲーム・eスポーツ">ゲーム</span>
+            <span class="tag" data-val="環境・サステナビリティ">サステナ</span>
+            <span class="tag" data-val="投資・資産形成">投資</span>
+            <span class="tag" data-val="地元・地方・Uターン">地方</span>
+            <span class="tag" data-val="ペット・動物">ペット</span>
           </div>
         </div>
 
@@ -783,7 +793,8 @@ function getKey() {
 function applyTheme(theme) {
   document.documentElement.setAttribute('data-theme', theme);
   localStorage.setItem('persona_theme', theme);
-  document.getElementById('theme-toggle').textContent = theme === 'dark' ? '☀️' : '🌙';
+  const btn = document.getElementById('theme-toggle');
+  if (btn) btn.textContent = theme === 'dark' ? '☀️' : '🌙';
 }
 function toggleTheme() {
   const current = document.documentElement.getAttribute('data-theme') || 'light';
