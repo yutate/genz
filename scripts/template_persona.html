@@ -664,6 +664,34 @@ window.addEventListener('DOMContentLoaded', () => {
   onAiChange();
 });
 
+// ─── Retry helper ───
+async function fetchWithRetry(fn, maxRetry = 3, statusEl = null) {
+  const delays = [5, 15, 30];
+  for (let i = 0; i < maxRetry; i++) {
+    try {
+      return await fn();
+    } catch(e) {
+      const isRetryable = e.status === 429 || e.status === 500 || e.status === 503;
+      if (!isRetryable || i === maxRetry - 1) throw e;
+      const wait = delays[i];
+      const total = maxRetry - 1;
+      if (statusEl) statusEl.textContent = `混雑中のため待機しています... ${wait}秒後に再試行 (${i+1}/${total})`;
+      await new Promise(r => setTimeout(r, wait * 1000));
+      if (statusEl) statusEl.textContent = 'GENERATING PERSONA...';
+    }
+  }
+}
+
+async function callAPI(body, headers, url) {
+  const res = await fetch(url, { method: 'POST', headers, body: JSON.stringify(body) });
+  if (!res.ok) {
+    const err = new Error('API error: ' + res.status);
+    err.status = res.status;
+    throw err;
+  }
+  return res.json();
+}
+
 // ─── Interest tags ───
 document.querySelectorAll('#interest-tags .tag').forEach(tag => {
   tag.addEventListener('click', () => {
@@ -744,34 +772,34 @@ ${signalCtx}
     const ai = currentAi();
     const cfg = AI_CONFIGS[ai];
     localStorage.setItem('persona_last_ai', ai);
+    const statusEl = document.getElementById('gen-status');
     let raw;
-    if (ai === 'claude') {
-      const res = await fetch('https://api.anthropic.com/v1/messages', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'x-api-key': apiKey, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
-        body: JSON.stringify({ model: cfg.model, max_tokens: 1000, messages: [{ role: 'user', content: prompt }] })
-      });
-      const data = await res.json();
-      raw = data.content[0].text;
-    } else if (ai === 'openai') {
-      const res = await fetch('https://api.openai.com/v1/chat/completions', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + apiKey },
-        body: JSON.stringify({ model: cfg.model, max_tokens: 1000, messages: [{ role: 'user', content: prompt }] })
-      });
-      const data = await res.json();
-      raw = data.choices[0].message.content;
-    } else {
-      const res = await fetch('https://generativelanguage.googleapis.com/v1beta/models/' + cfg.model + ':generateContent?key=' + apiKey, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
-      });
-      const data = await res.json();
-      console.log('Gemini gen response:', JSON.stringify(data).slice(0, 500));
-      if (data.error) throw new Error('Gemini error: ' + data.error.message);
-      raw = data.candidates[0].content.parts[0].text;
-    }
+    await fetchWithRetry(async () => {
+      let data;
+      if (ai === 'claude') {
+        data = await callAPI(
+          { model: cfg.model, max_tokens: 1000, messages: [{ role: 'user', content: prompt }] },
+          { 'Content-Type': 'application/json', 'x-api-key': apiKey, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
+          'https://api.anthropic.com/v1/messages'
+        );
+        raw = data.content[0].text;
+      } else if (ai === 'openai') {
+        data = await callAPI(
+          { model: cfg.model, max_tokens: 1000, messages: [{ role: 'user', content: prompt }] },
+          { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + apiKey },
+          'https://api.openai.com/v1/chat/completions'
+        );
+        raw = data.choices[0].message.content;
+      } else {
+        data = await callAPI(
+          { contents: [{ parts: [{ text: prompt }] }] },
+          { 'Content-Type': 'application/json' },
+          'https://generativelanguage.googleapis.com/v1beta/models/' + cfg.model + ':generateContent?key=' + apiKey
+        );
+        if (data.error) { const e = new Error(data.error.message); e.status = data.error.code; throw e; }
+        raw = data.candidates[0].content.parts[0].text;
+      }
+    }, 3, statusEl);
     raw = raw.replace(/```json|```/g, '').trim();
     const persona = JSON.parse(raw);
     personaData = persona;
@@ -780,7 +808,7 @@ ${signalCtx}
     initChat(persona);
   } catch(e) {
     console.error(e);
-    console.error('Generation error:', e); alert('生成に失敗しました: ' + e.message);
+    console.error('Generation error:', e); alert('生成に失敗しました（3回リトライ後）: ' + e.message);
   } finally {
     btn.disabled = false;
     status.classList.remove('show');
@@ -869,35 +897,34 @@ async function sendMessage() {
     const ai = currentAi();
     const cfg = AI_CONFIGS[ai];
     let reply;
-    if (ai === 'claude') {
-      const res = await fetch('https://api.anthropic.com/v1/messages', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'x-api-key': apiKey, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
-        body: JSON.stringify({ model: cfg.model, max_tokens: 1000, system: system, messages: conversationHistory })
-      });
-      const data = await res.json();
-      reply = data.content[0].text;
-    } else if (ai === 'openai') {
-      const msgs = [{ role: 'system', content: system }, ...conversationHistory];
-      const res = await fetch('https://api.openai.com/v1/chat/completions', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + apiKey },
-        body: JSON.stringify({ model: cfg.model, max_tokens: 1000, messages: msgs })
-      });
-      const data = await res.json();
-      reply = data.choices[0].message.content;
-    } else {
-      const contents = conversationHistory.map(m => ({ role: m.role === 'assistant' ? 'model' : 'user', parts: [{ text: m.content }] }));
-      const res = await fetch('https://generativelanguage.googleapis.com/v1beta/models/' + cfg.model + ':generateContent?key=' + apiKey, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ system_instruction: { parts: [{ text: system }] }, contents, generationConfig: { maxOutputTokens: 1000 } })
-      });
-      const data = await res.json();
-      console.log('Gemini send response:', JSON.stringify(data).slice(0, 500));
-      if (data.error) throw new Error('Gemini error: ' + data.error.message);
-      reply = data.candidates[0].content.parts[0].text;
-    }
+    await fetchWithRetry(async () => {
+      let data;
+      if (ai === 'claude') {
+        data = await callAPI(
+          { model: cfg.model, max_tokens: 1000, system: system, messages: conversationHistory },
+          { 'Content-Type': 'application/json', 'x-api-key': apiKey, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
+          'https://api.anthropic.com/v1/messages'
+        );
+        reply = data.content[0].text;
+      } else if (ai === 'openai') {
+        const msgs = [{ role: 'system', content: system }, ...conversationHistory];
+        data = await callAPI(
+          { model: cfg.model, max_tokens: 1000, messages: msgs },
+          { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + apiKey },
+          'https://api.openai.com/v1/chat/completions'
+        );
+        reply = data.choices[0].message.content;
+      } else {
+        const contents = conversationHistory.map(m => ({ role: m.role === 'assistant' ? 'model' : 'user', parts: [{ text: m.content }] }));
+        data = await callAPI(
+          { system_instruction: { parts: [{ text: system }] }, contents, generationConfig: { maxOutputTokens: 1000 } },
+          { 'Content-Type': 'application/json' },
+          'https://generativelanguage.googleapis.com/v1beta/models/' + cfg.model + ':generateContent?key=' + apiKey
+        );
+        if (data.error) { const e = new Error(data.error.message); e.status = data.error.code; throw e; }
+        reply = data.candidates[0].content.parts[0].text;
+      }
+    }, 3);
     removeTyping(typingId);
     appendMessage('assistant', reply);
     conversationHistory.push({ role: 'assistant', content: reply });
