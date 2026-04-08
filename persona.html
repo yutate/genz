@@ -8,17 +8,33 @@
   @import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Noto+Sans+JP:wght@300;400;500&display=swap');
 
   :root {
-    --bg: #0c0c0f;
-    --surface: #13131a;
-    --surface2: #1a1a24;
-    --border: rgba(255,255,255,0.07);
-    --border-active: rgba(255,255,255,0.18);
-    --text: #e8e8f0;
-    --text-dim: #666680;
-    --text-muted: #3a3a50;
-    --accent: #7c6ef7;
-    --accent-glow: rgba(124,110,247,0.15);
-    --accent2: #4ec9b0;
+    --bg: #ffffff;
+    --surface: #f5f5f7;
+    --surface2: #ededf0;
+    --border: rgba(0,0,0,0.09);
+    --border-active: rgba(0,0,0,0.22);
+    --text: #1a1a2e;
+    --text-dim: #6b6b80;
+    --text-muted: #b0b0c0;
+    --accent: #6558f5;
+    --accent-glow: rgba(101,88,245,0.12);
+    --accent2: #2bb5a0;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0c0c0f;
+      --surface: #13131a;
+      --surface2: #1a1a24;
+      --border: rgba(255,255,255,0.07);
+      --border-active: rgba(255,255,255,0.18);
+      --text: #e8e8f0;
+      --text-dim: #666680;
+      --text-muted: #3a3a50;
+      --accent: #7c6ef7;
+      --accent-glow: rgba(124,110,247,0.15);
+      --accent2: #4ec9b0;
+    }
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -28,6 +44,7 @@
     color: var(--text);
     font-family: 'Noto Sans JP', sans-serif;
     font-weight: 300;
+    font-size: 15px;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -197,7 +214,7 @@
     animation: fadeUp 0.35s ease;
   }
   .persona-card.show { display: flex; }
-  .persona-name { font-size: 14px; font-weight: 500; line-height: 1.4; }
+  .persona-name { font-size: 15px; font-weight: 500; line-height: 1.4; }
   .persona-meta { display: flex; flex-wrap: wrap; gap: 5px; }
   .meta-chip {
     font-family: 'DM Mono', monospace;
@@ -288,7 +305,7 @@
     font-weight: 500;
     flex-shrink: 0;
   }
-  .chat-name { font-size: 13px; font-weight: 500; }
+  .chat-name { font-size: 14px; font-weight: 500; }
   .chat-sub { font-size: 11px; color: var(--text-dim); font-family: 'DM Mono', monospace; }
 
   .messages {
@@ -322,18 +339,18 @@
   .msg-bubble {
     padding: 9px 13px;
     border-radius: 12px;
-    font-size: 13px;
-    line-height: 1.78;
+    font-size: 14px;
+    line-height: 1.8;
     letter-spacing: 0.01em;
     white-space: pre-wrap;
   }
   .message.user .msg-bubble {
-    background: #1e1e2e;
+    background: var(--surface2);
     border: 1px solid var(--border);
     border-top-right-radius: 3px;
   }
   .message.assistant .msg-bubble {
-    background: #161620;
+    background: var(--surface);
     border: 1px solid var(--border);
     border-top-left-radius: 3px;
   }
@@ -405,6 +422,56 @@
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(8px); }
     to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── Persona Library ── */
+  .lib-section { border-top: 1px solid var(--border); padding-top: 16px; }
+  .lib-list { display: flex; flex-direction: column; gap: 6px; max-height: 180px; overflow-y: auto; }
+  .lib-item {
+    display: flex; align-items: center; gap: 8px;
+    padding: 8px 10px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    cursor: pointer;
+    transition: border-color 0.15s;
+  }
+  .lib-item:hover { border-color: var(--accent); }
+  .lib-item-info { flex: 1; min-width: 0; }
+  .lib-item-name { font-size: 12px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .lib-item-meta { font-size: 10px; color: var(--text-dim); font-family: 'DM Mono', monospace; }
+  .lib-item-del {
+    background: none; border: none; color: var(--text-muted);
+    font-size: 14px; cursor: pointer; padding: 2px 4px;
+    transition: color 0.15s; flex-shrink: 0;
+  }
+  .lib-item-del:hover { color: #f07070; }
+  .lib-empty { font-size: 11px; color: var(--text-muted); font-family: 'DM Mono', monospace; padding: 8px 0; }
+  .lib-actions { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
+  .lib-btn {
+    background: none; border: 1px solid var(--border);
+    color: var(--text-dim); font-family: 'DM Mono', monospace;
+    font-size: 10px; padding: 5px 10px; border-radius: 5px;
+    cursor: pointer; letter-spacing: 0.06em; transition: all 0.15s;
+  }
+  .lib-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ── Chat toolbar ── */
+  .chat-toolbar {
+    padding: 6px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex; gap: 7px; align-items: center;
+  }
+  .toolbar-btn {
+    background: none; border: 1px solid var(--border);
+    color: var(--text-dim); font-family: 'DM Mono', monospace;
+    font-size: 10px; padding: 4px 9px; border-radius: 5px;
+    cursor: pointer; letter-spacing: 0.05em; transition: all 0.15s;
+  }
+  .toolbar-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .toolbar-model {
+    margin-left: auto; font-family: 'DM Mono', monospace;
+    font-size: 10px; color: var(--text-muted); letter-spacing: 0.06em;
   }
 
   ::-webkit-scrollbar { width: 4px; }
@@ -535,6 +602,11 @@
         </div>
 
         <div>
+          <label>生成モデル</label>
+          <select id="gen-model-select" class="api-input" style="width:100%"></select>
+        </div>
+
+        <div>
           <label>職業・ライフステージ</label>
           <input type="text" id="job" placeholder="大学生 / 新卒会社員 / フリーランス…" />
         </div>
@@ -572,6 +644,17 @@
       <div class="persona-desc" id="card-desc"></div>
       <div class="persona-kws" id="card-kws"></div>
       <button class="reset-btn" onclick="resetPersona()">↩ 作り直す</button>
+      <button class="reset-btn" style="background:var(--accent-glow);border-color:var(--accent);color:var(--accent)" onclick="savePersonaToLib()">＋ ライブラリに保存</button>
+    </div>
+
+    <!-- Persona Library -->
+    <div class="lib-section" id="lib-section">
+      <div class="section-label">ペルソナライブラリ</div>
+      <div class="lib-list" id="lib-list"></div>
+      <div class="lib-actions">
+        <button class="lib-btn" onclick="exportLib()">⬇ エクスポート</button>
+        <label class="lib-btn" style="cursor:pointer">⬆ インポート<input type="file" accept=".json" style="display:none" onchange="importLib(event)"></label>
+      </div>
     </div>
   </div>
 
@@ -596,6 +679,11 @@
         </div>
       </div>
 
+      <div class="chat-toolbar">
+        <button class="toolbar-btn" onclick="exportChat()">⬇ 会話保存</button>
+        <label class="toolbar-btn" style="cursor:pointer">⬆ 会話読込<input type="file" accept=".json" style="display:none" onchange="importChat(event)"></label>
+        <span class="toolbar-model" id="toolbar-model">HAIKU</span>
+      </div>
       <div class="messages" id="messages"></div>
       <div class="suggestions" id="suggestions"></div>
 
@@ -625,20 +713,34 @@ const AI_CONFIGS = {
   claude: {
     placeholder: 'sk-ant-...',
     hint: '取得先: <a href="https://console.anthropic.com/" target="_blank">console.anthropic.com</a>',
-    model: 'claude-sonnet-4-6',
+    genModels:  [
+      { value: 'claude-sonnet-4-6',          label: 'Sonnet 4.6（高精度）' },
+      { value: 'claude-haiku-4-5-20251001',  label: 'Haiku 4.5（高速・低コスト）' },
+    ],
+    chatModel: 'claude-haiku-4-5-20251001',
   },
   openai: {
     placeholder: 'sk-...',
     hint: '取得先: <a href="https://platform.openai.com/api-keys" target="_blank">platform.openai.com</a>',
-    model: 'gpt-4o',
+    genModels:  [
+      { value: 'gpt-4o',      label: 'GPT-4o（高精度）' },
+      { value: 'gpt-4o-mini', label: 'GPT-4o mini（高速・低コスト）' },
+    ],
+    chatModel: 'gpt-4o-mini',
   },
   gemini: {
     placeholder: 'AIza...',
     hint: '取得先: <a href="https://aistudio.google.com/app/apikey" target="_blank">aistudio.google.com</a> — 無料枠あり',
-    model: 'gemini-2.5-flash',
+    genModels:  [
+      { value: 'gemini-2.5-flash', label: 'Gemini 2.5 Flash' },
+    ],
+    chatModel: 'gemini-2.5-flash',
   },
 };
 function currentAi() { return document.getElementById('ai-select').value; }
+function currentGenModel() {
+  return document.getElementById('gen-model-select').value;
+}
 function onAiChange() {
   const ai = currentAi();
   const cfg = AI_CONFIGS[ai];
@@ -647,6 +749,11 @@ function onAiChange() {
   const saved = localStorage.getItem('persona_api_key_' + ai);
   document.getElementById('api-key-input').value = saved || '';
   document.getElementById('api-saved').style.display = saved ? 'block' : 'none';
+  // 生成モデルセレクタを更新
+  const sel = document.getElementById('gen-model-select');
+  sel.innerHTML = cfg.genModels.map(m =>
+    '<option value="' + m.value + '">' + m.label + '</option>'
+  ).join('');
 }
 function saveKey() {
   const val = document.getElementById('api-key-input').value.trim();
@@ -662,6 +769,7 @@ window.addEventListener('DOMContentLoaded', () => {
   const lastAi = localStorage.getItem('persona_last_ai') || 'claude';
   document.getElementById('ai-select').value = lastAi;
   onAiChange();
+  renderLib();
 });
 
 // ─── Retry helper ───
@@ -778,23 +886,23 @@ ${signalCtx}
       let data;
       if (ai === 'claude') {
         data = await callAPI(
-          { model: cfg.model, max_tokens: 1000, messages: [{ role: 'user', content: prompt }] },
+          { model: currentGenModel(), max_tokens: 1000, messages: [{ role: 'user', content: prompt }] },
           { 'Content-Type': 'application/json', 'x-api-key': apiKey, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
           'https://api.anthropic.com/v1/messages'
         );
         raw = data.content[0].text;
       } else if (ai === 'openai') {
         data = await callAPI(
-          { model: cfg.model, max_tokens: 1000, messages: [{ role: 'user', content: prompt }] },
+          { model: currentGenModel(), max_tokens: 1000, messages: [{ role: 'user', content: prompt }] },
           { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + apiKey },
           'https://api.openai.com/v1/chat/completions'
         );
         raw = data.choices[0].message.content;
       } else {
         data = await callAPI(
-          { contents: [{ parts: [{ text: prompt }] }] },
+          { contents: [{ parts: [{ text: prompt }] }] }, // genModel used via URL
           { 'Content-Type': 'application/json' },
-          'https://generativelanguage.googleapis.com/v1beta/models/' + cfg.model + ':generateContent?key=' + apiKey
+          'https://generativelanguage.googleapis.com/v1beta/models/' + cfg.chatModel + ':generateContent?key=' + apiKey
         );
         if (data.error) { const e = new Error(data.error.message); e.status = data.error.code; throw e; }
         raw = data.candidates[0].content.parts[0].text;
@@ -852,6 +960,7 @@ function initChat(p) {
   appendMessage('assistant', 'はじめまして、' + p.name + 'です。\n' + p.description);
   renderSuggestions(p.suggestedQuestions || []);
 
+  updateToolbarModel();
   document.getElementById('user-input').disabled = false;
   document.getElementById('send-btn').disabled = false;
   document.getElementById('user-input').focus();
@@ -901,7 +1010,7 @@ async function sendMessage() {
       let data;
       if (ai === 'claude') {
         data = await callAPI(
-          { model: cfg.model, max_tokens: 1000, system: system, messages: conversationHistory },
+          { model: cfg.chatModel, max_tokens: 1000, system: system, messages: conversationHistory },
           { 'Content-Type': 'application/json', 'x-api-key': apiKey, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
           'https://api.anthropic.com/v1/messages'
         );
@@ -909,7 +1018,7 @@ async function sendMessage() {
       } else if (ai === 'openai') {
         const msgs = [{ role: 'system', content: system }, ...conversationHistory];
         data = await callAPI(
-          { model: cfg.model, max_tokens: 1000, messages: msgs },
+          { model: cfg.chatModel, max_tokens: 1000, messages: msgs },
           { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + apiKey },
           'https://api.openai.com/v1/chat/completions'
         );
@@ -919,7 +1028,7 @@ async function sendMessage() {
         data = await callAPI(
           { system_instruction: { parts: [{ text: system }] }, contents, generationConfig: { maxOutputTokens: 1000 } },
           { 'Content-Type': 'application/json' },
-          'https://generativelanguage.googleapis.com/v1beta/models/' + cfg.model + ':generateContent?key=' + apiKey
+          'https://generativelanguage.googleapis.com/v1beta/models/' + cfg.chatModel + ':generateContent?key=' + apiKey
         );
         if (data.error) { const e = new Error(data.error.message); e.status = data.error.code; throw e; }
         reply = data.candidates[0].content.parts[0].text;
@@ -991,6 +1100,156 @@ function resetPersona() {
   selectedInterests.clear();
   document.querySelectorAll('#interest-tags .tag').forEach(t => t.classList.remove('active'));
 }
+
+// ─── Persona Library ───
+function getLib() {
+  try { return JSON.parse(localStorage.getItem('persona_lib') || '[]'); } catch(e) { return []; }
+}
+function saveLib(lib) { localStorage.setItem('persona_lib', JSON.stringify(lib)); }
+
+function savePersonaToLib() {
+  if (!personaData) return;
+  const lib = getLib();
+  const entry = {
+    id: Date.now(),
+    savedAt: new Date().toISOString(),
+    persona: personaData,
+    history: conversationHistory,
+  };
+  lib.unshift(entry);
+  if (lib.length > 20) lib.splice(20);
+  saveLib(lib);
+  renderLib();
+  alert('「' + personaData.name + '」をライブラリに保存しました');
+}
+
+function loadPersonaFromLib(id) {
+  const lib = getLib();
+  const entry = lib.find(e => e.id === id);
+  if (!entry) return;
+  personaData = entry.persona;
+  conversationHistory = entry.history || [];
+  renderPersonaCard(personaData);
+  initChatFromLib(personaData, conversationHistory);
+}
+
+function deleteFromLib(id) {
+  const lib = getLib().filter(e => e.id !== id);
+  saveLib(lib);
+  renderLib();
+}
+
+function renderLib() {
+  const lib = getLib();
+  const el = document.getElementById('lib-list');
+  if (!lib.length) {
+    el.innerHTML = '<div class="lib-empty">保存済みペルソナはありません</div>';
+    return;
+  }
+  el.innerHTML = lib.map(e => {
+    const date = new Date(e.savedAt).toLocaleDateString('ja-JP', {month:'numeric',day:'numeric'});
+    const turns = Math.floor((e.history||[]).length / 2);
+    return '<div class="lib-item">'
+      + '<div class="lib-item-info" onclick="loadPersonaFromLib(' + e.id + ')">'
+      + '<div class="lib-item-name">' + e.persona.name + '</div>'
+      + '<div class="lib-item-meta">' + (e.persona.age||'') + ' · ' + date + ' · ' + turns + '往復</div>'
+      + '</div>'
+      + '<button class="lib-item-del" onclick="deleteFromLib(' + e.id + ')">✕</button>'
+      + '</div>';
+  }).join('');
+}
+
+function exportLib() {
+  const lib = getLib();
+  if (!lib.length) { alert('保存済みペルソナがありません'); return; }
+  download('persona_library.json', JSON.stringify(lib, null, 2));
+}
+
+function importLib(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    try {
+      const data = JSON.parse(e.target.result);
+      if (!Array.isArray(data)) throw new Error('invalid');
+      const current = getLib();
+      const merged = [...data, ...current].reduce((acc, item) => {
+        if (!acc.find(x => x.id === item.id)) acc.push(item);
+        return acc;
+      }, []);
+      merged.sort((a, b) => b.id - a.id);
+      saveLib(merged.slice(0, 20));
+      renderLib();
+      alert(data.length + '件をインポートしました');
+    } catch(e) { alert('読み込みに失敗しました'); }
+  };
+  reader.readAsText(file);
+  event.target.value = '';
+}
+
+// ─── Chat Export / Import ───
+function exportChat() {
+  if (!personaData) return;
+  const data = { persona: personaData, history: conversationHistory, exportedAt: new Date().toISOString() };
+  download('chat_' + personaData.name + '_' + Date.now() + '.json', JSON.stringify(data, null, 2));
+}
+
+function importChat(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    try {
+      const data = JSON.parse(e.target.result);
+      if (!data.persona) throw new Error('invalid');
+      personaData = data.persona;
+      conversationHistory = data.history || [];
+      renderPersonaCard(personaData);
+      initChatFromLib(personaData, conversationHistory);
+    } catch(e) { alert('読み込みに失敗しました'); }
+  };
+  reader.readAsText(file);
+  event.target.value = '';
+}
+
+function initChatFromLib(p, history) {
+  document.getElementById('empty-state').style.display = 'none';
+  document.getElementById('chat-area').classList.add('show');
+  document.getElementById('chat-avatar').textContent = p.name.charAt(0);
+  document.getElementById('chat-name').textContent = p.name + '（' + p.age + '）';
+  document.getElementById('chat-sub').textContent = p.tagline;
+  document.getElementById('messages').innerHTML = '';
+
+  // 保存済み会話を再描画
+  history.forEach(m => appendMessage(m.role, m.content));
+
+  if (!history.length) {
+    appendMessage('assistant', 'はじめまして、' + p.name + 'です。
+' + p.description);
+    renderSuggestions(p.suggestedQuestions || []);
+  }
+  updateToolbarModel();
+  document.getElementById('user-input').disabled = false;
+  document.getElementById('send-btn').disabled = false;
+  document.getElementById('user-input').focus();
+}
+
+function updateToolbarModel() {
+  const ai = currentAi();
+  const cfg = AI_CONFIGS[ai];
+  document.getElementById('toolbar-model').textContent =
+    (cfg.chatModel || '').split('-').slice(0,3).join('-').toUpperCase();
+}
+
+function download(filename, text) {
+  const a = document.createElement('a');
+  a.href = 'data:application/json;charset=utf-8,' + encodeURIComponent(text);
+  a.download = filename;
+  a.click();
+}
+
+
 
 function handleKey(e) {
   if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
