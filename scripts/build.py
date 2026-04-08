@@ -363,5 +363,53 @@ def main():
             f.write(team_html)
         print("✅ チーム用生成: {} ({}KB)".format(team_out, os.path.getsize(team_out) // 1024))
 
+    # ── ペルソナページ生成 ──
+    persona_tpl_path = os.path.join(os.path.dirname(__file__), 'template_persona.html')
+    if os.path.exists(persona_tpl_path):
+        with open(persona_tpl_path, encoding='utf-8') as f:
+            persona_html = f.read()
+
+        persona_data = build_persona_data(entries)
+        persona_js = 'const PERSONA_DATA=' + json.dumps(persona_data, ensure_ascii=False, separators=(',', ':')) + ';'
+        persona_html = persona_html.replace('// PERSONA_DATA_PLACEHOLDER', persona_js)
+
+        persona_out = 'dist/persona.html'
+        with open(persona_out, 'w', encoding='utf-8') as f:
+            f.write(persona_html)
+        print("✅ ペルソナページ生成: {} ({}KB)".format(persona_out, os.path.getsize(persona_out) // 1024))
+    else:
+        print("⚠️  template_persona.html が見つかりません（スキップ）")
+
+def build_persona_data(entries):
+    """ペルソナページ用データを抽出する"""
+    # essay.sectionsが充実しているエントリを優先して取得
+    priority_types = ['annual', 'quarterly', 'monthly']
+    insights = []
+    for pt in priority_types:
+        targets = [e for e in entries if e.get('type') == pt]
+        for e in sorted(targets, key=lambda x: x.get('id', ''), reverse=True)[:2]:
+            essay = e.get('essay') or {}
+            sections = []
+            for s in essay.get('sections', [])[:8]:
+                body = clean(s.get('body', ''))
+                if body and len(body) > 20:
+                    sections.append({
+                        'heading': s.get('heading', ''),
+                        'body': body[:300],
+                    })
+            if sections:
+                insights.append({
+                    'type':     e.get('type'),
+                    'id':       e.get('id'),
+                    'title':    e.get('title', ''),
+                    'summary':  clean(essay.get('summary', ''))[:300],
+                    'keywords': essay.get('keywords', []),
+                    'sections': sections,
+                })
+
+    global_kws = build_global_kws(entries)
+    return {'insights': insights, 'global_kws': global_kws}
+
+
 if __name__ == '__main__':
     main()

@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Persona Talk | Z世代 Signal</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Noto+Sans+JP:wght@300;400;500&display=swap');
+
+  :root {
+    --bg: #0c0c0f;
+    --surface: #13131a;
+    --surface2: #1a1a24;
+    --border: rgba(255,255,255,0.07);
+    --border-active: rgba(255,255,255,0.18);
+    --text: #e8e8f0;
+    --text-dim: #666680;
+    --text-muted: #3a3a50;
+    --accent: #7c6ef7;
+    --accent-glow: rgba(124,110,247,0.15);
+    --accent2: #4ec9b0;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── Header ── */
+  header {
+    padding: 14px 24px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(12,12,15,0.9);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(12px);
+  }
+  .back-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-dim);
+    text-decoration: none;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+  }
+  .back-btn:hover { color: var(--text); }
+  .back-btn svg { width: 14px; height: 14px; }
+  .header-sep { width: 1px; height: 16px; background: var(--border); }
+  .header-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+  }
+  .header-badge {
+    margin-left: auto;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    padding: 3px 8px;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    border-radius: 20px;
+    letter-spacing: 0.08em;
+    opacity: 0.7;
+  }
+
+  /* ── Layout ── */
+  .layout {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 310px 1fr;
+    height: calc(100vh - 49px);
+  }
+
+  /* ── Left Panel ── */
+  .left-panel {
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    padding: 22px 18px;
+    gap: 22px;
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .form-group { display: flex; flex-direction: column; gap: 10px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+
+  label {
+    display: block;
+    font-size: 11px;
+    color: var(--text-dim);
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.06em;
+    margin-bottom: 5px;
+  }
+
+  input, select, textarea {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 300;
+    font-size: 13px;
+    border-radius: 6px;
+    padding: 8px 11px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    width: 100%;
+    -webkit-appearance: none;
+  }
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+  }
+  select option { background: #1a1a24; }
+  textarea { resize: vertical; min-height: 68px; }
+
+  .quick-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    padding: 4px 9px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    color: var(--text-dim);
+    cursor: pointer;
+    transition: all 0.15s;
+    user-select: none;
+    letter-spacing: 0.03em;
+  }
+  .tag:hover { border-color: var(--accent); color: var(--accent); }
+  .tag.active { background: var(--accent-glow); border-color: var(--accent); color: var(--accent); }
+
+  .gen-btn {
+    width: 100%;
+    padding: 11px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.15s;
+    text-transform: uppercase;
+  }
+  .gen-btn:hover:not(:disabled) { opacity: 0.85; transform: translateY(-1px); }
+  .gen-btn:disabled { opacity: 0.35; cursor: not-allowed; transform: none; }
+
+  .gen-status {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-align: center;
+    opacity: 0;
+    height: 16px;
+    transition: opacity 0.3s;
+  }
+  .gen-status.show { opacity: 1; }
+
+  /* ── Persona Card ── */
+  .persona-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    animation: fadeUp 0.35s ease;
+  }
+  .persona-card.show { display: flex; }
+  .persona-name { font-size: 14px; font-weight: 500; line-height: 1.4; }
+  .persona-meta { display: flex; flex-wrap: wrap; gap: 5px; }
+  .meta-chip {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 4px;
+    background: rgba(255,255,255,0.05);
+    color: var(--text-dim);
+  }
+  .persona-desc { font-size: 12px; color: var(--text-dim); line-height: 1.75; }
+  .persona-kws { display: flex; flex-wrap: wrap; gap: 5px; }
+  .kw-chip {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    padding: 2px 7px;
+    border: 1px solid rgba(124,110,247,0.35);
+    color: var(--accent);
+    border-radius: 4px;
+  }
+  .reset-btn {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    letter-spacing: 0.06em;
+    transition: all 0.15s;
+    align-self: flex-start;
+  }
+  .reset-btn:hover { border-color: var(--border-active); color: var(--text); }
+
+  /* ── Right Panel ── */
+  .right-panel {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .empty-state {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    color: var(--text-muted);
+  }
+  .empty-icon {
+    width: 44px; height: 44px;
+    border: 1px solid var(--text-muted);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.35;
+  }
+  .empty-state p {
+    font-size: 12px;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.07em;
+    text-align: center;
+    line-height: 1.8;
+  }
+
+  /* ── Chat ── */
+  .chat-area { flex: 1; display: none; flex-direction: column; overflow: hidden; }
+  .chat-area.show { display: flex; }
+
+  .chat-header {
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .chat-avatar {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 500;
+    flex-shrink: 0;
+  }
+  .chat-name { font-size: 13px; font-weight: 500; }
+  .chat-sub { font-size: 11px; color: var(--text-dim); font-family: 'DM Mono', monospace; }
+
+  .messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    scroll-behavior: smooth;
+  }
+
+  .message { display: flex; gap: 9px; max-width: 82%; animation: fadeUp 0.22s ease; }
+  .message.user { align-self: flex-end; flex-direction: row-reverse; }
+  .message.assistant { align-self: flex-start; }
+
+  .msg-avatar {
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    margin-top: 2px;
+    font-family: 'DM Mono', monospace;
+  }
+  .message.user .msg-avatar { background: rgba(255,255,255,0.07); color: var(--text-dim); }
+  .message.assistant .msg-avatar { background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #fff; }
+
+  .msg-bubble {
+    padding: 9px 13px;
+    border-radius: 12px;
+    font-size: 13px;
+    line-height: 1.78;
+    letter-spacing: 0.01em;
+    white-space: pre-wrap;
+  }
+  .message.user .msg-bubble {
+    background: #1e1e2e;
+    border: 1px solid var(--border);
+    border-top-right-radius: 3px;
+  }
+  .message.assistant .msg-bubble {
+    background: #161620;
+    border: 1px solid var(--border);
+    border-top-left-radius: 3px;
+  }
+
+  .typing-indicator { display: flex; gap: 4px; align-items: center; padding: 4px 2px; }
+  .dot { width: 5px; height: 5px; background: var(--text-muted); border-radius: 50%; animation: bounce 1.2s infinite; }
+  .dot:nth-child(2) { animation-delay: 0.2s; }
+  .dot:nth-child(3) { animation-delay: 0.4s; }
+
+  @keyframes bounce {
+    0%, 60%, 100% { transform: translateY(0); }
+    30% { transform: translateY(-5px); }
+  }
+
+  .suggestions {
+    padding: 0 20px 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .sug-btn {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 11px;
+    font-weight: 300;
+    padding: 5px 11px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.15s;
+    line-height: 1.4;
+  }
+  .sug-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+  .input-bar {
+    padding: 12px 20px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+  }
+  .input-bar textarea {
+    flex: 1;
+    min-height: 40px;
+    max-height: 120px;
+    padding: 9px 12px;
+    font-size: 13px;
+    resize: none;
+    line-height: 1.5;
+    border-radius: 8px;
+  }
+  .send-btn {
+    width: 38px; height: 38px;
+    background: var(--accent);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: opacity 0.2s, transform 0.15s;
+  }
+  .send-btn:hover:not(:disabled) { opacity: 0.85; transform: translateY(-1px); }
+  .send-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+  .send-btn svg { width: 15px; height: 15px; fill: #fff; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+  @media (max-width: 680px) {
+    .layout { grid-template-columns: 1fr; grid-template-rows: auto 1fr; }
+    .left-panel { max-height: 48vh; border-right: none; border-bottom: 1px solid var(--border); padding: 14px; }
+    .right-panel { height: calc(100vh - 49px - 48vh); }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="/genz/" class="back-btn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="15 18 9 12 15 6"></polyline>
+    </svg>
+    Dashboard
+  </a>
+  <div class="header-sep"></div>
+  <span class="header-title">Persona Talk</span>
+  <span class="header-badge">BETA</span>
+</header>
+
+<div class="layout">
+
+  <!-- ── Left: Setup ── -->
+  <div class="left-panel">
+    <div id="setup-section">
+      <div class="section-label">ペルソナ設定</div>
+      <div class="form-group">
+
+        <div class="form-row">
+          <div>
+            <label>年齢</label>
+            <input type="text" id="age" placeholder="22" />
+          </div>
+          <div>
+            <label>性別</label>
+            <select id="gender">
+              <option value="">指定なし</option>
+              <option value="女性">女性</option>
+              <option value="男性">男性</option>
+              <option value="ノンバイナリー">ノンバイナリー</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label>居住エリア</label>
+          <select id="area">
+            <option value="">指定なし</option>
+            <option value="都市部（東京・大阪等）">都市部（東京・大阪等）</option>
+            <option value="地方都市">地方都市</option>
+            <option value="郊外">郊外</option>
+            <option value="地方・農村">地方・農村</option>
+          </select>
+        </div>
+
+        <div>
+          <label>職業・ライフステージ</label>
+          <input type="text" id="job" placeholder="大学生 / 新卒会社員 / フリーランス…" />
+        </div>
+
+        <div>
+          <label>関心・ライフスタイル軸</label>
+          <div class="quick-tags" id="interest-tags">
+            <span class="tag" data-val="推し活・ファンダム">推し活</span>
+            <span class="tag" data-val="セルフケア・メンタル">セルフケア</span>
+            <span class="tag" data-val="ファッション・トレンド">ファッション</span>
+            <span class="tag" data-val="節約・コスパ志向">節約</span>
+            <span class="tag" data-val="キャリア・副業">キャリア</span>
+            <span class="tag" data-val="SNS・デジタル文化">SNS</span>
+            <span class="tag" data-val="恋愛・人間関係">恋愛</span>
+            <span class="tag" data-val="旅行・体験消費">旅行</span>
+            <span class="tag" data-val="フード・グルメ">フード</span>
+            <span class="tag" data-val="AI・テクノロジー">テック</span>
+          </div>
+        </div>
+
+        <div>
+          <label>その他・特記事項（任意）</label>
+          <textarea id="extra" placeholder="例：実家暮らし、推しがいる、転職を考えている…"></textarea>
+        </div>
+
+        <div class="gen-status" id="gen-status">GENERATING PERSONA...</div>
+        <button class="gen-btn" id="gen-btn" onclick="generatePersona()">ペルソナを生成する</button>
+      </div>
+    </div>
+
+    <div class="persona-card" id="persona-card">
+      <div class="section-label">生成されたペルソナ</div>
+      <div class="persona-name" id="card-name"></div>
+      <div class="persona-meta" id="card-meta"></div>
+      <div class="persona-desc" id="card-desc"></div>
+      <div class="persona-kws" id="card-kws"></div>
+      <button class="reset-btn" onclick="resetPersona()">↩ 作り直す</button>
+    </div>
+  </div>
+
+  <!-- ── Right: Chat ── -->
+  <div class="right-panel">
+
+    <div class="empty-state" id="empty-state">
+      <div class="empty-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+      </div>
+      <p>ペルソナを生成すると<br>対話が始まります</p>
+    </div>
+
+    <div class="chat-area" id="chat-area">
+      <div class="chat-header">
+        <div class="chat-avatar" id="chat-avatar">？</div>
+        <div>
+          <div class="chat-name" id="chat-name">—</div>
+          <div class="chat-sub" id="chat-sub">Z世代ペルソナ</div>
+        </div>
+      </div>
+
+      <div class="messages" id="messages"></div>
+      <div class="suggestions" id="suggestions"></div>
+
+      <div class="input-bar">
+        <textarea id="user-input" placeholder="メッセージを送る…" rows="1"
+          onkeydown="handleKey(event)" oninput="autoResize(this)" disabled></textarea>
+        <button class="send-btn" id="send-btn" onclick="sendMessage()" disabled>
+          <svg viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// ─── Embedded Signal Data (injected by build.py) ───
+// PERSONA_DATA_PLACEHOLDER
+
+// ─── State ───
+let personaData = null;
+let conversationHistory = [];
+let selectedInterests = new Set();
+
+// ─── Interest tags ───
+document.querySelectorAll('#interest-tags .tag').forEach(tag => {
+  tag.addEventListener('click', () => {
+    const val = tag.dataset.val;
+    if (selectedInterests.has(val)) {
+      selectedInterests.delete(val);
+      tag.classList.remove('active');
+    } else {
+      selectedInterests.add(val);
+      tag.classList.add('active');
+    }
+  });
+});
+
+// ─── Build Signal context from embedded data ───
+function buildSignalContext() {
+  if (typeof PERSONA_DATA === 'undefined' || !PERSONA_DATA.insights) return '';
+  let ctx = '';
+  for (const item of PERSONA_DATA.insights.slice(0, 3)) {
+    ctx += '\n【' + item.title + '】\n';
+    if (item.summary) ctx += item.summary.slice(0, 200) + '\n';
+    for (const s of item.sections.slice(0, 5)) {
+      if (s.body) ctx += s.heading + ': ' + s.body.slice(0, 150) + '\n';
+    }
+    if (item.keywords && item.keywords.length) {
+      ctx += 'キーワード: ' + item.keywords.join('、') + '\n';
+    }
+  }
+  if (PERSONA_DATA.global_kws && PERSONA_DATA.global_kws.length) {
+    ctx += '\n頻出キーワード全体: ' + PERSONA_DATA.global_kws.slice(0, 15).join('、');
+  }
+  return ctx;
+}
+
+// ─── Generate Persona ───
+async function generatePersona() {
+  const age      = document.getElementById('age').value.trim();
+  const gender   = document.getElementById('gender').value;
+  const area     = document.getElementById('area').value;
+  const job      = document.getElementById('job').value.trim();
+  const extra    = document.getElementById('extra').value.trim();
+  const interests = [...selectedInterests].join('、');
+
+  if (!age && !job && selectedInterests.size === 0) {
+    alert('年齢・職業・関心軸のいずれかを入力してください');
+    return;
+  }
+
+  const btn = document.getElementById('gen-btn');
+  const status = document.getElementById('gen-status');
+  btn.disabled = true;
+  status.classList.add('show');
+
+  const signalCtx = buildSignalContext();
+
+  const prompt = `あなたはZ世代のリサーチ専門家です。以下の条件と最新のZ世代インサイトを元に、リアルなペルソナを設計してください。
+
+【条件】
+年齢: ${age || '20代前半'}
+性別: ${gender || '指定なし'}
+居住: ${area || '指定なし'}
+職業: ${job || '指定なし'}
+関心: ${interests || '指定なし'}
+特記: ${extra || 'なし'}
+
+【Z世代最新インサイト（Signal Dashboard）】
+${signalCtx}
+
+以下のJSON形式のみで回答してください（マークダウン不要）：
+{"name":"架空の日本人名","age":"XX歳","gender":"性別","area":"居住","job":"職業","tagline":"20字以内の一言","description":"人物像・価値観・日常行動（150字程度）","keywords":["KW1","KW2","KW3","KW4"],"systemPrompt":"このペルソナとして振る舞うための指示（一人称・口調・価値観・反応パターン含む・300字）","suggestedQuestions":["質問例1","質問例2","質問例3"]}`;
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        messages: [{ role: 'user', content: prompt }]
+      })
+    });
+    const data = await res.json();
+    const raw = data.content[0].text.replace(/```json|```/g, '').trim();
+    const persona = JSON.parse(raw);
+    personaData = persona;
+    conversationHistory = [];
+    renderPersonaCard(persona);
+    initChat(persona);
+  } catch(e) {
+    console.error(e);
+    alert('生成に失敗しました。もう一度お試しください。');
+  } finally {
+    btn.disabled = false;
+    status.classList.remove('show');
+  }
+}
+
+function renderPersonaCard(p) {
+  document.getElementById('card-name').textContent = p.name + ' — ' + p.tagline;
+
+  const meta = document.getElementById('card-meta');
+  meta.innerHTML = '';
+  [p.age, p.gender, p.area, p.job].filter(Boolean).forEach(v => {
+    const el = document.createElement('span');
+    el.className = 'meta-chip';
+    el.textContent = v;
+    meta.appendChild(el);
+  });
+
+  document.getElementById('card-desc').textContent = p.description;
+
+  const kws = document.getElementById('card-kws');
+  kws.innerHTML = '';
+  (p.keywords || []).forEach(kw => {
+    const el = document.createElement('span');
+    el.className = 'kw-chip';
+    el.textContent = kw;
+    kws.appendChild(el);
+  });
+
+  document.getElementById('persona-card').classList.add('show');
+}
+
+function initChat(p) {
+  document.getElementById('empty-state').style.display = 'none';
+  document.getElementById('chat-area').classList.add('show');
+  document.getElementById('chat-avatar').textContent = p.name.charAt(0);
+  document.getElementById('chat-name').textContent = p.name + '（' + p.age + '）';
+  document.getElementById('chat-sub').textContent = p.tagline;
+  document.getElementById('messages').innerHTML = '';
+
+  appendMessage('assistant', 'はじめまして、' + p.name + 'です。\n' + p.description);
+  renderSuggestions(p.suggestedQuestions || []);
+
+  document.getElementById('user-input').disabled = false;
+  document.getElementById('send-btn').disabled = false;
+  document.getElementById('user-input').focus();
+}
+
+function renderSuggestions(questions) {
+  const sug = document.getElementById('suggestions');
+  sug.innerHTML = '';
+  questions.forEach(q => {
+    const btn = document.createElement('button');
+    btn.className = 'sug-btn';
+    btn.textContent = q;
+    btn.onclick = () => {
+      document.getElementById('user-input').value = q;
+      sug.innerHTML = '';
+      sendMessage();
+    };
+    sug.appendChild(btn);
+  });
+}
+
+async function sendMessage() {
+  const input = document.getElementById('user-input');
+  const text = input.value.trim();
+  if (!text || !personaData) return;
+
+  input.value = '';
+  autoResize(input);
+  document.getElementById('suggestions').innerHTML = '';
+  document.getElementById('send-btn').disabled = true;
+
+  appendMessage('user', text);
+  conversationHistory.push({ role: 'user', content: text });
+
+  const typingId = appendTyping();
+
+  const signalCtx = buildSignalContext();
+  const system = personaData.systemPrompt + '\n\n【Signal最新データ補足】\n' + signalCtx
+    + '\n\n必ずこのペルソナの口調・価値観で自然に返答してください。分析的な言葉は使わず、150〜250字程度で。';
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        system: system,
+        messages: conversationHistory
+      })
+    });
+    const data = await res.json();
+    const reply = data.content[0].text;
+    removeTyping(typingId);
+    appendMessage('assistant', reply);
+    conversationHistory.push({ role: 'assistant', content: reply });
+  } catch(e) {
+    removeTyping(typingId);
+    appendMessage('assistant', '…（うまく答えられなかった）');
+    console.error(e);
+  } finally {
+    document.getElementById('send-btn').disabled = false;
+  }
+}
+
+function appendMessage(role, text) {
+  const msgs = document.getElementById('messages');
+  const div = document.createElement('div');
+  div.className = 'message ' + role;
+  const av = document.createElement('div');
+  av.className = 'msg-avatar';
+  av.textContent = role === 'user' ? 'You' : (personaData?.name?.charAt(0) || 'P');
+  const bubble = document.createElement('div');
+  bubble.className = 'msg-bubble';
+  bubble.textContent = text;
+  div.appendChild(av);
+  div.appendChild(bubble);
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function appendTyping() {
+  const msgs = document.getElementById('messages');
+  const id = 'typing-' + Date.now();
+  const div = document.createElement('div');
+  div.className = 'message assistant';
+  div.id = id;
+  const av = document.createElement('div');
+  av.className = 'msg-avatar';
+  av.textContent = personaData?.name?.charAt(0) || 'P';
+  const bubble = document.createElement('div');
+  bubble.className = 'msg-bubble';
+  bubble.innerHTML = '<div class="typing-indicator"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>';
+  div.appendChild(av);
+  div.appendChild(bubble);
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+  return id;
+}
+
+function removeTyping(id) {
+  const el = document.getElementById(id);
+  if (el) el.remove();
+}
+
+function resetPersona() {
+  personaData = null;
+  conversationHistory = [];
+  document.getElementById('persona-card').classList.remove('show');
+  document.getElementById('empty-state').style.display = '';
+  document.getElementById('chat-area').classList.remove('show');
+  document.getElementById('messages').innerHTML = '';
+  document.getElementById('suggestions').innerHTML = '';
+  document.getElementById('send-btn').disabled = true;
+  document.getElementById('user-input').disabled = true;
+  document.getElementById('user-input').value = '';
+  selectedInterests.clear();
+  document.querySelectorAll('#interest-tags .tag').forEach(t => t.classList.remove('active'));
+}
+
+function handleKey(e) {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+}
+
+function autoResize(el) {
+  el.style.height = 'auto';
+  el.style.height = Math.min(el.scrollHeight, 120) + 'px';
+}
+</script>
+</body>
+</html>
