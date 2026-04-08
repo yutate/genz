@@ -635,7 +635,7 @@ const AI_CONFIGS = {
   gemini: {
     placeholder: 'AIza...',
     hint: '取得先: <a href="https://aistudio.google.com/app/apikey" target="_blank">aistudio.google.com</a> — 無料枠あり',
-    model: 'gemini-2.0-flash',
+    model: 'gemini-2.5-flash',
   },
 };
 function currentAi() { return document.getElementById('ai-select').value; }
@@ -768,6 +768,8 @@ ${signalCtx}
         body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
       });
       const data = await res.json();
+      console.log('Gemini gen response:', JSON.stringify(data).slice(0, 500));
+      if (data.error) throw new Error('Gemini error: ' + data.error.message);
       raw = data.candidates[0].content.parts[0].text;
     }
     raw = raw.replace(/```json|```/g, '').trim();
@@ -778,7 +780,7 @@ ${signalCtx}
     initChat(persona);
   } catch(e) {
     console.error(e);
-    alert('生成に失敗しました。もう一度お試しください。');
+    console.error('Generation error:', e); alert('生成に失敗しました: ' + e.message);
   } finally {
     btn.disabled = false;
     status.classList.remove('show');
@@ -889,9 +891,11 @@ async function sendMessage() {
       const res = await fetch('https://generativelanguage.googleapis.com/v1beta/models/' + cfg.model + ':generateContent?key=' + apiKey, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ system_instruction: { parts: [{ text: system }] }, contents })
+        body: JSON.stringify({ system_instruction: { parts: [{ text: system }] }, contents, generationConfig: { maxOutputTokens: 1000 } })
       });
       const data = await res.json();
+      console.log('Gemini send response:', JSON.stringify(data).slice(0, 500));
+      if (data.error) throw new Error('Gemini error: ' + data.error.message);
       reply = data.candidates[0].content.parts[0].text;
     }
     removeTyping(typingId);
