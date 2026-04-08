@@ -411,6 +411,44 @@
   ::-webkit-scrollbar-track { background: transparent; }
   ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
 
+  .api-panel {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px;
+  }
+  .api-row { display: flex; gap: 8px; align-items: center; }
+  .api-input {
+    flex: 1;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    border-radius: 6px;
+    padding: 7px 10px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .api-input:focus { border-color: var(--accent); }
+  .api-save-btn {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.15s;
+    letter-spacing: 0.06em;
+  }
+  .api-save-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .api-hint { font-size: 10px; color: var(--text-muted); margin-top: 7px; font-family: 'DM Mono', monospace; }
+  .api-hint a { color: var(--text-dim); }
+  .api-saved { font-size: 10px; color: var(--accent2); font-family: 'DM Mono', monospace; display: none; }
+
   @media (max-width: 680px) {
     .layout {
       grid-template-columns: 1fr;
@@ -452,6 +490,16 @@
   <div class="left-panel">
     <div id="setup-section">
       <div class="section-label">ペルソナ設定</div>
+      <div class="api-panel" style="margin-bottom:16px">
+        <div class="section-label" style="margin-bottom:8px">API KEY</div>
+        <div class="api-row">
+          <input type="password" class="api-input" id="api-key-input" placeholder="sk-ant-..." oninput="onKeyInput()" />
+          <button class="api-save-btn" onclick="saveKey()">保存</button>
+        </div>
+        <div class="api-hint">取得先: <a href="https://console.anthropic.com/" target="_blank">console.anthropic.com</a> ｜ ブラウザに保存されます</div>
+        <div class="api-saved" id="api-saved">✓ 保存済み</div>
+      </div>
+
       <div class="form-group">
 
         <div class="form-row">
@@ -567,6 +615,29 @@ let personaData = null;
 let conversationHistory = [];
 let selectedInterests = new Set();
 
+// ─── API Key ───
+function saveKey() {
+  const val = document.getElementById('api-key-input').value.trim();
+  if (!val) return;
+  localStorage.setItem('persona_api_key', val);
+  const badge = document.getElementById('api-saved');
+  badge.style.display = 'block';
+}
+function onKeyInput() {
+  document.getElementById('api-saved').style.display = 'none';
+}
+function getKey() {
+  return localStorage.getItem('persona_api_key') || document.getElementById('api-key-input').value.trim();
+}
+// 起動時にlocalStorageから復元
+window.addEventListener('DOMContentLoaded', () => {
+  const saved = localStorage.getItem('persona_api_key');
+  if (saved) {
+    document.getElementById('api-key-input').value = saved;
+    document.getElementById('api-saved').style.display = 'block';
+  }
+});
+
 // ─── Interest tags ───
 document.querySelectorAll('#interest-tags .tag').forEach(tag => {
   tag.addEventListener('click', () => {
@@ -610,6 +681,11 @@ async function generatePersona() {
   const extra    = document.getElementById('extra').value.trim();
   const interests = [...selectedInterests].join('、');
 
+  const apiKey = getKey();
+  if (!apiKey) {
+    alert('APIキーを入力・保存してください');
+    return;
+  }
   if (!age && !job && selectedInterests.size === 0) {
     alert('年齢・職業・関心軸のいずれかを入力してください');
     return;
@@ -641,7 +717,7 @@ ${signalCtx}
   try {
     const res = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', 'x-api-key': apiKey, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
       body: JSON.stringify({
         model: 'claude-sonnet-4-20250514',
         max_tokens: 1000,
@@ -742,9 +818,10 @@ async function sendMessage() {
     + '\n\n必ずこのペルソナの口調・価値観で自然に返答してください。分析的な言葉は使わず、150〜250字程度で。';
 
   try {
+    const apiKey = getKey();
     const res = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', 'x-api-key': apiKey, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
       body: JSON.stringify({
         model: 'claude-sonnet-4-20250514',
         max_tokens: 1000,
