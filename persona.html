@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Persona Talk | Z世代 Signal</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Noto+Sans+JP:wght@300;400;500&display=swap');
+
+  :root {
+    --bg: #0c0c0f;
+    --surface: #13131a;
+    --surface2: #1a1a24;
+    --border: rgba(255,255,255,0.07);
+    --border-active: rgba(255,255,255,0.18);
+    --text: #e8e8f0;
+    --text-dim: #666680;
+    --text-muted: #3a3a50;
+    --accent: #7c6ef7;
+    --accent-glow: rgba(124,110,247,0.15);
+    --accent2: #4ec9b0;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── Header ── */
+  header {
+    padding: 14px 24px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(12,12,15,0.9);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(12px);
+  }
+  .back-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-dim);
+    text-decoration: none;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+  }
+  .back-btn:hover { color: var(--text); }
+  .back-btn svg { width: 14px; height: 14px; }
+  .header-sep { width: 1px; height: 16px; background: var(--border); }
+  .header-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+  }
+  .header-badge {
+    margin-left: auto;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    padding: 3px 8px;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    border-radius: 20px;
+    letter-spacing: 0.08em;
+    opacity: 0.7;
+  }
+
+  /* ── Layout ── */
+  .layout {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 310px 1fr;
+    height: calc(100vh - 49px);
+  }
+
+  /* ── Left Panel ── */
+  .left-panel {
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    padding: 22px 18px;
+    gap: 22px;
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .form-group { display: flex; flex-direction: column; gap: 10px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+
+  label {
+    display: block;
+    font-size: 11px;
+    color: var(--text-dim);
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.06em;
+    margin-bottom: 5px;
+  }
+
+  input, select, textarea {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 300;
+    font-size: 13px;
+    border-radius: 6px;
+    padding: 8px 11px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    width: 100%;
+    -webkit-appearance: none;
+  }
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+  }
+  select option { background: #1a1a24; }
+  textarea { resize: vertical; min-height: 68px; }
+
+  .quick-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    padding: 4px 9px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    color: var(--text-dim);
+    cursor: pointer;
+    transition: all 0.15s;
+    user-select: none;
+    letter-spacing: 0.03em;
+  }
+  .tag:hover { border-color: var(--accent); color: var(--accent); }
+  .tag.active { background: var(--accent-glow); border-color: var(--accent); color: var(--accent); }
+
+  .gen-btn {
+    width: 100%;
+    padding: 11px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.15s;
+    text-transform: uppercase;
+  }
+  .gen-btn:hover:not(:disabled) { opacity: 0.85; transform: translateY(-1px); }
+  .gen-btn:disabled { opacity: 0.35; cursor: not-allowed; transform: none; }
+
+  .gen-status {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-align: center;
+    opacity: 0;
+    height: 16px;
+    transition: opacity 0.3s;
+  }
+  .gen-status.show { opacity: 1; }
+
+  /* ── Persona Card ── */
+  .persona-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    animation: fadeUp 0.35s ease;
+  }
+  .persona-card.show { display: flex; }
+  .persona-name { font-size: 14px; font-weight: 500; line-height: 1.4; }
+  .persona-meta { display: flex; flex-wrap: wrap; gap: 5px; }
+  .meta-chip {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 4px;
+    background: rgba(255,255,255,0.05);
+    color: var(--text-dim);
+  }
+  .persona-desc { font-size: 12px; color: var(--text-dim); line-height: 1.75; }
+  .persona-kws { display: flex; flex-wrap: wrap; gap: 5px; }
+  .kw-chip {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    padding: 2px 7px;
+    border: 1px solid rgba(124,110,247,0.35);
+    color: var(--accent);
+    border-radius: 4px;
+  }
+  .reset-btn {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    letter-spacing: 0.06em;
+    transition: all 0.15s;
+    align-self: flex-start;
+  }
+  .reset-btn:hover { border-color: var(--border-active); color: var(--text); }
+
+  /* ── Right Panel ── */
+  .right-panel {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .empty-state {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    color: var(--text-muted);
+  }
+  .empty-icon {
+    width: 44px; height: 44px;
+    border: 1px solid var(--text-muted);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.35;
+  }
+  .empty-state p {
+    font-size: 12px;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.07em;
+    text-align: center;
+    line-height: 1.8;
+  }
+
+  /* ── Chat ── */
+  .chat-area { flex: 1; display: none; flex-direction: column; overflow: hidden; }
+  .chat-area.show { display: flex; }
+
+  .chat-header {
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .chat-avatar {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 500;
+    flex-shrink: 0;
+  }
+  .chat-name { font-size: 13px; font-weight: 500; }
+  .chat-sub { font-size: 11px; color: var(--text-dim); font-family: 'DM Mono', monospace; }
+
+  .messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    scroll-behavior: smooth;
+  }
+
+  .message { display: flex; gap: 9px; max-width: 82%; animation: fadeUp 0.22s ease; }
+  .message.user { align-self: flex-end; flex-direction: row-reverse; }
+  .message.assistant { align-self: flex-start; }
+
+  .msg-avatar {
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    margin-top: 2px;
+    font-family: 'DM Mono', monospace;
+  }
+  .message.user .msg-avatar { background: rgba(255,255,255,0.07); color: var(--text-dim); }
+  .message.assistant .msg-avatar { background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #fff; }
+
+  .msg-bubble {
+    padding: 9px 13px;
+    border-radius: 12px;
+    font-size: 13px;
+    line-height: 1.78;
+    letter-spacing: 0.01em;
+    white-space: pre-wrap;
+  }
+  .message.user .msg-bubble {
+    background: #1e1e2e;
+    border: 1px solid var(--border);
+    border-top-right-radius: 3px;
+  }
+  .message.assistant .msg-bubble {
+    background: #161620;
+    border: 1px solid var(--border);
+    border-top-left-radius: 3px;
+  }
+
+  .typing-indicator { display: flex; gap: 4px; align-items: center; padding: 4px 2px; }
+  .dot { width: 5px; height: 5px; background: var(--text-muted); border-radius: 50%; animation: bounce 1.2s infinite; }
+  .dot:nth-child(2) { animation-delay: 0.2s; }
+  .dot:nth-child(3) { animation-delay: 0.4s; }
+
+  @keyframes bounce {
+    0%, 60%, 100% { transform: translateY(0); }
+    30% { transform: translateY(-5px); }
+  }
+
+  .suggestions {
+    padding: 0 20px 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .sug-btn {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 11px;
+    font-weight: 300;
+    padding: 5px 11px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.15s;
+    line-height: 1.4;
+  }
+  .sug-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+  .input-bar {
+    padding: 12px 20px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+  }
+  .input-bar textarea {
+    flex: 1;
+    min-height: 40px;
+    max-height: 120px;
+    padding: 9px 12px;
+    font-size: 13px;
+    resize: none;
+    line-height: 1.5;
+    border-radius: 8px;
+  }
+  .send-btn {
+    width: 38px; height: 38px;
+    background: var(--accent);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: opacity 0.2s, transform 0.15s;
+  }
+  .send-btn:hover:not(:disabled) { opacity: 0.85; transform: translateY(-1px); }
+  .send-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+  .send-btn svg { width: 15px; height: 15px; fill: #fff; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+  @media (max-width: 680px) {
+    .layout { grid-template-columns: 1fr; grid-template-rows: auto 1fr; }
+    .left-panel { max-height: 48vh; border-right: none; border-bottom: 1px solid var(--border); padding: 14px; }
+    .right-panel { height: calc(100vh - 49px - 48vh); }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="/genz/" class="back-btn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="15 18 9 12 15 6"></polyline>
+    </svg>
+    Dashboard
+  </a>
+  <div class="header-sep"></div>
+  <span class="header-title">Persona Talk</span>
+  <span class="header-badge">BETA</span>
+</header>
+
+<div class="layout">
+
+  <!-- ── Left: Setup ── -->
+  <div class="left-panel">
+    <div id="setup-section">
+      <div class="section-label">ペルソナ設定</div>
+      <div class="form-group">
+
+        <div class="form-row">
+          <div>
+            <label>年齢</label>
+            <input type="text" id="age" placeholder="22" />
+          </div>
+          <div>
+            <label>性別</label>
+            <select id="gender">
+              <option value="">指定なし</option>
+              <option value="女性">女性</option>
+              <option value="男性">男性</option>
+              <option value="ノンバイナリー">ノンバイナリー</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label>居住エリア</label>
+          <select id="area">
+            <option value="">指定なし</option>
+            <option value="都市部（東京・大阪等）">都市部（東京・大阪等）</option>
+            <option value="地方都市">地方都市</option>
+            <option value="郊外">郊外</option>
+            <option value="地方・農村">地方・農村</option>
+          </select>
+        </div>
+
+        <div>
+          <label>職業・ライフステージ</label>
+          <input type="text" id="job" placeholder="大学生 / 新卒会社員 / フリーランス…" />
+        </div>
+
+        <div>
+          <label>関心・ライフスタイル軸</label>
+          <div class="quick-tags" id="interest-tags">
+            <span class="tag" data-val="推し活・ファンダム">推し活</span>
+            <span class="tag" data-val="セルフケア・メンタル">セルフケア</span>
+            <span class="tag" data-val="ファッション・トレンド">ファッション</span>
+            <span class="tag" data-val="節約・コスパ志向">節約</span>
+            <span class="tag" data-val="キャリア・副業">キャリア</span>
+            <span class="tag" data-val="SNS・デジタル文化">SNS</span>
+            <span class="tag" data-val="恋愛・人間関係">恋愛</span>
+            <span class="tag" data-val="旅行・体験消費">旅行</span>
+            <span class="tag" data-val="フード・グルメ">フード</span>
+            <span class="tag" data-val="AI・テクノロジー">テック</span>
+          </div>
+        </div>
+
+        <div>
+          <label>その他・特記事項（任意）</label>
+          <textarea id="extra" placeholder="例：実家暮らし、推しがいる、転職を考えている…"></textarea>
+        </div>
+
+        <div class="gen-status" id="gen-status">GENERATING PERSONA...</div>
+        <button class="gen-btn" id="gen-btn" onclick="generatePersona()">ペルソナを生成する</button>
+      </div>
+    </div>
+
+    <div class="persona-card" id="persona-card">
+      <div class="section-label">生成されたペルソナ</div>
+      <div class="persona-name" id="card-name"></div>
+      <div class="persona-meta" id="card-meta"></div>
+      <div class="persona-desc" id="card-desc"></div>
+      <div class="persona-kws" id="card-kws"></div>
+      <button class="reset-btn" onclick="resetPersona()">↩ 作り直す</button>
+    </div>
+  </div>
+
+  <!-- ── Right: Chat ── -->
+  <div class="right-panel">
+
+    <div class="empty-state" id="empty-state">
+      <div class="empty-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+      </div>
+      <p>ペルソナを生成すると<br>対話が始まります</p>
+    </div>
+
+    <div class="chat-area" id="chat-area">
+      <div class="chat-header">
+        <div class="chat-avatar" id="chat-avatar">？</div>
+        <div>
+          <div class="chat-name" id="chat-name">—</div>
+          <div class="chat-sub" id="chat-sub">Z世代ペルソナ</div>
+        </div>
+      </div>
+
+      <div class="messages" id="messages"></div>
+      <div class="suggestions" id="suggestions"></div>
+
+      <div class="input-bar">
+        <textarea id="user-input" placeholder="メッセージを送る…" rows="1"
+          onkeydown="handleKey(event)" oninput="autoResize(this)" disabled></textarea>
+        <button class="send-btn" id="send-btn" onclick="sendMessage()" disabled>
+          <svg viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// ─── Embedded Signal Data (injected by build.py) ───
+const PERSONA_DATA={"insights":[{"type":"annual","id":"2025","title":"2025 年次考察","summary":"2025年Z世代の本質「世界に合わせて自分を削らず、自分に合う世界を小さく作る」","keywords":["感情インフラ","AI関係化","文脈選別","制御可能性","表現の削減","情報アクセス化"],"sections":[{"heading":"総論","body":"2025年Z世代の本質「世界に合わせて自分を削らず、自分に合う世界を小さく作る」"},{"heading":"1. 「共感」から「負荷の低さ」へ","body":"何が起きている？ Z世代は、共感されること自体に疲れ始めている。 「分かってもらう」「感情を共有する」ことが、むしろ心理的コストになってきた。 なぜ？ SNSで常に感情を晒すことへの疲労 正解の言い方・態度を外すと炎上／否定される環境 共感が“義務”になったことへの反発 具体行動・兆候 BeReal／鍵垢／短文／無音動画／表情を出さない投稿 「わかる」「草」「きまZ」など低エネルギー反応 説明しなくていい関係を好む 👉 理想状態 「否定されない・深く説明しなくていい・放っておいても成立する関係」"},{"heading":"2. 推し活の進化：「熱狂」から「生活インフラ」へ","body":"何が起きている？ 推し活は“娯楽”ではなく、感情を安定させるための生活装置になった。 なぜ？ 現実（仕事・人間関係・将来）が不安定 感情を預けられる対象が必要 でも人間関係はコストが高い 具体行動・兆候 推し活費は「削れないが管理はしたい」 推し企業・推しブランドの出現 推しがいないことへの不安・焦り 推し活を「自己投資」「回復行為」と表現 👉 ポイント 推し＝感情を預けても裏切らない“安全な対象”"},{"heading":"3. 消費は「三層構造」で動く","body":"何が起きている？ Z世代は一貫した消費スタイルを持たない。 代わりに、場面ごとにロジックを切り替えている。 なぜ？ お金・将来・物価への不安 「全部を我慢する」のは無理 でも「無計画な浪費」も怖い 三層構造"},{"heading":"③ 整える（回復）","body":"セルフケア、香り、ソロ活、静かな時間 👉 重要点 ①を徹底するからこそ、②③が正当化される。"},{"heading":"4. AIは「正解装置」ではなく「補助線」","body":"何が起きている？ Z世代はAIを思考代行としては使わない。 「考えすぎないため」に使う。 なぜ？ 正解を外すことへの恐怖 判断疲れ でも“決めた責任”は自分で持ちたい 具体行動・兆候 AIで比較・整理・候補出し 最終決定は自分 AIの“押し付け”を嫌う 理由が見えないAIは不信 👉 求められるAI像 「静か」「理由が見える」「境界線がある」"}]},{"type":"quarterly","id":"2026-Q1","title":"2026/Q1 四半期考察","summary":"Z世代は「適応する世代」から「失敗しない社会を設計する世代」へ移行した Q1を通して起きた変化は一貫している。 1月：壊れないための自己防衛 2月：納得できる選択への主権移行 3月：最初から失敗しない設計 👉 結果として、 「選択する社会」から「失敗しない社会」への転換 が進んだ。","keywords":["失敗回避","距離設計","接続最適化","感情インフラ","AI関係化","文脈選別"],"sections":[{"heading":"総論","body":"Z世代は「適応する世代」から「失敗しない社会を設計する世代」へ移行した Q1を通して起きた変化は一貫している。 1月：壊れないための自己防衛 2月：納得できる選択への主権移行 3月：最初から失敗しない設計 👉 結果として、 「選択する社会」から「失敗しない社会」への転換 が進んだ。"},{"heading":"📊 月別変化（最重要）","body":"1月：自己防衛フェーズ 距離を取る 消耗を避ける AIは補助線 推しは安定装置 👉 キーワード：壊れない 2月：納得主権フェーズ 世代内分岐 消費の意味化 推し活の制度化 関係の合理化 👉 キーワード：自分で選ぶ 3月：失敗回避フェーズ うま確消費 AI意思決定 投稿削減 推し管理 非選択戦略 👉 キーワード：外さない"},{"heading":"① 「失敗回避社会」の成立","body":"Z世代はもはや、 何を選ぶか ではなく どうすれば外さないか で行動している。 これは不安の結果ではなく、 合理性の進化。"},{"heading":"② AIは「補助線」から「現実代替」へ","body":"Q1で最大の変化はここ。 1月：補助線 2月：共存設計 3月：代替手段"},{"heading":"③ 推し活の完全インフラ化","body":"推し活はQ1で「最終形」に近づいた。 情熱 → 持続 → 管理"}]},{"type":"monthly","id":"2026-03","title":"2026/03 月次考察","summary":"Z世代は「壊れない」から「外さない」へ——“失敗回避社会”の完成 1月は自己防衛、2月は納得主権でした。 そして3月は、その先。 「そもそも失敗しない選び方をする」社会が完成した月 でした。","keywords":["失敗回避","距離設計","接続最適化","自己最適化","感情インフラ","AI関係化"],"sections":[{"heading":"総論","body":"Z世代は「壊れない」から「外さない」へ——“失敗回避社会”の完成 1月は自己防衛、2月は納得主権でした。 そして3月は、その先。 「そもそも失敗しない選び方をする」社会が完成した月 でした。"},{"heading":"① 「選ばない」ではなく「外さない」へ","body":"2月までのZ世代は 距離を取る 消耗を避ける 自分を守る という「防御」だった。 しかし3月は違う。 うま確フード AI予約 SNS検索 レビュー依存 推し経由意思決定 👉 “最初から失敗しない選択”をする行動様式へ"},{"heading":"🔎 本質","body":"Z世代は選択を減らしたのではない。 「失敗する可能性のある選択」を排除している"},{"heading":"② 情報は「理解」ではなく「即使える状態」へ","body":"TikTokで勉強 ショート動画教育 BL読書継承 AI検索 音声・動画中心 👉 情報の価値が変わった"},{"heading":"🔎 本質","body":"「覚える」から「呼び出す」へ 知識は持つものではなく、 アクセスできる状態にあることが重要"},{"heading":"③ 表現は「増やす」から「削る」へ","body":"投稿ゼロ 盛らない 無音・字幕 実在しないインフルエンサー スキップ前提広告 👉 Z世代の表現は 足す文化 → 引く文化"},{"heading":"④ 推し活は「情熱」から「資産管理」へ","body":"3月は推し活の質的変化が明確だった。 グッズ圧迫問題 処分罪悪感 推し活金融化 AI推し 推し活市場拡大 👉 推し活は完全に 娯楽 → インフラ → 管理対象 へ。"}]},{"type":"monthly","id":"2026-02","title":"2026/02 月次考察","summary":"","keywords":["距離設計","接続最適化","感情インフラ","AI関係化","信頼構造変化","文脈選別"],"sections":[{"heading":"① 消耗回避から始まった2月前半","body":"――「離れる」ことが成熟のサインになった 2月前半、最も象徴的だったのは「一時的に離れる」というキーワードだった。 投稿ゼロ、界隈SNS、ログアウトという選択肢の広がりは、 若者がデジタルから離れていることを意味しない。 むしろ逆だ。 Z世代は、 SNSやAIを手放すのではなく、“常時接続”をやめた。 情報過多社会において、 つながり続けること 見られ続けること 判断し続けること は、心理的コストを伴う。 そこでZ世代は、 使うが、距離を取る 接続するが、常駐しない という設計へ移行した。 これは回避ではない。 高度な自己防衛的最適化である。"},{"heading":"② 推し活の制度化","body":"――「好き」から「生活インフラ」へ 2月は、推し活が完全に構造化された月でもあった。 分散推し、推し活3.0、推し活経済4兆円規模、 さらには「推し活という言葉に違和感」という言説まで登場した。 これはブームの終わりではない。 推し活は今、 熱狂するものから日常に配置するもの へと進化している。 推し活は“燃やす対象”ではなく、 感情の安定装置として生活の中に組み込まれている。 推しは単数ではなく複数へ、 一時的熱量ではなく持続可能性へ。 文化はインフラ化したとき、 名前のほうが古くなる。 2月は、その転換点だった。"},{"heading":"③ 消費は「意味投資」へ","body":"――コスパではなく、納得パ Z世代の消費はもはや「安いかどうか」では決まらない。 高級ヘッドホンや高価格帯コームは支持される一方で、 義務的な飲み会や意味の薄い出費は拒否される。 ここにあるのは、 価格合理性ではなく感情合理性 である。 Z世代は、 何にお金を使うか 何を削るか を極めて戦略的に選別している。 無駄遣い卒業、選別投資、デュープ文化。 消費は欲望の発露ではなく、 自己肯定と生活安定のための配分行為になった。"},{"heading":"④ AIとの共存設計","body":"――主導権は渡さない AI利用率は8割を超えた。 しかし同時に、AIへの不安も拡大している。 Z世代はAIを信頼しているが、 盲信はしていない。 AIは、 失敗を減らす 摩擦を和らげる 判断を補助する 存在として機能している。 しかし「自分でやった感」が奪われることへの不安は強い。 Z世代にとってAIは、 便利な道具ではなく境界線のある補助線 主導権はあくまで自分にある。 この距離設計が、 α世代との最大の断絶点になる。"}]}],"global_kws":["AI関係化","感情インフラ","接続最適化","距離設計","信頼構造変化","消費合理化","文脈選別","デジタル疲労","制御可能性","社会不安","自己最適化","キャリア再設計","家族再評価","失敗回避","金融リテラシー","熱狂管理","学びの短縮化","アナログ回帰","検索回避","表現の削減","言語軽量化","情報アクセス化","美意識変化","恋愛再定義","参加の軽量化","体験志向","安全資産"]};
+
+// ─── State ───
+let personaData = null;
+let conversationHistory = [];
+let selectedInterests = new Set();
+
+// ─── Interest tags ───
+document.querySelectorAll('#interest-tags .tag').forEach(tag => {
+  tag.addEventListener('click', () => {
+    const val = tag.dataset.val;
+    if (selectedInterests.has(val)) {
+      selectedInterests.delete(val);
+      tag.classList.remove('active');
+    } else {
+      selectedInterests.add(val);
+      tag.classList.add('active');
+    }
+  });
+});
+
+// ─── Build Signal context from embedded data ───
+function buildSignalContext() {
+  if (typeof PERSONA_DATA === 'undefined' || !PERSONA_DATA.insights) return '';
+  let ctx = '';
+  for (const item of PERSONA_DATA.insights.slice(0, 3)) {
+    ctx += '\n【' + item.title + '】\n';
+    if (item.summary) ctx += item.summary.slice(0, 200) + '\n';
+    for (const s of item.sections.slice(0, 5)) {
+      if (s.body) ctx += s.heading + ': ' + s.body.slice(0, 150) + '\n';
+    }
+    if (item.keywords && item.keywords.length) {
+      ctx += 'キーワード: ' + item.keywords.join('、') + '\n';
+    }
+  }
+  if (PERSONA_DATA.global_kws && PERSONA_DATA.global_kws.length) {
+    ctx += '\n頻出キーワード全体: ' + PERSONA_DATA.global_kws.slice(0, 15).join('、');
+  }
+  return ctx;
+}
+
+// ─── Generate Persona ───
+async function generatePersona() {
+  const age      = document.getElementById('age').value.trim();
+  const gender   = document.getElementById('gender').value;
+  const area     = document.getElementById('area').value;
+  const job      = document.getElementById('job').value.trim();
+  const extra    = document.getElementById('extra').value.trim();
+  const interests = [...selectedInterests].join('、');
+
+  if (!age && !job && selectedInterests.size === 0) {
+    alert('年齢・職業・関心軸のいずれかを入力してください');
+    return;
+  }
+
+  const btn = document.getElementById('gen-btn');
+  const status = document.getElementById('gen-status');
+  btn.disabled = true;
+  status.classList.add('show');
+
+  const signalCtx = buildSignalContext();
+
+  const prompt = `あなたはZ世代のリサーチ専門家です。以下の条件と最新のZ世代インサイトを元に、リアルなペルソナを設計してください。
+
+【条件】
+年齢: ${age || '20代前半'}
+性別: ${gender || '指定なし'}
+居住: ${area || '指定なし'}
+職業: ${job || '指定なし'}
+関心: ${interests || '指定なし'}
+特記: ${extra || 'なし'}
+
+【Z世代最新インサイト（Signal Dashboard）】
+${signalCtx}
+
+以下のJSON形式のみで回答してください（マークダウン不要）：
+{"name":"架空の日本人名","age":"XX歳","gender":"性別","area":"居住","job":"職業","tagline":"20字以内の一言","description":"人物像・価値観・日常行動（150字程度）","keywords":["KW1","KW2","KW3","KW4"],"systemPrompt":"このペルソナとして振る舞うための指示（一人称・口調・価値観・反応パターン含む・300字）","suggestedQuestions":["質問例1","質問例2","質問例3"]}`;
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        messages: [{ role: 'user', content: prompt }]
+      })
+    });
+    const data = await res.json();
+    const raw = data.content[0].text.replace(/```json|```/g, '').trim();
+    const persona = JSON.parse(raw);
+    personaData = persona;
+    conversationHistory = [];
+    renderPersonaCard(persona);
+    initChat(persona);
+  } catch(e) {
+    console.error(e);
+    alert('生成に失敗しました。もう一度お試しください。');
+  } finally {
+    btn.disabled = false;
+    status.classList.remove('show');
+  }
+}
+
+function renderPersonaCard(p) {
+  document.getElementById('card-name').textContent = p.name + ' — ' + p.tagline;
+
+  const meta = document.getElementById('card-meta');
+  meta.innerHTML = '';
+  [p.age, p.gender, p.area, p.job].filter(Boolean).forEach(v => {
+    const el = document.createElement('span');
+    el.className = 'meta-chip';
+    el.textContent = v;
+    meta.appendChild(el);
+  });
+
+  document.getElementById('card-desc').textContent = p.description;
+
+  const kws = document.getElementById('card-kws');
+  kws.innerHTML = '';
+  (p.keywords || []).forEach(kw => {
+    const el = document.createElement('span');
+    el.className = 'kw-chip';
+    el.textContent = kw;
+    kws.appendChild(el);
+  });
+
+  document.getElementById('persona-card').classList.add('show');
+}
+
+function initChat(p) {
+  document.getElementById('empty-state').style.display = 'none';
+  document.getElementById('chat-area').classList.add('show');
+  document.getElementById('chat-avatar').textContent = p.name.charAt(0);
+  document.getElementById('chat-name').textContent = p.name + '（' + p.age + '）';
+  document.getElementById('chat-sub').textContent = p.tagline;
+  document.getElementById('messages').innerHTML = '';
+
+  appendMessage('assistant', 'はじめまして、' + p.name + 'です。\n' + p.description);
+  renderSuggestions(p.suggestedQuestions || []);
+
+  document.getElementById('user-input').disabled = false;
+  document.getElementById('send-btn').disabled = false;
+  document.getElementById('user-input').focus();
+}
+
+function renderSuggestions(questions) {
+  const sug = document.getElementById('suggestions');
+  sug.innerHTML = '';
+  questions.forEach(q => {
+    const btn = document.createElement('button');
+    btn.className = 'sug-btn';
+    btn.textContent = q;
+    btn.onclick = () => {
+      document.getElementById('user-input').value = q;
+      sug.innerHTML = '';
+      sendMessage();
+    };
+    sug.appendChild(btn);
+  });
+}
+
+async function sendMessage() {
+  const input = document.getElementById('user-input');
+  const text = input.value.trim();
+  if (!text || !personaData) return;
+
+  input.value = '';
+  autoResize(input);
+  document.getElementById('suggestions').innerHTML = '';
+  document.getElementById('send-btn').disabled = true;
+
+  appendMessage('user', text);
+  conversationHistory.push({ role: 'user', content: text });
+
+  const typingId = appendTyping();
+
+  const signalCtx = buildSignalContext();
+  const system = personaData.systemPrompt + '\n\n【Signal最新データ補足】\n' + signalCtx
+    + '\n\n必ずこのペルソナの口調・価値観で自然に返答してください。分析的な言葉は使わず、150〜250字程度で。';
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        system: system,
+        messages: conversationHistory
+      })
+    });
+    const data = await res.json();
+    const reply = data.content[0].text;
+    removeTyping(typingId);
+    appendMessage('assistant', reply);
+    conversationHistory.push({ role: 'assistant', content: reply });
+  } catch(e) {
+    removeTyping(typingId);
+    appendMessage('assistant', '…（うまく答えられなかった）');
+    console.error(e);
+  } finally {
+    document.getElementById('send-btn').disabled = false;
+  }
+}
+
+function appendMessage(role, text) {
+  const msgs = document.getElementById('messages');
+  const div = document.createElement('div');
+  div.className = 'message ' + role;
+  const av = document.createElement('div');
+  av.className = 'msg-avatar';
+  av.textContent = role === 'user' ? 'You' : (personaData?.name?.charAt(0) || 'P');
+  const bubble = document.createElement('div');
+  bubble.className = 'msg-bubble';
+  bubble.textContent = text;
+  div.appendChild(av);
+  div.appendChild(bubble);
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function appendTyping() {
+  const msgs = document.getElementById('messages');
+  const id = 'typing-' + Date.now();
+  const div = document.createElement('div');
+  div.className = 'message assistant';
+  div.id = id;
+  const av = document.createElement('div');
+  av.className = 'msg-avatar';
+  av.textContent = personaData?.name?.charAt(0) || 'P';
+  const bubble = document.createElement('div');
+  bubble.className = 'msg-bubble';
+  bubble.innerHTML = '<div class="typing-indicator"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>';
+  div.appendChild(av);
+  div.appendChild(bubble);
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+  return id;
+}
+
+function removeTyping(id) {
+  const el = document.getElementById(id);
+  if (el) el.remove();
+}
+
+function resetPersona() {
+  personaData = null;
+  conversationHistory = [];
+  document.getElementById('persona-card').classList.remove('show');
+  document.getElementById('empty-state').style.display = '';
+  document.getElementById('chat-area').classList.remove('show');
+  document.getElementById('messages').innerHTML = '';
+  document.getElementById('suggestions').innerHTML = '';
+  document.getElementById('send-btn').disabled = true;
+  document.getElementById('user-input').disabled = true;
+  document.getElementById('user-input').value = '';
+  selectedInterests.clear();
+  document.querySelectorAll('#interest-tags .tag').forEach(t => t.classList.remove('active'));
+}
+
+function handleKey(e) {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+}
+
+function autoResize(el) {
+  el.style.height = 'auto';
+  el.style.height = Math.min(el.scrollHeight, 120) + 'px';
+}
+</script>
+</body>
+</html>
