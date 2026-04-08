@@ -21,21 +21,7 @@
     --accent2: #2bb5a0;
   }
 
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --bg: #0c0c0f;
-      --surface: #13131a;
-      --surface2: #1a1a24;
-      --border: rgba(255,255,255,0.07);
-      --border-active: rgba(255,255,255,0.18);
-      --text: #e8e8f0;
-      --text-dim: #666680;
-      --text-muted: #3a3a50;
-      --accent: #7c6ef7;
-      --accent-glow: rgba(124,110,247,0.15);
-      --accent2: #4ec9b0;
-    }
-  }
+  /* ライトモードがデフォルト。ダークはdata-theme="dark"で切替 */
   [data-theme="dark"] {
     --bg: #0c0c0f;
     --surface: #13131a;
@@ -70,7 +56,7 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    background: rgba(12,12,15,0.9);
+    background: rgba(255,255,255,0.92);
     position: sticky;
     top: 0;
     z-index: 100;
@@ -800,8 +786,7 @@ function applyTheme(theme) {
   document.getElementById('theme-toggle').textContent = theme === 'dark' ? '☀️' : '🌙';
 }
 function toggleTheme() {
-  const current = document.documentElement.getAttribute('data-theme') ||
-    (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  const current = document.documentElement.getAttribute('data-theme') || 'light';
   applyTheme(current === 'dark' ? 'light' : 'dark');
 }
 
@@ -810,14 +795,9 @@ window.addEventListener('DOMContentLoaded', () => {
   document.getElementById('ai-select').value = lastAi;
   onAiChange();
   renderLib();
-  // テーマ復元
-  const savedTheme = localStorage.getItem('persona_theme');
-  if (savedTheme) {
-    applyTheme(savedTheme);
-  } else {
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    applyTheme(prefersDark ? 'dark' : 'light');
-  }
+  // テーマ復元（デフォルトはライト）
+  const savedTheme = localStorage.getItem('persona_theme') || 'light';
+  applyTheme(savedTheme);
 });
 
 // ─── Retry helper ───
