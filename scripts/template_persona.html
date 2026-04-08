@@ -491,12 +491,17 @@
     <div id="setup-section">
       <div class="section-label">ペルソナ設定</div>
       <div class="api-panel" style="margin-bottom:16px">
-        <div class="section-label" style="margin-bottom:8px">API KEY</div>
+        <div class="section-label" style="margin-bottom:8px">AI / API KEY</div>
+        <select id="ai-select" class="api-input" style="margin-bottom:8px;flex:none;width:100%" onchange="onAiChange()">
+          <option value="claude">Claude (Anthropic)</option>
+          <option value="openai">GPT-4o (OpenAI)</option>
+          <option value="gemini">Gemini (Google)</option>
+        </select>
         <div class="api-row">
           <input type="password" class="api-input" id="api-key-input" placeholder="sk-ant-..." oninput="onKeyInput()" />
           <button class="api-save-btn" onclick="saveKey()">保存</button>
         </div>
-        <div class="api-hint">取得先: <a href="https://console.anthropic.com/" target="_blank">console.anthropic.com</a> ｜ ブラウザに保存されます</div>
+        <div class="api-hint" id="api-hint">取得先: <a href="https://console.anthropic.com/" target="_blank">console.anthropic.com</a> ｜ ブラウザに保存されます</div>
         <div class="api-saved" id="api-saved">✓ 保存済み</div>
       </div>
 
@@ -616,26 +621,47 @@ let conversationHistory = [];
 let selectedInterests = new Set();
 
 // ─── API Key ───
+const AI_CONFIGS = {
+  claude: {
+    placeholder: 'sk-ant-...',
+    hint: '取得先: <a href="https://console.anthropic.com/" target="_blank">console.anthropic.com</a>',
+    model: 'claude-sonnet-4-20250514',
+  },
+  openai: {
+    placeholder: 'sk-...',
+    hint: '取得先: <a href="https://platform.openai.com/api-keys" target="_blank">platform.openai.com</a>',
+    model: 'gpt-4o',
+  },
+  gemini: {
+    placeholder: 'AIza...',
+    hint: '取得先: <a href="https://aistudio.google.com/app/apikey" target="_blank">aistudio.google.com</a> — 無料枠あり',
+    model: 'gemini-2.0-flash',
+  },
+};
+function currentAi() { return document.getElementById('ai-select').value; }
+function onAiChange() {
+  const ai = currentAi();
+  const cfg = AI_CONFIGS[ai];
+  document.getElementById('api-key-input').placeholder = cfg.placeholder;
+  document.getElementById('api-hint').innerHTML = cfg.hint + ' ｜ ブラウザに保存されます';
+  const saved = localStorage.getItem('persona_api_key_' + ai);
+  document.getElementById('api-key-input').value = saved || '';
+  document.getElementById('api-saved').style.display = saved ? 'block' : 'none';
+}
 function saveKey() {
   const val = document.getElementById('api-key-input').value.trim();
   if (!val) return;
-  localStorage.setItem('persona_api_key', val);
-  const badge = document.getElementById('api-saved');
-  badge.style.display = 'block';
+  localStorage.setItem('persona_api_key_' + currentAi(), val);
+  document.getElementById('api-saved').style.display = 'block';
 }
-function onKeyInput() {
-  document.getElementById('api-saved').style.display = 'none';
-}
+function onKeyInput() { document.getElementById('api-saved').style.display = 'none'; }
 function getKey() {
-  return localStorage.getItem('persona_api_key') || document.getElementById('api-key-input').value.trim();
+  return localStorage.getItem('persona_api_key_' + currentAi()) || document.getElementById('api-key-input').value.trim();
 }
-// 起動時にlocalStorageから復元
 window.addEventListener('DOMContentLoaded', () => {
-  const saved = localStorage.getItem('persona_api_key');
-  if (saved) {
-    document.getElementById('api-key-input').value = saved;
-    document.getElementById('api-saved').style.display = 'block';
-  }
+  const lastAi = localStorage.getItem('persona_last_ai') || 'claude';
+  document.getElementById('ai-select').value = lastAi;
+  onAiChange();
 });
 
 // ─── Interest tags ───
@@ -715,17 +741,36 @@ ${signalCtx}
 {"name":"架空の日本人名","age":"XX歳","gender":"性別","area":"居住","job":"職業","tagline":"20字以内の一言","description":"人物像・価値観・日常行動（150字程度）","keywords":["KW1","KW2","KW3","KW4"],"systemPrompt":"このペルソナとして振る舞うための指示（一人称・口調・価値観・反応パターン含む・300字）","suggestedQuestions":["質問例1","質問例2","質問例3"]}`;
 
   try {
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'x-api-key': apiKey, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 1000,
-        messages: [{ role: 'user', content: prompt }]
-      })
-    });
-    const data = await res.json();
-    const raw = data.content[0].text.replace(/```json|```/g, '').trim();
+    const ai = currentAi();
+    const cfg = AI_CONFIGS[ai];
+    localStorage.setItem('persona_last_ai', ai);
+    let raw;
+    if (ai === 'claude') {
+      const res = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-api-key': apiKey, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
+        body: JSON.stringify({ model: cfg.model, max_tokens: 1000, messages: [{ role: 'user', content: prompt }] })
+      });
+      const data = await res.json();
+      raw = data.content[0].text;
+    } else if (ai === 'openai') {
+      const res = await fetch('https://api.openai.com/v1/chat/completions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + apiKey },
+        body: JSON.stringify({ model: cfg.model, max_tokens: 1000, messages: [{ role: 'user', content: prompt }] })
+      });
+      const data = await res.json();
+      raw = data.choices[0].message.content;
+    } else {
+      const res = await fetch('https://generativelanguage.googleapis.com/v1beta/models/' + cfg.model + ':generateContent?key=' + apiKey, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
+      });
+      const data = await res.json();
+      raw = data.candidates[0].content.parts[0].text;
+    }
+    raw = raw.replace(/```json|```/g, '').trim();
     const persona = JSON.parse(raw);
     personaData = persona;
     conversationHistory = [];
@@ -819,18 +864,36 @@ async function sendMessage() {
 
   try {
     const apiKey = getKey();
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'x-api-key': apiKey, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 1000,
-        system: system,
-        messages: conversationHistory
-      })
-    });
-    const data = await res.json();
-    const reply = data.content[0].text;
+    const ai = currentAi();
+    const cfg = AI_CONFIGS[ai];
+    let reply;
+    if (ai === 'claude') {
+      const res = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-api-key': apiKey, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
+        body: JSON.stringify({ model: cfg.model, max_tokens: 1000, system: system, messages: conversationHistory })
+      });
+      const data = await res.json();
+      reply = data.content[0].text;
+    } else if (ai === 'openai') {
+      const msgs = [{ role: 'system', content: system }, ...conversationHistory];
+      const res = await fetch('https://api.openai.com/v1/chat/completions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + apiKey },
+        body: JSON.stringify({ model: cfg.model, max_tokens: 1000, messages: msgs })
+      });
+      const data = await res.json();
+      reply = data.choices[0].message.content;
+    } else {
+      const contents = conversationHistory.map(m => ({ role: m.role === 'assistant' ? 'model' : 'user', parts: [{ text: m.content }] }));
+      const res = await fetch('https://generativelanguage.googleapis.com/v1beta/models/' + cfg.model + ':generateContent?key=' + apiKey, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ system_instruction: { parts: [{ text: system }] }, contents })
+      });
+      const data = await res.json();
+      reply = data.candidates[0].content.parts[0].text;
+    }
     removeTyping(typingId);
     appendMessage('assistant', reply);
     conversationHistory.push({ role: 'assistant', content: reply });
