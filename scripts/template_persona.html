@@ -628,7 +628,7 @@
     display:flex; align-items:center; justify-content:center;
   " title="ライト/ダーク切替">🌙</button>
   <span class="header-badge">BETA</span>
-  <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--text-muted);letter-spacing:0.08em;">v2.3.0</span>
+  <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--text-muted);letter-spacing:0.08em;">v2.4.0</span>
 </header>
 
 <div class="layout">
@@ -772,7 +772,12 @@
       <div class="chat-toolbar">
         <button class="toolbar-btn" onclick="exportChat()">⬇ 会話保存</button>
         <label class="toolbar-btn" style="cursor:pointer">⬆ 会話読込<input type="file" accept=".json" style="display:none" onchange="importChat(event)"></label>
-        <span class="toolbar-model" id="toolbar-model">HAIKU</span>
+        <select id="chat-model-select" style="
+          margin-left:auto; font-family:'DM Mono',monospace; font-size:10px;
+          background:none; border:1px solid var(--border); color:var(--text-dim);
+          border-radius:5px; padding:3px 7px; cursor:pointer; outline:none;
+          max-width:180px;
+        " onchange="updateToolbarModel()"></select>
       </div>
       <div class="messages" id="messages"></div>
       <div class="suggestions" id="suggestions"></div>
@@ -813,7 +818,10 @@ const AI_CONFIGS = {
       { value: 'claude-sonnet-4-6',          label: 'Sonnet 4.6（高精度）' },
       { value: 'claude-haiku-4-5-20251001',  label: 'Haiku 4.5（高速・低コスト）' },
     ],
-    chatModel: 'claude-haiku-4-5-20251001',
+    chatModels: [
+      { value: 'claude-haiku-4-5-20251001', label: 'Haiku 4.5（高速・低コスト）' },
+      { value: 'claude-sonnet-4-6',         label: 'Sonnet 4.6（高精度）' },
+    ],
   },
   openai: {
     placeholder: 'sk-...',
@@ -822,7 +830,10 @@ const AI_CONFIGS = {
       { value: 'gpt-4o',      label: 'GPT-4o（高精度）' },
       { value: 'gpt-4o-mini', label: 'GPT-4o mini（高速・低コスト）' },
     ],
-    chatModel: 'gpt-4o-mini',
+    chatModels: [
+      { value: 'gpt-4o-mini', label: 'GPT-4o mini（高速・低コスト）' },
+      { value: 'gpt-4o',      label: 'GPT-4o（高精度）' },
+    ],
   },
   gemini: {
     placeholder: 'AIza...',
@@ -830,12 +841,17 @@ const AI_CONFIGS = {
     genModels:  [
       { value: 'gemini-2.5-flash', label: 'Gemini 2.5 Flash' },
     ],
-    chatModel: 'gemini-2.5-flash',
+    chatModels: [
+      { value: 'gemini-2.5-flash', label: 'Gemini 2.5 Flash' },
+    ],
   },
 };
 function currentAi() { return document.getElementById('ai-select').value; }
 function currentGenModel() {
   return document.getElementById('gen-model-select').value;
+}
+function currentChatModel() {
+  return document.getElementById('chat-model-select').value;
 }
 function onAiChange() {
   const ai = currentAi();
@@ -855,6 +871,13 @@ function onAiChange() {
   // 生成モデルセレクタを更新
   if (sel) {
     sel.innerHTML = cfg.genModels.map(m =>
+      '<option value="' + m.value + '">' + m.label + '</option>'
+    ).join('');
+  }
+  // 対話モデルセレクタを更新
+  const chatSel = document.getElementById('chat-model-select');
+  if (chatSel) {
+    chatSel.innerHTML = cfg.chatModels.map(m =>
       '<option value="' + m.value + '">' + m.label + '</option>'
     ).join('');
   }
@@ -1166,7 +1189,7 @@ async function sendMessage() {
       let data;
       if (ai === 'claude') {
         data = await callAPI(
-          { model: cfg.chatModel, max_tokens: 1000, system: system, messages: conversationHistory },
+          { model: currentChatModel(), max_tokens: 1000, system: system, messages: conversationHistory },
           { 'Content-Type': 'application/json', 'x-api-key': apiKey, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
           'https://api.anthropic.com/v1/messages'
         );
@@ -1183,7 +1206,7 @@ async function sendMessage() {
         return m;
       })];
         data = await callAPI(
-          { model: cfg.chatModel, max_tokens: 1000, messages: msgs },
+          { model: currentChatModel(), max_tokens: 1000, messages: msgs },
           { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + apiKey },
           'https://api.openai.com/v1/chat/completions'
         );
@@ -1492,10 +1515,7 @@ function initChatFromLib(p, history) {
 }
 
 function updateToolbarModel() {
-  const ai = currentAi();
-  const cfg = AI_CONFIGS[ai];
-  document.getElementById('toolbar-model').textContent =
-    (cfg.chatModel || '').split('-').slice(0,3).join('-').toUpperCase();
+  // chat-model-selectは既にonAiChangeで設定済み。何もしなくてOK
 }
 
 function download(filename, text) {
