@@ -563,7 +563,7 @@
     display:flex; align-items:center; justify-content:center;
   " title="ライト/ダーク切替">🌙</button>
   <span class="header-badge">BETA</span>
-  <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--text-muted);letter-spacing:0.08em;">v2.0.0</span>
+  <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--text-muted);letter-spacing:0.08em;">v2.1.0</span>
 </header>
 
 <div class="layout">
@@ -870,7 +870,8 @@ async function fetchWithRetry(fn, maxRetry = 3, statusEl = null) {
 async function callAPI(body, headers, url) {
   const res = await fetch(url, { method: 'POST', headers, body: JSON.stringify(body) });
   if (!res.ok) {
-    const err = new Error('API error: ' + res.status);
+    const text = await res.text();
+    const err = new Error('API error ' + res.status + ': ' + text.slice(0, 200));
     err.status = res.status;
     throw err;
   }
@@ -967,14 +968,17 @@ ${signalCtx}
         data = await callAPI(
           { contents: [{ parts: [{ text: prompt }] }] }, // genModel used via URL
           { 'Content-Type': 'application/json' },
-          'https://generativelanguage.googleapis.com/v1beta/models/' + cfg.chatModel + ':generateContent?key=' + apiKey
+          'https://generativelanguage.googleapis.com/v1beta/models/' + currentGenModel() + ':generateContent?key=' + apiKey
         );
         if (data.error) { const e = new Error(data.error.message); e.status = data.error.code; throw e; }
         raw = data.candidates[0].content.parts[0].text;
       }
     }, 3, statusEl);
-    raw = raw.replace(/```json|```/g, '').trim();
-    const persona = JSON.parse(raw);
+    raw = (raw || '').replace(/```json|```/g, '').trim();
+    const start = raw.indexOf('{');
+    const end = raw.lastIndexOf('}');
+    if (start === -1 || end === -1 || end <= start) throw new Error('有効なJSONを取得できませんでした');
+    const persona = JSON.parse(raw.slice(start, end + 1));
     personaData = persona;
     conversationHistory = [];
     renderPersonaCard(persona);
@@ -1093,7 +1097,7 @@ async function sendMessage() {
         data = await callAPI(
           { system_instruction: { parts: [{ text: system }] }, contents, generationConfig: { maxOutputTokens: 1000 } },
           { 'Content-Type': 'application/json' },
-          'https://generativelanguage.googleapis.com/v1beta/models/' + cfg.chatModel + ':generateContent?key=' + apiKey
+          'https://generativelanguage.googleapis.com/v1beta/models/' + currentGenModel() + ':generateContent?key=' + apiKey
         );
         if (data.error) { const e = new Error(data.error.message); e.status = data.error.code; throw e; }
         reply = data.candidates[0].content.parts[0].text;
@@ -1290,8 +1294,7 @@ function initChatFromLib(p, history) {
   history.forEach(m => appendMessage(m.role, m.content));
 
   if (!history.length) {
-    appendMessage('assistant', 'はじめまして、' + p.name + 'です。
-' + p.description);
+    appendMessage('assistant', 'はじめまして、' + p.name + 'です。\n' + p.description);
     renderSuggestions(p.suggestedQuestions || []);
   }
   updateToolbarModel();
