@@ -382,7 +382,6 @@ def main():
 
 def build_persona_data(entries):
     """ペルソナページ用データを抽出する"""
-    # essay.sectionsが充実しているエントリを優先して取得
     priority_types = ['annual', 'quarterly', 'monthly']
     insights = []
     for pt in priority_types:
@@ -408,7 +407,33 @@ def build_persona_data(entries):
                 })
 
     global_kws = build_global_kws(entries)
-    return {'insights': insights, 'global_kws': global_kws}
+
+    # キーワード×記事マッピング（最新20週から、各KW最大3件）
+    from collections import defaultdict
+    kw_articles = defaultdict(list)
+    weekly = sorted(
+        [e for e in entries if e.get('type') == 'weekly'],
+        key=lambda x: x.get('period', {}).get('start', ''),
+        reverse=True
+    )[:20]
+    seen_urls = defaultdict(set)
+    for entry in weekly:
+        kws = entry.get('essay', {}).get('keywords', [])
+        for article in (entry.get('articles') or []):
+            url = article.get('url', '')
+            title = clean(article.get('title', ''))
+            if not url or not title or len(title) < 4:
+                continue
+            for kw in kws:
+                if url not in seen_urls[kw] and len(kw_articles[kw]) < 3:
+                    kw_articles[kw].append({'title': title[:80], 'url': url})
+                    seen_urls[kw].add(url)
+
+    return {
+        'insights': insights,
+        'global_kws': global_kws,
+        'kw_articles': dict(kw_articles),
+    }
 
 
 if __name__ == '__main__':
