@@ -563,7 +563,7 @@
     display:flex; align-items:center; justify-content:center;
   " title="ライト/ダーク切替">🌙</button>
   <span class="header-badge">BETA</span>
-  <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--text-muted);letter-spacing:0.08em;">v2.1.0</span>
+  <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--text-muted);letter-spacing:0.08em;">v2.2.0</span>
 </header>
 
 <div class="layout">
@@ -1320,7 +1320,7 @@ function download(filename, text) {
 
 
 function handleKey(e) {
-  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+  // 送信ボタンのみで送信（Enterキー無効）
 }
 
 function autoResize(el) {
