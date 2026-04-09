@@ -628,7 +628,7 @@
     display:flex; align-items:center; justify-content:center;
   " title="ライト/ダーク切替">🌙</button>
   <span class="header-badge">BETA</span>
-  <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--text-muted);letter-spacing:0.08em;">v2.6.0</span>
+  <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--text-muted);letter-spacing:0.08em;">v2.6.1</span>
 </header>
 
 <div class="layout">
@@ -1047,14 +1047,14 @@ ${signalCtx}
       let data;
       if (ai === 'claude') {
         data = await callAPI(
-          { model: currentGenModel(), max_tokens: 1000, messages: [{ role: 'user', content: prompt }] },
+          { model: currentGenModel(), max_tokens: 2000, messages: [{ role: 'user', content: prompt }] },
           { 'Content-Type': 'application/json', 'x-api-key': apiKey, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
           'https://api.anthropic.com/v1/messages'
         );
         raw = data.content[0].text;
       } else if (ai === 'openai') {
         data = await callAPI(
-          { model: currentGenModel(), max_tokens: 1000, messages: [{ role: 'user', content: prompt }] },
+          { model: currentGenModel(), max_tokens: 2000, messages: [{ role: 'user', content: prompt }] },
           { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + apiKey },
           'https://api.openai.com/v1/chat/completions'
         );
@@ -1544,14 +1544,14 @@ async function generateSheet() {
     let raw;
     if (ai === 'claude') {
       const data = await callAPI(
-        { model: currentGenModel(), max_tokens: 1000, messages: [{ role: 'user', content: prompt }] },
+        { model: currentGenModel(), max_tokens: 2000, messages: [{ role: 'user', content: prompt }] },
         { 'Content-Type': 'application/json', 'x-api-key': apiKey, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
         'https://api.anthropic.com/v1/messages'
       );
       raw = data.content[0].text;
     } else if (ai === 'openai') {
       const data = await callAPI(
-        { model: currentGenModel(), max_tokens: 1000, messages: [{ role: 'user', content: prompt }] },
+        { model: currentGenModel(), max_tokens: 2000, messages: [{ role: 'user', content: prompt }] },
         { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + apiKey },
         'https://api.openai.com/v1/chat/completions'
       );
