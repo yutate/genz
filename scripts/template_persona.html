@@ -628,7 +628,7 @@
     display:flex; align-items:center; justify-content:center;
   " title="ライト/ダーク切替">🌙</button>
   <span class="header-badge">BETA</span>
-  <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--text-muted);letter-spacing:0.08em;">v2.5.0</span>
+  <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--text-muted);letter-spacing:0.08em;">v2.6.0</span>
 </header>
 
 <div class="layout">
@@ -1035,7 +1035,7 @@ async function generatePersona() {
 ${signalCtx}
 
 以下のJSON形式のみで回答してください（マークダウン不要）：
-{"name":"架空の日本人名","age":"XX歳","gender":"性別","area":"居住","job":"職業","tagline":"20字以内の一言","description":"人物像・価値観・日常行動（150字程度）","keywords":["KW1","KW2","KW3","KW4"],"systemPrompt":"このペルソナとして振る舞うための指示（一人称・口調・価値観・反応パターン含む・300字）","suggestedQuestions":["質問例1","質問例2","質問例3"]}`;
+{"name":"架空の日本人名","age":"XX歳","gender":"性別","area":"居住","job":"職業","tagline":"20字以内の一言","description":"人物像・価値観・日常行動（150字程度）","keywords":["KW1","KW2","KW3","KW4"],"systemPrompt":"このペルソナとして振る舞うための指示（一人称・口調・価値観・反応パターン含む・300字）","suggestedQuestions":["質問例1","質問例2","質問例3"],"media_touch":{"sns":[{"name":"TikTok","usage":"トレンド発見・商品リサーチ"},{"name":"Instagram","usage":"保存・比較・世界観チェック"}],"video_music":[{"name":"YouTube","usage":"レビュー・How-to動画"},{"name":"Spotify","usage":"BGM・プレイリスト"}],"news_info":[{"name":"SmartNews","usage":"朝の通勤中にざっと確認"}],"ooh":[{"type":"電車内映像広告","behavior":"流し見・気になったら後でスマホ検索"},{"type":"電車内静止画広告","behavior":"乗換駅でスキャン・QRはたまに読む"},{"type":"駅構内サイネージ","behavior":"歩きながら視界に入る程度"},{"type":"屋外ビジョン","behavior":"待ち時間に目に入る"}]}}`;
 
   try {
     const ai = currentAi();
@@ -1593,6 +1593,29 @@ function renderSheet(p, a) {
     return '<div style="background:#f8f9ff;border-left:3px solid #6558f5;border-radius:0 8px 8px 0;padding:10px 14px;"><div style="font-size:12px;font-weight:700;color:#4040c0;margin-bottom:3px;">' + esc(b.title) + '</div><div style="font-size:11px;color:#555;line-height:1.6;">' + esc(b.body) + '</div></div>';
   }).join('');
 
+  // メディア接触セクション
+  var mt = p.media_touch || {};
+  var mediaSections = [
+    { icon: '📱', label: 'SNS', items: mt.sns || [] },
+    { icon: '🎥', label: '動画・音楽', items: mt.video_music || [] },
+    { icon: '📰', label: 'ニュース・情報', items: mt.news_info || [] },
+    { icon: '🚃', label: 'OOH', items: (mt.ooh || []).map(function(o) { return { name: o.type, usage: o.behavior }; }) },
+  ].filter(function(s) { return s.items && s.items.length > 0; });
+  var mediaHTML = mediaSections.length ? (
+    '<div style="margin-bottom:20px;">'
+    + '<div style="font-size:10px;font-weight:900;color:#888;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:10px;">' + 'メディア接触 &amp; 使い方' + '</div>'
+    + '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">'
+    + mediaSections.map(function(sec) {
+        return '<div style="background:#fafafa;border:1px solid #e0e0e0;border-radius:8px;padding:10px 12px;">'
+          + '<div style="font-size:11px;font-weight:700;color:#555;margin-bottom:6px;">' + sec.icon + ' ' + sec.label + '</div>'
+          + (sec.items || []).map(function(item) {
+              return '<div style="font-size:11px;color:#333;margin-bottom:4px;"><span style="font-weight:600;">' + esc(item.name) + '</span><span style="color:#888;"> — ' + esc(item.usage) + '</span></div>';
+            }).join('')
+          + '</div>';
+      }).join('')
+    + '</div></div>'
+  ) : '';
+
   const quotesHTML = (a.quotes || []).map(function(q) {
     return '<div style="background:#fffde7;border:1px solid #fdd835;border-radius:10px;padding:12px;"><div style="font-size:12px;color:#1a1a2e;line-height:1.7;">\u300c' + esc(q) + '\u300d</div></div>';
   }).join('');
@@ -1627,6 +1650,7 @@ function renderSheet(p, a) {
     + '</div>'
     + '<div style="margin-bottom:20px;"><div style="font-size:10px;font-weight:900;color:#888;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:10px;">\u884c\u52d5\u30d1\u30bf\u30fc\u30f3</div>'
     + '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">' + behaviorsHTML + '</div></div>'
+    + mediaHTML
     + '<div><div style="font-size:10px;font-weight:900;color:#888;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:10px;">\u5370\u8c61\u7684\u306a\u767a\u8a00</div>'
     + '<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;">' + quotesHTML + '</div></div>'
     + '</div>'
