@@ -427,6 +427,71 @@
   .send-btn:disabled { opacity: 0.3; cursor: not-allowed; }
   .send-btn svg { width: 15px; height: 15px; fill: #fff; }
 
+  /* ── Image attach ── */
+  .attach-btn {
+    width: 38px; height: 38px;
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--text-dim);
+    font-size: 18px;
+    transition: all 0.15s;
+  }
+  .attach-btn:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+  .attach-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+  .image-preview-bar {
+    padding: 8px 20px 0;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .image-preview-item {
+    position: relative;
+    width: 64px; height: 64px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  .image-preview-item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+  .image-preview-del {
+    position: absolute;
+    top: 2px; right: 2px;
+    width: 18px; height: 18px;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    font-size: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+  }
+  .msg-images {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 6px;
+  }
+  .msg-images img {
+    max-width: 160px;
+    max-height: 160px;
+    border-radius: 8px;
+    object-fit: cover;
+    border: 1px solid var(--border);
+    cursor: pointer;
+  }
+
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(8px); }
     to   { opacity: 1; transform: translateY(0); }
@@ -563,7 +628,7 @@
     display:flex; align-items:center; justify-content:center;
   " title="ライト/ダーク切替">🌙</button>
   <span class="header-badge">BETA</span>
-  <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--text-muted);letter-spacing:0.08em;">v2.2.0</span>
+  <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--text-muted);letter-spacing:0.08em;">v2.3.0</span>
 </header>
 
 <div class="layout">
@@ -712,7 +777,12 @@
       <div class="messages" id="messages"></div>
       <div class="suggestions" id="suggestions"></div>
 
+      <div class="image-preview-bar" id="image-preview-bar"></div>
       <div class="input-bar">
+        <label class="attach-btn" id="attach-btn" title="画像を添付（最大3枚）">
+          📎
+          <input type="file" id="image-input" accept="image/*" multiple style="display:none" onchange="handleImageSelect(event)" disabled>
+        </label>
         <textarea id="user-input" placeholder="メッセージを送る…" rows="1"
           onkeydown="handleKey(event)" oninput="autoResize(this)" disabled></textarea>
         <button class="send-btn" id="send-btn" onclick="sendMessage()" disabled>
@@ -732,6 +802,7 @@ const PERSONA_DATA={"insights":[{"type":"annual","id":"2025","title":"2025 年�
 let personaData = null;
 let conversationHistory = [];
 let selectedInterests = new Set();
+let attachedImages = []; // {base64, mediaType, previewUrl}
 
 // ─── API Key ───
 const AI_CONFIGS = {
@@ -1032,6 +1103,7 @@ function initChat(p) {
   updateToolbarModel();
   document.getElementById('user-input').disabled = false;
   document.getElementById('send-btn').disabled = false;
+  document.getElementById('image-input').disabled = false;
   document.getElementById('user-input').focus();
 }
 
@@ -1054,15 +1126,30 @@ function renderSuggestions(questions) {
 async function sendMessage() {
   const input = document.getElementById('user-input');
   const text = input.value.trim();
-  if (!text || !personaData) return;
+  if (!text && attachedImages.length === 0) return;
+  if (!personaData) return;
 
+  const images = [...attachedImages];
   input.value = '';
   autoResize(input);
+  clearImages();
   document.getElementById('suggestions').innerHTML = '';
   document.getElementById('send-btn').disabled = true;
 
-  appendMessage('user', text);
-  conversationHistory.push({ role: 'user', content: text });
+  // メッセージ表示（画像+テキスト）
+  appendMessageWithImages('user', text, images);
+
+  // 会話履歴（API送信用）
+  if (images.length > 0) {
+    const contentArr = images.map(img => ({
+      type: 'image',
+      source: { type: 'base64', media_type: img.mediaType, data: img.base64 }
+    }));
+    if (text) contentArr.push({ type: 'text', text });
+    conversationHistory.push({ role: 'user', content: contentArr });
+  } else {
+    conversationHistory.push({ role: 'user', content: text });
+  }
 
   const typingId = appendTyping();
 
@@ -1085,7 +1172,16 @@ async function sendMessage() {
         );
         reply = data.content[0].text;
       } else if (ai === 'openai') {
-        const msgs = [{ role: 'system', content: system }, ...conversationHistory];
+        // OpenAIはimage_urlフォーマットに変換
+      const msgs = [{ role: 'system', content: system }, ...conversationHistory.map(m => {
+        if (Array.isArray(m.content)) {
+          return { role: m.role, content: m.content.map(c =>
+            c.type === 'image' ? { type: 'image_url', image_url: { url: 'data:' + c.source.media_type + ';base64,' + c.source.data } }
+            : c
+          )};
+        }
+        return m;
+      })];
         data = await callAPI(
           { model: cfg.chatModel, max_tokens: 1000, messages: msgs },
           { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + apiKey },
@@ -1093,7 +1189,18 @@ async function sendMessage() {
         );
         reply = data.choices[0].message.content;
       } else {
-        const contents = conversationHistory.map(m => ({ role: m.role === 'assistant' ? 'model' : 'user', parts: [{ text: m.content }] }));
+        const contents = conversationHistory.map(m => {
+          const role = m.role === 'assistant' ? 'model' : 'user';
+          if (Array.isArray(m.content)) {
+            const parts = m.content.map(c =>
+              c.type === 'image'
+                ? { inline_data: { mime_type: c.source.media_type, data: c.source.data } }
+                : { text: c.text || '' }
+            );
+            return { role, parts };
+          }
+          return { role, parts: [{ text: m.content }] };
+        });
         data = await callAPI(
           { system_instruction: { parts: [{ text: system }] }, contents, generationConfig: { maxOutputTokens: 1000 } },
           { 'Content-Type': 'application/json' },
@@ -1113,6 +1220,37 @@ async function sendMessage() {
   } finally {
     document.getElementById('send-btn').disabled = false;
   }
+}
+
+function appendMessageWithImages(role, text, images) {
+  const msgs = document.getElementById('messages');
+  const div = document.createElement('div');
+  div.className = 'message ' + role;
+  const av = document.createElement('div');
+  av.className = 'msg-avatar';
+  av.textContent = role === 'user' ? 'You' : (personaData?.name?.charAt(0) || 'P');
+  const bubble = document.createElement('div');
+  bubble.className = 'msg-bubble';
+  if (images.length > 0) {
+    const imgRow = document.createElement('div');
+    imgRow.className = 'msg-images';
+    images.forEach(img => {
+      const el = document.createElement('img');
+      el.src = img.previewUrl;
+      el.onclick = () => window.open(img.previewUrl, '_blank');
+      imgRow.appendChild(el);
+    });
+    bubble.appendChild(imgRow);
+  }
+  if (text) {
+    const t = document.createElement('div');
+    t.textContent = text;
+    bubble.appendChild(t);
+  }
+  div.appendChild(av);
+  div.appendChild(bubble);
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
 }
 
 function appendMessage(role, text) {
@@ -1155,6 +1293,53 @@ function removeTyping(id) {
   if (el) el.remove();
 }
 
+// ─── Image attach ───
+function handleImageSelect(event) {
+  const files = Array.from(event.target.files);
+  const remaining = 3 - attachedImages.length;
+  const toAdd = files.slice(0, remaining);
+  toAdd.forEach(file => {
+    const reader = new FileReader();
+    reader.onload = e => {
+      const dataUrl = e.target.result;
+      const [header, base64] = dataUrl.split(',');
+      const mediaType = header.match(/:(.*?);/)[1];
+      attachedImages.push({ base64, mediaType, previewUrl: dataUrl });
+      renderImagePreview();
+    };
+    reader.readAsDataURL(file);
+  });
+  event.target.value = '';
+}
+
+function renderImagePreview() {
+  const bar = document.getElementById('image-preview-bar');
+  if (!attachedImages.length) { bar.innerHTML = ''; return; }
+  bar.innerHTML = attachedImages.map((img, i) =>
+    '<div class="image-preview-item">'
+    + '<img src="' + img.previewUrl + '">'
+    + '<button class="image-preview-del" onclick="removeImage(' + i + ')">✕</button>'
+    + '</div>'
+  ).join('');
+  // 3枚でattachボタン無効
+  const attachInput = document.getElementById('image-input');
+  if (attachInput) attachInput.disabled = attachedImages.length >= 3;
+}
+
+function removeImage(index) {
+  attachedImages.splice(index, 1);
+  renderImagePreview();
+  const attachInput = document.getElementById('image-input');
+  if (attachInput) attachInput.disabled = false;
+}
+
+function clearImages() {
+  attachedImages = [];
+  renderImagePreview();
+  const attachInput = document.getElementById('image-input');
+  if (attachInput) attachInput.disabled = false;
+}
+
 function resetPersona() {
   personaData = null;
   conversationHistory = [];
@@ -1166,6 +1351,8 @@ function resetPersona() {
   document.getElementById('send-btn').disabled = true;
   document.getElementById('user-input').disabled = true;
   document.getElementById('user-input').value = '';
+  document.getElementById('image-input').disabled = true;
+  clearImages();
   selectedInterests.clear();
   document.querySelectorAll('#interest-tags .tag').forEach(t => t.classList.remove('active'));
 }
@@ -1300,6 +1487,7 @@ function initChatFromLib(p, history) {
   updateToolbarModel();
   document.getElementById('user-input').disabled = false;
   document.getElementById('send-btn').disabled = false;
+  document.getElementById('image-input').disabled = false;
   document.getElementById('user-input').focus();
 }
 
