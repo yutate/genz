@@ -768,22 +768,32 @@ function currentGenModel() {
 function onAiChange() {
   const ai = currentAi();
   const cfg = AI_CONFIGS[ai];
-  document.getElementById('api-key-input').placeholder = cfg.placeholder;
-  document.getElementById('api-hint').innerHTML = cfg.hint + ' ｜ ブラウザに保存されます';
+  const keyInp = document.getElementById('api-key-input');
+  const hintEl = document.getElementById('api-hint');
+  const badge  = document.getElementById('api-saved');
+  const sel    = document.getElementById('gen-model-select');
+
+  if (keyInp) keyInp.placeholder = cfg.placeholder;
+  if (hintEl) hintEl.innerHTML = cfg.hint + ' ｜ ブラウザに保存されます';
+
   const saved = localStorage.getItem('persona_api_key_' + ai);
-  document.getElementById('api-key-input').value = saved || '';
-  document.getElementById('api-saved').style.display = saved ? 'block' : 'none';
+  if (keyInp) keyInp.value = saved || '';
+  if (badge)  badge.style.display = saved ? 'block' : 'none';
+
   // 生成モデルセレクタを更新
-  const sel = document.getElementById('gen-model-select');
-  sel.innerHTML = cfg.genModels.map(m =>
-    '<option value="' + m.value + '">' + m.label + '</option>'
-  ).join('');
+  if (sel) {
+    sel.innerHTML = cfg.genModels.map(m =>
+      '<option value="' + m.value + '">' + m.label + '</option>'
+    ).join('');
+  }
+  localStorage.setItem('persona_last_ai', ai);
 }
 function saveKey() {
   const val = document.getElementById('api-key-input').value.trim();
-  if (!val) return;
+  if (!val) { alert('APIキーを入力してください'); return; }
   localStorage.setItem('persona_api_key_' + currentAi(), val);
-  document.getElementById('api-saved').style.display = 'block';
+  const badge = document.getElementById('api-saved');
+  if (badge) { badge.style.display = 'block'; badge.textContent = '✓ 保存済み'; }
 }
 function onKeyInput() { document.getElementById('api-saved').style.display = 'none'; }
 function getKey() {
@@ -802,10 +812,37 @@ function toggleTheme() {
 }
 
 window.addEventListener('DOMContentLoaded', () => {
+  // タグのイベントリスナー
+  document.querySelectorAll('#interest-tags .tag').forEach(tag => {
+    tag.addEventListener('click', () => {
+      const val = tag.dataset.val;
+      if (selectedInterests.has(val)) {
+        selectedInterests.delete(val);
+        tag.classList.remove('active');
+      } else {
+        selectedInterests.add(val);
+        tag.classList.add('active');
+      }
+    });
+  });
+
+  // AI設定復元（genModelセレクタ含む）
   const lastAi = localStorage.getItem('persona_last_ai') || 'claude';
-  document.getElementById('ai-select').value = lastAi;
+  const aiSel = document.getElementById('ai-select');
+  if (aiSel) aiSel.value = lastAi;
   onAiChange();
+
+  // APIキー表示復元
+  const savedKey = localStorage.getItem('persona_api_key_' + lastAi);
+  if (savedKey) {
+    const inp = document.getElementById('api-key-input');
+    if (inp) inp.value = savedKey;
+    const badge = document.getElementById('api-saved');
+    if (badge) badge.style.display = 'block';
+  }
+
   renderLib();
+
   // テーマ復元（デフォルトはライト）
   const savedTheme = localStorage.getItem('persona_theme') || 'light';
   applyTheme(savedTheme);
@@ -839,19 +876,7 @@ async function callAPI(body, headers, url) {
   return res.json();
 }
 
-// ─── Interest tags ───
-document.querySelectorAll('#interest-tags .tag').forEach(tag => {
-  tag.addEventListener('click', () => {
-    const val = tag.dataset.val;
-    if (selectedInterests.has(val)) {
-      selectedInterests.delete(val);
-      tag.classList.remove('active');
-    } else {
-      selectedInterests.add(val);
-      tag.classList.add('active');
-    }
-  });
-});
+// ─── Interest tags（DOMContentLoaded内で初期化）───
 
 // ─── Build Signal context from embedded data ───
 function buildSignalContext() {
