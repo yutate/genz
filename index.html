@@ -1127,6 +1127,7 @@ rcat(CATS);
   const tl=document.getElementById('tl');
   RAW.forEach(d=>{
     const item=document.createElement('div');item.className='tli';
+    const top4=Object.entries(d.categories).sort((a,b)=>b[1]-a[1]).slice(0,4).filter(([,v])=>v>0);
     const chips=top4.map(([cat,val])=>{const ci=CATS.indexOf(cat);return`<div class="bc" style="background:${CAT_BG[ci]};color:${COLS[ci]}">${cat} ${val}</div>`;}).join('');
     const ws=d.week.replace(/\d{4}年/,'').replace(/([〜～])/,' 〜 ');
     item.innerHTML=`
