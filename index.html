@@ -887,7 +887,7 @@ footer {
         <div class="snav-emoji">📅</div>
         <div class="snav-text">月次サマリー</div>
       </a>
-      <a class="snav-item" data-page="p-keywords" onclick="navTo('p-keywords',this);return false" href="#">
+      <a class="snav-item" data-page="p-kw" onclick="navTo('p-kw',this);return false" href="#">
         <div class="snav-emoji">🔑</div>
         <div class="snav-text">考察キーワード</div>
       </a>
@@ -911,10 +911,6 @@ footer {
         <div class="snav-emoji">🔍</div>
         <div class="snav-text">記事検索</div>
       </a>
-      <a class="snav-item" href="persona.html" style="margin-top:8px;border-top:1.5px dashed var(--bd);padding-top:12px;">
-        <div class="snav-emoji">🎭</div>
-        <div class="snav-text">Persona Talk<span style="display:block;font-size:9px;color:var(--ts);font-weight:400;margin-top:1px">BETA</span></div>
-      </a>
       <!-- SIDENAV_END -->
 </div>
   </aside>
@@ -929,7 +925,7 @@ footer {
   <button class="bnav-item" data-page="p-monthly" onclick="navTo('p-monthly',this)">
     <span class="bnav-emoji">📅</span><span>月次</span>
   </button>
-  <button class="bnav-item" data-page="p-keywords" onclick="navTo('p-keywords',this)">
+  <button class="bnav-item" data-page="p-kw" onclick="navTo('p-kw',this)">
     <span class="bnav-emoji">🔑</span><span>KW</span>
   </button>
   <button class="bnav-item" data-page="p-narrative" onclick="navTo('p-narrative',this)">
@@ -947,9 +943,6 @@ footer {
   <button class="bnav-item" data-page="p-search" onclick="navTo('p-search',this)">
     <span class="bnav-emoji">🔍</span><span>検索</span>
   </button>
-  <a class="bnav-item" href="persona.html" style="text-decoration:none;font-size:10px;font-weight:700;color:var(--ts);">
-    <span class="bnav-emoji">🎭</span><span>Persona</span>
-  </a>
   <!-- BOTTOMNAV_END -->
 </nav>
 
@@ -977,20 +970,7 @@ const DATA=[...RAW].reverse();
 const CATS=["SNS・デジタル疲れ","推し活・オタク","AI・テクノロジー","消費・購買","働き方・キャリア","価値観・アイデンティティ","恋愛・人間関係","金融・お金"];
 const COLS=["#4CAF50","#FDD835","#29B6F6","#AB47BC","#FF7043","#26A69A","#EC407A","#FFA726"];
 const CAT_BG=["#E8F5E9","#FFFDE7","#E1F5FE","#F3E5F5","#FBE9E7","#E0F2F1","#FCE4EC","#FFF3E0"];
-// 考察キーワードは単語抽出ではなく、各週の意味KW（d.keywords）を集計して使う
-function buildMeaningKeywords(data){
-  const counts = {};
-  data.forEach(d => {
-    (d.keywords || []).forEach(kw => {
-      if(!kw) return;
-      counts[kw] = (counts[kw] || 0) + 1;
-    });
-  });
-  return Object.entries(counts)
-    .sort((a,b) => b[1] - a[1] || a[0].localeCompare(b[0], 'ja'))
-    .map(([kw]) => kw);
-}
-const KWS = buildMeaningKeywords(DATA);
+const KWS=typeof GLOBAL_KWS!=='undefined'?GLOBAL_KWS:['距離','設計','摩擦','納得','壊れ','持続','安心','疲れ','軽く','自分','関係','感情','社会','守る','移行','不安','輪郭','発明','熱狂','最適化','選ば','盛り上げ','正解','リバランス','持続可能'];
 
 function sw(w){
   // 新形式: 2026/03/30 〜 2026/04/03
@@ -1145,8 +1125,7 @@ rcat(CATS);
 // 04 Timeline
 (function(){
   const tl=document.getElementById('tl');
-  RAW.forEach(d=>{
-    const item=document.createElement('div');item.className='tli';
+  [...RAW].reverse().forEach(d=>{
     const top4=Object.entries(d.categories).sort((a,b)=>b[1]-a[1]).slice(0,4).filter(([,v])=>v>0);
     const chips=top4.map(([cat,val])=>{const ci=CATS.indexOf(cat);return`<div class="bc" style="background:${CAT_BG[ci]};color:${COLS[ci]}">${cat} ${val}</div>`;}).join('');
     const ws=d.week.replace(/\d{4}年/,'').replace(/([〜～])/,' 〜 ');
@@ -1224,10 +1203,6 @@ rcat(CATS);
   KWS.forEach(kw=>{kwData[kw]={count:0,weeks:[]};DATA.forEach(d=>{if(hasKw(d,kw)){kwData[kw].count++;kwData[kw].weeks.push({week:d.week,theme:d.theme||(d.summary||'').slice(0,80)});}});});
   const sorted=Object.entries(kwData).filter(([,v])=>v.count>0).sort((a,b)=>b[1].count-a[1].count);
   const top8=sorted.slice(0,8);
-  if(sorted.length===0){
-    document.getElementById('kwdetail').innerHTML='<div style="color:var(--ts);font-size:13px">考察キーワードが見つかりません。RAWデータの keywords を確認してね。</div>';
-    return;
-  }
   new Chart(document.getElementById('kwchart'),{
     type:'line',
     data:{
@@ -1261,7 +1236,7 @@ rcat(CATS);
     {months:['2026/03'],label:'Phase 5 — 定義更新期',color:COLS[0],desc:'「距離を設計する世代」「関係設計者」として新定義が確立される。'},
   ];
   let cur=-1;
-  RAW.forEach(d=>{
+  [...RAW].reverse().forEach(d=>{
     const m=ym(d.week);const pi=phases.findIndex(p=>p.months.includes(m));
     if(pi>=0&&pi!==cur){cur=pi;const ph=phases[pi];const phEl=document.createElement('div');phEl.className='phase-hd';phEl.innerHTML=`<div class="phase-dot" style="background:${ph.color}">${pi+1}</div><div class="phase-info"><div class="phase-label" style="color:${ph.color}">${ph.label}</div><div class="phase-desc">${ph.desc}</div></div>`;narr.appendChild(phEl);}
     const item=document.createElement('div');item.className='nitem';
