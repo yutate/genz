@@ -1125,8 +1125,8 @@ rcat(CATS);
 // 04 Timeline
 (function(){
   const tl=document.getElementById('tl');
-  [...RAW].reverse().forEach(d=>{
-    const top4=Object.entries(d.categories).sort((a,b)=>b[1]-a[1]).slice(0,4).filter(([,v])=>v>0);
+  RAW.forEach(d=>{
+    const item=document.createElement('div');item.className='tli';
     const chips=top4.map(([cat,val])=>{const ci=CATS.indexOf(cat);return`<div class="bc" style="background:${CAT_BG[ci]};color:${COLS[ci]}">${cat} ${val}</div>`;}).join('');
     const ws=d.week.replace(/\d{4}年/,'').replace(/([〜～])/,' 〜 ');
     item.innerHTML=`
@@ -1236,7 +1236,7 @@ rcat(CATS);
     {months:['2026/03'],label:'Phase 5 — 定義更新期',color:COLS[0],desc:'「距離を設計する世代」「関係設計者」として新定義が確立される。'},
   ];
   let cur=-1;
-  [...RAW].reverse().forEach(d=>{
+  RAW.forEach(d=>{
     const m=ym(d.week);const pi=phases.findIndex(p=>p.months.includes(m));
     if(pi>=0&&pi!==cur){cur=pi;const ph=phases[pi];const phEl=document.createElement('div');phEl.className='phase-hd';phEl.innerHTML=`<div class="phase-dot" style="background:${ph.color}">${pi+1}</div><div class="phase-info"><div class="phase-label" style="color:${ph.color}">${ph.label}</div><div class="phase-desc">${ph.desc}</div></div>`;narr.appendChild(phEl);}
     const item=document.createElement('div');item.className='nitem';
