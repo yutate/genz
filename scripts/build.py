@@ -335,6 +335,15 @@ def main():
     html = html.replace('<!-- Q_COUNT_PLACEHOLDER -->',           str(len(quarters)))
     html = html.replace('<!-- MONTHLY_COUNT_PLACEHOLDER -->',     str(len(monthly_reviews)))
     html = html.replace('<!-- ANNUAL_COUNT_PLACEHOLDER -->',      str(len(annual_reviews)))
+    # 日付範囲を計算（最古〜最新）
+    sorted_weeks = sorted(weeks_data, key=lambda x: x['week'])
+    oldest = sorted_weeks[0]['week'].split(' 〜 ')[0].replace('/', '.') if sorted_weeks else ''
+    newest = sorted_weeks[-1]['week'].split(' 〜 ')[-1].replace('/', '.') if sorted_weeks else ''
+    # YYYY.MM 形式に短縮
+    oldest_short = '.'.join(oldest.split('.')[:2]) if oldest else ''
+    newest_short = '.'.join(newest.split('.')[:2]) if newest else ''
+    date_range = '{} — {}'.format(oldest_short, newest_short)
+    html = html.replace('<!-- DATE_RANGE_PLACEHOLDER -->',    date_range)
     html = html.replace('<!-- WEEK_COUNT_PLACEHOLDER -->',        str(len(weeks_data)))
     html = html.replace('<!-- ARTICLE_COUNT_PLACEHOLDER -->',     '{:,}'.format(len(articles_data)))
 
