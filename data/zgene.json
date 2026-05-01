@@ -1,6 +1,204 @@
 [
   {
     "type": "weekly",
+    "id": "2026-04-27_2026-05-01",
+    "title": "2026/04/27-05/01 Z世代・若年層関連記事と考察",
+    "period": {
+      "start": "2026-04-27",
+      "end": "2026-05-01"
+    },
+    "articles": [
+      {
+        "title": "Z世代の旅行は“賢く・深く・サステナブル”。AIとSNSが変える新しい旅のかたち | TABI LABO -  ・ これまでの公演は全て完売！約5,000人が体験した没入型体験イベント『どこか奇妙な職業体験 虎ノ門ヒルズ清掃員』 #Z世代Pick | 大学入学・新生活 | 学生トレンド・流行 | マイナビ 学生の窓口 -  ・ ASCII.jp: “邪魔な動画広告”には嫌悪感 Z世代の約7割は即スキップ (1/2) -  ・ carview!: 「遠出は疲れます」――日本Z世代の約7割はなぜ“1～3日旅行”を繰り返すのか？ 変わりつつある旅の前提 -  ・ TABI LABO: ペプシコ、Z世代攻略へ“共創スナック”投入。TikTok発の新購買体験 -  ・ マイナビニュース: その分断、わかりあえない?(16) 【漫画】推しに課金する? しない? アラフォーとZ世代で“ライブ参戦”してみた結果… -  要約：Z世代は「安さ」や「新しさ」だけで動くのではなく、体験の深さ、共創感、広告への拒否反応、移動コスト感覚、サステナビリティ、参加の納得感を重視している。つまりZ世代施策の本質は、最適化や押し付けではなく、選ぶ理由と関わる意味をどう設計するかにある。",
+        "url": "https://tabi-labo.com/312459/genztravelcldpss",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代は問題ではなく資産だ──「学習意欲」を活かす採用戦略 | Forbes JAPAN 公式サイト（フォーブス ジャパン） - [",
+        "url": "https://forbesjapan.com/articles/detail/96562",
+        "status": "ok"
+      },
+      {
+        "title": "面接合格、内定承諾、そして音信不通──Z世代の「キャリア・キャットフィッシング」が急増 | Forbes JAPAN 公式サイト（フォーブス ジャパン） - [",
+        "url": "https://forbesjapan.com/articles/detail/96559",
+        "status": "ok"
+      },
+      {
+        "title": "飲食系やコンビニのお仕事が人気！Z世代1,000人のアルバイト事情を調査｜MERY - [",
+        "url": "https://mery.jp/2493848",
+        "status": "ok"
+      },
+      {
+        "title": "AIと共創が変える“消費者から創造者”への転換：Z世代・アルファ世代が文化の主役に | TABI LABO - [",
+        "url": "https://tabi-labo.com/312457/zaaiconsumertoc",
+        "status": "ok"
+      },
+      {
+        "title": "「粘り強いね」と褒めたら部下の心が折れた……　Z世代離職を防ぐ“翻訳”マネジメント（1/3 ページ） - ITmedia ビジネスオンライン - [",
+        "url": "https://www.itmedia.co.jp/business/articles/2604/28/news011.html",
+        "status": "ok"
+      },
+      {
+        "title": "【世代別】「星の数」で足切りする20代、「文章レビュー」で最終確認する50代——レビューの「使い方」に見える世代格差 | イチオシ | ichioshi - [",
+        "url": "https://ichioshi.smt.docomo.ne.jp/articles/limited/37860",
+        "status": "ok"
+      },
+      {
+        "title": "PRESIDENT Online（プレジデントオンライン）: 良い給料は欲しいが気楽に働きたい…若者が仕事に｢生きがい｣を求めなくなった歴史的ターニングポイント - [",
+        "url": "https://president.jp/articles/-/112119",
+        "status": "ok"
+      },
+      {
+        "title": "「メルカリ」、スマホの使用を制限する「タイムロッキングコンテナ」取引が約1.3倍 デジタルデトックスが顕著に | 日本ネット経済新聞｜新聞×ウェブでEC＆流通のデジタル化をリード - [",
+        "url": "https://netkeizai.com/articles/detail/18327",
+        "status": "ok"
+      },
+      {
+        "title": "約6割は対策意識あり！ でも行動が伴っていない？ キャッシュレス時代に求められる“本当の防犯意識”とは - [",
+        "url": "https://www.shitakoe.com/826042983",
+        "status": "ok"
+      },
+      {
+        "title": "【AERA Books限定公開】10代の3人に1人が「テレビを見ながらスマホで動画も見る」　“ながら消費”が当たり前になった日本人の時間感覚 | AERA Books - [",
+        "url": "https://dot.asahi.com/articles/-/280775",
+        "status": "ok"
+      },
+      {
+        "title": "【フランスで話題‼】AI時代に差がつくのは“観察力” ――人類学者が教える19のエクササイズとは #Z世代Pick | 大学入学・新生活 | 学生トレンド・流行 | マイナビ 学生の窓口 - [",
+        "url": "https://gakumado.mynavi.jp/gmd/articles/87867",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代はなぜ指示で動かないのか？人材を生かすのは迎合ではない、スープストックトーキョーの行動指針「五感」に学ぶ人的資本経営 　Wedge ONLINE(ウェッジ・オンライン) - [",
+        "url": "https://wedge.ismedia.jp/articles/-/40532",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代がチームにもたらす5つのユニークなスキル | Forbes JAPAN 公式サイト（フォーブス ジャパン） - [",
+        "url": "https://forbesjapan.com/articles/detail/96378",
+        "status": "ok"
+      },
+      {
+        "title": "若年層の間に「シール」旋風…LINEトレンド調査で上位席巻　初首位に5人組グルーブ、呪術廻戦も上位 | オタク総研 - [",
+        "url": "https://0115765.com/archives/182370",
+        "status": "ok"
+      },
+      {
+        "title": "PayPay銀行、1000万口座突破　若年層中心に5年で500万増 - Impress Watch - [",
+        "url": "https://www.watch.impress.co.jp/docs/news/2104622.html",
+        "status": "ok"
+      },
+      {
+        "title": "AdverTimes.（アドタイ） by 宣伝会議: 生成AIは若年層のマジョリティに、10〜20代の利用率はプライベートで約7割に到達 - [",
+        "url": "https://www.advertimes.com/20260424/article542302/",
+        "status": "ok"
+      },
+      {
+        "title": "クーリエ・ジャポン: Z世代の趣味は読書？ 新時代の「読書クラブ」が変える本の読み方 | 若者はなぜ「紙の本」に回帰するのか - [",
+        "url": "https://courrier.jp/news/archives/443236/",
+        "status": "ok"
+      },
+      {
+        "title": "Yahoo!ニュース: 「自分らしく生きたい」「趣味が大事」は一緒だが…20年前の若者にあってZ世代からはすっぽり抜け落ちたもの - [",
+        "url": "https://news.yahoo.co.jp/articles/f421949a293e5a90bd8a55b2a1692219b2d8b9b7",
+        "status": "ok"
+      },
+      {
+        "title": "PRESIDENT Online（プレジデントオンライン）: ｢ありのままを受け入れて偉いと褒めてほしい｣上司の情熱と職場の活気を求めない若者が\"理想とする職場\" - [",
+        "url": "https://president.jp/articles/-/112105?page=1",
+        "status": "ok"
+      },
+      {
+        "title": "au Webポータル: Z世代が選ぶ「担任の先生になってほしい有名人」ランキング！ 2位は「櫻井翔」、では1位は？ - [",
+        "url": "https://article.auone.jp/detail/1/5/9/27_9_r_20260426_1777172086853717",
+        "status": "ok"
+      },
+      {
+        "title": "TABI LABO: Z世代が求める「フリクションマキシング」とは。“映え”よりもリアルな体験？ - [",
+        "url": "https://tabi-labo.com/312449/fixionmax",
+        "status": "ok"
+      },
+      {
+        "title": "Yahoo!ニュース: 何かのアピール？ファッション感覚で「ヘルプマーク」を付ける若者たちの“驚きの理由”（FRIDAY） - Yahoo!ニュース - [",
+        "url": "https://news.yahoo.co.jp/articles/85b00c6834b58f3611112a37732a1d37f7bd59ac",
+        "status": "ok"
+      },
+      {
+        "title": "VOI.id: ポスト真実の時代に直面して、若者はデジタルリテラシーを習得するように奨励されています - [",
+        "url": "https://voi.id/ja/teknologi/572445",
+        "status": "ok"
+      },
+      {
+        "title": "Ad Age: 20 brands catching Gen Z’s attention right now and how they are doing it - [",
+        "url": "https://adage.com/brand-marketing/aa-gen-z-brands-q1-2026-ugg-free-people-firehouse-subs-owala/",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代の母の日は“気まずさ回避”、感謝よりも「ちょうどいい関係性」が重視 | TABI LABO -",
+        "url": "https://tabi-labo.com/312461/modernmothersday",
+        "status": "ok"
+      },
+      {
+        "title": "これまでの公演は全て完売！約5,000人が体験した没入型体験イベント『どこか奇妙な職業体験 虎ノ門ヒルズ清掃員』 #Z世代Pick | 大学入学・新生活 | 学生トレンド・流行 | マイナビ 学生の窓口 -",
+        "url": "https://gakumado.mynavi.jp/gmd/articles/87973",
+        "status": "ok"
+      },
+      {
+        "title": "AERA DIGITAL: 「Instagram 利用率はわずか22.7%」Z世代とは決定的に違う、スマートフォン≠SNSのα世代をデータで読み解く | AERA Books -",
+        "url": "https://dot.asahi.com/articles/-/280784?page=1",
+        "status": "ok"
+      },
+      {
+        "title": "東洋経済オンライン: 新卒Z世代社員を｢どうせタイパ重視｣と決めつけてはいけないワケ \"研修講師\"が現場で感じた《2026年の新入社員の特徴》 -",
+        "url": "https://toyokeizai.net/articles/-/943128",
+        "status": "ok"
+      },
+      {
+        "title": "Business Insider Japan: 「ナイトライフ」には興味なし…Z世代が旅行に求めているもの -",
+        "url": "https://www.businessinsider.jp/article/2511-what-gen-z-wants-in-travel-zxc/",
+        "status": "ok"
+      },
+      {
+        "title": "PR TIMES: 選ばれるSNSの発信方法とは。ヒントはおしゃれなZ世代のトレンドの掴み方 -",
+        "url": "https://prtimes.jp/main/html/rd/p/000000018.000152178.html",
+        "status": "ok"
+      },
+      {
+        "title": "ZDNET Japan: Facebook、シェアした投稿にZ世代のスラングが追加される不具合が発生 -",
+        "url": "https://japan.zdnet.com/article/35247036/",
+        "status": "ok"
+      },
+      {
+        "title": "Vietnam.vn: Z世代は歴史への愛を広めている。 -",
+        "url": "https://www.vietnam.vn/ja/gen-z-lan-toa-tinh-yeu-lich-su",
+        "status": "ok"
+      },
+      {
+        "title": "MSN: Z世代、給与より「社会的ニーズ」 で職場を選ぶ実態が明らかに -",
+        "url": "https://www.msn.com/ja-jp/money/career/z%E4%B8%96%E4%BB%A3-%E7%B5%A6%E4%B8%8E%E3%82%88%E3%82%8A-%E7%A4%BE%E4%BC%9A%E7%9A%84%E3%83%8B%E3%83%BC%E3%82%BA-%E3%81%A7%E8%81%B7%E5%A0%B4%E3%82%92%E9%81%B8%E3%81%B6%E5%AE%9F%E6%85%8B%E3%81%8C%E6%98%8E%E3%82%89%E3%81%8B%E3%81%AB/ar-AA222sow",
+        "status": "ok"
+      },
+      {
+        "title": "TABI LABO: Z世代・α世代は「ヒーロー疲れ」。求められるのは共感できる父性像 -",
+        "url": "https://tabi-labo.com/312460/needsherotodad",
+        "status": "ok"
+      }
+    ],
+    "essay": {
+      "title": "",
+      "summary": "",
+      "structure": [],
+      "sections": [],
+      "period_definition": "",
+      "keywords": []
+    },
+    "article_count": 35,
+    "warnings": [
+      "考察なし"
+    ]
+  },
+  {
+    "type": "weekly",
     "id": "2026-04-20_2026-04-24",
     "title": "2026/04/20-04/24 Z世代・若年層関連記事と考察",
     "period": {
@@ -9411,5 +9609,62 @@
         "防御的消費"
       ]
     }
+  },
+  {
+    "type": "monthly",
+    "id": "2026-04-01_2026-04-30",
+    "title": "2026年4月 月次総合考察",
+    "period": {
+      "start": "2026-04-01",
+      "end": "2026-04-30"
+    },
+    "articles": [],
+    "essay": {
+      "title": "2026年4月 月次総合考察",
+      "summary": "Z世代は「失敗しない社会」の先で、“関わる意味”で世界を選び直す段階に入った",
+      "structure": [],
+      "sections": [
+        {
+          "heading": "消費は「失敗回避」から「意味投資」へ完成",
+          "body": "消費 ="
+        },
+        {
+          "heading": "体験は「消費」から「没入環境」へ",
+          "body": "体験価値 ="
+        },
+        {
+          "heading": "AIは「前提インフラ化」と「心理的反発」の同時進行",
+          "body": "AI ="
+        },
+        {
+          "heading": "デジタルは「利用」から「制御」へ",
+          "body": "デジタル ="
+        },
+        {
+          "heading": "働き方は「成長」から「意味ある関与」へ",
+          "body": "働く ="
+        },
+        {
+          "heading": "関係性は「距離」から「最適化」へ",
+          "body": "関係 ="
+        },
+        {
+          "heading": "Z世代は“分岐世代”として確定",
+          "body": "Z世代 ="
+        }
+      ],
+      "period_definition": "Z世代は“外さない社会”の中で、“関わる価値があるものだけを残す世代”になった",
+      "keywords": [
+        "意味投資消費",
+        "没入体験",
+        "AI前提化",
+        "デジタル制御",
+        "意味関与型労働",
+        "関係最適化",
+        "分岐世代"
+      ]
+    },
+    "article_count": 0,
+    "warnings": []
   }
 ]
