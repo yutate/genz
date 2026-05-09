@@ -1,6 +1,340 @@
 [
   {
     "type": "weekly",
+    "id": "2026-05-04_2026-05-08",
+    "title": "2026/05/04-05/08 Z世代・若年層関連記事と考察",
+    "period": {
+      "start": "2026-05-04",
+      "end": "2026-05-08"
+    },
+    "articles": [
+      {
+        "title": "Ad Age: How brands can tap into growing IRL and digital disconnect demands from Gen Z and Gen Alpha",
+        "url": "https://adage.com/brand-marketing/aa-how-to-tap-into-irl-digital-disconnect-demands/",
+        "status": "ok"
+      },
+      {
+        "title": "AdverTimes.（アドタイ） by 宣伝会議: ロッテ「パイの実」がIP戦略を本格化 “推し活”でZ世代とつながる新世界観",
+        "url": "https://www.advertimes.com/20260501/article542011/?utm_source=feed",
+        "status": "ok"
+      },
+      {
+        "title": "ニコニコニュース: ＳＭＢＣコンシューマーファイナンス調べ Z世代・若手が有意義だと感じるお金の使い方 男性では「将来のために貯める」が1位 女性では「頑張った自分へのごほうびに使う」が1位",
+        "url": "https://news.nicovideo.jp/watch/nw19240605",
+        "status": "ok"
+      },
+      {
+        "title": "fashionsnap.com: ユニクロがZ世代への訴求を強化 背景には顧客の高齢化",
+        "url": "https://www.fashionsnap.com/article/2026-05-01/uniqlo-tee-event/",
+        "status": "ok"
+      },
+      {
+        "title": "eltha: 【Z世代に人気急上昇！】前年同月比...｜Release No.2804335｜eltha（エルザ）",
+        "url": "https://beauty.oricon.co.jp/pressrelease/2804335/",
+        "status": "ok"
+      },
+      {
+        "title": "ライブドアニュース: 情報漏洩が多発するアプリ「BeReal」なぜZ世代はハマるのか？「他者から学ぶ機会のないSNS」の闇とは？",
+        "url": "https://news.livedoor.com/article/detail/31157532/",
+        "status": "ok"
+      },
+      {
+        "title": "コマースピック: Z世代のファッション情報収集術が判明！InstagramとPinterestの使い分け実態調査",
+        "url": "https://www.commercepick.com/archives/92203",
+        "status": "ok"
+      },
+      {
+        "title": "日本経済新聞: ドンキ、α世代に｢平成｣コスメ バッグに｢じゃら付け｣550円から",
+        "url": "https://www.nikkei.com/article/DGXZQOUC097930Z00C26A4000000/",
+        "status": "ok"
+      },
+      {
+        "title": "エイベックス・ポータル: ＜α世代ダンサーに聞いた!!＞ 母の日は95％、父の日は91％が「何かする」！心あたたまるプレゼント事情を調査",
+        "url": "https://avexnet.jp/news/1033158",
+        "status": "ok"
+      },
+      {
+        "title": "「海は平成の香りがする」…20代にとって海水浴は“SNS時代以前”のレジャーに　自然に触れるなら「森」と答える理由（AERA DIGITAL）",
+        "url": "https://news.yahoo.co.jp/articles/56cd109585af5eee8deddd108addbad1ea27ea14",
+        "status": "ok"
+      },
+      {
+        "title": "情報漏洩が多発するアプリ「BeReal」なぜZ世代はハマるのか？「他者から学ぶ機会のないSNS」の闇とは？｜まいどなニュース",
+        "url": "https://maidonanews.jp/article/16540071",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代はAIの“旅レビュー”を信じるのか　拡大する「AIインフルエンサー」と信用設計（AMP［アンプ］）",
+        "url": "https://news.yahoo.co.jp/articles/28d07f8f945ef7c0b78da485736771aa712dd2ac",
+        "status": "ok"
+      },
+      {
+        "title": "AdverTimes.（アドタイ） by 宣伝会議: Z世代の9割が共感する「NO」の価値観とは？アサヒ飲料「green cola」に見る、グローバルブランドの日本流ローカライズ戦略",
+        "url": "https://www.advertimes.com/20260503/article543268/2/",
+        "status": "ok"
+      },
+      {
+        "title": "AERA DIGITAL: Z世代がハマる「古いiPhone」で撮る日常 500万画素だからこそ“映える”写真の妙味とは？〈GW厳選スペシャル〉",
+        "url": "https://dot.asahi.com/articles/-/281609?page=1",
+        "status": "ok"
+      },
+      {
+        "title": "Forbes JAPAN: なぜ？ Z世代が「クラシック音楽」に夢中 若返る客層、異色のコラボも",
+        "url": "https://forbesjapan.com/articles/detail/96749",
+        "status": "ok"
+      },
+      {
+        "title": "Vietnam.vn: Z世代がAIに背を向け、1兆ドル規模の衝撃が明らかになった。",
+        "url": "https://www.vietnam.vn/ja/gen-z-quay-lung-ai-he-lo-cu-soc-nghin-ty-usd",
+        "status": "ok"
+      },
+      {
+        "title": "Yahoo!ニュース: これらのZ世代アーティストたちは、「安定収入」を得る秘訣を見つけたそれは“郵便クラブ”だ（海外）（BUSINESS INSIDER JAPAN）",
+        "url": "https://news.yahoo.co.jp/articles/0a3035e07b872f5dfe84afde6280a11dbb6382ab",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代の47%が「過去に生きたい」…SNSも4割が「なければよかった」",
+        "url": "https://front-row.jp/_ct/114272/",
+        "status": "ok"
+      },
+      {
+        "title": "Aphex Twinが“Z世代のBGM”に？TikTokが起こした逆転現象",
+        "url": "https://tabi-labo.com/312479/shallowslikecheap",
+        "status": "ok"
+      },
+      {
+        "title": "最近の若者は生成AI、意外と使っている人めちゃくちゃ少ないぞ。",
+        "url": "https://note.com/cheesegue_/n/n011f80161186",
+        "status": "ok"
+      },
+      {
+        "title": "TikTok発Z世代の食トレンドが映す“手軽さ”と価値観、「ボーイディナー」とは",
+        "url": "https://tabi-labo.com/312475/aftergdboydinner",
+        "status": "ok"
+      },
+      {
+        "title": "人類の進化!? アメリカのZ世代の3人に1人が「自分は超能力者」だと自覚している衝撃の理由",
+        "url": "https://tocana.jp/2026/05/post_294641_entry.html",
+        "status": "ok"
+      },
+      {
+        "title": "newspicks.com: 【バリキャリ】Z世代女子の「最新コミュニティ」に潜入した",
+        "url": "https://newspicks.com/news/16529052/body/",
+        "status": "ok"
+      },
+      {
+        "title": "「Z世代の失業率30％」の予測も。AIがジュニアの仕事を奪い新卒採用がストップ、若者を襲う“AI淘汰”の足音",
+        "url": "https://news.yahoo.co.jp/articles/43617d95a9fe454b5b4b85d6f4e95c26b0c42a65",
+        "status": "ok"
+      },
+      {
+        "title": "newspicks.com: 【Z世代考】「世界で一番働く国」で考えたキャリアのこと",
+        "url": "https://newspicks.com/news/16529235/body",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代に人気！スマホの使用を物理的に制限する「タイムロッキングコンテナ」",
+        "url": "https://dime.jp/genre/2111554",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代がPCを「自作」し始めた理由が深い",
+        "url": "https://tabi-labo.com/312541/gen-z-cyberdeck-diy-pc",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代が「読書家」を名乗る時代に。",
+        "url": "https://note.com/nice_cosmos4982/n/n9ec304d62f33",
+        "status": "ok"
+      },
+      {
+        "title": "Crocsが掲げる「非アルゴリズム時代」、Z世代に刺さる新ブランド戦略とは",
+        "url": "https://tabi-labo.com/312482/crocspostalgorithm",
+        "status": "ok"
+      },
+      {
+        "title": "ついに値下げ。パスポート10年用が8900円に、若年層の取得促進へ",
+        "url": "https://dxmagazine.jp/news/2616ukre39/",
+        "status": "ok"
+      },
+      {
+        "title": "クーリエ・ジャポン: 作家と散歩し、書店を巡り… Z世代が作る「読書クラブ」の新しい形",
+        "url": "https://courrier.jp/news/archives/444635/",
+        "status": "ok"
+      },
+      {
+        "title": "theriver.jp: Z世代が最も観た「スター・ウォーズ」は『クローン・ウォーズ』",
+        "url": "https://theriver.jp/gen-z-clone-wars/",
+        "status": "ok"
+      },
+      {
+        "title": "TABI LABO: Z世代が選ぶ新しいキャリア戦略「リリーパディング」とは",
+        "url": "https://tabi-labo.com/312490/lilypaddingindia",
+        "status": "ok"
+      },
+      {
+        "title": "TABI LABO: eスポーツ視聴は“疲れる”？α世代時代に進むフォーマット再設計",
+        "url": "https://tabi-labo.com/312484/nooneneedssouroulistners-bye",
+        "status": "ok"
+      },
+      {
+        "title": "ファミ通.com: Z世代の“地獄”と“救済”を描くビジュアルノベル",
+        "url": "https://www.famitsu.com/article/202605/73962",
+        "status": "ok"
+      },
+      {
+        "title": "AIが「アマゾン プライムデー」の購買行動を変えるか　米国Z世代の76％が活用意向（WWDJAPAN.com）",
+        "url": "https://news.yahoo.co.jp/articles/9ec424cebc5442473472b8a5a05cf2f6049ffdd1",
+        "status": "ok"
+      },
+      {
+        "title": "若手が「電話を嫌がる」のはなぜ？",
+        "url": "https://news.yahoo.co.jp/articles/64f4c196a1632a9d63219ffe9c2d04f54012d12d",
+        "status": "ok"
+      },
+      {
+        "title": "AIが「アマゾン プライムデー」の購買行動を変えるか - WWDJAPAN",
+        "url": "https://www.wwdjapan.com/articles/2395887",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代の約9割が「NOと言える人がかっこいい」",
+        "url": "https://coco-tte.jp/2026/05/post_583908.html",
+        "status": "ok"
+      },
+      {
+        "title": "小学4〜6年生の75％以上が生成AIを利用",
+        "url": "https://news.yahoo.co.jp/articles/e157ddca3fdf5ca1548f8a44714c8596ebb6f115",
+        "status": "ok"
+      },
+      {
+        "title": "Gen Z prioritizes product quality",
+        "url": "https://adage.com/brand-marketing/aa-gen-z-quality-marketing-coach-patagonia-milani-bogg-bag/",
+        "status": "ok"
+      },
+      {
+        "title": "AIの普及でZ世代の就活が激変",
+        "url": "https://news.yahoo.co.jp/articles/f1102c2fdbfc3c37dbf7827c5572d9b8c6cb8575",
+        "status": "ok"
+      },
+      {
+        "title": "映え、バズ、炎上は若者に嫌われる？",
+        "url": "https://xtrend.nikkei.com/atcl/contents/casestudy/00012/01859/",
+        "status": "ok"
+      },
+      {
+        "title": "おじさんの9割はメンツでできている",
+        "url": "https://toyokeizai.net/articles/-/942516",
+        "status": "ok"
+      },
+      {
+        "title": "結婚前契約を支持するZ世代",
+        "url": "https://www.businessinsider.jp/article/2605-marriage-contracts-for-gen-z/",
+        "status": "ok"
+      },
+      {
+        "title": "デーティングアプリがZ世代を怖気づかせる理由",
+        "url": "https://www.businessinsider.jp/article/2605-match-group-ceo-dating-apps-intimidate-gen-z/",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代「ほめられると気まずい」",
+        "url": "https://realsound.jp/book/2026/05/post-2380539.html",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代の約7割が「ファンではない」IPコラボ商品を購入",
+        "url": "https://www.rbbtoday.com/release/prtimes2-today/20260507/1266231.html",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代と上司世代のお金の使い方",
+        "url": "https://www.commercepick.com/archives/92273",
+        "status": "ok"
+      },
+      {
+        "title": "今どきの若者は「ちんげんさい」",
+        "url": "https://www.jiji.com/jc/v8?id=202604chigensai",
+        "status": "ok"
+      },
+      {
+        "title": "若者の自己投資",
+        "url": "https://prtimes.jp/main/html/rd/p/000000489.000018246.html",
+        "status": "ok"
+      },
+      {
+        "title": "若者は混雑回避を優先",
+        "url": "https://love-spo.com/article/%E4%BB%A4%E5%92%8C%E3%81%AE%E8%8B%A5%E8%80%85/",
+        "status": "ok"
+      },
+      {
+        "title": "α世代は「SNSより友達に聞く」",
+        "url": "https://dot.asahi.com/articles/-/281425",
+        "status": "ok"
+      },
+      {
+        "title": "Meta ティーンアカウント変更",
+        "url": "https://www.watch.impress.co.jp/docs/news/2106780.html",
+        "status": "ok"
+      },
+      {
+        "title": "α世代の旅行意思決定",
+        "url": "https://www.travelvoice.jp/20260507-159711",
+        "status": "ok"
+      },
+      {
+        "title": "PayPay若年層成長",
+        "url": "https://www.itmedia.co.jp/mobile/spv/2605/07/news123.html",
+        "status": "ok"
+      }
+    ],
+    "essay": {
+      "title": "2026/05/04-05/08 週次考察",
+      "summary": "Z世代は“意味で選ぶ世代”から、“自分の関与レベルを調整しながら関わる世代”へ進んだ週",
+      "structure": [],
+      "sections": [
+        {
+          "heading": "AIは「使う」か「拒否する」ではなく“距離を変える対象”になった",
+          "body": "AIレビューを信じる AIインフルエンサー AI共創 AI離れの兆し AIへの怒り 👉 今週の特徴 --- 🔎 本質 Z世代は AIを受け入れる → ❌ AIを拒否する → ❌ 👉 “距離を変える” --- 構造 判断 → AI 感情 → 自分 最終納得 → 自分 👉 AIは > 主導権を奪う存在ではなく 👉 負担を肩代わりする存在 ---"
+        },
+        {
+          "heading": "消費は「意味選別」から「関与最適化」へ",
+          "body": "調べ尽くし購買 共創スナック クーポン崩壊 倹約＋ご褒美 旅行の最適化 👉 ここが進化ポイント --- 4月まで 👉 意味があるか 今週 👉 どれくらい関わるか --- 🔎 本質 Z世代の消費は フルコミット → ❌ 👉 ライト参加 × 納得 --- 👉 消費は > 所有ではなく 👉 関与の濃度設計 ---"
+        },
+        {
+          "heading": "デジタルは「管理対象」から「制限対象」へ",
+          "body": "デジタルデトックス タイムロッキングコンテナ SNS疲れ BeReal問題 ながら消費 👉 ここも変化 --- 🔎 本質 Z世代は 👉 デジタルを使う でも 👉 使用時間・強度を制御する --- 👉 さらに一歩進み > 物理的に制限する ---"
+        },
+        {
+          "heading": "キャリアは「意味」から「最小負担戦略」へ",
+          "body": "キャリアキャットフィッシング 生きがい不要 AIで仕事減少 バリキャリコミュニティ 副業・リリーパディング 👉 見えているのは --- 🔎 本質 Z世代は 成長したい → ⭕️ 苦労したくない → ⭕️ 👉 “最小コストで最大リターン” --- つまり 👉 キャリアは > 成長曲線ではなく 👉 リスク最適化問題 ---"
+        },
+        {
+          "heading": "文化は「没入」から「部分参加」へ",
+          "body": "没入イベント 読書クラブ クラシック音楽 古いiPhone DIY PC シール文化 👉 ここも重要 --- 🔎 本質 Z世代は 一つにハマる → ❌ 👉 複数に軽く関わる --- 👉 文化の形 > 深さより 👉 接点の多さ ---"
+        },
+        {
+          "heading": "関係性は「距離」から「可変接続」へ",
+          "body": "母の日の再定義 AI相談 コミュニティ分散 デート文化変化 SNS距離設計 --- 🔎 本質 Z世代は 👉 固定関係を持たない 👉 関係の強さを変え続ける ---"
+        }
+      ],
+      "period_definition": "Z世代は、“何を選ぶか”より“どれだけ関わるか”で世界を設計する世代になった",
+      "keywords": [
+        "関与最適化",
+        "AI距離設計",
+        "消費意味選別",
+        "デジタル制限",
+        "最小負担キャリア",
+        "部分参加文化",
+        "可変接続"
+      ]
+    },
+    "article_count": 56,
+    "warnings": []
+  },
+  {
+    "type": "weekly",
     "id": "2026-04-27_2026-05-01",
     "title": "2026/04/27-05/01 Z世代・若年層関連記事と考察",
     "period": {
