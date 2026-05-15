@@ -1,6 +1,259 @@
 [
   {
     "type": "weekly",
+    "id": "2026-05-11_2026-05-15",
+    "title": "2026/05/11-05/15 Z世代・若年層関連記事と考察",
+    "period": {
+      "start": "2026-05-11",
+      "end": "2026-05-15"
+    },
+    "articles": [
+      {
+        "title": "Z世代の約7割が「推し活疲れ」を経験",
+        "url": "https://prtimes.jp/main/html/rd/p/000000158.000091232.html",
+        "status": "ok"
+      },
+      {
+        "title": "「平成レトロ」がZ世代に刺さる理由",
+        "url": "https://xtrend.nikkei.com/atcl/contents/18/01389/00001/",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代は“タイパ”より“エモパ”",
+        "url": "https://tabi-labo.com/312566/emotional-performance",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代の半数以上が「会社の飲み会」に肯定的",
+        "url": "https://news.yahoo.co.jp/articles/3c6c3c3f2c5a4d4a7e8d5d4d0a0cdd1c8f74aabc",
+        "status": "ok"
+      },
+      {
+        "title": "α世代が最も使うSNSは「YouTube Shorts」",
+        "url": "https://realsound.jp/tech/2026/05/post-2387711.html",
+        "status": "ok"
+      },
+      {
+        "title": "若者は“効率的な恋愛”に疲れている",
+        "url": "https://president.jp/articles/-/94823",
+        "status": "ok"
+      },
+      {
+        "title": "MBTI疲れ",
+        "url": "https://toyokeizai.net/articles/-/942993",
+        "status": "ok"
+      },
+      {
+        "title": "若者の「静かな退職」",
+        "url": "https://toyokeizai.net/articles/-/943211",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代の「推し」と消費行動",
+        "url": "https://forbesjapan.com/articles/detail/97155",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代が“古着”へ回帰する理由",
+        "url": "https://senken.co.jp/posts/vintage-z-250511",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代の「地元回帰」",
+        "url": "https://news.yahoo.co.jp/articles/9f81ddcbe21d0d7d10e2d24f4e0bbdf9dd6f22aa",
+        "status": "ok"
+      },
+      {
+        "title": "SNSをやめる若者たち",
+        "url": "https://tabi-labo.com/312563/quit-social",
+        "status": "ok"
+      },
+      {
+        "title": "“映え疲れ”の実態",
+        "url": "https://xtrend.nikkei.com/atcl/contents/18/01390/00001/",
+        "status": "ok"
+      },
+      {
+        "title": "AI恋愛に肯定的な若年層",
+        "url": "https://forbesjapan.com/articles/detail/97188",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代と「音声SNS」回帰",
+        "url": "https://note.com/audiofuture/n/n52e4b4d2a8d0",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代の「夜型化」",
+        "url": "https://dime.jp/genre/2112841/",
+        "status": "ok"
+      },
+      {
+        "title": "若者は「検索」しなくなった",
+        "url": "https://markezine.jp/article/detail/50712",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代が“紙”に回帰",
+        "url": "https://courrier.jp/news/archives/445111/",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代は「何を買うか」より「誰から買うか」を重視",
+        "url": "https://forbesjapan.com/articles/detail/97122",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代はSNS疲れでも「BeReal」はやめない",
+        "url": "https://www.itmedia.co.jp/news/articles/2605/12/news123.html",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代の7割が「将来に不安」",
+        "url": "https://prtimes.jp/main/html/rd/p/000000092.000118233.html",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代の就活は「初任給」より「心理安全性」",
+        "url": "https://news.yahoo.co.jp/articles/1f9e8d5b22d0e6a4f86ef6d7cfd8b54cbb4d10b3",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代は“完璧な人”を信用しない",
+        "url": "https://tabi-labo.com/312570/perfect-fatigue",
+        "status": "ok"
+      },
+      {
+        "title": "若者は「短時間旅行」を繰り返す",
+        "url": "https://carview.yahoo.co.jp/news/detail/e33898642cd2d8ad9206a814e049f1bc7aaa2e3e/",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代の「飲み会再評価」",
+        "url": "https://dime.jp/genre/2113088/",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代がAIレビューを信用する理由",
+        "url": "https://news.yahoo.co.jp/articles/28d07f8f945ef7c0b78da485736771aa712dd2ac",
+        "status": "ok"
+      },
+      {
+        "title": "若者の“省エネ人間関係”",
+        "url": "https://president.jp/articles/-/94790",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代は“強いブランド”より“共感できるブランド”",
+        "url": "https://adage.com/brand-marketing/gen-z-authenticity-report/",
+        "status": "ok"
+      },
+      {
+        "title": "α世代の「リアル体験回帰」",
+        "url": "https://dot.asahi.com/articles/-/281425",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代営業職、8割が飲み会やゴルフなどの接待に「前向き」",
+        "url": "https://news.nicovideo.jp/watch/nw19283507?news_ref=60_60",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代の約4人に1人が副業を「SNS」で探す",
+        "url": "https://news.livedoor.com/pr_topics/detail/31266296/",
+        "status": "ok"
+      },
+      {
+        "title": "【Z世代のホンネ】県外に出る目的も東京への憧れもない「壱岐に住んで地域に役立ちたい」",
+        "url": "https://news.yahoo.co.jp/articles/b3c29f8c818c43d1fde96699d3e9ced3cdc09745",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代の7割がファン以外でも購入するIPコラボ広告の衝撃的な実態",
+        "url": "https://forbesjapan.com/articles/detail/97258",
+        "status": "ok"
+      },
+      {
+        "title": "ハラスメントだけじゃない《Z世代が会社に失望する瞬間》",
+        "url": "https://toyokeizai.net/articles/-/943640",
+        "status": "ok"
+      },
+      {
+        "title": "有意義だと思うお金の使い方、Z世代と上司世代ではどう違う？",
+        "url": "https://dime.jp/genre/2114278/",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代が選ぶ!!「恋人にしたいスポーツ選手TOP10」",
+        "url": "http://www.oricon.co.jp/pressrelease/2815503/",
+        "status": "ok"
+      },
+      {
+        "title": "新入社員の約7割が「仕事でのAI活用」に肯定的",
+        "url": "https://www.buzzfeed.com/jp/manamisakakihara/z-gene-ai",
+        "status": "ok"
+      },
+      {
+        "title": "若年層で「コーラ離れ」一方で「ゼロ系炭酸」は支持拡大",
+        "url": "https://www.oricon.co.jp/news/2453979/full/",
+        "status": "ok"
+      },
+      {
+        "title": "AIを用いたインタビューへの評価は世代間ギャップが顕著",
+        "url": "https://manamina.valuesccg.com/articles/5038",
+        "status": "ok"
+      },
+      {
+        "title": "ChatGPTかGeminiか？【東京工科大学調査】新入生の使用ツール最新動向",
+        "url": "https://robotstart.info/article/2026/05/13/381876.html",
+        "status": "ok"
+      }
+    ],
+    "essay": {
+      "title": "2026/05/11-05/15 週次考察",
+      "summary": "Z世代は“関わる意味を選ぶ世代”から、“自分のエネルギー配分を最適化する世代”へ進んだ週",
+      "structure": [],
+      "sections": [
+        {
+          "heading": "「疲れ」がZ世代理解の中心概念になった",
+          "body": "今週もっとも象徴的だったのは、 推し活疲れ MBTI疲れ 映え疲れ SNS疲れ AI疲れ が同時発生していたこと。 --- 🔎 本質 Z世代は 👉 好きなことを嫌いになったのではない。 👉 「常時接続型の熱量維持」に疲れている。 --- つまり 以前： 👉 熱狂が価値 今： 👉 持続可能性が価値 ---"
+        },
+        {
+          "heading": "「タイパ」から「エモパ」へ完全移行",
+          "body": "エモパ 短時間旅行 音声SNS 紙回帰 読書クラブ 古いiPhone クラシック音楽 --- 🔎 本質 Q1まで： 👉 効率最適化 今週： 👉 感情回復最適化 --- つまり、 速い 多い 強い より、 👉 「自分の感情が整うか」 が価値になっている。 ---"
+        },
+        {
+          "heading": "AIは「便利」から「競合」へ変わった",
+          "body": "AI利用拡大 AIへの怒り AI離れ AI就活 AIによる仕事消失 --- 🔎 本質 以前： 👉 AI = 補助 今： 👉 AI = 比較対象 --- 特に重要なのは、 > 「AIができるなら、自分は何者なのか」 という感覚。 --- だから起きていること DIY PC 読書回帰 手紙回帰 アナログ趣味 観察力重視 --- 👉 これは懐古ではなく、 > 「人間にしかできない感覚」を取り戻そうとしている 動き。 ---"
+        },
+        {
+          "heading": "キャリアは「成長」ではなく「回収可能性」で選ばれる",
+          "body": "静かな退職 キャリアキャットフィッシング 生きがい不要 副業SNS 地元回帰 --- 🔎 本質 Z世代は 頑張りたくない → ❌ 無意味に消耗したくない → ⭕️ --- 特徴 成長はしたい でも回収可能性が必要 心理安全性が必要 理念も必要 --- 👉 つまり > 「努力が報われる構造か」が最大の判断軸 ---"
+        },
+        {
+          "heading": "関係性は「省エネ接続」へ",
+          "body": "飲み会再評価 省エネ人間関係 恋愛疲れ AI恋愛 音声SNS --- 🔎 本質 Z世代は 👉 人間関係を避けていない。 👉 “重すぎる接続”を避けている。 --- だから 軽い 深すぎない すぐ離脱できる 必要時だけ接続 が重要。 ---"
+        },
+        {
+          "heading": "「ブランド」より「世界観」が選ばれる時代へ",
+          "body": "共感ブランド 世界観IP 推し活連動 非アルゴリズム戦略 ブランド高齢化問題 --- 🔎 本質 Z世代は 👉 ブランドを買っていない。 👉 “自分が参加できる世界観”を選んでいる。 --- だから 完璧ブランド → 弱い 人間味 → 強い 共創 → 強い 熱狂 → 強い ---"
+        }
+      ],
+      "period_definition": "Z世代は、“好き”より“疲れずに続けられるか”を基準に世界を選び始めた",
+      "keywords": [
+        "エネルギー配分",
+        "エモパ",
+        "AI競合",
+        "回収可能性キャリア",
+        "省エネ接続",
+        "世界観選択"
+      ]
+    },
+    "article_count": 40,
+    "warnings": []
+  },
+  {
+    "type": "weekly",
     "id": "2026-05-04_2026-05-08",
     "title": "2026/05/04-05/08 Z世代・若年層関連記事と考察",
     "period": {
