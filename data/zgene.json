@@ -1,6 +1,299 @@
 [
   {
     "type": "weekly",
+    "id": "2026-05-18_2026-05-22",
+    "title": "2026/05/18-05/22 Z世代・若年層関連記事と考察",
+    "period": {
+      "start": "2026-05-18",
+      "end": "2026-05-22"
+    },
+    "articles": [
+      {
+        "title": "インフルエンサー離れが進むZ世代",
+        "url": "https://forbesjapan.com/articles/detail/97586",
+        "status": "ok"
+      },
+      {
+        "title": "フリューガル・シック──節約をポジティブに捉える若者たち",
+        "url": "https://newspicks.com/news/16678184/body/",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代は「ナシ婚」をどう考えているのか",
+        "url": "https://news.yahoo.co.jp/articles/fe17e18b67d8f48c4f1f2f7d7a18f43e2e2c1f8d",
+        "status": "ok"
+      },
+      {
+        "title": "若者が“死後伝言サービス”に惹かれる理由",
+        "url": "https://toyokeizai.net/articles/-/944176",
+        "status": "ok"
+      },
+      {
+        "title": "AI時代の読書クラブ",
+        "url": "https://courrier.jp/news/archives/447127/",
+        "status": "ok"
+      },
+      {
+        "title": "若者の自己投資ブーム",
+        "url": "https://dime.jp/genre/2116127/",
+        "status": "ok"
+      },
+      {
+        "title": "「推し疲れ」からの距離調整",
+        "url": "https://tabi-labo.com/312608/oshi-distance",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代は“熱量のあるブランド”を支持する",
+        "url": "https://digiday.jp/glossy/gen-z-brand-energy/",
+        "status": "ok"
+      },
+      {
+        "title": "若者は「小さな共同体」を求めている",
+        "url": "https://newspicks.com/news/16679131/body/",
+        "status": "ok"
+      },
+      {
+        "title": "MBTI疲れ",
+        "url": "https://toyokeizai.net/articles/-/942993",
+        "status": "ok"
+      },
+      {
+        "title": "SNSをやめる若者たち",
+        "url": "https://tabi-labo.com/312563/quit-social",
+        "status": "ok"
+      },
+      {
+        "title": "若者は“便利すぎる世界”に疲れている",
+        "url": "https://newspicks.com/news/16701244/body/",
+        "status": "ok"
+      },
+      {
+        "title": "AI恋愛に肯定的な若年層",
+        "url": "https://forbesjapan.com/articles/detail/97188",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代の「地元回帰」",
+        "url": "https://news.yahoo.co.jp/articles/9f81ddcbe21d0d7d10e2d24f4e0bbdf9dd6f22aa",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代は“タイパ”より“エモパ”",
+        "url": "https://tabi-labo.com/312566/emotional-performance",
+        "status": "ok"
+      },
+      {
+        "title": "「平成レトロ」がZ世代に刺さる理由",
+        "url": "https://xtrend.nikkei.com/atcl/contents/18/01389/00001/",
+        "status": "ok"
+      },
+      {
+        "title": "α世代が最も使うSNSは「YouTube Shorts」",
+        "url": "https://realsound.jp/tech/2026/05/post-2387711.html",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代は「売られる」より「推されたい」",
+        "url": "https://digiday.jp/modern-retail/260518-tiktok-shop-us-interview-with-jill-manoff/",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代はいま「会ったこともない人からの手紙」に毎月課金している",
+        "url": "https://www.businessinsider.jp/article/2605-snail-mail-club/",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代が副業を探す場所はSNS",
+        "url": "https://forbesjapan.com/articles/detail/97515",
+        "status": "ok"
+      },
+      {
+        "title": "MBTIに次いで“星座”がアツい",
+        "url": "https://news.nicovideo.jp/watch/nw19330271",
+        "status": "ok"
+      },
+      {
+        "title": "即日融資アプリを使う若者たち",
+        "url": "https://www.vietnam.vn/ja/gen-z-khi-ap-luc-tai-chinh-app-vay-tien-mat-nhanh-tro-thanh-giai-phap-duoc-uu-tien",
+        "status": "ok"
+      },
+      {
+        "title": "ギャル神社 by JR貨物",
+        "url": "https://www.global-produce.jp/gpjournal/trend/gal-shrine/",
+        "status": "ok"
+      },
+      {
+        "title": "若者はなぜ大手を選ぶのか",
+        "url": "https://www.itmedia.co.jp/business/articles/2605/22/news122.html",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代が求める「本音と誠実な対話」",
+        "url": "https://youpouch.com/2026/05/21/1345648/",
+        "status": "ok"
+      },
+      {
+        "title": "AIは「ツール」ではなく「スキル」",
+        "url": "https://forbesjapan.com/articles/detail/97797",
+        "status": "ok"
+      },
+      {
+        "title": "若者が「防御全振り」になる理由",
+        "url": "https://note.com/hayamamasami/n/nb2b79f95d441",
+        "status": "ok"
+      },
+      {
+        "title": "AIに飽きている卒業生たち",
+        "url": "https://note.com/2wd/n/n410c164c15e7",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代がAIに怒っている",
+        "url": "https://newspicks.com/news/16717155/body/",
+        "status": "ok"
+      },
+      {
+        "title": "若者の“省エネ人間関係”",
+        "url": "https://president.jp/articles/-/94790",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代は“完璧な人”を信用しない",
+        "url": "https://tabi-labo.com/312570/perfect-fatigue",
+        "status": "ok"
+      },
+      {
+        "title": "Tinder利用者のAI恋愛観",
+        "url": "https://www.adweek.com/social-marketing/tinder-ai-relationships-gen-z/",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代の“スローライフ願望”",
+        "url": "https://carview.yahoo.co.jp/news/detail/5c5dbf4fd98c6fbc5c7d7d6b2bb0d02a9c6b4b0e/",
+        "status": "ok"
+      },
+      {
+        "title": "「NOを言う力」を持つ若者たち",
+        "url": "https://coco-tte.jp/2026/05/post_584312.html",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代の“推し疲れ”再燃",
+        "url": "https://tabi-labo.com/312619/oshi-burnout",
+        "status": "ok"
+      },
+      {
+        "title": "AI時代の若者の自己主導性",
+        "url": "https://forbesjapan.com/articles/detail/97711",
+        "status": "ok"
+      },
+      {
+        "title": "若者は「検索」より「レコメンド」で動く",
+        "url": "https://markezine.jp/article/detail/50781",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代と“余白あるSNS”",
+        "url": "https://www.itmedia.co.jp/news/articles/2605/20/news144.html",
+        "status": "ok"
+      },
+      {
+        "title": "新入社員の約7割が「仕事でのAI活用」に肯定的",
+        "url": "https://www.buzzfeed.com/jp/manamisakakihara/z-gene-ai",
+        "status": "ok"
+      },
+      {
+        "title": "若年層で「コーラ離れ」",
+        "url": "https://www.oricon.co.jp/news/2453979/full/",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代の7割がファン以外でも購入するIPコラボ広告",
+        "url": "https://forbesjapan.com/articles/detail/97258",
+        "status": "ok"
+      },
+      {
+        "title": "ハラスメントだけじゃない《Z世代が会社に失望する瞬間》",
+        "url": "https://toyokeizai.net/articles/-/943640",
+        "status": "ok"
+      },
+      {
+        "title": "若者は「短時間旅行」を繰り返す",
+        "url": "https://carview.yahoo.co.jp/news/detail/e33898642cd2d8ad9206a814e049f1bc7aaa2e3e/",
+        "status": "ok"
+      },
+      {
+        "title": "オン が過去最高の業績。若者が熱狂するストーリー",
+        "url": "https://digiday.jp/glossy/on-crosses-1-billion-in-quarterly-sales-as-new-ceos-push-into-full-look-dressing/",
+        "status": "ok"
+      },
+      {
+        "title": "10代の女性は「アイドル」、60代男性は「スポーツ選手」推し",
+        "url": "https://dime.jp/genre/2115406/",
+        "status": "ok"
+      },
+      {
+        "title": "PayPay銀行、5年で500万口座増",
+        "url": "https://dxmagazine.jp/news/2617ukre45/",
+        "status": "ok"
+      },
+      {
+        "title": "ZARAやH&Mを直撃。繊維コスト高騰と若年消費",
+        "url": "https://digiday.jp/glossy/chaos-and-confusion-in-the-strait-of-hormuz-could-drive-apparel-production-costs-up-15/",
+        "status": "ok"
+      },
+      {
+        "title": "Spotify Large Taste Model",
+        "url": "https://realsound.jp/tech/2026/05/post-2402600.html",
+        "status": "ok"
+      }
+    ],
+    "essay": {
+      "title": "2026/05/18-05/22 週次考察",
+      "summary": "Z世代は“意味のあるものに関わる世代”から、“自分を消耗させない範囲でだけ世界と接続する世代”へ進んだ週",
+      "structure": [],
+      "sections": [
+        {
+          "heading": "「疲れ」がついに社会の中心概念になった",
+          "body": "推し疲れ MBTI疲れ SNS疲れ AI疲れ 完璧疲れ 防御全振り --- 🔎 本質 以前： 👉 疲れ = 個人問題 今： 👉 疲れ = 社会構造 --- Z世代は弱くなったのではない。 むしろ、 > 「消耗し続ける設計」そのものを拒否し始めた --- だから起きること 静かな退職 小さな共同体 地元回帰 オフライン回帰 読書クラブ --- 👉 つまり > 「強くなる」より 👉 “壊れない仕組み”を選ぶ ---"
+        },
+        {
+          "heading": "「熱狂」より「持続可能な熱量」へ",
+          "body": "推し疲れ エモパ 熱量ブランド支持 IPコラボ 飲み会再評価 --- 🔎 本質 Z世代は 👉 熱量を失ったのではない。 👉 “維持できる熱量”を探している。 --- 以前 👉 フルコミット熱狂 今 👉 低消耗・長期接続 --- つまり推し活もブランドも、 > 一瞬燃えるより 👉 続けられること が重要になっている。 ---"
+        },
+        {
+          "heading": "AIは「便利」から「人格侵食リスク」へ",
+          "body": "AIに怒る AIに飽きる AIはスキル AI恋愛 AIレビュー AI就活 --- 🔎 本質 Q1： 👉 AI = 補助 4月： 👉 AI = 主導権問題 今週： 👉 AI = 自分らしさ侵食問題 --- 若者はAIを使う。 しかし同時に、 AIに依存したくない AIみたいになりたくない AIに置き換えられたくない という強い防衛感覚も持っている。 --- だから起きる反動 紙回帰 読書回帰 音声SNS 小共同体 アナログ接続 --- 👉 これは懐古ではない。 > 「人間っぽさ」を回復する行動 ---"
+        },
+        {
+          "heading": "消費は「自己拡張」から「自己保全」へ",
+          "body": "フリューガル・シック 自己投資 ゼロ系飲料 短時間旅行 スローライフ 小共同体消費 --- 🔎 本質 以前： 👉 消費 = 自己表現 今： 👉 消費 = 自己保全 --- つまり若者は、 強くなりたい ではなく 壊れたくない --- だから人気になるもの 軽い 続けやすい 整う コントロールできる ---"
+        },
+        {
+          "heading": "関係性は「深さ」ではなく「安全性」で選ばれる",
+          "body": "省エネ人間関係 本音と誠実な対話 完璧な人を信用しない 飲み会再評価 ナシ婚 AI恋愛 --- 🔎 本質 Z世代は、 👉 人間関係を避けていない。 👉 “消耗する接続”を避けている。 --- だから重要になるもの 本音 安全 逃げられる 強制されない 完璧じゃない --- 👉 関係性は > 深いかどうか ではなく 👉 “安全に続けられるか” ---"
+        },
+        {
+          "heading": "「検索社会」から「推薦社会」への完全移行",
+          "body": "検索しない レコメンド依存 AIレビュー TikTok購買 ブランド共感 --- 🔎 本質 以前： 👉 自分で探す 今： 👉 流れてきたものを選ぶ --- しかし重要なのは、 👉 受動化ではない。 👉 “探すコスト”を払わなくなった ---"
+        }
+      ],
+      "period_definition": "Z世代は、“好き”や“熱量”より、“壊れずに続けられること”を基準に世界を再設計し始めた",
+      "keywords": [
+        "消耗回避接続",
+        "持続可能な熱量",
+        "AI人格侵食",
+        "自己保全消費",
+        "安全性関係",
+        "推薦社会"
+      ]
+    },
+    "article_count": 48,
+    "warnings": []
+  },
+  {
+    "type": "weekly",
     "id": "2026-05-11_2026-05-15",
     "title": "2026/05/11-05/15 Z世代・若年層関連記事と考察",
     "period": {
