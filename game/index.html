@@ -260,10 +260,8 @@
   </div>
   <div class="apikey-box" style="max-width:360px;margin:0 auto 16px;">
     <div class="apikey-label">Gemini API Key</div>
-    <div style="display:flex;gap:8px;margin-bottom:6px;">
-      <input type="password" class="apikey-input" id="apiKeyInput" placeholder="AIza..." autocomplete="off" style="flex:1">
-      <button onclick="saveApiKey()" style="background:rgba(199,125,255,0.2);border:1px solid rgba(199,125,255,0.4);color:#c77dff;padding:0 14px;border-radius:10px;font-size:13px;cursor:pointer;font-family:inherit;white-space:nowrap;">保存</button>
-    </div>
+    <input type="password" class="apikey-input" id="apiKeyInput" placeholder="AIza..." autocomplete="off"
+      oninput="state.apiKey=this.value.trim(); document.getElementById('apiKeyNote').textContent=this.value.trim()?'✅ キー入力済み':'このページ内のみで使用。保存・送信はしません。'; document.getElementById('apiKeyNote').style.color=this.value.trim()?'#80ed99':'';">
     <div class="apikey-note" id="apiKeyNote">このページ内のみで使用。保存・送信はしません。</div>
   </div>
   <button class="btn-primary" id="startBtn" onclick="startGame()">スタート →</button>
