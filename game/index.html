@@ -477,24 +477,23 @@ async function startGame() {
   if (apiKeyEl && apiKeyEl.value.trim()) {
     state.apiKey = apiKeyEl.value.trim();
   }
-  // load zgene data & generate cards (first time only)
-  document.getElementById('loadingOverlay').classList.add('active');
-  document.querySelector('.loading-text').textContent = 'カードを生成中…';
-  try {
-    await loadZgeneKeywords();
-    await generateCards();
-  } catch(e) {
-    // fallback silently
-    if (!state.generatedCardPool) {
-      state.generatedCardPool = STATIC_CARDS.map((c, i) => ({ ...c, id: 'sc_' + i }));
+
+  // カード生成（初回のみ）
+  if (!state.typedCardPool) {
+    document.getElementById('loadingOverlay').classList.add('active');
+    document.querySelector('.loading-text').textContent = 'カードを生成中…';
+    try { await loadZgeneKeywords(); } catch(e) { state.zgeneKeywords = []; }
+    try { await generateCards(); } catch(e) {}
+    if (!state.typedCardPool) {
+      state.typedCardPool = { modifiers: FALLBACK_MODIFIERS, adjectives: FALLBACK_ADJECTIVES, nouns: FALLBACK_NOUNS };
     }
+    document.getElementById('loadingOverlay').classList.remove('active');
   }
-  document.getElementById('loadingOverlay').classList.remove('active');
-  document.querySelector('.loading-text').textContent = '判定中…';
 
   const persona = BASE_PERSONAS[Math.floor(Math.random() * BASE_PERSONAS.length)];
   state.persona = persona;
-  state.hand = getHandCards(); state.selected = [];
+  state.hand = getHandCards();
+  state.selected = [];
 
   renderPersona();
   renderCards();
