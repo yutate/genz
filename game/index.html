@@ -5,88 +5,252 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Z世代 伝わるかな？</title>
 <style>
-* { margin:0; padding:0; box-sizing:border-box; }
-body { background:#0a0a0f; color:#f0f0f0; font-family:'Hiragino Sans','Noto Sans JP',sans-serif; min-height:100vh; }
-.header { background:linear-gradient(135deg,#1a0533,#0d1117); padding:14px 18px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid rgba(255,255,255,0.08); position:sticky; top:0; z-index:100; }
-.header-title { font-weight:700; font-size:15px; }
-.header-btn { background:rgba(255,255,255,0.08); border:none; color:#aaa; padding:6px 14px; border-radius:20px; font-size:12px; cursor:pointer; font-family:inherit; display:none; }
-.screen { display:none; padding:20px 16px 100px; }
-.screen.active { display:block; }
-#s-intro { text-align:center; }
-.intro-icon { font-size:56px; margin:24px 0 12px; }
-.intro-title { font-size:22px; font-weight:800; margin-bottom:8px; background:linear-gradient(90deg,#ff6b9d,#c77dff,#4cc9f0); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-.intro-desc { color:#888; font-size:14px; line-height:1.7; margin-bottom:24px; }
-.howto { background:rgba(255,255,255,0.04); border-radius:16px; padding:16px; margin:0 auto 20px; max-width:360px; text-align:left; }
-.howto-label { font-size:12px; color:#aaa; font-weight:600; margin-bottom:10px; }
-.howto-item { display:flex; gap:10px; margin-bottom:8px; font-size:13px; }
-.howto-num { color:#c77dff; font-weight:700; }
-.apibox { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:14px; padding:14px; margin:0 auto 20px; max-width:360px; }
-.apibox label { font-size:12px; color:#aaa; display:block; margin-bottom:8px; }
-.apibox input { width:100%; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); color:#f0f0f0; padding:10px 12px; border-radius:10px; font-size:14px; font-family:monospace; outline:none; }
-.apibox input:focus { border-color:#c77dff; }
-.apistatus { font-size:11px; color:#555; margin-top:6px; }
-.btn-primary { background:linear-gradient(135deg,#ff6b9d,#c77dff); border:none; color:#fff; padding:15px 40px; border-radius:50px; font-size:16px; font-weight:700; cursor:pointer; font-family:inherit; }
-.btn-secondary { background:rgba(255,255,255,0.08); border:none; color:#aaa; padding:14px 20px; border-radius:14px; font-size:13px; cursor:pointer; font-family:inherit; }
-.round-badge { text-align:center; margin-bottom:12px; }
-.round-badge span { background:rgba(199,125,255,0.2); color:#c77dff; padding:4px 14px; border-radius:20px; font-size:12px; font-weight:600; }
-.pcard { background:linear-gradient(135deg,rgba(26,5,51,0.85),rgba(13,17,23,0.85)); border:1px solid rgba(199,125,255,0.3); border-radius:20px; padding:18px; margin-bottom:14px; }
-.pcard-top { display:flex; align-items:center; gap:12px; margin-bottom:12px; }
-.pcard-avatar { font-size:40px; }
-.pcard-name { font-weight:800; font-size:18px; }
-.pcard-age { color:#888; font-size:14px; font-weight:400; }
-.pcard-vibe { color:#c77dff; font-size:12px; font-weight:600; margin-top:2px; }
-.pcard-state { background:rgba(255,255,255,0.05); border-radius:12px; padding:10px 14px; margin-bottom:10px; }
-.state-label { font-size:11px; color:#888; margin-bottom:3px; }
-.state-text { font-size:15px; font-weight:600; }
-.pcard-hint { font-size:12px; color:#666; font-style:italic; }
-.msgpreview { background:rgba(255,255,255,0.04); border-radius:14px; padding:12px 14px; margin-bottom:14px; min-height:48px; display:flex; align-items:center; flex-wrap:wrap; gap:6px; }
-.msgplaceholder { color:#555; font-size:13px; }
-.cards-label { font-size:12px; color:#666; margin-bottom:8px; }
-.cards-grid { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px; }
-.card-btn { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:#ccc; padding:8px 14px; border-radius:20px; font-size:13px; cursor:pointer; font-family:inherit; transition:all 0.2s; }
-.bottom-bar { position:fixed; bottom:0; left:0; right:0; padding:14px 16px; background:linear-gradient(to top,#0a0a0f 70%,transparent); display:flex; gap:10px; }
-.bottom-bar .btn-primary { flex:1; padding:15px; border-radius:14px; font-size:15px; }
-.score-wrap { text-align:center; padding:28px 0 20px; }
-.score-num { font-size:72px; font-weight:900; line-height:1; }
-.score-label { font-size:20px; font-weight:700; margin-top:4px; }
-.rcard { border-radius:20px; padding:18px; margin-bottom:14px; }
-.rcard-top { display:flex; align-items:center; gap:10px; margin-bottom:10px; }
-.rreaction { font-size:18px; font-weight:700; margin-bottom:10px; }
-.rreason { font-size:13px; color:#bbb; line-height:1.6; }
-.radvice { background:rgba(76,201,240,0.08); border:1px solid rgba(76,201,240,0.2); border-radius:14px; padding:12px 14px; margin-bottom:20px; }
-.radvice-label { font-size:11px; color:#4cc9f0; font-weight:600; margin-bottom:5px; }
-.rmsg { background:rgba(255,255,255,0.04); border-radius:14px; padding:12px 14px; margin-bottom:14px; }
-.rmsg-label { font-size:11px; color:#666; margin-bottom:5px; }
-.loading { display:none; position:fixed; inset:0; background:rgba(10,10,15,0.85); z-index:200; align-items:center; justify-content:center; flex-direction:column; gap:14px; }
-.loading.active { display:flex; }
-.spinner { width:40px; height:40px; border:3px solid rgba(199,125,255,0.2); border-top-color:#c77dff; border-radius:50%; animation:spin 0.8s linear infinite; }
-@keyframes spin { to { transform:rotate(360deg); } }
-.loading-msg { color:#aaa; font-size:14px; }
-.hist-item { background:rgba(255,255,255,0.04); border-radius:14px; padding:12px 14px; margin-bottom:8px; display:flex; align-items:center; gap:12px; }
-.hist-av { font-size:28px; flex-shrink:0; }
-.hist-info { flex:1; min-width:0; }
-.hist-meta { font-size:13px; font-weight:600; margin-bottom:2px; }
-.hist-msg { font-size:12px; color:#666; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-.hist-score { font-size:20px; font-weight:800; flex-shrink:0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    min-height: 100vh;
+    background: #0a0a0f;
+    color: #f0f0f0;
+    font-family: 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, #1a0533 0%, #0d1117 50%, #001a2c 100%);
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .header-title { font-weight: 700; font-size: 15px; display: flex; align-items: center; gap: 8px; }
+  .header-btn {
+    background: rgba(255,255,255,0.08);
+    border: none;
+    color: #aaa;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .header-btn:hover { background: rgba(255,255,255,0.14); }
+
+  /* Screens */
+  .screen { display: none; padding: 16px 16px 100px; }
+  .screen.active { display: block; }
+  #screen-intro { padding-bottom: 40px; text-align: center; }
+
+  /* Intro */
+  .intro-icon { font-size: 64px; margin: 32px 0 16px; }
+  .intro-title {
+    font-size: 22px; font-weight: 800; margin-bottom: 8px;
+    background: linear-gradient(90deg, #ff6b9d, #c77dff, #4cc9f0);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .intro-desc { color: #888; font-size: 14px; line-height: 1.7; margin-bottom: 28px; }
+  .howto {
+    background: rgba(255,255,255,0.04);
+    border-radius: 16px; padding: 18px; margin: 0 auto 28px;
+    max-width: 360px; text-align: left;
+  }
+  .howto-label { font-size: 12px; color: #aaa; font-weight: 600; margin-bottom: 10px; }
+  .howto-item { display: flex; gap: 10px; margin-bottom: 8px; font-size: 13px; }
+  .howto-num { color: #c77dff; font-weight: 700; }
+
+  /* Buttons */
+  .btn-primary {
+    background: linear-gradient(135deg, #ff6b9d, #c77dff);
+    border: none; color: white;
+    padding: 15px 44px; border-radius: 50px;
+    font-size: 16px; font-weight: 700; cursor: pointer;
+    font-family: inherit;
+    box-shadow: 0 0 30px rgba(199,125,255,0.35);
+    transition: opacity 0.2s, transform 0.1s;
+  }
+  .btn-primary:hover { opacity: 0.9; transform: scale(1.02); }
+  .btn-primary:disabled { background: rgba(255,255,255,0.1); color: #555; box-shadow: none; cursor: not-allowed; transform: none; }
+  .btn-secondary {
+    background: rgba(255,255,255,0.08); border: none; color: #aaa;
+    padding: 14px 20px; border-radius: 14px; font-size: 13px;
+    cursor: pointer; font-family: inherit; transition: background 0.2s;
+    white-space: nowrap;
+  }
+  .btn-secondary:hover { background: rgba(255,255,255,0.13); }
+
+  /* Round badge */
+  .round-badge {
+    text-align: center; margin-bottom: 12px;
+  }
+  .round-badge span {
+    background: rgba(199,125,255,0.2); color: #c77dff;
+    padding: 4px 14px; border-radius: 20px;
+    font-size: 12px; font-weight: 600;
+  }
+
+  /* Persona card */
+  .persona-card {
+    background: linear-gradient(135deg, rgba(26,5,51,0.85), rgba(13,17,23,0.85));
+    border: 1px solid rgba(199,125,255,0.3);
+    border-radius: 20px; padding: 18px;
+    margin-bottom: 16px; position: relative; overflow: hidden;
+  }
+  .persona-bg { position: absolute; top: -16px; right: -16px; font-size: 80px; opacity: 0.12; pointer-events: none; }
+  .persona-top { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+  .persona-avatar { font-size: 40px; }
+  .persona-name { font-weight: 800; font-size: 18px; }
+  .persona-age { color: #888; font-size: 14px; font-weight: 400; }
+  .persona-vibe { color: #c77dff; font-size: 12px; font-weight: 600; margin-top: 2px; }
+  .persona-state {
+    background: rgba(255,255,255,0.05);
+    border-radius: 12px; padding: 10px 14px; margin-bottom: 10px;
+  }
+  .state-label { font-size: 11px; color: #888; margin-bottom: 3px; }
+  .state-text { font-size: 15px; font-weight: 600; }
+  .persona-hint { font-size: 12px; color: #666; font-style: italic; }
+
+  /* Message preview */
+  .msg-preview {
+    background: rgba(255,255,255,0.04);
+    border-radius: 14px; padding: 12px 14px;
+    margin-bottom: 14px; min-height: 48px;
+    display: flex; align-items: center; flex-wrap: wrap; gap: 6px;
+  }
+  .msg-placeholder { color: #555; font-size: 13px; }
+  .msg-card-chip {
+    display: inline-flex; align-items: center; gap: 4px;
+  }
+  .msg-sep { color: #555; font-size: 11px; }
+
+  /* Cards section */
+  .cards-label { font-size: 12px; color: #666; margin-bottom: 8px; }
+  .cards-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+  .card-btn {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #ccc; padding: 8px 14px;
+    border-radius: 20px; font-size: 13px;
+    cursor: pointer; font-family: inherit;
+    transition: all 0.2s;
+  }
+  .card-btn:hover { background: rgba(255,255,255,0.09); }
+  .card-btn.selected { font-weight: 700; transform: scale(1.05); }
+
+  /* Fixed bottom bar */
+  .bottom-bar {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    padding: 14px 16px;
+    background: linear-gradient(to top, #0a0a0f 70%, transparent);
+    display: flex; gap: 10px;
+  }
+  .bottom-bar .btn-primary { flex: 1; padding: 15px; border-radius: 14px; font-size: 15px; }
+
+  /* Result screen */
+  .result-score-wrap { text-align: center; padding: 28px 0 20px; }
+  .result-score { font-size: 72px; font-weight: 900; line-height: 1; }
+  .result-score-label { font-size: 20px; font-weight: 700; margin-top: 4px; }
+
+  .result-persona-card {
+    border-radius: 20px; padding: 18px; margin-bottom: 14px;
+  }
+  .result-reaction { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+  .result-reason { font-size: 13px; color: #bbb; line-height: 1.6; }
+
+  .result-msg-box {
+    background: rgba(255,255,255,0.04);
+    border-radius: 14px; padding: 12px 14px; margin-bottom: 14px;
+  }
+  .result-msg-label { font-size: 11px; color: #666; margin-bottom: 5px; }
+  .result-msg-text { font-size: 14px; color: #ddd; }
+
+  .result-advice {
+    background: rgba(76,201,240,0.08);
+    border: 1px solid rgba(76,201,240,0.2);
+    border-radius: 14px; padding: 12px 14px; margin-bottom: 20px;
+  }
+  .advice-label { font-size: 11px; color: #4cc9f0; font-weight: 600; margin-bottom: 5px; }
+  .advice-text { font-size: 13px; color: #bbb; }
+
+  /* History */
+  .history-header { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
+  .back-btn { background: none; border: none; color: #aaa; cursor: pointer; font-size: 20px; line-height: 1; }
+  .history-title { font-weight: 700; }
+  .history-empty { text-align: center; color: #555; padding: 40px; }
+  .history-item {
+    background: rgba(255,255,255,0.04);
+    border-radius: 14px; padding: 12px 14px;
+    margin-bottom: 8px; display: flex; align-items: center; gap: 12px;
+  }
+  .history-avatar { font-size: 28px; flex-shrink: 0; }
+  .history-info { flex: 1; min-width: 0; }
+  .history-meta { font-size: 13px; font-weight: 600; margin-bottom: 2px; }
+  .history-msg { font-size: 12px; color: #666; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .history-score { font-size: 20px; font-weight: 800; flex-shrink: 0; }
+
+  /* Loading overlay */
+  .loading-overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(10,10,15,0.8);
+    z-index: 200;
+    align-items: center; justify-content: center;
+    flex-direction: column; gap: 16px;
+  }
+  .loading-overlay.active { display: flex; }
+  .loading-spinner {
+    width: 44px; height: 44px;
+    border: 3px solid rgba(199,125,255,0.2);
+    border-top-color: #c77dff;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+  .loading-text { color: #aaa; font-size: 14px; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* API key prompt */
+  .apikey-box {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px; padding: 16px; margin-bottom: 16px;
+  }
+  .apikey-label { font-size: 12px; color: #888; margin-bottom: 8px; }
+  .apikey-input {
+    width: 100%; background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: #f0f0f0; padding: 10px 14px;
+    border-radius: 10px; font-size: 14px;
+    font-family: monospace; outline: none;
+  }
+  .apikey-input:focus { border-color: rgba(199,125,255,0.5); }
+  .apikey-note { font-size: 11px; color: #555; margin-top: 6px; }
 </style>
 </head>
 <body>
 
+<!-- Header -->
 <div class="header">
   <div class="header-title">🎴 Z世代 伝わるかな？</div>
-  <button class="header-btn" id="histBtn" onclick="showHist()">履歴</button>
+  <button class="header-btn" id="historyBtn" style="display:none" onclick="showHistory()">履歴</button>
 </div>
 
-<div class="loading" id="loading">
-  <div class="spinner"></div>
-  <div class="loading-msg" id="loadingMsg">読み込み中…</div>
+<!-- Loading overlay -->
+<div class="loading-overlay" id="loadingOverlay">
+  <div class="loading-spinner"></div>
+  <div class="loading-text">判定中…</div>
 </div>
 
 <!-- INTRO -->
-<div class="screen active" id="s-intro">
+<div class="screen active" id="screen-intro">
   <div class="intro-icon">🎴</div>
   <h1 class="intro-title">Z世代 伝わるかな？</h1>
-  <p class="intro-desc">Z世代のペルソナが登場。<br>カードを組み合わせてメッセージを作り、<br>「自分向け」と思ってもらえるか挑戦しよう。</p>
+  <p class="intro-desc">
+    Z世代のペルソナが登場。<br>
+    カードを組み合わせてメッセージを作り、<br>
+    「自分向け」と思ってもらえるか挑戦しよう。
+  </p>
   <div class="howto">
     <div class="howto-label">遊び方</div>
     <div class="howto-item"><span class="howto-num">1.</span><span>ペルソナの心理状態をよく読む</span></div>
@@ -94,336 +258,546 @@ body { background:#0a0a0f; color:#f0f0f0; font-family:'Hiragino Sans','Noto Sans
     <div class="howto-item"><span class="howto-num">3.</span><span>AIが「刺さったか」を判定する</span></div>
     <div class="howto-item"><span class="howto-num">4.</span><span>スコアとフィードバックで学ぶ</span></div>
   </div>
-  <div class="apibox">
-    <label for="apiKeyInput">Gemini API Key</label>
-    <input type="password" id="apiKeyInput" placeholder="AIza...">
-    <div class="apistatus" id="apiStatus">このページ内のみで使用。保存・送信はしません。</div>
+  <div class="apikey-box" style="max-width:360px;margin:0 auto 16px;">
+    <div class="apikey-label">Gemini API Key</div>
+    <input type="password" class="apikey-input" id="apiKeyInput" placeholder="AIza..." autocomplete="off" oninput="onApiKeyInput(this)">
+    <div class="apikey-note" id="apiKeyNote">このページ内のみで使用。保存・送信はしません。</div>
   </div>
-  <button class="btn-primary" id="startBtn" onclick="onStart()">スタート →</button>
+  <button class="btn-primary" id="startBtn" onclick="startGame()">スタート →</button>
 </div>
 
 <!-- GAME -->
-<div class="screen" id="s-game">
-  <div class="round-badge"><span id="roundLabel">ROUND 1</span></div>
-  <div class="pcard">
-    <div class="pcard-top">
-      <div class="pcard-avatar" id="pAvatar"></div>
+<div class="screen" id="screen-game">
+  <div class="round-badge"><span id="roundBadge">ROUND 1</span></div>
+
+  <div class="persona-card" id="personaCard">
+    <div class="persona-bg" id="personaBg"></div>
+    <div class="persona-top">
+      <div class="persona-avatar" id="personaAvatar"></div>
       <div>
-        <div class="pcard-name"><span id="pName"></span> <span class="pcard-age" id="pAge"></span></div>
-        <div class="pcard-vibe" id="pVibe"></div>
+        <div class="persona-name"><span id="personaName"></span> <span class="persona-age" id="personaAge"></span></div>
+        <div class="persona-vibe" id="personaVibe"></div>
       </div>
     </div>
-    <div class="pcard-state">
+    <div class="persona-state">
       <div class="state-label">今の心理状態</div>
-      <div class="state-text">「<span id="pState"></span>」</div>
+      <div class="state-text">「<span id="personaState"></span>」</div>
     </div>
-    <div class="pcard-hint">💡 <span id="pHint"></span></div>
+    <div class="persona-hint">💡 <span id="personaHint"></span></div>
   </div>
-  <div class="msgpreview" id="msgPreview"><span class="msgplaceholder">カードを選んでメッセージを作ろう（2〜4枚）</span></div>
+
+  <div class="msg-preview" id="msgPreview">
+    <span class="msg-placeholder">カードを選んでメッセージを作ろう（2〜4枚）</span>
+  </div>
+
   <div class="cards-label">カードを選ぶ（最大4枚）</div>
   <div class="cards-grid" id="cardsGrid"></div>
+
   <div class="bottom-bar">
-    <button class="btn-primary" id="submitBtn" onclick="onSubmit()" disabled>送ってみる →（0/4枚）</button>
+    <button class="btn-primary" id="submitBtn" disabled onclick="submitMessage()">送ってみる →（0/4枚）</button>
   </div>
 </div>
 
 <!-- RESULT -->
-<div class="screen" id="s-result">
-  <div class="score-wrap">
-    <div class="score-num" id="rScore"></div>
-    <div class="score-label" id="rScoreLabel"></div>
+<div class="screen" id="screen-result">
+  <div class="result-score-wrap">
+    <div class="result-score" id="resultScore"></div>
+    <div class="result-score-label" id="resultScoreLabel"></div>
   </div>
-  <div class="rcard" id="rCard">
-    <div class="rcard-top">
-      <span id="rAvatar" style="font-size:32px"></span>
-      <span id="rName" style="font-weight:700"></span>
+  <div class="result-persona-card" id="resultPersonaCard">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+      <span id="resultAvatar" style="font-size:32px"></span>
+      <span id="resultName" style="font-weight:700"></span>
     </div>
-    <div class="rreaction" id="rReaction"></div>
-    <div class="rreason" id="rReason"></div>
+    <div class="result-reaction" id="resultReaction"></div>
+    <div class="result-reason" id="resultReason"></div>
   </div>
-  <div class="rmsg">
-    <div class="rmsg-label">送ったメッセージ</div>
-    <div id="rMsg" style="font-size:14px;color:#ddd"></div>
+  <div class="result-msg-box">
+    <div class="result-msg-label">送ったメッセージ</div>
+    <div class="result-msg-text" id="resultMsg"></div>
   </div>
-  <div class="radvice">
-    <div class="radvice-label">💡 アドバイス</div>
-    <div id="rAdvice" style="font-size:13px;color:#bbb"></div>
+  <div class="result-advice">
+    <div class="advice-label">💡 アドバイス</div>
+    <div class="advice-text" id="resultAdvice"></div>
   </div>
   <div class="bottom-bar">
-    <button class="btn-primary" onclick="onNext()">次のペルソナ →</button>
-    <button class="btn-secondary" onclick="onRetry()">やり直す</button>
+    <button class="btn-primary" onclick="nextRound()">次のペルソナ →</button>
+    <button class="btn-secondary" onclick="retryRound()">やり直す</button>
   </div>
 </div>
 
 <!-- HISTORY -->
-<div class="screen" id="s-hist">
-  <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;">
-    <button onclick="goBack()" style="background:none;border:none;color:#aaa;cursor:pointer;font-size:20px;">←</button>
-    <span style="font-weight:700;">プレイ履歴</span>
+<div class="screen" id="screen-history">
+  <div class="history-header">
+    <button class="back-btn" onclick="goBack()">←</button>
+    <div class="history-title">プレイ履歴</div>
   </div>
-  <div id="histList"></div>
+  <div id="historyList"></div>
   <div class="bottom-bar">
-    <button class="btn-primary" onclick="onStart()">新しいゲームを始める</button>
+    <button class="btn-primary" onclick="startGame()">新しいゲームを始める</button>
   </div>
 </div>
 
 <script>
-var G = {
+// ========== STATE ==========
+let state = {
   apiKey: '',
   round: 1,
   persona: null,
   hand: [],
   selected: [],
-  cardPool: [],
+  currentMsg: '',
+  lastResult: null,
   history: [],
-  lastScreen: 'game'
+  zgeneKeywords: [],
+  currentScreen: 'intro'
 };
 
-var PERSONAS = [
-  { name:'りな', age:20, av:'🧑\u200d🎤', vibe:'自己表現系', state:'自分らしさを探してる', kw:['個性','本物','共感','自由','推し'], avoid:['量産型','みんな','普通'], hint:'ブランドより自分と重なるかを見てる' },
-  { name:'そうた', age:22, av:'🧑\u200d💻', vibe:'情報収集系', state:'失敗したくない', kw:['比較','レビュー','信頼','実績'], avoid:['感覚的','雰囲気','キャンペーン'], hint:'決める前に徹底的に調べる。納得感が大事' },
-  { name:'みく', age:19, av:'🧑\u200d🎨', vibe:'トレンド感度系', state:'新しいものを最初に知りたい', kw:['新感覚','話題','限定','先行'], avoid:['定番','昔から','王道'], hint:'知ってるより最初に知ったが価値' },
-  { name:'けんと', age:21, av:'🧑\u200d🏫', vibe:'意味重視系', state:'買う理由が欲しい', kw:['意味','社会','ストーリー','なぜ'], avoid:['売上','効率','コスパ'], hint:'この会社は何を大切にしてるかを見てる' },
-  { name:'はな', age:20, av:'🌸', vibe:'消耗回避系', state:'壊れずに続けられるものを探してる', kw:['安全','持続','軽い','続けやすい'], avoid:['頑張れ','成長','最強'], hint:'熱量より長く付き合えるかが判断軸' },
-  { name:'りゅう', age:23, av:'🧑\u200d🔬', vibe:'人間らしさ重視系', state:'AIっぽいものに疲れてる', kw:['本音','人間','手触り','誠実'], avoid:['AI','最適化','スマート'], hint:'完璧すぎるものを信用しない' }
+// ========== PERSONAS (static base, augmented by zgene keywords) ==========
+const BASE_PERSONAS = [
+  {
+    name: "りな", age: 20, avatar: "🧑‍🎤", vibe: "自己表現系",
+    state: "自分らしさを探してる",
+    keywords: ["個性", "本物", "共感", "自由", "推し"],
+    avoid: ["量産型", "みんな", "普通", "スペック", "お得"],
+    hint: "ブランドより「自分と重なるか」を見てる"
+  },
+  {
+    name: "そうた", age: 22, avatar: "🧑‍💻", vibe: "情報収集系",
+    state: "失敗したくない",
+    keywords: ["比較", "レビュー", "信頼", "実績", "安心"],
+    avoid: ["感覚的", "雰囲気", "なんとなく", "流行", "キャンペーン"],
+    hint: "決める前に徹底的に調べる。納得感が大事"
+  },
+  {
+    name: "みく", age: 19, avatar: "🧑‍🎨", vibe: "トレンド感度系",
+    state: "新しいものを最初に知りたい",
+    keywords: ["新感覚", "話題", "限定", "先行", "Vibe"],
+    avoid: ["定番", "ロングセラー", "昔から", "王道"],
+    hint: "「知ってる」より「最初に知った」が価値"
+  },
+  {
+    name: "けんと", age: 21, avatar: "🧑‍🏫", vibe: "意味重視系",
+    state: "買う理由が欲しい",
+    keywords: ["意味", "社会", "サステナ", "ストーリー", "なぜ"],
+    avoid: ["売上", "効率", "コスパ", "数字", "ランキング"],
+    hint: "この会社は何を大切にしてるかを見てる"
+  },
+  {
+    name: "はな", age: 20, avatar: "🧑‍🌾", vibe: "消耗回避系",
+    state: "壊れずに続けられるものを探してる",
+    keywords: ["安全", "持続", "軽い", "続けやすい", "整う"],
+    avoid: ["フルコミット", "頑張れ", "成長", "最強", "圧倒的"],
+    hint: "熱量より「長く付き合えるか」が判断軸"
+  },
+  {
+    name: "りゅう", age: 23, avatar: "🧑‍🔬", vibe: "人間らしさ重視系",
+    state: "AIっぽいものに疲れてる",
+    keywords: ["本音", "人間", "手触り", "誠実", "不完全"],
+    avoid: ["AI", "最適化", "効率", "スマート", "自動"],
+    hint: "「完璧すぎるもの」を信用しない"
+  }
 ];
 
-var FALLBACK_CARDS = ['自分らしく','本物感','ゆるく続く','話題の','新感覚','信頼できる','共感できる','限定の','安心感','意味がある','本音で','疲れない','刺さる','尊い','エモい','なんか好き','続けやすい','ちゃんとしてる','世界観','コミュニティ'];
-var COLORS = ['#ff6b9d','#c77dff','#4cc9f0','#f9c74f','#80ed99'];
+// Static card pool (will be augmented with zgene keywords)
+const STATIC_CARDS = [
+  { text: "あなただけに", color: "#ff6b9d" },
+  { text: "本物の", color: "#c77dff" },
+  { text: "自分らしく", color: "#ff6b9d" },
+  { text: "失敗しない", color: "#4cc9f0" },
+  { text: "話題の", color: "#f9c74f" },
+  { text: "新感覚", color: "#f9c74f" },
+  { text: "意味がある", color: "#c77dff" },
+  { text: "選ばれてる", color: "#4cc9f0" },
+  { text: "限定の", color: "#f9c74f" },
+  { text: "信頼できる", color: "#4cc9f0" },
+  { text: "共感できる", color: "#ff6b9d" },
+  { text: "ストーリーのある", color: "#c77dff" },
+  { text: "続けやすい", color: "#80ed99" },
+  { text: "壊れない", color: "#80ed99" },
+  { text: "本音の", color: "#ff6b9d" },
+  { text: "安全な", color: "#80ed99" },
+  // actions
+  { text: "出会う", color: "#ffe0b2" },
+  { text: "感じる", color: "#ffe0b2" },
+  { text: "選ぶ", color: "#ffe0b2" },
+  { text: "体験する", color: "#ffe0b2" },
+  // nouns
+  { text: "世界観", color: "#e0e0e0" },
+  { text: "コミュニティ", color: "#e0e0e0" },
+  { text: "ライフスタイル", color: "#e0e0e0" },
+  { text: "体験", color: "#e0e0e0" },
+];
 
-function scoreColor(s) {
-  if (s >= 80) return '#80ed99';
-  if (s >= 60) return '#f9c74f';
-  if (s >= 40) return '#ff9f43';
-  return '#ff6b9d';
+// ========== API KEY ==========
+function onApiKeyInput(el) {
+  var val = el.value.trim();
+  state.apiKey = val;
+  var note = document.getElementById('apiKeyNote');
+  if (val) {
+    note.textContent = 'キー入力済み ✅';
+    note.style.color = '#80ed99';
+  } else {
+    note.textContent = 'このページ内のみで使用。保存・送信はしません。';
+    note.style.color = '';
+  }
 }
-function scoreLabel(s) {
-  if (s >= 80) return '刺さった！';
-  if (s >= 60) return 'まあまあ';
-  if (s >= 40) return '微妙…';
-  return '全然だめ';
+function saveApiKey() {
+  const val = document.getElementById('apiKeyInput').value.trim();
+  const note = document.getElementById('apiKeyNote');
+  if (!val) {
+    note.textContent = '⚠️ キーを入力してください';
+    setTimeout(() => { note.textContent = 'このページ内のみで使用。保存・送信はしません。'; }, 2000);
+    return;
+  }
+  state.apiKey = val;
+  try { localStorage.setItem('gemini_api_key', val); } catch(e) {}
+  note.textContent = '✅ 保存しました！スタートを押してください';
+  note.style.color = '#80ed99';
+  setTimeout(() => {
+    note.textContent = 'このページ内のみで使用。保存・送信はしません。';
+    note.style.color = '';
+  }, 3000);
 }
-function shuffle(a) { return a.slice().sort(function(){ return Math.random()-0.5; }); }
 
-function showScreen(id) {
-  document.querySelectorAll('.screen').forEach(function(s){ s.classList.remove('active'); });
-  document.getElementById(id).classList.add('active');
-  document.getElementById('histBtn').style.display = (id === 's-intro') ? 'none' : 'block';
-  window.scrollTo(0,0);
-}
-
-function showLoading(msg) {
-  document.getElementById('loadingMsg').textContent = msg || '読み込み中…';
-  document.getElementById('loading').classList.add('active');
-}
-function hideLoading() {
-  document.getElementById('loading').classList.remove('active');
-}
-
-// API Key input
-document.getElementById('apiKeyInput').addEventListener('input', function() {
-  G.apiKey = this.value.trim();
-  document.getElementById('apiStatus').textContent = G.apiKey ? 'キー入力済み ✅' : 'このページ内のみで使用。保存・送信はしません。';
-  document.getElementById('apiStatus').style.color = G.apiKey ? '#80ed99' : '';
+// load saved key on page load
+window.addEventListener('load', () => {
+  try {
+    const saved = localStorage.getItem('gemini_api_key');
+    if (saved) {
+      state.apiKey = saved;
+      document.getElementById('apiKeyInput').value = saved;
+    }
+  } catch(e) {}
 });
 
-async function loadCards() {
-  // Try to get zgene keywords
-  var keywords = [];
-  var paths = ['../data/zgene.json', '/genz/data/zgene.json'];
-  for (var i=0; i<paths.length; i++) {
+// ========== ZGENE DATA LOADING ==========
+async function loadZgeneKeywords() {
+  const paths = ['../data/zgene.json', '/genz/data/zgene.json', 'data/zgene.json'];
+  for (const path of paths) {
     try {
-      var res = await fetch(paths[i]);
+      const res = await fetch(path);
       if (!res.ok) continue;
-      var data = await res.json();
-      var weeklies = data.filter(function(e){ return e.type === 'weekly'; }).slice(0,6);
-      weeklies.forEach(function(w){
+      const data = await res.json();
+      const keywords = [];
+      const weeklies = data.filter(e => e.type === 'weekly').slice(0, 6);
+      weeklies.forEach(w => {
         if (w.essay && w.essay.keywords) {
-          w.essay.keywords.forEach(function(k){ if (!keywords.includes(k)) keywords.push(k); });
+          w.essay.keywords.forEach(k => {
+            if (!keywords.includes(k)) keywords.push(k);
+          });
         }
       });
-      break;
-    } catch(e) {}
-  }
-
-  if (keywords.length > 0 && G.apiKey) {
-    // Generate cards from keywords via Gemini
-    try {
-      var prompt = 'Z世代トレンドの分析キーワードです：' + keywords.slice(0,10).join('、') + '\nこれらを踏まえてZ世代に届くコミュニケーション言葉を20個生成してください。条件：短い（2〜8文字）、Z世代の感覚語、マーケター臭くない。JSON形式のみで返してください：{"cards":["word1","word2",...]}';
-      var res = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=' + G.apiKey, {
-        method: 'POST',
-        headers: {'Content-Type':'application/json'},
-        body: JSON.stringify({ contents:[{parts:[{text:prompt}]}], generationConfig:{maxOutputTokens:400,temperature:1.0} })
-      });
-      var json = await res.json();
-      var text = json.candidates[0].content.parts[0].text;
-      text = text.replace(/```json|```/g,'').trim();
-      var parsed = JSON.parse(text);
-      G.cardPool = parsed.cards.map(function(w,i){ return {text:w, color:COLORS[i%COLORS.length]}; });
+      state.zgeneKeywords = keywords;
       return;
-    } catch(e) {}
+    } catch (e) {}
   }
-
-  // Fallback
-  G.cardPool = FALLBACK_CARDS.map(function(w,i){ return {text:w, color:COLORS[i%COLORS.length]}; });
+  state.zgeneKeywords = [];
 }
 
-async function onStart() {
-  G.apiKey = document.getElementById('apiKeyInput').value.trim();
-  showLoading('カードを生成中…');
-  if (G.cardPool.length === 0) {
-    await loadCards();
+// ========== AI CARD GENERATION ==========
+async function generateCards() {
+  if (state.generatedCardPool && state.generatedCardPool.length > 0) return;
+
+  const keywords = state.zgeneKeywords.slice(0, 12);
+  if (!keywords.length || !state.apiKey) {
+    state.generatedCardPool = STATIC_CARDS.map((c, i) => ({ ...c, id: 'sc_' + i }));
+    return;
   }
-  hideLoading();
 
-  var p = PERSONAS[Math.floor(Math.random() * PERSONAS.length)];
-  G.persona = p;
-  G.selected = [];
-  G.hand = shuffle(G.cardPool).slice(0,9).map(function(c,i){ return {text:c.text, color:c.color, id:'c'+i}; });
+  const prompt = `以下はZ世代の最新トレンドを分析した「分析キーワード」です。
+これらはマーケターの分析言語であり、Z世代への直接のコミュニケーションには使えません。
 
-  document.getElementById('roundLabel').textContent = 'ROUND ' + G.round;
-  document.getElementById('pAvatar').textContent = p.av;
-  document.getElementById('pName').textContent = p.name;
-  document.getElementById('pAge').textContent = p.age + '歳';
-  document.getElementById('pVibe').textContent = p.vibe;
-  document.getElementById('pState').textContent = p.state;
-  document.getElementById('pHint').textContent = p.hint;
+分析キーワード：
+${keywords.join('、')}
 
-  var grid = document.getElementById('cardsGrid');
+これらの本質的な意味を踏まえて、Z世代に実際に届くコミュニケーション言葉を20個生成してください。
+
+条件：
+- Z世代が日常で使う・共感する言葉の感覚
+- 短い（2〜8文字）
+- マーケター臭くない
+- 形容詞・名詞・感覚語を混ぜる
+- 分析キーワードをそのまま使わない
+
+以下のJSON形式のみで返してください（前後テキスト・バッククォート不要）：
+{"cards":["言葉1","言葉2","言葉3",...20個]}`;
+
+  try {
+    const res = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=${state.apiKey}`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: prompt }] }],
+          generationConfig: { maxOutputTokens: 512, temperature: 1.0 }
+        })
+      }
+    );
+    const data = await res.json();
+    if (!res.ok || !data.candidates || !data.candidates[0]) {
+      throw new Error(data.error?.message || 'Gemini API error');
+    }
+    const text = data.candidates[0].content.parts[0].text;
+    const clean = text.replace(/```json|```/g, '').trim();
+    const parsed = JSON.parse(clean);
+    const colors = ["#ff6b9d", "#c77dff", "#4cc9f0", "#f9c74f", "#80ed99"];
+    state.generatedCardPool = parsed.cards.map((word, i) => ({
+      id: 'gc_' + i,
+      text: word,
+      color: colors[i % colors.length]
+    }));
+  } catch (e) {
+    state.generatedCardPool = STATIC_CARDS.map((c, i) => ({ ...c, id: 'sc_' + i }));
+  }
+}
+
+function getHandCards() {
+  const pool = state.generatedCardPool && state.generatedCardPool.length
+    ? state.generatedCardPool
+    : STATIC_CARDS.map((c, i) => ({ ...c, id: 'sc_' + i }));
+  return shuffle(pool).slice(0, 9).map((c, i) => ({ ...c, id: 'card_' + i }));
+}
+
+function shuffle(arr) {
+  return [...arr].sort(() => Math.random() - 0.5);
+}
+
+// ========== SCREENS ==========
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('screen-' + id).classList.add('active');
+  state.currentScreen = id;
+  document.getElementById('historyBtn').style.display = (id !== 'intro') ? 'block' : 'none';
+  window.scrollTo(0, 0);
+}
+
+// ========== GAME FLOW ==========
+async function startGame() {
+  const apiKeyEl = document.getElementById('apiKeyInput');
+  if (apiKeyEl && apiKeyEl.value.trim()) {
+    state.apiKey = apiKeyEl.value.trim();
+  }
+  // load zgene data & generate cards (first time only)
+  document.getElementById('loadingOverlay').classList.add('active');
+  document.querySelector('.loading-text').textContent = 'カードを生成中…';
+  try {
+    await loadZgeneKeywords();
+    await generateCards();
+  } catch(e) {
+    // fallback silently
+    if (!state.generatedCardPool) {
+      state.generatedCardPool = STATIC_CARDS.map((c, i) => ({ ...c, id: 'sc_' + i }));
+    }
+  }
+  document.getElementById('loadingOverlay').classList.remove('active');
+  document.querySelector('.loading-text').textContent = '判定中…';
+
+  const persona = BASE_PERSONAS[Math.floor(Math.random() * BASE_PERSONAS.length)];
+  state.persona = persona;
+  state.hand = getHandCards();
+  state.selected = [];
+
+  renderPersona();
+  renderCards();
+  updateMsgPreview();
+  updateSubmitBtn();
+  document.getElementById('roundBadge').textContent = 'ROUND ' + state.round;
+  showScreen('game');
+}
+
+function renderPersona() {
+  const p = state.persona;
+  document.getElementById('personaBg').textContent = p.avatar;
+  document.getElementById('personaAvatar').textContent = p.avatar;
+  document.getElementById('personaName').textContent = p.name;
+  document.getElementById('personaAge').textContent = p.age + '歳';
+  document.getElementById('personaVibe').textContent = p.vibe;
+  document.getElementById('personaState').textContent = p.state;
+  document.getElementById('personaHint').textContent = p.hint;
+}
+
+function renderCards() {
+  const grid = document.getElementById('cardsGrid');
   grid.innerHTML = '';
-  G.hand.forEach(function(card) {
-    var btn = document.createElement('button');
+  state.hand.forEach(card => {
+    const btn = document.createElement('button');
     btn.className = 'card-btn';
     btn.textContent = card.text;
-    btn.onclick = function() { toggleCard(card, btn); };
+    btn.dataset.id = card.id;
+    btn.onclick = () => toggleCard(card, btn);
     grid.appendChild(btn);
   });
-
-  updatePreview();
-  updateSubmit();
-  G.lastScreen = 'game';
-  showScreen('s-game');
 }
 
 function toggleCard(card, btn) {
-  var idx = G.selected.findIndex(function(c){ return c.id === card.id; });
+  const idx = state.selected.findIndex(c => c.id === card.id);
   if (idx >= 0) {
-    G.selected.splice(idx,1);
+    state.selected.splice(idx, 1);
+    btn.classList.remove('selected');
     btn.style.background = '';
     btn.style.borderColor = '';
     btn.style.color = '';
-    btn.style.fontWeight = '';
-  } else if (G.selected.length < 4) {
-    G.selected.push(card);
+  } else if (state.selected.length < 4) {
+    state.selected.push(card);
+    btn.classList.add('selected');
     btn.style.background = card.color + '28';
     btn.style.borderColor = card.color;
     btn.style.color = card.color;
-    btn.style.fontWeight = '700';
   }
-  updatePreview();
-  updateSubmit();
+  updateMsgPreview();
+  updateSubmitBtn();
 }
 
-function buildMsg() {
-  return G.selected.map(function(c){ return c.text; }).join(' × ') + '。';
+function buildMessage() {
+  return state.selected.map(c => c.text).join(' × ') + '。';
 }
 
-function updatePreview() {
-  var el = document.getElementById('msgPreview');
-  if (G.selected.length === 0) {
-    el.innerHTML = '<span class="msgplaceholder">カードを選んでメッセージを作ろう（2〜4枚）</span>';
+function updateMsgPreview() {
+  const el = document.getElementById('msgPreview');
+  if (state.selected.length === 0) {
+    el.innerHTML = '<span class="msg-placeholder">カードを選んでメッセージを作ろう（2〜4枚）</span>';
     return;
   }
-  el.innerHTML = G.selected.map(function(c,i){
-    var sep = i > 0 ? '<span style="color:#555;font-size:11px;margin:0 2px;">×</span>' : '';
-    return sep + '<span style="background:' + c.color + '22;border:1px solid ' + c.color + '55;color:' + c.color + ';padding:4px 10px;border-radius:20px;font-size:13px;font-weight:600">' + c.text + '</span>';
+  el.innerHTML = state.selected.map((c, i) => {
+    const sep = i > 0 ? '<span class="msg-sep">×</span>' : '';
+    return `${sep}<span class="msg-card-chip" style="background:${c.color}22;border:1px solid ${c.color}55;color:${c.color};padding:4px 10px;border-radius:20px;font-size:13px;font-weight:600">${c.text}</span>`;
   }).join('');
 }
 
-function updateSubmit() {
-  var btn = document.getElementById('submitBtn');
-  var n = G.selected.length;
+function updateSubmitBtn() {
+  const btn = document.getElementById('submitBtn');
+  const n = state.selected.length;
   btn.disabled = n < 2;
-  btn.textContent = '送ってみる →（' + n + '/4枚）';
-  btn.style.opacity = n < 2 ? '0.4' : '1';
+  btn.textContent = `送ってみる →（${n}/4枚）`;
 }
 
-async function onSubmit() {
-  var msg = buildMsg();
-  showLoading('判定中…');
+async function submitMessage() {
+  const msg = buildMessage();
+  state.currentMsg = msg;
+  document.getElementById('loadingOverlay').classList.add('active');
 
-  var result = await judgeMessage(G.persona, msg);
-  G.history.unshift({persona:G.persona, message:msg, result:result, round:G.round});
+  const result = await askClaude(state.persona, msg);
+  state.lastResult = result;
+  state.history.unshift({ persona: state.persona, message: msg, result, round: state.round });
 
-  hideLoading();
-
-  var c = scoreColor(result.score);
-  document.getElementById('rScore').textContent = result.score;
-  document.getElementById('rScore').style.color = c;
-  document.getElementById('rScoreLabel').textContent = scoreLabel(result.score);
-  document.getElementById('rScoreLabel').style.color = c;
-  document.getElementById('rAvatar').textContent = G.persona.av;
-  document.getElementById('rName').textContent = G.persona.name;
-  var rc = document.getElementById('rCard');
-  rc.style.background = 'linear-gradient(135deg,' + c + '15,rgba(13,17,23,0.85))';
-  rc.style.border = '1px solid ' + c + '40';
-  document.getElementById('rReaction').textContent = '「' + result.reaction + '」';
-  document.getElementById('rReaction').style.color = c;
-  document.getElementById('rReason').textContent = result.reason;
-  document.getElementById('rMsg').textContent = msg;
-  document.getElementById('rAdvice').textContent = result.advice;
-
-  G.lastScreen = 'result';
-  showScreen('s-result');
+  document.getElementById('loadingOverlay').classList.remove('active');
+  renderResult(result, msg);
+  showScreen('result');
 }
 
-async function judgeMessage(persona, msg) {
-  if (!G.apiKey) {
-    return { score:50, reaction:'うーん…', reason:'APIキーがないので判定できません', advice:'Gemini APIキーを入力してください' };
-  }
-  var prompt = 'あなたはZ世代の' + persona.name + '（' + persona.age + '歳）です。バイブ：' + persona.vibe + '。心理状態：' + persona.state + '。好きなキーワード：' + persona.kw.join('、') + '。避けたいもの：' + persona.avoid.join('、') + '。ヒント：' + persona.hint + '。\n\nマーケターからのメッセージ：「' + msg + '」\n\nこのメッセージは自分向けだと感じますか？JSONのみで返してください：{"score":0から100の整数,"reaction":"一言リアクション10〜20文字Z世代らしく","reason":"なぜそう感じたか30〜50文字","advice":"もっと刺さるなら20〜40文字"}';
-  try {
-    var res = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=' + G.apiKey, {
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({ contents:[{parts:[{text:prompt}]}], generationConfig:{maxOutputTokens:400,temperature:0.9} })
-    });
-    var json = await res.json();
-    var text = json.candidates[0].content.parts[0].text;
-    text = text.replace(/```json|```/g,'').trim();
-    return JSON.parse(text);
-  } catch(e) {
-    return { score:50, reaction:'うまく判定できなかった', reason:'エラーが発生しました', advice:'もう一度試してみてください' };
-  }
+function renderResult(result, msg) {
+  const p = state.persona;
+  const color = getScoreColor(result.score);
+
+  document.getElementById('resultScore').textContent = result.score;
+  document.getElementById('resultScore').style.color = color;
+  document.getElementById('resultScoreLabel').textContent = getScoreLabel(result.score);
+  document.getElementById('resultScoreLabel').style.color = color;
+
+  document.getElementById('resultAvatar').textContent = p.avatar;
+  document.getElementById('resultName').textContent = p.name;
+  const rc = document.getElementById('resultPersonaCard');
+  rc.style.background = `linear-gradient(135deg, ${color}15, rgba(13,17,23,0.85))`;
+  rc.style.border = `1px solid ${color}40`;
+  document.getElementById('resultReaction').textContent = '「' + result.reaction + '」';
+  document.getElementById('resultReaction').style.color = color;
+  document.getElementById('resultReason').textContent = result.reason;
+  document.getElementById('resultMsg').textContent = msg;
+  document.getElementById('resultAdvice').textContent = result.advice;
 }
 
-function onNext() {
-  G.round++;
-  G.selected = [];
-  G.hand = shuffle(G.cardPool).slice(0,9).map(function(c,i){ return {text:c.text,color:c.color,id:'c'+i}; });
-  onStart();
+function nextRound() {
+  state.round++;
+  startGame();
 }
 
-function onRetry() {
-  G.selected = [];
-  G.hand = shuffle(G.cardPool).slice(0,9).map(function(c,i){ return {text:c.text,color:c.color,id:'c'+i}; });
-  onStart();
+function retryRound() {
+  state.selected = [];
+  state.hand = getHandCards();
+  renderCards();
+  updateMsgPreview();
+  updateSubmitBtn();
+  showScreen('game');
 }
 
-function showHist() {
-  var list = document.getElementById('histList');
-  if (G.history.length === 0) {
-    list.innerHTML = '<div style="text-align:center;color:#555;padding:40px;">まだ履歴がありません</div>';
+// ========== HISTORY ==========
+function showHistory() {
+  const list = document.getElementById('historyList');
+  if (state.history.length === 0) {
+    list.innerHTML = '<div class="history-empty">まだ履歴がありません</div>';
   } else {
-    list.innerHTML = G.history.map(function(h){
-      return '<div class="hist-item"><div class="hist-av">' + h.persona.av + '</div><div class="hist-info"><div class="hist-meta">' + h.persona.name + ' / R' + h.round + '</div><div class="hist-msg">' + h.message + '</div></div><div class="hist-score" style="color:' + scoreColor(h.result.score) + '">' + h.result.score + '</div></div>';
-    }).join('');
+    list.innerHTML = state.history.map(h => `
+      <div class="history-item">
+        <div class="history-avatar">${h.persona.avatar}</div>
+        <div class="history-info">
+          <div class="history-meta">${h.persona.name} / R${h.round}</div>
+          <div class="history-msg">${h.message}</div>
+        </div>
+        <div class="history-score" style="color:${getScoreColor(h.result.score)}">${h.result.score}</div>
+      </div>
+    `).join('');
   }
-  showScreen('s-hist');
+  showScreen('history');
 }
 
 function goBack() {
-  showScreen('s-' + G.lastScreen);
+  showScreen(state.lastResult ? 'result' : 'game');
+}
+
+// ========== CLAUDE API ==========
+async function askClaude(persona, message) {
+  const prompt = `あなたはZ世代の${persona.name}（${persona.age}歳）です。
+バイブ：${persona.vibe}
+今の心理状態：${persona.state}
+好きなキーワード：${persona.keywords.join('、')}
+避けたいキーワード：${persona.avoid.join('、')}
+ヒント：${persona.hint}
+
+マーケターから以下のメッセージを受け取りました：
+「${message}」
+
+このメッセージは自分向けだと感じますか？
+以下のJSON形式のみで答えてください（前後のテキスト・バッククォート不要）：
+{"score":0から100の整数,"reaction":"一言リアクション（10〜20文字、Z世代らしい言葉で）","reason":"なぜそう感じたか（30〜50文字）","advice":"もっと刺さるなら（20〜40文字）"}`;
+
+  try {
+      const res = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=${state.apiKey}`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: prompt }] }],
+          generationConfig: { maxOutputTokens: 512, temperature: 0.9 }
+        })
+      }
+    );
+    const data = await res.json();
+    if (!res.ok || !data.candidates || !data.candidates[0]) {
+      throw new Error(data.error?.message || 'Gemini API error');
+    }
+    const text = data.candidates[0].content.parts[0].text;
+    const clean = text.replace(/```json|```/g, '').trim();
+    return JSON.parse(clean);
+  } catch (e) {
+    return { score: 50, reaction: 'うーん…', reason: 'うまく判定できなかった', advice: 'もう少し具体的に試してみて' };
+  }
+}
+
+// ========== HELPERS ==========
+function getScoreColor(score) {
+  if (score >= 80) return '#80ed99';
+  if (score >= 60) return '#f9c74f';
+  if (score >= 40) return '#ff9f43';
+  return '#ff6b9d';
+}
+function getScoreLabel(score) {
+  if (score >= 80) return '刺さった！';
+  if (score >= 60) return 'まあまあ';
+  if (score >= 40) return '微妙…';
+  return '全然だめ';
 }
 </script>
 </body>
