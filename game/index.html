@@ -435,14 +435,20 @@ const STATIC_CARDS = [
 // ========== API KEY ==========
 function saveApiKey() {
   const val = document.getElementById('apiKeyInput').value.trim();
-  if (val) {
-    state.apiKey = val;
-    try { localStorage.setItem('gemini_api_key', val); } catch(e) {}
-    document.getElementById('apiKeyNote').textContent = '✅ 保存しました';
-    setTimeout(() => {
-      document.getElementById('apiKeyNote').textContent = 'このページ内のみで使用。保存・送信はしません。';
-    }, 2000);
+  const note = document.getElementById('apiKeyNote');
+  if (!val) {
+    note.textContent = '⚠️ キーを入力してください';
+    setTimeout(() => { note.textContent = 'このページ内のみで使用。保存・送信はしません。'; }, 2000);
+    return;
   }
+  state.apiKey = val;
+  try { localStorage.setItem('gemini_api_key', val); } catch(e) {}
+  note.textContent = '✅ 保存しました！スタートを押してください';
+  note.style.color = '#80ed99';
+  setTimeout(() => {
+    note.textContent = 'このページ内のみで使用。保存・送信はしません。';
+    note.style.color = '';
+  }, 3000);
 }
 
 // load saved key on page load
