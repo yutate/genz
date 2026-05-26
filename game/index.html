@@ -260,8 +260,7 @@
   </div>
   <div class="apikey-box" style="max-width:360px;margin:0 auto 16px;">
     <div class="apikey-label">Gemini API Key</div>
-    <input type="password" class="apikey-input" id="apiKeyInput" placeholder="AIza..." autocomplete="off"
-      oninput="state.apiKey=this.value.trim(); document.getElementById('apiKeyNote').textContent=this.value.trim()?'✅ キー入力済み':'このページ内のみで使用。保存・送信はしません。'; document.getElementById('apiKeyNote').style.color=this.value.trim()?'#80ed99':'';">
+    <input type="password" class="apikey-input" id="apiKeyInput" placeholder="AIza..." autocomplete="off" oninput="onApiKeyInput(this)">
     <div class="apikey-note" id="apiKeyNote">このページ内のみで使用。保存・送信はしません。</div>
   </div>
   <button class="btn-primary" id="startBtn" onclick="startGame()">スタート →</button>
@@ -431,6 +430,18 @@ const STATIC_CARDS = [
 ];
 
 // ========== API KEY ==========
+function onApiKeyInput(el) {
+  var val = el.value.trim();
+  state.apiKey = val;
+  var note = document.getElementById('apiKeyNote');
+  if (val) {
+    note.textContent = 'キー入力済み ✅';
+    note.style.color = '#80ed99';
+  } else {
+    note.textContent = 'このページ内のみで使用。保存・送信はしません。';
+    note.style.color = '';
+  }
+}
 function saveApiKey() {
   const val = document.getElementById('apiKeyInput').value.trim();
   const note = document.getElementById('apiKeyNote');
