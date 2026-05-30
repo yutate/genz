@@ -844,16 +844,8 @@ rcat(CATS);
 // 05 Insights
 (function(){
   const el=document.getElementById('ins');
-  const snsr=DATA.slice(-6).reduce((s,d)=>s+d.categories['SNS・デジタル疲れ'],0);
-  const snsp=DATA.slice(0,6).reduce((s,d)=>s+d.categories['SNS・デジタル疲れ'],0)||1;
-  const snsG=Math.round((snsr/snsp-1)*100);
-  const oshiA=Math.round(DATA.reduce((s,d)=>s+d.categories['推し活・オタク'],0)/DATA.length);
-  const dc=RAW.filter(d=>d.theme&&/距離|設計|摩擦|持続/.test(d.theme)).length;
-  [{tag:'🔥 RISING SIGNAL',t:`SNS・デジタル疲れが直近6週で${snsG>0?'+':''}${snsG}%`,b:'序盤ほぼゼロだったSNS疲れ言及が2月以降に急増。BeReal・アナログ回帰・スマホデトックスが共通語として浮上。'},
-  {tag:'👑 CONSISTENT FORCE',t:`推し活・オタクは週平均${oshiA}件で全期間トップ`,b:'8ヶ月通じて最も安定した強さ。近月は「罪悪感」「管理負荷」など負の感情との共存も増加傾向。'},
-  {tag:'🔄 NARRATIVE SHIFT',t:`週次考察の${dc}週で「距離・設計・摩擦」が共通ワード`,b:'「デジタルネイティブ」という旧来の定義が解体され、「接続の仕方を自分で調整する世代」という新フレームが定着しつつある。'},
-  {tag:'🌱 EMERGING THEME',t:'「納得」が消費・政治・雇用を横断するキーワードに',b:'「正しいか」より「自分が納得できるか」。消費行動、就活観、制度への態度、すべてに共通する意思決定軸として浮上している。'}
-  ].forEach(ins=>{
+  const data=typeof INSIGHTS!=='undefined'?INSIGHTS:[];
+  data.forEach(ins=>{
     const c=document.createElement('div');c.className='ic';
     c.innerHTML=`<div class="ic-tag">${ins.tag}</div><div class="ic-title">${ins.t}</div><div class="ic-body">${ins.b}</div>`;
     el.appendChild(c);

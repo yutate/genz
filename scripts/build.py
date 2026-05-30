@@ -294,6 +294,92 @@ def build_global_kws(entries):
     # 出現頻度順（全KWを返す）
     return [kw for kw, _ in kw_counter.most_common()]
 
+
+# ── インサイト自動生成 ──────────────────────────────────────
+def build_insights(weeks_data, global_kws):
+    from collections import Counter
+    
+    weeks = weeks_data  # 新しい順
+    n = len(weeks)
+    if n == 0:
+        return []
+    
+    # 1. RISING SIGNAL: 直近4週と前4週でカテゴリ増加率トップ
+    cats = ['SNS・デジタル疲れ','推し活・オタク','AI・テクノロジー','消費・購買','働き方・キャリア','価値観・アイデンティティ','恋愛・人間関係','金融・お金']
+    recent4 = weeks[:4]
+    prev4   = weeks[4:8] if n >= 8 else weeks[4:]
+    
+    if prev4:
+        changes = {}
+        for cat in cats:
+            r = sum(w['categories'].get(cat,0) for w in recent4)
+            p = sum(w['categories'].get(cat,0) for w in prev4) or 1
+            changes[cat] = round((r/p - 1)*100)
+        rising_cat = max(changes, key=lambda c: changes[c])
+        rising_pct = changes[rising_cat]
+        sign = '+' if rising_pct > 0 else ''
+        insight1 = {
+            'tag': '🔥 RISING SIGNAL',
+            't': f'{rising_cat}が直近4週で{sign}{rising_pct}%',
+            'b': f'直近4週の出現数が前4週比{sign}{rising_pct}%。今最も注目すべきカテゴリ。'
+        }
+    else:
+        # データが少ない場合は全期間トップ
+        totals = {cat: sum(w['categories'].get(cat,0) for w in weeks) for cat in cats}
+        top_cat = max(totals, key=lambda c: totals[c])
+        insight1 = {
+            'tag': '🔥 TOP SIGNAL',
+            't': f'{top_cat}が全期間でトップカテゴリ',
+            'b': f'全{n}週を通じて最も多く言及されたカテゴリ。'
+        }
+    
+    # 2. CONSISTENT FORCE: 全期間で最も安定して多いカテゴリ
+    totals = {cat: sum(w['categories'].get(cat,0) for w in weeks) for cat in cats}
+    avg = {cat: round(totals[cat]/n, 1) for cat in cats}
+    top_cat = max(avg, key=lambda c: avg[c])
+    insight2 = {
+        'tag': '👑 CONSISTENT FORCE',
+        't': f'{top_cat}は週平均{avg[top_cat]}件で全期間トップ',
+        'b': f'{n}週を通じて最も安定した存在感。Z世代理解の基軸カテゴリ。'
+    }
+    
+    # 3. NARRATIVE SHIFT: 直近4週の考察キーワードトップ3
+    recent_kws = Counter()
+    for w in weeks[:4]:
+        for kw in (w.get('keywords') or []):
+            recent_kws[kw] += 1
+    top3 = [kw for kw, _ in recent_kws.most_common(3)]
+    top3_str = '・'.join(top3) if top3 else '—'
+    # 直近テーマの傾向
+    recent_themes = [w['theme'] for w in weeks[:4] if w.get('theme')]
+    insight3 = {
+        'tag': '🔄 NARRATIVE SHIFT',
+        't': f'直近4週のキーワード: 「{top3_str}」',
+        'b': recent_themes[0][:60] + '…' if recent_themes else f'直近の考察で共通して浮上しているテーマ。'
+    }
+    
+    # 4. EMERGING THEME: 全期間KWトップ → 最新週と照合
+    latest_kws = set(weeks[0].get('keywords') or []) if weeks else set()
+    persistent = [kw for kw in (global_kws[:10] if global_kws else []) if kw in latest_kws]
+    if persistent:
+        kw_str = '・'.join(persistent[:3])
+        insight4 = {
+            'tag': '🌱 EMERGING THEME',
+            't': f'「{kw_str}」が今週も継続',
+            'b': f'長期トレンドKWが最新週にも登場。構造的変化として捉えるべきシグナル。'
+        }
+    else:
+        # 最新週だけのKW（新出現）
+        new_kws = list(latest_kws - set(global_kws[3:] if global_kws else []))[:2]
+        kw_str = '・'.join(new_kws) if new_kws else (global_kws[0] if global_kws else '—')
+        insight4 = {
+            'tag': '🌱 EMERGING THEME',
+            't': f'新キーワード「{kw_str}」が浮上',
+            'b': '今週初めて、あるいは急浮上したキーワード。次週以降の定着に注目。'
+        }
+    
+    return [insight1, insight2, insight3, insight4]
+
 # ── メイン ────────────────────────────────────────────────
 def main():
     # zgene.json を読み込む
@@ -323,9 +409,11 @@ def main():
         for w in warnings:
             print("   " + w)
 
+    insights = build_insights(weeks_data, global_kws)
     data_js  = 'const RAW='      + json.dumps(weeks_data,    ensure_ascii=False, separators=(',', ':')) + ';\n'
     data_js += 'const ARTICLES=' + json.dumps(articles_data, ensure_ascii=False, separators=(',', ':')) + ';\n'
-    data_js += 'const GLOBAL_KWS=' + json.dumps(global_kws, ensure_ascii=False, separators=(',', ':')) + ';'
+    data_js += 'const GLOBAL_KWS=' + json.dumps(global_kws, ensure_ascii=False, separators=(',', ':')) + ';\n'
+    data_js += 'const INSIGHTS=' + json.dumps(insights, ensure_ascii=False, separators=(',', ':')) + ';'
 
     tpl_path = os.path.join(os.path.dirname(__file__), 'template.html')
     with open(tpl_path, encoding='utf-8') as f:
