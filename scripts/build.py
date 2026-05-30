@@ -60,7 +60,6 @@ def extract_weeks(entries):
     results = []
     warnings = []
     weekly = [e for e in entries if e.get('type') == 'weekly']
-    # 新しい順にソート
     weekly.sort(key=lambda x: x.get('period', {}).get('start', ''), reverse=True)
 
     for w in weekly:
