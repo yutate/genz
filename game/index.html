@@ -537,12 +537,13 @@ async function startGame() {
     await loadZgeneKeywords();
     await generateCards();
   } catch(e) {
-    // fallback silently
-    if (!state.generatedCardPool) {
+    console.error('Card generation error:', e);
+    if (!state.generatedCardPool || state.generatedCardPool.length === 0) {
       state.generatedCardPool = STATIC_CARDS.map((c, i) => ({ ...c, id: 'sc_' + i }));
     }
+  } finally {
+    document.getElementById('loadingOverlay').classList.remove('active');
   }
-  document.getElementById('loadingOverlay').classList.remove('active');
   document.querySelector('.loading-text').textContent = '判定中…';
 
   const persona = BASE_PERSONAS[Math.floor(Math.random() * BASE_PERSONAS.length)];
