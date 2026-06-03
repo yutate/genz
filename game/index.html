@@ -258,15 +258,12 @@
     <div class="howto-item"><span class="howto-num">3.</span><span>AIが「刺さったか」を判定する</span></div>
     <div class="howto-item"><span class="howto-num">4.</span><span>スコアとフィードバックで学ぶ</span></div>
   </div>
-  <div class="apikey-box" style="max-width:360px;margin:0 auto 16px;">
+  <div class="apikey-box" style="max-width:360px;margin:0 auto 24px;">
     <div class="apikey-label">Gemini API Key</div>
-    <div style="display:flex;gap:8px;margin-bottom:6px;">
-      <input type="password" class="apikey-input" id="apiKeyInput" placeholder="AIza..." autocomplete="off" style="flex:1">
-      <button onclick="saveApiKey()" style="background:rgba(199,125,255,0.2);border:1px solid rgba(199,125,255,0.4);color:#c77dff;padding:0 14px;border-radius:10px;font-size:13px;cursor:pointer;font-family:inherit;white-space:nowrap;">保存</button>
-    </div>
-    <div class="apikey-note" id="apiKeyNote">このページ内のみで使用。保存・送信はしません。</div>
+    <input type="password" class="apikey-input" id="apiKeyInput" placeholder="AIza..." autocomplete="off">
+    <div class="apikey-note">このページ内のみで使用。保存・送信はしません。</div>
   </div>
-  <button class="btn-primary" id="startBtn" onclick="startGame()">スタート →</button>
+  <button class="btn-primary" onclick="startGame()">スタート →</button>
 </div>
 
 <!-- GAME -->
@@ -432,52 +429,24 @@ const STATIC_CARDS = [
   { text: "体験", color: "#e0e0e0" },
 ];
 
-// ========== API KEY ==========
-function saveApiKey() {
-  const val = document.getElementById('apiKeyInput').value.trim();
-  if (val) {
-    state.apiKey = val;
-    try { localStorage.setItem('gemini_api_key', val); } catch(e) {}
-    document.getElementById('apiKeyNote').textContent = '✅ 保存しました';
-    setTimeout(() => {
-      document.getElementById('apiKeyNote').textContent = 'このページ内のみで使用。保存・送信はしません。';
-    }, 2000);
-  }
-}
-
-// load saved key on page load
-window.addEventListener('load', () => {
-  try {
-    const saved = localStorage.getItem('gemini_api_key');
-    if (saved) {
-      state.apiKey = saved;
-      document.getElementById('apiKeyInput').value = saved;
-    }
-  } catch(e) {}
-});
-
 // ========== ZGENE DATA LOADING ==========
 async function loadZgeneKeywords() {
-  const paths = ['../data/zgene.json', '/genz/data/zgene.json', 'data/zgene.json'];
-  for (const path of paths) {
-    try {
-      const res = await fetch(path);
-      if (!res.ok) continue;
-      const data = await res.json();
-      const keywords = [];
-      const weeklies = data.filter(e => e.type === 'weekly').slice(0, 6);
-      weeklies.forEach(w => {
-        if (w.essay && w.essay.keywords) {
-          w.essay.keywords.forEach(k => {
-            if (!keywords.includes(k)) keywords.push(k);
-          });
-        }
-      });
-      state.zgeneKeywords = keywords;
-      return;
-    } catch (e) {}
+  try {
+    const res = await fetch('../data/zgene.json');
+    const data = await res.json();
+    const keywords = [];
+    const weeklies = data.filter(e => e.type === 'weekly').slice(0, 6);
+    weeklies.forEach(w => {
+      if (w.essay && w.essay.keywords) {
+        w.essay.keywords.forEach(k => {
+          if (!keywords.includes(k)) keywords.push(k);
+        });
+      }
+    });
+    state.zgeneKeywords = keywords;
+  } catch (e) {
+    state.zgeneKeywords = [];
   }
-  state.zgeneKeywords = [];
 }
 
 // ========== AI CARD GENERATION ==========
@@ -510,7 +479,7 @@ ${keywords.join('、')}
 
   try {
     const res = await fetch(
-      \`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=\${state.apiKey}\`,
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=\${state.apiKey}`,
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -778,6 +747,14 @@ function getScoreLabel(score) {
   if (score >= 40) return '微妙…';
   return '全然だめ';
 }
+
+// グローバル登録
+window.startGame = startGame;
+window.submitMessage = submitMessage;
+window.nextRound = nextRound;
+window.retryRound = retryRound;
+window.showHistory = showHistory;
+window.goBack = goBack;
 </script>
 </body>
 </html>
