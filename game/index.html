@@ -690,16 +690,7 @@ function getScoreLabel(score) {
   return '全然だめ';
 }
 
-// グローバル登録
-window.startGame = startGame;
-window.submitMessage = submitMessage;
-window.nextRound = nextRound;
-window.retryRound = retryRound;
-window.showHistory = showHistory;
-window.goBack = goBack;
-</script>
-</body>
-</html>function getHandCards() {
+function getHandCards() {
   const pool = state.typedCardPool || { modifiers:FALLBACK_MODIFIERS, adjectives:FALLBACK_ADJECTIVES, nouns:FALLBACK_NOUNS };
   const pick = (arr, n) => shuffle([...arr]).slice(0, n);
   const modCards  = pick(pool.modifiers,  3).map((w,i) => ({ id:'m'+i, text:w, type:'modifier',  color:'#ff6b9d', reusable:false }));
@@ -709,3 +700,14 @@ window.goBack = goBack;
 }
 
 
+
+// グローバル登録
+window.startGame = startGame;
+window.submitMessage = submitMessage;
+window.nextRound = nextRound;
+window.retryRound = retryRound;
+window.showHistory = showHistory;
+window.goBack = goBack;
+</script>
+</body>
+</html>
