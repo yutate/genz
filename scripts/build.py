@@ -471,8 +471,7 @@ def main():
     else:
         print("⚠️  template_persona.html が見つかりません（スキップ）")
 
-    # ── game/ と persona.html を dist にコピー ──
-    # game/
+    # ── game/ を dist にコピー ──
     game_src = os.path.join(os.path.dirname(__file__), '..', 'game')
     game_dst = 'dist/game'
     if os.path.exists(game_src):
@@ -482,6 +481,12 @@ def main():
         print("✅ game/ コピー: dist/game/")
     else:
         print("⚠️  game/ が見つかりません（スキップ）")
+
+    # ── data/zgene.json を dist/data/ にコピー（game/から参照するため）──
+    data_dst = 'dist/data'
+    os.makedirs(data_dst, exist_ok=True)
+    shutil.copy(json_path, os.path.join(data_dst, 'zgene.json'))
+    print("✅ zgene.json コピー: dist/data/zgene.json")
 
 def build_persona_data(entries):
     """ペルソナページ用データを抽出する"""
