@@ -400,34 +400,17 @@ const BASE_PERSONAS = [
 ];
 
 // Static card pool (will be augmented with zgene keywords)
-const STATIC_CARDS = [
-  { text: "あなただけに", color: "#ff6b9d" },
-  { text: "本物の", color: "#c77dff" },
-  { text: "自分らしく", color: "#ff6b9d" },
-  { text: "失敗しない", color: "#4cc9f0" },
-  { text: "話題の", color: "#f9c74f" },
-  { text: "新感覚", color: "#f9c74f" },
-  { text: "意味がある", color: "#c77dff" },
-  { text: "選ばれてる", color: "#4cc9f0" },
-  { text: "限定の", color: "#f9c74f" },
-  { text: "信頼できる", color: "#4cc9f0" },
-  { text: "共感できる", color: "#ff6b9d" },
-  { text: "ストーリーのある", color: "#c77dff" },
-  { text: "続けやすい", color: "#80ed99" },
-  { text: "壊れない", color: "#80ed99" },
-  { text: "本音の", color: "#ff6b9d" },
-  { text: "安全な", color: "#80ed99" },
-  // actions
-  { text: "出会う", color: "#ffe0b2" },
-  { text: "感じる", color: "#ffe0b2" },
-  { text: "選ぶ", color: "#ffe0b2" },
-  { text: "体験する", color: "#ffe0b2" },
-  // nouns
-  { text: "世界観", color: "#e0e0e0" },
-  { text: "コミュニティ", color: "#e0e0e0" },
-  { text: "ライフスタイル", color: "#e0e0e0" },
-  { text: "体験", color: "#e0e0e0" },
+const CONJUNCTIONS = [
+  { id:'j1', text:'に', type:'conj', color:'#888' },
+  { id:'j2', text:'の', type:'conj', color:'#888' },
+  { id:'j3', text:'を', type:'conj', color:'#888' },
+  { id:'j4', text:'で', type:'conj', color:'#888' },
+  { id:'j5', text:'と', type:'conj', color:'#888' },
+  { id:'j6', text:'だけ', type:'conj', color:'#888' },
 ];
+const FALLBACK_MODIFIERS = ['ゆるく','本音で','静かに','自分らしく','素直に','ちゃんと'];
+const FALLBACK_ADJECTIVES = ['続く','刺さる','選ばれる','共感できる','信頼できる','エモい'];
+const FALLBACK_NOUNS = ['体験','世界観','関係','毎日','自分','コミュニティ'];
 
 // ========== ZGENE DATA LOADING ==========
 async function loadZgeneKeywords() {
@@ -451,80 +434,39 @@ async function loadZgeneKeywords() {
 
 // ========== AI CARD GENERATION ==========
 async function generateCards() {
-  if (state.generatedCardPool && state.generatedCardPool.length > 0) return;
-
+  if (state.typedCardPool && state.typedCardPool.modifiers) return;
   const keywords = state.zgeneKeywords.slice(0, 12);
   if (!keywords.length || !state.apiKey) {
-    state.generatedCardPool = STATIC_CARDS.map((c, i) => ({ ...c, id: 'sc_' + i }));
+    state.typedCardPool = { modifiers: FALLBACK_MODIFIERS, adjectives: FALLBACK_ADJECTIVES, nouns: FALLBACK_NOUNS };
     return;
   }
-
-  const prompt = `以下はZ世代の最新トレンドを分析した「分析キーワード」です。
-これらはマーケターの分析言語であり、Z世代への直接のコミュニケーションには使えません。
-
-分析キーワード：
-${keywords.join('、')}
-
-これらの本質的な意味を踏まえて、Z世代に実際に届くコミュニケーション言葉を20個生成してください。
-
-条件：
-- Z世代が日常で使う・共感する言葉の感覚
-- 短い（2〜8文字）
-- マーケター臭くない
-- 形容詞・名詞・感覚語を混ぜる
-- 分析キーワードをそのまま使わない
-
-以下のJSON形式のみで返してください（前後テキスト・バッククォート不要）：
-{"cards":["言葉1","言葉2","言葉3",...20個]}`;
-
+  const prompt = `Z世代トレンドの分析キーワードです：${keywords.join('、')}
+これらを踏まえてZ世代に届くコミュニケーション言葉を以下の3カテゴリで各6個生成してください。
+- modifiers: 修飾語（例：ゆるく、本音で、静かに）
+- adjectives: 形容詞・動詞（例：続く、刺さる、共感できる）
+- nouns: 名詞（例：体験、世界観、毎日）
+条件：短い（2〜8文字）、Z世代の感覚語、マーケター臭くない。
+JSONのみで返してください：{"modifiers":["..."],"adjectives":["..."],"nouns":["..."]}`;
   try {
     const res = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=\${state.apiKey}`,
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          contents: [{ parts: [{ text: prompt }] }],
-          generationConfig: { maxOutputTokens: 512, temperature: 1.0 }
-        })
-      }
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=${state.apiKey}`,
+      { method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ contents:[{parts:[{text:prompt}]}], generationConfig:{maxOutputTokens:400,temperature:1.0} }) }
     );
     const data = await res.json();
     const text = data.candidates[0].content.parts[0].text;
-    const clean = text.replace(/```json|```/g, '').trim();
-    const parsed = JSON.parse(clean);
-    const colors = ["#ff6b9d", "#c77dff", "#4cc9f0", "#f9c74f", "#80ed99"];
-    state.generatedCardPool = parsed.cards.map((word, i) => ({
-      id: 'gc_' + i,
-      text: word,
-      color: colors[i % colors.length]
-    }));
-  } catch (e) {
-    state.generatedCardPool = STATIC_CARDS.map((c, i) => ({ ...c, id: 'sc_' + i }));
+    const parsed = JSON.parse(text.replace(/```json|```/g,'').trim());
+    state.typedCardPool = {
+      modifiers: parsed.modifiers || FALLBACK_MODIFIERS,
+      adjectives: parsed.adjectives || FALLBACK_ADJECTIVES,
+      nouns: parsed.nouns || FALLBACK_NOUNS
+    };
+  } catch(e) {
+    state.typedCardPool = { modifiers: FALLBACK_MODIFIERS, adjectives: FALLBACK_ADJECTIVES, nouns: FALLBACK_NOUNS };
   }
 }
 
-function getHandCards() {
-  const pool = state.generatedCardPool && state.generatedCardPool.length
-    ? state.generatedCardPool
-    : STATIC_CARDS.map((c, i) => ({ ...c, id: 'sc_' + i }));
-  return shuffle(pool).slice(0, 9).map((c, i) => ({ ...c, id: 'card_' + i }));
-}
 
-function shuffle(arr) {
-  return [...arr].sort(() => Math.random() - 0.5);
-}
-
-// ========== SCREENS ==========
-function showScreen(id) {
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  document.getElementById('screen-' + id).classList.add('active');
-  state.currentScreen = id;
-  document.getElementById('historyBtn').style.display = (id !== 'intro') ? 'block' : 'none';
-  window.scrollTo(0, 0);
-}
-
-// ========== GAME FLOW ==========
 async function startGame() {
   const apiKeyEl = document.getElementById('apiKeyInput');
   if (apiKeyEl && apiKeyEl.value.trim()) {
@@ -537,13 +479,12 @@ async function startGame() {
     await loadZgeneKeywords();
     await generateCards();
   } catch(e) {
-    console.error('Card generation error:', e);
-    if (!state.generatedCardPool || state.generatedCardPool.length === 0) {
+    // fallback silently
+    if (!state.generatedCardPool) {
       state.generatedCardPool = STATIC_CARDS.map((c, i) => ({ ...c, id: 'sc_' + i }));
     }
-  } finally {
-    document.getElementById('loadingOverlay').classList.remove('active');
   }
+  document.getElementById('loadingOverlay').classList.remove('active');
   document.querySelector('.loading-text').textContent = '判定中…';
 
   const persona = BASE_PERSONAS[Math.floor(Math.random() * BASE_PERSONAS.length)];
@@ -758,4 +699,13 @@ window.showHistory = showHistory;
 window.goBack = goBack;
 </script>
 </body>
-</html>
+</html>function getHandCards() {
+  const pool = state.typedCardPool || { modifiers:FALLBACK_MODIFIERS, adjectives:FALLBACK_ADJECTIVES, nouns:FALLBACK_NOUNS };
+  const pick = (arr, n) => shuffle([...arr]).slice(0, n);
+  const modCards  = pick(pool.modifiers,  3).map((w,i) => ({ id:'m'+i, text:w, type:'modifier',  color:'#ff6b9d', reusable:false }));
+  const adjCards  = pick(pool.adjectives, 3).map((w,i) => ({ id:'a'+i, text:w, type:'adjective', color:'#c77dff', reusable:false }));
+  const nounCards = pick(pool.nouns,      3).map((w,i) => ({ id:'n'+i, text:w, type:'noun',      color:'#4cc9f0', reusable:false }));
+  return shuffle([...CONJUNCTIONS, ...modCards, ...adjCards, ...nounCards]);
+}
+
+
