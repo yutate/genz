@@ -16,7 +16,7 @@ JSONスキーマ（新):
     period, summary, period_definition, sections[]
 """
 
-import os, re, json, glob, html as H
+import os, re, json, glob, html as H, shutil
 from collections import Counter
 
 def load_json(path):
@@ -470,6 +470,18 @@ def main():
         print("✅ ペルソナページ生成: {} ({}KB)".format(persona_out, os.path.getsize(persona_out) // 1024))
     else:
         print("⚠️  template_persona.html が見つかりません（スキップ）")
+
+    # ── game/ と persona.html を dist にコピー ──
+    # game/
+    game_src = os.path.join(os.path.dirname(__file__), '..', 'game')
+    game_dst = 'dist/game'
+    if os.path.exists(game_src):
+        if os.path.exists(game_dst):
+            shutil.rmtree(game_dst)
+        shutil.copytree(game_src, game_dst)
+        print("✅ game/ コピー: dist/game/")
+    else:
+        print("⚠️  game/ が見つかりません（スキップ）")
 
 def build_persona_data(entries):
     """ペルソナページ用データを抽出する"""
