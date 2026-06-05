@@ -258,12 +258,12 @@
     <div class="howto-item"><span class="howto-num">3.</span><span>AIが「刺さったか」を判定する</span></div>
     <div class="howto-item"><span class="howto-num">4.</span><span>スコアとフィードバックで学ぶ</span></div>
   </div>
-  <div class="apikey-box" style="max-width:360px;margin:0 auto 24px;">
+  <div class="apikey-box" style="max-width:360px;margin:0 auto 16px;">
     <div class="apikey-label">Gemini API Key</div>
-    <input type="password" class="apikey-input" id="apiKeyInput" placeholder="AIza..." autocomplete="off">
-    <div class="apikey-note">このページ内のみで使用。保存・送信はしません。</div>
+    <input type="password" class="apikey-input" id="apiKeyInput" placeholder="AIza..." autocomplete="off" oninput="onApiKeyInput(this)">
+    <div class="apikey-note" id="apiKeyNote">このページ内のみで使用。保存・送信はしません。</div>
   </div>
-  <button class="btn-primary" onclick="startGame()">スタート →</button>
+  <button class="btn-primary" id="startBtn" onclick="startGame()">スタート →</button>
 </div>
 
 <!-- GAME -->
@@ -400,116 +400,63 @@ const BASE_PERSONAS = [
 ];
 
 // Static card pool (will be augmented with zgene keywords)
-const STATIC_CARDS = [
-  { text: "あなただけに", color: "#ff6b9d" },
-  { text: "本物の", color: "#c77dff" },
-  { text: "自分らしく", color: "#ff6b9d" },
-  { text: "失敗しない", color: "#4cc9f0" },
-  { text: "話題の", color: "#f9c74f" },
-  { text: "新感覚", color: "#f9c74f" },
-  { text: "意味がある", color: "#c77dff" },
-  { text: "選ばれてる", color: "#4cc9f0" },
-  { text: "限定の", color: "#f9c74f" },
-  { text: "信頼できる", color: "#4cc9f0" },
-  { text: "共感できる", color: "#ff6b9d" },
-  { text: "ストーリーのある", color: "#c77dff" },
-  { text: "続けやすい", color: "#80ed99" },
-  { text: "壊れない", color: "#80ed99" },
-  { text: "本音の", color: "#ff6b9d" },
-  { text: "安全な", color: "#80ed99" },
-  // actions
-  { text: "出会う", color: "#ffe0b2" },
-  { text: "感じる", color: "#ffe0b2" },
-  { text: "選ぶ", color: "#ffe0b2" },
-  { text: "体験する", color: "#ffe0b2" },
-  // nouns
-  { text: "世界観", color: "#e0e0e0" },
-  { text: "コミュニティ", color: "#e0e0e0" },
-  { text: "ライフスタイル", color: "#e0e0e0" },
-  { text: "体験", color: "#e0e0e0" },
+// ========== CARD POOLS ==========
+const CONJUNCTIONS = [
+  { id:'j1', text:'に', type:'conj', color:'#888' },
+  { id:'j2', text:'の', type:'conj', color:'#888' },
+  { id:'j3', text:'を', type:'conj', color:'#888' },
+  { id:'j4', text:'で', type:'conj', color:'#888' },
+  { id:'j5', text:'と', type:'conj', color:'#888' },
+  { id:'j6', text:'だけ', type:'conj', color:'#888' },
 ];
-
-// ========== ZGENE DATA LOADING ==========
-async function loadZgeneKeywords() {
-  try {
-    const res = await fetch('../data/zgene.json');
-    const data = await res.json();
-    const keywords = [];
-    const weeklies = data.filter(e => e.type === 'weekly').slice(0, 6);
-    weeklies.forEach(w => {
-      if (w.essay && w.essay.keywords) {
-        w.essay.keywords.forEach(k => {
-          if (!keywords.includes(k)) keywords.push(k);
-        });
-      }
-    });
-    state.zgeneKeywords = keywords;
-  } catch (e) {
-    state.zgeneKeywords = [];
-  }
-}
+const FALLBACK_MODIFIERS = ['ゆるく','本音で','静かに','自分らしく','素直に','ちゃんと'];
+const FALLBACK_ADJECTIVES = ['続く','刺さる','選ばれる','共感できる','信頼できる','エモい'];
+const FALLBACK_NOUNS = ['体験','世界観','関係','毎日','自分','コミュニティ'];
 
 // ========== AI CARD GENERATION ==========
 async function generateCards() {
-  if (state.generatedCardPool && state.generatedCardPool.length > 0) return;
-
+  if (state.typedCardPool && state.typedCardPool.modifiers) return;
   const keywords = state.zgeneKeywords.slice(0, 12);
   if (!keywords.length || !state.apiKey) {
-    state.generatedCardPool = STATIC_CARDS.map((c, i) => ({ ...c, id: 'sc_' + i }));
+    state.typedCardPool = { modifiers: FALLBACK_MODIFIERS, adjectives: FALLBACK_ADJECTIVES, nouns: FALLBACK_NOUNS };
     return;
   }
-
-  const prompt = `以下はZ世代の最新トレンドを分析した「分析キーワード」です。
-これらはマーケターの分析言語であり、Z世代への直接のコミュニケーションには使えません。
-
-分析キーワード：
-${keywords.join('、')}
-
-これらの本質的な意味を踏まえて、Z世代に実際に届くコミュニケーション言葉を20個生成してください。
-
-条件：
-- Z世代が日常で使う・共感する言葉の感覚
-- 短い（2〜8文字）
-- マーケター臭くない
-- 形容詞・名詞・感覚語を混ぜる
-- 分析キーワードをそのまま使わない
-
-以下のJSON形式のみで返してください（前後テキスト・バッククォート不要）：
-{"cards":["言葉1","言葉2","言葉3",...20個]}`;
-
+  const prompt = `Z世代トレンドの分析キーワードです：${keywords.join('、')}
+これらを踏まえてZ世代に届くコミュニケーション言葉を以下の3カテゴリで各6個生成してください。
+- modifiers: 修飾語（例：ゆるく、本音で、静かに）
+- adjectives: 形容詞・動詞（例：続く、刺さる、共感できる）
+- nouns: 名詞（例：体験、世界観、毎日）
+条件：短い（2〜8文字）、Z世代の感覚語、マーケター臭くない。
+JSONのみで返してください：{"modifiers":["..."],"adjectives":["..."],"nouns":["..."]}`;
   try {
     const res = await fetch(
-      \`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=\${state.apiKey}\`,
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          contents: [{ parts: [{ text: prompt }] }],
-          generationConfig: { maxOutputTokens: 512, temperature: 1.0 }
-        })
-      }
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=${state.apiKey}`,
+      { method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ contents:[{parts:[{text:prompt}]}], generationConfig:{maxOutputTokens:400,temperature:1.0} }) }
     );
     const data = await res.json();
     const text = data.candidates[0].content.parts[0].text;
-    const clean = text.replace(/```json|```/g, '').trim();
-    const parsed = JSON.parse(clean);
-    const colors = ["#ff6b9d", "#c77dff", "#4cc9f0", "#f9c74f", "#80ed99"];
-    state.generatedCardPool = parsed.cards.map((word, i) => ({
-      id: 'gc_' + i,
-      text: word,
-      color: colors[i % colors.length]
-    }));
-  } catch (e) {
-    state.generatedCardPool = STATIC_CARDS.map((c, i) => ({ ...c, id: 'sc_' + i }));
+    const parsed = JSON.parse(text.replace(/```json|```/g,'').trim());
+    state.typedCardPool = {
+      modifiers: parsed.modifiers || FALLBACK_MODIFIERS,
+      adjectives: parsed.adjectives || FALLBACK_ADJECTIVES,
+      nouns: parsed.nouns || FALLBACK_NOUNS
+    };
+  } catch(e) {
+    state.typedCardPool = { modifiers: FALLBACK_MODIFIERS, adjectives: FALLBACK_ADJECTIVES, nouns: FALLBACK_NOUNS };
   }
 }
 
 function getHandCards() {
-  const pool = state.generatedCardPool && state.generatedCardPool.length
-    ? state.generatedCardPool
-    : STATIC_CARDS.map((c, i) => ({ ...c, id: 'sc_' + i }));
-  return shuffle(pool).slice(0, 9).map((c, i) => ({ ...c, id: 'card_' + i }));
+  const pool = state.typedCardPool || { modifiers:FALLBACK_MODIFIERS, adjectives:FALLBACK_ADJECTIVES, nouns:FALLBACK_NOUNS };
+  const pick = (arr, n) => shuffle([...arr]).slice(0, n);
+  const modCards  = pick(pool.modifiers,  3).map((w,i) => ({ id:'m'+i, text:w, type:'modifier',  color:'#ff6b9d', reusable:false }));
+  const adjCards  = pick(pool.adjectives, 3).map((w,i) => ({ id:'a'+i, text:w, type:'adjective', color:'#c77dff', reusable:false }));
+  const nounCards = pick(pool.nouns,      3).map((w,i) => ({ id:'n'+i, text:w, type:'noun',      color:'#4cc9f0', reusable:false }));
+  const conjCards = CONJUNCTIONS.map(c => ({ ...c, reusable:true }));
+  return { conjunctions: conjCards, words: [...modCards, ...adjCards, ...nounCards] };
 }
+
 
 function shuffle(arr) {
   return [...arr].sort(() => Math.random() - 0.5);
@@ -530,20 +477,18 @@ async function startGame() {
   if (apiKeyEl && apiKeyEl.value.trim()) {
     state.apiKey = apiKeyEl.value.trim();
   }
-  // load zgene data & generate cards (first time only)
-  document.getElementById('loadingOverlay').classList.add('active');
-  document.querySelector('.loading-text').textContent = 'カードを生成中…';
-  try {
-    await loadZgeneKeywords();
-    await generateCards();
-  } catch(e) {
-    // fallback silently
-    if (!state.generatedCardPool) {
-      state.generatedCardPool = STATIC_CARDS.map((c, i) => ({ ...c, id: 'sc_' + i }));
+
+  // カード生成（初回のみ）
+  if (!state.typedCardPool) {
+    document.getElementById('loadingOverlay').classList.add('active');
+    document.querySelector('.loading-text').textContent = 'カードを生成中…';
+    try { await loadZgeneKeywords(); } catch(e) { state.zgeneKeywords = []; }
+    try { await generateCards(); } catch(e) {}
+    if (!state.typedCardPool) {
+      state.typedCardPool = { modifiers: FALLBACK_MODIFIERS, adjectives: FALLBACK_ADJECTIVES, nouns: FALLBACK_NOUNS };
     }
+    document.getElementById('loadingOverlay').classList.remove('active');
   }
-  document.getElementById('loadingOverlay').classList.remove('active');
-  document.querySelector('.loading-text').textContent = '判定中…';
 
   const persona = BASE_PERSONAS[Math.floor(Math.random() * BASE_PERSONAS.length)];
   state.persona = persona;
@@ -572,37 +517,81 @@ function renderPersona() {
 function renderCards() {
   const grid = document.getElementById('cardsGrid');
   grid.innerHTML = '';
-  state.hand.forEach(card => {
+
+  // Section label helper
+  const addLabel = (text) => {
+    const lbl = document.createElement('div');
+    lbl.style.cssText = 'width:100%;font-size:11px;color:#555;margin:6px 0 2px;';
+    lbl.textContent = text;
+    grid.appendChild(lbl);
+  };
+
+  // Conjunctions (fixed, reusable)
+  addLabel('接続詞（何度でも使える）');
+  state.hand.conjunctions.forEach(card => {
     const btn = document.createElement('button');
     btn.className = 'card-btn';
     btn.textContent = card.text;
-    btn.dataset.id = card.id;
-    btn.onclick = () => toggleCard(card, btn);
+    btn.id = 'btn_' + card.id;
+    btn.style.borderColor = '#555';
+    btn.style.color = '#aaa';
+    btn.onclick = () => toggleConj(card, btn);
+    grid.appendChild(btn);
+  });
+
+  // Word cards (one-time)
+  addLabel('言葉カード（1回だけ使える）');
+  state.hand.words.forEach(card => {
+    const btn = document.createElement('button');
+    btn.className = 'card-btn';
+    btn.textContent = card.text;
+    btn.id = 'btn_' + card.id;
+    btn.onclick = () => toggleWord(card, btn);
     grid.appendChild(btn);
   });
 }
 
-function toggleCard(card, btn) {
+function toggleConj(card, btn) {
+  // Add to selected (multiple uses allowed, each push = one token)
+  const token = { ...card, uid: card.id + '_' + Date.now() };
+  state.selected.push(token);
+  // Visual flash
+  btn.style.background = card.color + '30';
+  btn.style.borderColor = card.color;
+  btn.style.color = card.color;
+  setTimeout(() => {
+    btn.style.background = '';
+    btn.style.borderColor = '#555';
+    btn.style.color = '#aaa';
+  }, 300);
+  updateMsgPreview();
+  updateSubmitBtn();
+}
+
+function toggleWord(card, btn) {
   const idx = state.selected.findIndex(c => c.id === card.id);
   if (idx >= 0) {
     state.selected.splice(idx, 1);
-    btn.classList.remove('selected');
     btn.style.background = '';
     btn.style.borderColor = '';
     btn.style.color = '';
-  } else if (state.selected.length < 4) {
-    state.selected.push(card);
-    btn.classList.add('selected');
+    btn.style.fontWeight = '';
+    btn.disabled = false;
+  } else {
+    state.selected.push({ ...card, uid: card.id });
     btn.style.background = card.color + '28';
     btn.style.borderColor = card.color;
     btn.style.color = card.color;
+    btn.style.fontWeight = '700';
   }
   updateMsgPreview();
   updateSubmitBtn();
 }
 
+
+
 function buildMessage() {
-  return state.selected.map(c => c.text).join(' × ') + '。';
+  return state.selected.map(c => c.text).join('') + '。';
 }
 
 function updateMsgPreview() {
@@ -611,9 +600,8 @@ function updateMsgPreview() {
     el.innerHTML = '<span class="msg-placeholder">カードを選んでメッセージを作ろう（2〜4枚）</span>';
     return;
   }
-  el.innerHTML = state.selected.map((c, i) => {
-    const sep = i > 0 ? '<span class="msg-sep">×</span>' : '';
-    return `${sep}<span class="msg-card-chip" style="background:${c.color}22;border:1px solid ${c.color}55;color:${c.color};padding:4px 10px;border-radius:20px;font-size:13px;font-weight:600">${c.text}</span>`;
+  el.innerHTML = state.selected.map((c) => {
+    return `<span style="background:${c.color}22;border:1px solid ${c.color}55;color:${c.color};padding:3px 9px;border-radius:16px;font-size:13px;font-weight:600;margin:2px 1px;display:inline-block">${c.text}</span>`;
   }).join('');
 }
 
@@ -621,7 +609,7 @@ function updateSubmitBtn() {
   const btn = document.getElementById('submitBtn');
   const n = state.selected.length;
   btn.disabled = n < 2;
-  btn.textContent = `送ってみる →（${n}/4枚）`;
+  btn.textContent = `送ってみる →（${n}枚選択中）`;
 }
 
 async function submitMessage() {
@@ -666,7 +654,6 @@ function nextRound() {
 
 function retryRound() {
   state.selected = [];
-  state.hand = getHandCards();
   renderCards();
   updateMsgPreview();
   updateSubmitBtn();
@@ -726,6 +713,9 @@ async function askClaude(persona, message) {
       }
     );
     const data = await res.json();
+    if (!res.ok || !data.candidates || !data.candidates[0]) {
+      throw new Error(data.error?.message || 'Gemini API error');
+    }
     const text = data.candidates[0].content.parts[0].text;
     const clean = text.replace(/```json|```/g, '').trim();
     return JSON.parse(clean);
@@ -747,6 +737,14 @@ function getScoreLabel(score) {
   if (score >= 40) return '微妙…';
   return '全然だめ';
 }
+
+// グローバル登録
+window.startGame = startGame;
+window.submitMessage = submitMessage;
+window.nextRound = nextRound;
+window.retryRound = retryRound;
+window.showHistory = showHistory;
+window.goBack = goBack;
 </script>
 </body>
 </html>
