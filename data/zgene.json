@@ -1,6 +1,299 @@
 [
   {
     "type": "weekly",
+    "id": "2026-06-01_2026-06-05",
+    "title": "2026/06/01-06/05 Z世代・若年層関連記事と考察",
+    "period": {
+      "start": "2026-06-01",
+      "end": "2026-06-05"
+    },
+    "articles": [
+      {
+        "title": "Z世代はリーダーと職場を見極めている。いま求められる「積極的な共感」のリーダーシップとは？",
+        "url": "https://news.yahoo.co.jp/articles/ec6c0739812571945168b822db84a6aed4348b09",
+        "status": "ok"
+      },
+      {
+        "title": "正論より親近感。Z世代の部下に教えてもらったこと",
+        "url": "https://www.fastcompany.com/91354548/lessons-from-gen-z-marketing",
+        "status": "ok"
+      },
+      {
+        "title": "ライフハッカー・ジャパン: Z世代はリーダーと職場を見極めている。いま求められる「積極的な共感」のリーダーシップとは？",
+        "url": "https://www.lifehacker.jp/article/2605-no-gen-z-isnt-like-every-other-generation-and-thats-a-good/",
+        "status": "ok"
+      },
+      {
+        "title": "GIGAZINE: Z世代の半数以上がたった1つの作品のためにストリーミングサービスを解約・更新していることが調査で判明",
+        "url": "https://gigazine.net/news/20260530-gen-z-streaming-sub/",
+        "status": "ok"
+      },
+      {
+        "title": "ハフポスト: “話し相手”に“仕事を奪われる”？アメリカの大学に広がる「AI不安」は若者をどう変えたか",
+        "url": "https://www.huffingtonpost.jp/entry/story_jp_6a17fc1ae4b0ddcc84685253",
+        "status": "ok"
+      },
+      {
+        "title": "若者の「完璧主義傾向」が過去35年間が高まっているーーその原因とは？",
+        "url": "https://mama.smt.docomo.ne.jp/merkystyle/articles/435312/",
+        "status": "ok"
+      },
+      {
+        "title": "稲田豊史「本を読めなくなった人たち」　若者を遠ざける重大な理由",
+        "url": "https://book.asahi.com/article/16588664",
+        "status": "ok"
+      },
+      {
+        "title": "【小学生の推し活事情2026】ミセス、INI、『地縛少年花子くん』！みんなの推し活フォトもご紹介♡",
+        "url": "https://www.nicopuchi.jp/article/detail/42030",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代はAIをどのように活用し、何を恐れているのか 2500人への最新調査で判明",
+        "url": "https://dhbr.diamond.jp/articles/-/13463",
+        "status": "ok"
+      },
+      {
+        "title": "DIGIDAY［日本版］: 香水の重ね付け トレンドを狙う。ショッピングモール定番ブランドのZ世代向け戦略",
+        "url": "https://digiday.jp/glossy/beauty-briefing-fragrance-layering-makes-its-way-to-the-mall/",
+        "status": "ok"
+      },
+      {
+        "title": "日経クロストレンド: 【独自データ】インドのZ世代に人気の日本アニメは？ ビジネス目線で分析",
+        "url": "https://xtrend.nikkei.com/atcl/contents/18/01167/00008/",
+        "status": "ok"
+      },
+      {
+        "title": "PR TIMES: トレンドお届けメディアTrepo(トレポ)が選ぶ「2026年上半期Z世代トレンドランキング」",
+        "url": "https://prtimes.jp/main/html/rd/p/000000058.000082823.html",
+        "status": "ok"
+      },
+      {
+        "title": "毎日新聞: Z世代・ミレニアル世代の約半数が過去1年間に中古・リファービッシュ品を購入",
+        "url": "https://mainichi.jp/articles/20260602/pr2/00m/020/048000c",
+        "status": "ok"
+      },
+      {
+        "title": "“ルーズソックス”再ブーム！海外Z世代が「むしろ新しい」",
+        "url": "https://topics.smt.docomo.ne.jp/article/coordisnap_fn/trend/coordisnap_fn-277ab6c41ac09d370212be60965d793cc8293417",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代推し活層の8割超が「推し活を通じて新たなスキルを獲得」",
+        "url": "https://news.nicovideo.jp/watch/nw19370868",
+        "status": "ok"
+      },
+      {
+        "title": "「人気コスメ」だけでは、もう響かない。おしゃれなZ世代は\"自分向けの情報\"をどう確かめている？",
+        "url": "https://www.jiji.com/jc/article?k=000000019.000152178&g=prt",
+        "status": "ok"
+      },
+      {
+        "title": "【現実逃避】冷酷な世界に抗う大人な若者の鎧「ウィムジー」",
+        "url": "https://newspicks.com/news/16770276/body/",
+        "status": "ok"
+      },
+      {
+        "title": "2026年上半期Z世代トレンドランキング",
+        "url": "https://news.mynavi.jp/article/20260601-4529839/",
+        "status": "ok"
+      },
+      {
+        "title": "「ごめん、死んじゃった」 「死後」の伝言代行が人気、若者のラフ終活",
+        "url": "https://news.yahoo.co.jp/articles/a590c5b91b4bb75b695a8c4f08f2fe9f5534507a",
+        "status": "ok"
+      },
+      {
+        "title": "すぐ答えを求めるZ世代に「自分で考えて」は逆効果",
+        "url": "https://logmi.jp/main/management/333550",
+        "status": "ok"
+      },
+      {
+        "title": "Impress Watch: ChatGPTの「やさしさ」の危うさ 10代に伝えたいAI利用法",
+        "url": "https://www.watch.impress.co.jp/docs/topic/2113048.html",
+        "status": "ok"
+      },
+      {
+        "title": "若年大卒者の失業率上昇、原因はAIより在宅勤務の可能性－NY連銀",
+        "url": "https://www.bloomberg.com/jp/news/articles/2026-06-01/TFYJYMN3N09F00",
+        "status": "ok"
+      },
+      {
+        "title": "【Z世代の結婚観とお金に関する意識調査2026】",
+        "url": "https://prtimes.jp/main/html/rd/p/000000111.000080496.html",
+        "status": "ok"
+      },
+      {
+        "title": "G7、「青少年のための安全なデジタル空間構築」",
+        "url": "https://internet.watch.impress.co.jp/docs/news/2113882.html",
+        "status": "ok"
+      },
+      {
+        "title": "SNS利用、若年層の生活に浸透　中学生9割超",
+        "url": "https://www.jiji.com/sp/article?k=2026060200840",
+        "status": "ok"
+      },
+      {
+        "title": "楽天スーパーSALEに「AIコンシェルジュ」",
+        "url": "https://news.yahoo.co.jp/articles/b51d2ef704222ad4009bf826f5e4b349be834cc2",
+        "status": "ok"
+      },
+      {
+        "title": "オカムラは「若年層の認知度が低い」",
+        "url": "https://monoist.itmedia.co.jp/mn/articles/2606/04/news040",
+        "status": "ok"
+      },
+      {
+        "title": "10代が選んぶ「生まれ変わりたい国ランキング」",
+        "url": "https://forbesjapan.com/articles/detail/98216",
+        "status": "ok"
+      },
+      {
+        "title": "令和の今、若者が「朝礼で社訓絶叫」「ノルマ未達で激詰め」企業へ“積極的に”入社する理由",
+        "url": "https://news.yahoo.co.jp/articles/f13b438739cea9c6c38bdf0d1cb72c394c8e35ea",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代の6割が友人と「給料の額」を共有",
+        "url": "https://forbesjapan.com/articles/detail/98417",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代はなぜ辞めるのか。新入社員の退職を招く上司のNG行動10選",
+        "url": "https://forbesjapan.com/articles/detail/98222",
+        "status": "ok"
+      },
+      {
+        "title": "「M!LK」「めじるしアクセサリー」「ドバイチョコ餅」2026年上半期のZ世代トレンド発表",
+        "url": "https://www.advertimes.com/20260603/article546265/",
+        "status": "ok"
+      },
+      {
+        "title": "若者のニート急増によるマクロ経済への影響",
+        "url": "https://www.newsweekjapan.jp/articles/-/324446",
+        "status": "ok"
+      },
+      {
+        "title": "『STOP！若者の消費者トラブル』",
+        "url": "https://prtimes.jp/main/html/rd/p/000006606.000052467.html",
+        "status": "ok"
+      },
+      {
+        "title": "御殿場の町おこしに東京ギャルが参加",
+        "url": "https://tabi-labo.com/312626/gal-gotemba-machikoshi",
+        "status": "ok"
+      },
+      {
+        "title": "YouTube総再生回数6.4億超えのZ世代クリエイターが手がけるD2Cブランド「Min'Z」",
+        "url": "https://senken.co.jp/prtimes/aHR0cHM6Ly9wcnRpbWVzLmpwL21haW4vaHRtbC9yZC9wLzAwMDAwMDAwNy4wMDAxNjg2NDMuaHRtbA==",
+        "status": "ok"
+      },
+      {
+        "title": "若年層に人気の「映画館」を活用したZ世代マーケティング施策",
+        "url": "https://news.nicovideo.jp/watch/nw19376335",
+        "status": "ok"
+      },
+      {
+        "title": "トヨタ×アソビシステムが「KAWAII」で共創 若年層とモビリティの接点づくりへ",
+        "url": "https://www.advertimes.com/20260604/article546325/",
+        "status": "ok"
+      },
+      {
+        "title": "管理職と若手の間に潜む「理想の組織像」と「リーダーシップ」の認識ギャップとは？",
+        "url": "https://www.oita-press.co.jp/pr/prtimes/detail?id=c61101_r27",
+        "status": "ok"
+      },
+      {
+        "title": "『αZ世代が選ぶ2026年上半期トレンドランキング』",
+        "url": "https://prtimes.jp/main/html/rd/p/000000116.000020799.html",
+        "status": "ok"
+      },
+      {
+        "title": "米Z世代向けブランドのCEOが「会議を60％削減した」理由",
+        "url": "https://www.businessinsider.jp/article/2606-pacsun-ceo-brieane-olson-shares-meeting-philosophy/",
+        "status": "ok"
+      },
+      {
+        "title": "円安・物価高でZ世代の夏旅行は「海外断念」へ",
+        "url": "https://www.jiji.com/jc/article?k=000005391.000000136&g=prt",
+        "status": "ok"
+      },
+      {
+        "title": "《急速に変化する米消費者㊤》Z世代に様々な実体験を提供",
+        "url": "https://senken.co.jp/posts/the-lead-260604",
+        "status": "ok"
+      },
+      {
+        "title": "固定電話のボタンを見て→新人がまさかの一言",
+        "url": "https://news.yahoo.co.jp/articles/3b78f291e66075130d085049fe95b3408e0ba8a1",
+        "status": "ok"
+      },
+      {
+        "title": "アメリカのZ世代は「レトロ音楽」に夢中？",
+        "url": "https://news.yahoo.co.jp/articles/22e88a5b0fee4b6faa3e43999a938d0492286c89",
+        "status": "ok"
+      },
+      {
+        "title": "インスタの新機能｢Instants｣､若者は身内だけの空間を求める",
+        "url": "https://toyokeizai.net/articles/-/945683",
+        "status": "ok"
+      },
+      {
+        "title": "現実は「できれば避けたい」 今どきZ世代のリアルな価値観",
+        "url": "https://news.yahoo.co.jp/articles/2fa7c992a75a0089933e50f6254ccf97708c45f3",
+        "status": "ok"
+      },
+      {
+        "title": "The surprising truth about who uses DoorDash",
+        "url": "https://www.washingtonpost.com/opinions/2026/06/04/doordash-customers-dont-fit-lonely-gen-zer-conventional-wisdom/",
+        "status": "ok"
+      }
+    ],
+    "essay": {
+      "title": "2026/06/01-06/05 週次考察",
+      "summary": "Z世代は“AIを使う世代”から、“AI・職場・消費・関係性の中で、自分の主導権を守る世代”へ進んだ週",
+      "structure": [],
+      "sections": [
+        {
+          "heading": "AIは「便利な道具」ではなく、“主導権を脅かす前提環境”になった",
+          "body": "今週もっとも強かったのはAI関連の記事だ。 Z世代はAIをどう使い、何を恐れているのか ChatGPTの「やさしさ」の危うさ 小学生の75％以上が生成AIを利用 新入社員のAI活用 AIコンシェルジュ AI不安 AIによる仕事・就活の変化 ここから見えるのは、AIがもう特別なツールではなく、学習・仕事・買い物・会話・検索の前提環境になっていることだ。 ただし、Z世代はAIを無条件に歓迎していない。 AIは便利だが、同時に「自分で考える力」「若手の仕事」「成長機会」「人間らしさ」を奪う可能性がある。 つまり、Z世代にとってAIは、 > 使うものだが、飲み込まれてはいけないもの になっている。 今週のAI論点は、単なる利用率ではなく、 AI時代に自分の主導権をどこに残すか という問題に移っていた。 ---"
+        },
+        {
+          "heading": "職場選びは「条件」ではなく、“リーダーと環境の見極め”になった",
+          "body": "今週は、職場・リーダーシップ関連の記事も多かった。 Z世代はリーダーと職場を見極めている 正論より親近感 すぐ答えを求める若手に「自分で考えて」は逆効果 若手が辞める上司のNG行動 管理職と若手の理想の組織像ギャップ 米Z世代向けブランドCEOが会議を60％削減 ここで見えるのは、Z世代が「楽な職場」を求めているわけではないことだ。 彼らが見ているのは、 この上司は自分を理解しようとしているか この職場は理不尽に消耗させないか 成長機会はあるか 共感と透明性があるか 無駄な会議や形式が少ないか という点である。 つまり、Z世代の職場観は、 > 給与や安定だけでなく、“自分のエネルギーを投資してよい環境か”を見極めるもの になっている。 これは「甘え」ではなく、 回収不能な努力を避ける合理性 として見るべきだ。 ---"
+        },
+        {
+          "heading": "消費は「安さ」ではなく、“納得できる自己防衛”へ",
+          "body": "今週の消費系記事では、物価高、旅行断念、中古・リファービッシュ、自己投資、推し活、ゼロ系炭酸、コスメ、電子決済などが並んだ。 ここで重要なのは、Z世代が単に節約しているわけではない点だ。 彼らは、 将来のために貯める 自分へのごほうびに使う 中古・リファービッシュを選ぶ 推し活でスキルを得る 旅行は短く、現実的に調整する キャッシュレスで管理する というように、支出をかなり細かく意味づけている。 つまり消費は、 > 欲しいから買う ではなく、 > 自分を守る／整える／納得できるから使う へ変わっている。 今週の消費は、自己表現よりも自己防衛と自己調整の色が強かった。 ---"
+        },
+        {
+          "heading": "レトロ回帰は懐古ではなく、“アルゴリズムから離れる行為”になっている",
+          "body": "今週はレトロ回帰も目立った。 ルーズソックス再ブーム レトロ音楽 平成コスメ 映画館活用 実体験 推し活フォト KAWAII共創 これらは単なる懐古趣味ではない。 むしろ、AIやSNSが最適化しすぎる時代に、Z世代・α世代は、 偶然性・手触り・少し不便な体験 を求めている。 レトロは「昔っぽいから良い」のではなく、 今のデジタル環境から少し距離を取れるから良い。 つまりレトロ回帰は、 感情を守るための脱アルゴリズム行動 として見た方がよい。 ---"
+        },
+        {
+          "heading": "関係性は「広くつながる」から“身内だけの小さな空間”へ",
+          "body": "今週は、SNSや関係性に関する記事も重要だった。 Instagramの新機能「Instants」 身内だけの空間 SNS利用の生活浸透 α世代はYouTube Shorts 小学生の推し活 家族・推し・仲間との接点 ここで見えるのは、若者がSNSをやめているわけではないということだ。 むしろ、SNSは生活に深く浸透している。 ただし、使い方が変わっている。 かつてのSNSは、 > 広く見せる場所 だった。 今は、 > 近い人とだけ安全につながる場所 へ移っている。 これは、5月に見えていた「省エネ人間関係」「小さな共同体」の流れとつながる。 Z世代は拡散される関係よりも、消耗しない関係圏を求めている。 ---"
+        },
+        {
+          "heading": "若者の不安は「悲観」ではなく、“現実を直視した防御姿勢”である",
+          "body": "今週は、不安に関する記事も多かった。 AI不安 若年層のニート増加 消費者トラブル 海外旅行断念 完璧主義の上昇 生まれ変わりたい国ランキング 現実はできれば避けたい これらを「若者が弱くなった」と見るのは浅い。 むしろ、Z世代は社会の不確実性をかなり冷静に見ている。 物価は高い AIで仕事は変わる SNSは疲れる 消費者トラブルは多い 将来の見通しは不安定 だからこそ、彼らは防御的になる。 ただしそれは逃避ではなく、自分を壊さないための現実的な適応である。 --- 結論 今週のZ世代は、AI、職場、消費、関係性、レトロ、旅行のすべてにおいて、 「自分の主導権をどう守るか」 を中心に動いていた。 AIは使う。 でも、飲み込まれたくない。 職場には入る。 でも、理不尽に消耗したくない。 消費はする。 でも、意味のない支出はしたくない。 SNSは使う。 でも、広く晒されたくない。 レトロや実体"
+        }
+      ],
+      "period_definition": "Z世代は、便利さに乗りながらも、自分が飲み込まれない距離を必死に設計している。",
+      "keywords": [
+        "AI主導権設計",
+        "職場距離設計",
+        "防衛的消費",
+        "関係性最適化",
+        "自己保全継続",
+        "飲み込まれない距離"
+      ]
+    },
+    "article_count": 48,
+    "warnings": []
+  },
+  {
+    "type": "weekly",
     "id": "2026-05-18_2026-05-22",
     "title": "2026/05/18-05/22 Z世代・若年層関連記事と考察",
     "period": {
