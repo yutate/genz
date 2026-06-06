@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Decision Lab — Meeting Design</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+JP:wght@300;400;500&display=swap');
+
+:root {
+  --bg:        #08080e;
+  --surface:   #0f0f18;
+  --surface2:  #14141e;
+  --border:    #252535;
+  --border2:   #1a1a28;
+  --text:      #e6e6f2;
+  --text-dim:  #6a6a98;
+  --text-muted:#38384e;
+  --high:      #ff4f7e;
+  --medium:    #f5a623;
+  --low:       #1fd98a;
+  --align:     #8b7ff7;
+  --accent:    #00c8ff;
+  --mono:  'IBM Plex Mono', monospace;
+  --serif: 'DM Serif Display', serif;
+  --sans:  'Noto Sans JP', sans-serif;
+
+  /* Agent colors — assigned dynamically via JS */
+  --c0: #1fd98a;
+  --c1: #f5a623;
+  --c2: #8b7ff7;
+  --c3: #ff4f7e;
+  --c4: #00c8ff;
+  --c5: #8ee04a;
+  --c6: #ff9f43;
+  --c7: #a29bfe;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:100vh;overflow-x:hidden}
+
+.shell{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:0 24px 100px}
+
+/* Header */
+header{padding:44px 0 36px;border-bottom:1px solid var(--border2);margin-bottom:44px;display:flex;align-items:flex-end;justify-content:space-between;gap:20px}
+.h-left h1{font-family:var(--serif);font-size:clamp(1.9rem,5vw,3rem);letter-spacing:-0.02em;line-height:1;background:linear-gradient(130deg,#e6e6f2 40%,#5050a0);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.h-left .sub{font-family:var(--mono);font-size:0.63rem;color:var(--text-muted);letter-spacing:0.18em;text-transform:uppercase;margin-top:8px}
+.h-badge{font-family:var(--mono);font-size:0.6rem;color:var(--text-muted);border:1px solid var(--border);padding:4px 10px;border-radius:2px;white-space:nowrap}
+
+/* Section label */
+.slabel{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted);margin-bottom:14px}
+
+/* ── Phase indicator ── */
+.phase-bar{display:flex;gap:0;margin-bottom:40px;border:1px solid var(--border2);border-radius:4px;overflow:hidden}
+.phase-step{flex:1;padding:10px 8px;text-align:center;font-family:var(--mono);font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);border-right:1px solid var(--border2);transition:all 0.2s;cursor:default}
+.phase-step:last-child{border-right:none}
+.phase-step.active{color:var(--text);background:var(--surface)}
+.phase-step.done{color:var(--low)}
+
+/* ── Input area ── */
+.input-panel{background:var(--surface);border:1px solid var(--border2);border-radius:4px;padding:28px;margin-bottom:28px}
+.input-panel h2{font-family:var(--serif);font-size:1.1rem;font-weight:400;margin-bottom:6px}
+.input-hint{font-family:var(--mono);font-size:0.62rem;color:var(--text-muted);margin-bottom:18px;line-height:1.7}
+
+.theme-input{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:2px;color:var(--text);font-family:var(--sans);font-size:1rem;font-weight:300;line-height:1.5;padding:14px 16px;outline:none;transition:border-color 0.15s;resize:none;min-height:80px}
+.theme-input:focus{border-color:var(--text-dim)}
+.theme-input::placeholder{color:var(--text-muted)}
+
+.context-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+@media(max-width:600px){.context-grid{grid-template-columns:1fr}}
+
+.ctx-field label{display:block;font-family:var(--mono);font-size:0.62rem;color:var(--text-dim);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px}
+.seg-group{display:flex;gap:5px;flex-wrap:wrap}
+.seg-btn{background:var(--surface2);border:1px solid var(--border);color:var(--text-dim);font-family:var(--mono);font-size:0.65rem;padding:5px 10px;border-radius:2px;cursor:pointer;transition:all 0.15s;letter-spacing:0.04em}
+.seg-btn:hover{border-color:var(--text-dim);color:var(--text)}
+.seg-btn.active{background:var(--text);border-color:var(--text);color:var(--bg)}
+
+/* API key */
+.apikey-row{display:flex;gap:10px;align-items:center;margin-top:16px;padding-top:16px;border-top:1px solid var(--border2)}
+.apikey-row label{font-family:var(--mono);font-size:0.62rem;color:var(--text-muted);letter-spacing:0.1em;text-transform:uppercase;white-space:nowrap}
+.apikey-input{flex:1;background:var(--surface2);border:1px solid var(--border);border-radius:2px;color:var(--text);font-family:var(--mono);font-size:0.72rem;padding:7px 12px;outline:none;transition:border-color 0.15s}
+.apikey-input:focus{border-color:var(--text-dim)}
+.apikey-input::placeholder{color:var(--text-muted)}
+
+/* Run */
+.run-wrap{display:flex;justify-content:center;margin-bottom:52px}
+.run-btn{background:transparent;border:1px solid var(--text-dim);color:var(--text);font-family:var(--mono);font-size:0.75rem;letter-spacing:0.16em;text-transform:uppercase;padding:13px 44px;cursor:pointer;border-radius:2px;transition:all 0.2s;position:relative;overflow:hidden}
+.run-btn::before{content:'';position:absolute;inset:0;background:var(--text);transform:translateX(-100%);transition:transform 0.22s ease;z-index:-1}
+.run-btn:hover{color:var(--bg);border-color:var(--text)}
+.run-btn:hover::before{transform:translateX(0)}
+.run-btn:disabled{opacity:0.35;cursor:not-allowed}
+
+/* Loading */
+.loading-state{display:none;text-align:center;padding:40px;margin-bottom:40px}
+.loading-state.visible{display:block}
+.loading-spinner{width:28px;height:28px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin 0.7s linear infinite;margin:0 auto 14px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading-msg{font-family:var(--mono);font-size:0.7rem;color:var(--text-dim);letter-spacing:0.1em}
+.loading-stream{font-family:var(--mono);font-size:0.65rem;color:var(--text-muted);margin-top:8px;min-height:20px}
+
+/* Results */
+#results{display:none}
+#results.visible{display:block;animation:fadeUp 0.4s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── Meeting Design Section ── */
+.meeting-design{margin-bottom:36px}
+
+/* Agent cards */
+.agents-gen-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:24px}
+@media(max-width:800px){.agents-gen-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:500px){.agents-gen-grid{grid-template-columns:1fr}}
+
+.agent-gen-card{background:var(--surface);border:1px solid var(--border2);border-radius:4px;padding:18px 20px;position:relative;overflow:hidden}
+.agent-gen-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+
+.agc-header{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.agc-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.agc-name{font-family:var(--mono);font-size:0.7rem;letter-spacing:0.07em;text-transform:uppercase;color:var(--text)}
+.agc-mission{font-size:0.78rem;color:var(--text-dim);line-height:1.6;margin-bottom:10px}
+.agc-reason{font-family:var(--mono);font-size:0.62rem;color:var(--text-muted);line-height:1.5;border-top:1px solid var(--border2);padding-top:8px;margin-top:4px}
+.agc-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}
+.agc-tag{font-family:var(--mono);font-size:0.58rem;padding:2px 7px;border-radius:2px;background:var(--surface2);border:1px solid var(--border2);color:var(--text-muted)}
+
+/* Missing voice */
+.missing-voice{background:var(--surface);border:1px solid var(--border2);border-radius:4px;padding:18px 22px;margin-top:4px}
+.mv-label{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px}
+.mv-items{display:flex;flex-wrap:wrap;gap:8px}
+.mv-item{font-family:var(--mono);font-size:0.7rem;padding:5px 12px;border-radius:2px;border:1px dashed var(--border);color:var(--text-dim)}
+.mv-desc{font-size:0.75rem;color:var(--text-muted);margin-top:8px;line-height:1.6}
+
+/* ── Conflict Cards ── */
+.conflicts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:28px}
+@media(max-width:800px){.conflicts-grid{grid-template-columns:1fr}}
+
+.conflict-card{background:var(--surface);border:1px solid var(--border2);border-radius:4px;padding:20px;position:relative;overflow:hidden}
+.conflict-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.conflict-card.level-high::before{background:var(--high)}
+.conflict-card.level-medium::before{background:var(--medium)}
+.conflict-card.level-low::before{background:var(--low)}
+.conflict-card.level-high{border-color:color-mix(in srgb,var(--high) 22%,var(--border2))}
+.conflict-card.level-medium{border-color:color-mix(in srgb,var(--medium) 22%,var(--border2))}
+
+.cc-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:8px;gap:8px}
+.cc-pair{font-family:var(--mono);font-size:0.7rem;letter-spacing:0.05em;color:var(--text)}
+.cc-badge{font-family:var(--mono);font-size:0.57rem;letter-spacing:0.12em;text-transform:uppercase;padding:2px 7px;border-radius:2px;flex-shrink:0}
+.level-high   .cc-badge{background:color-mix(in srgb,var(--high) 16%,transparent);color:var(--high);border:1px solid var(--high)}
+.level-medium .cc-badge{background:color-mix(in srgb,var(--medium) 16%,transparent);color:var(--medium);border:1px solid var(--medium)}
+.level-low    .cc-badge{background:color-mix(in srgb,var(--low) 16%,transparent);color:var(--low);border:1px solid var(--low)}
+
+.cc-score-num{font-family:var(--mono);font-size:0.62rem;color:var(--text-muted);margin-bottom:7px}
+.cc-bar-bg{height:3px;background:var(--border2);border-radius:2px;margin-bottom:12px;overflow:hidden}
+.cc-bar-fill{height:100%;border-radius:2px;transition:width 0.7s cubic-bezier(0.25,1,0.5,1);width:0}
+.level-high   .cc-bar-fill{background:var(--high)}
+.level-medium .cc-bar-fill{background:var(--medium)}
+.level-low    .cc-bar-fill{background:var(--low)}
+
+.cc-sec{margin-bottom:9px}
+.cc-sec-lbl{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:3px}
+.cc-sec-body{font-size:0.76rem;color:var(--text-dim);line-height:1.6}
+.cc-q{font-size:0.76rem;color:var(--text);line-height:1.6;border-top:1px solid var(--border2);padding-top:9px;margin-top:9px;font-style:italic}
+
+/* ── Alignment ── */
+.align-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:28px}
+@media(max-width:700px){.align-grid{grid-template-columns:1fr 1fr}}
+.align-card{background:var(--surface);border:1px solid var(--border2);border-radius:4px;padding:13px 15px}
+.align-pair{font-family:var(--mono);font-size:0.66rem;letter-spacing:0.05em;color:var(--text);margin-bottom:5px}
+.align-badge{font-family:var(--mono);font-size:0.57rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--align);margin-bottom:5px}
+.align-bar-bg{height:2px;background:var(--border2);border-radius:2px;overflow:hidden}
+.align-bar-fill{height:100%;background:var(--align);border-radius:2px;transition:width 0.7s cubic-bezier(0.25,1,0.5,1);width:0}
+
+/* ── Summary banner ── */
+.summary-banner{background:var(--surface);border:1px solid var(--border2);border-radius:4px;padding:22px 26px;margin-bottom:28px}
+.sb-label{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted);margin-bottom:7px}
+.sb-title{font-family:var(--serif);font-size:1.3rem;margin-bottom:7px}
+.sb-body{font-size:0.81rem;color:var(--text-dim);line-height:1.75}
+
+/* ── Tradeoff ── */
+.tradeoff-panel{background:var(--surface);border:1px solid var(--border2);border-radius:4px;padding:20px 24px;margin-bottom:28px}
+.tp-label{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted);margin-bottom:7px}
+.tp-body{font-size:0.81rem;color:var(--text-dim);line-height:1.8}
+
+/* ── HDL ── */
+.hdl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px}
+@media(max-width:700px){.hdl-grid{grid-template-columns:1fr}}
+
+.strategy-card{background:var(--surface);border:1px solid var(--border2);border-radius:4px;padding:20px;cursor:pointer;transition:all 0.18s;position:relative}
+.strategy-card:hover{border-color:var(--text-dim);transform:translateY(-2px)}
+.strategy-card.selected{border-color:var(--text);background:color-mix(in srgb,var(--text) 5%,var(--surface))}
+.sc-check{position:absolute;top:11px;right:11px;width:15px;height:15px;border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.52rem;transition:all 0.15s}
+.strategy-card.selected .sc-check{background:var(--text);border-color:var(--text);color:var(--bg)}
+.sc-idx{font-family:var(--mono);font-size:0.57rem;color:var(--text-muted);letter-spacing:0.14em;margin-bottom:7px}
+.sc-name{font-family:var(--serif);font-size:1.1rem;margin-bottom:8px}
+.sc-desc{font-size:0.75rem;color:var(--text-dim);line-height:1.65;margin-bottom:9px}
+.sc-meta-row{display:flex;gap:6px;margin-bottom:4px;align-items:flex-start}
+.sc-mkey{font-family:var(--mono);font-size:0.57rem;color:var(--text-muted);letter-spacing:0.1em;text-transform:uppercase;flex-shrink:0;width:40px;margin-top:1px}
+.sc-mval{font-size:0.7rem;color:var(--text-dim);line-height:1.5}
+
+.confirm-wrap{display:flex;justify-content:flex-end;align-items:center;gap:16px}
+.confirm-note{font-family:var(--mono);font-size:0.6rem;color:var(--text-muted)}
+.confirm-btn{background:var(--text);border:none;color:var(--bg);font-family:var(--mono);font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;padding:11px 26px;cursor:pointer;border-radius:2px;transition:opacity 0.15s}
+.confirm-btn:hover{opacity:0.85}
+.confirm-btn:disabled{opacity:0.25;cursor:not-allowed}
+
+/* ── Final ── */
+#final-output{display:none;margin-top:32px}
+#final-output.visible{display:block;animation:fadeUp 0.4s ease}
+.final-card{background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:26px}
+.fc-meta{font-family:var(--mono);font-size:0.62rem;color:var(--text-muted);margin-bottom:12px;letter-spacing:0.07em}
+.final-card h3{font-family:var(--serif);font-size:1.4rem;margin-bottom:12px}
+.fc-body{font-size:0.8rem;color:var(--text-dim);line-height:1.8;border-top:1px solid var(--border2);padding-top:14px}
+
+.export-wrap{display:flex;justify-content:flex-end;margin-top:12px}
+.export-btn{background:transparent;border:1px solid var(--border);color:var(--text-dim);font-family:var(--mono);font-size:0.63rem;letter-spacing:0.12em;text-transform:uppercase;padding:6px 14px;cursor:pointer;border-radius:2px;transition:all 0.15s}
+.export-btn:hover{border-color:var(--text-dim);color:var(--text)}
+
+hr.div{border:none;border-top:1px solid var(--border2);margin:32px 0}
+
+.reset-wrap{display:flex;justify-content:center;margin-top:36px}
+.reset-btn{background:transparent;border:1px solid var(--border);color:var(--text-muted);font-family:var(--mono);font-size:0.66rem;letter-spacing:0.12em;text-transform:uppercase;padding:8px 22px;cursor:pointer;border-radius:2px;transition:all 0.15s}
+.reset-btn:hover{border-color:var(--text-dim);color:var(--text-dim)}
+
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+</style>
+</head>
+<body>
+<div class="shell">
+
+<header>
+  <div class="h-left">
+    <h1>Decision Lab</h1>
+    <div class="sub">Meeting Design Engine — v0.4</div>
+  </div>
+  <div class="h-badge">争点シミュレーター</div>
+</header>
+
+<!-- Phase bar -->
+<div class="phase-bar" id="phase-bar">
+  <div class="phase-step active" id="ps-0">01 Input</div>
+  <div class="phase-step" id="ps-1">02 Meeting Design</div>
+  <div class="phase-step" id="ps-2">03 Conflict Map</div>
+  <div class="phase-step" id="ps-3">04 Human Decision</div>
+</div>
+
+<!-- ── Input ── -->
+<div class="slabel">01 — Theme & Context</div>
+<div class="input-panel">
+  <h2>意思決定テーマ</h2>
+  <div class="input-hint">議論したいテーマを入力してください。AIが会議参加者（Agent）を設計します。</div>
+  <textarea class="theme-input" id="theme-input" placeholder="例：AI時代の楽天経済圏成長戦略&#10;例：利益改善とブランド強化の両立&#10;例：Z世代向け新サービスの優先順位"></textarea>
+
+  <div class="context-grid">
+    <div class="ctx-field">
+      <label>事業フェーズ</label>
+      <div class="seg-group" data-key="phase">
+        <button class="seg-btn" data-val="新規獲得">新規獲得</button>
+        <button class="seg-btn" data-val="拡大">拡大</button>
+        <button class="seg-btn" data-val="維持">維持</button>
+        <button class="seg-btn" data-val="再活性化">再活性化</button>
+      </div>
+    </div>
+    <div class="ctx-field">
+      <label>時間軸</label>
+      <div class="seg-group" data-key="horizon">
+        <button class="seg-btn" data-val="短期">短期</button>
+        <button class="seg-btn" data-val="中期">中期</button>
+        <button class="seg-btn" data-val="長期">長期</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="apikey-row">
+    <label>API Key</label>
+    <input class="apikey-input" type="password" id="api-key-input" placeholder="sk-ant-..." />
+  </div>
+</div>
+
+<div class="run-wrap">
+  <button class="run-btn" id="run-btn" onclick="runDesign()">▶ &nbsp;Meeting Design を実行</button>
+</div>
+
+<!-- Loading -->
+<div class="loading-state" id="loading-state">
+  <div class="loading-spinner"></div>
+  <div class="loading-msg">AIが会議参加者を設計しています...</div>
+  <div class="loading-stream" id="loading-stream"></div>
+</div>
+
+<!-- ── Results ── -->
+<div id="results">
+
+  <!-- 02 Meeting Design -->
+  <div class="slabel">02 — Meeting Design</div>
+  <div class="meeting-design">
+    <div class="agents-gen-grid" id="agents-gen-grid"></div>
+    <div class="missing-voice" id="missing-voice"></div>
+  </div>
+
+  <hr class="div">
+
+  <!-- 03 Conflict Map -->
+  <div class="slabel" id="conflict-slabel">03 — Conflict Map</div>
+  <div class="summary-banner" id="summary-banner"></div>
+  <div class="conflicts-grid" id="conflicts-grid"></div>
+
+  <div class="slabel">Alignment Map</div>
+  <div class="align-grid" id="align-grid"></div>
+
+  <hr class="div">
+
+  <div class="slabel">Trade-off Explanation</div>
+  <div class="tradeoff-panel" id="tradeoff-panel"></div>
+
+  <hr class="div">
+
+  <!-- 04 Human Decision -->
+  <div class="slabel">04 — Human Decision Layer</div>
+  <div class="hdl-grid" id="hdl-grid"></div>
+  <div class="confirm-wrap">
+    <span class="confirm-note">最終決定は人間が行う</span>
+    <button class="confirm-btn" id="confirm-btn" onclick="confirmDecision()" disabled>決定を確定する →</button>
+  </div>
+
+  <div id="final-output">
+    <hr class="div">
+    <div class="slabel">Decision Record</div>
+    <div class="final-card" id="final-card"></div>
+    <div class="export-wrap">
+      <button class="export-btn" onclick="exportJSON()">JSON Export</button>
+    </div>
+  </div>
+
+  <div class="reset-wrap">
+    <button class="reset-btn" onclick="resetAll()">← リセット</button>
+  </div>
+
+</div><!-- /results -->
+</div><!-- /shell -->
+
+<script>
+// ── Color palette for generated agents ──
+const AGENT_COLORS = ['#1fd98a','#f5a623','#8b7ff7','#ff4f7e','#00c8ff','#8ee04a','#ff9f43','#a29bfe'];
+
+// Form state
+let formState = { phase: null, horizon: null };
+let lastResult = null;
+let selectedOption = null;
+let generatedAgents = [];
+
+document.querySelectorAll('.seg-group').forEach(g => {
+  g.querySelectorAll('.seg-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      g.querySelectorAll('.seg-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      formState[g.dataset.key] = btn.dataset.val;
+    });
+  });
+});
+
+// localStorage for API key
+const apiKeyInput = document.getElementById('api-key-input');
+const savedKey = localStorage.getItem('dl_api_key');
+if (savedKey) apiKeyInput.value = savedKey;
+apiKeyInput.addEventListener('change', () => {
+  localStorage.setItem('dl_api_key', apiKeyInput.value.trim());
+});
+
+// ── Phase bar helper ──
+function setPhase(n) {
+  for (let i = 0; i < 4; i++) {
+    const el = document.getElementById(`ps-${i}`);
+    el.className = 'phase-step ' + (i < n ? 'done' : i === n ? 'active' : '');
+  }
+}
+
+// ── Main entry ──
+async function runDesign() {
+  const theme = document.getElementById('theme-input').value.trim();
+  if (!theme) { alert('テーマを入力してください'); return; }
+
+  const apiKey = apiKeyInput.value.trim();
+  if (!apiKey) { alert('API Keyを入力してください'); return; }
+  localStorage.setItem('dl_api_key', apiKey);
+
+  document.getElementById('run-btn').disabled = true;
+  document.getElementById('loading-state').classList.add('visible');
+  document.getElementById('results').classList.remove('visible');
+  document.getElementById('final-output').classList.remove('visible');
+  selectedOption = null;
+  document.getElementById('confirm-btn').disabled = true;
+  setPhase(1);
+
+  try {
+    const agents = await generateAgents(theme, apiKey);
+    generatedAgents = agents;
+    renderMeetingDesign(agents);
+
+    setPhase(2);
+    document.getElementById('loading-stream').textContent = 'Conflict を計算中...';
+
+    const conflictData = await generateConflicts(theme, agents, apiKey);
+    renderConflictMap(conflictData, agents);
+
+    setPhase(3);
+    renderHDL(conflictData);
+
+    lastResult = { theme, agents, conflictData };
+    document.getElementById('results').classList.add('visible');
+    setPhase(3);
+    setTimeout(() => {
+      document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 200);
+
+  } catch (err) {
+    console.error(err);
+    alert('エラーが発生しました: ' + err.message);
+    setPhase(0);
+  } finally {
+    document.getElementById('run-btn').disabled = false;
+    document.getElementById('loading-state').classList.remove('visible');
+  }
+}
+
+// ── Step 1: Generate Agents ──
+async function generateAgents(theme, apiKey) {
+  document.getElementById('loading-stream').textContent = 'Agentを生成中...';
+
+  const ctx = [
+    formState.phase ? `事業フェーズ: ${formState.phase}` : '',
+    formState.horizon ? `時間軸: ${formState.horizon}` : '',
+  ].filter(Boolean).join(' / ');
+
+  const prompt = `あなたは組織の意思決定設計の専門家です。
+以下のテーマについて、意思決定会議に参加すべき「価値観Agent」を4〜6個設計してください。
+各Agentはビジネス上の価値観・優先事項を代表します（例：利益、成長、ブランド、顧客信頼など）。
+
+テーマ: ${theme}
+${ctx ? `コンテキスト: ${ctx}` : ''}
+
+以下のJSON形式のみで回答してください（前置き・説明・バッククォートなし）:
+{
+  "agents": [
+    {
+      "name": "Agent名（英語 + 日本語の短い説明、例: Profit Agent）",
+      "mission": "このAgentが守りたい価値・目標（日本語1文）",
+      "priority": ["優先事項1", "優先事項2", "優先事項3"],
+      "risk": ["このAgentが過剰になると起きるリスク1", "リスク2"],
+      "why_invited": "なぜこのテーマでこのAgentが必要か（日本語1〜2文）"
+    }
+  ],
+  "missing_voices": [
+    {
+      "name": "不足している視点の名前",
+      "reason": "なぜこの視点が欠けやすいか（日本語1文）"
+    }
+  ],
+  "theme_summary": "このテーマの意思決定の本質（日本語1〜2文）"
+}`;
+
+  const res = await callClaude(apiKey, prompt);
+  return JSON.parse(res);
+}
+
+// ── Step 2: Generate Conflicts ──
+async function generateConflicts(theme, agentData, apiKey) {
+  document.getElementById('loading-stream').textContent = 'Conflictを分析中...';
+
+  const agentNames = agentData.agents.map(a => a.name).join(', ');
+
+  const prompt = `あなたは組織の意思決定設計の専門家です。
+以下のAgentが参加する会議で生じる「価値観の対立（Conflict）」を分析してください。
+
+テーマ: ${theme}
+参加Agent: ${agentNames}
+
+各Agentの詳細:
+${JSON.stringify(agentData.agents, null, 2)}
+
+以下のJSON形式のみで回答してください（前置き・説明・バッククォートなし）:
+{
+  "conflicts": [
+    {
+      "agent_a": "Agent名A（上記のnameと完全一致）",
+      "agent_b": "Agent名B（上記のnameと完全一致）",
+      "label": "AgentA vs AgentB のような短いラベル",
+      "tension_score": 75,
+      "level": "High",
+      "why": "なぜこの2つが対立するか（日本語1〜2文）",
+      "debate": "「実際の会議でどんな発言がぶつかるか」（日本語、鍵括弧で）",
+      "human_question": "人間が判断すべき問い（日本語1文・疑問形）",
+      "options": ["選択肢A名（短く）", "選択肢B名（短く）", "Balanced"],
+      "option_descs": [
+        {"desc": "選択肢Aの説明", "best_for": "向いている状況", "risk": "リスク"},
+        {"desc": "選択肢Bの説明", "best_for": "向いている状況", "risk": "リスク"},
+        {"desc": "バランス案の説明", "best_for": "向いている状況", "risk": "リスク"}
+      ]
+    }
+  ],
+  "alignments": [
+    {
+      "agent_a": "Agent名A",
+      "agent_b": "Agent名B",
+      "label": "AgentA + AgentB",
+      "strength": "Strong Alignment",
+      "reason": "なぜ方向性が一致するか（日本語1文）"
+    }
+  ],
+  "conflict_summary": "この会議全体の争点の本質（日本語2〜3文）",
+  "tradeoff_explanation": "トレードオフの構造的な説明（日本語2〜3文）"
+}
+
+注意:
+- conflictsは最大5個、実際に意味のある対立のみ
+- alignmentsは最大4個、実際に方向性が近いペアのみ
+- tension_scoreは0〜100の整数
+- levelは "High"（70以上）/ "Medium"（40〜69）/ "Low"（39以下）`;
+
+  const res = await callClaude(apiKey, prompt);
+  return JSON.parse(res);
+}
+
+// ── Claude API call ──
+async function callClaude(apiKey, prompt) {
+  const res = await fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-api-key': apiKey,
+      'anthropic-version': '2023-06-01',
+      'anthropic-dangerous-direct-browser-access': 'true',
+    },
+    body: JSON.stringify({
+      model: 'claude-haiku-4-5-20251001',
+      max_tokens: 4096,
+      messages: [{ role: 'user', content: prompt }],
+    }),
+  });
+
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err.error?.message || `API Error: ${res.status}`);
+  }
+
+  const data = await res.json();
+
+  // Check for truncation
+  if (data.stop_reason === 'max_tokens') {
+    throw new Error('レスポンスが長すぎて途中で切れました。テーマをより短く・具体的にしてお試しください。');
+  }
+
+  const text = data.content.map(b => b.text || '').join('');
+  // Strip markdown code fences if present
+  const clean = text.replace(/^```(?:json)?\n?/,'').replace(/\n?```$/,'').trim();
+
+  // Validate JSON before returning
+  try {
+    JSON.parse(clean);
+  } catch(e) {
+    console.error('Raw response:', clean);
+    throw new Error('JSONパースエラー: AIの出力形式が不正でした。再実行してください。');
+  }
+  return clean;
+}
+
+// ── Render Meeting Design ──
+function renderMeetingDesign(data) {
+  const grid = document.getElementById('agents-gen-grid');
+  grid.innerHTML = '';
+
+  data.agents.forEach((agent, i) => {
+    const color = AGENT_COLORS[i % AGENT_COLORS.length];
+    const card = document.createElement('div');
+    card.className = 'agent-gen-card';
+    card.style.cssText = `--ac:${color}`;
+    card.style.setProperty('--ac', color);
+
+    // Top bar color via inline style on pseudo (use outline trick)
+    card.innerHTML = `
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:${color};border-radius:4px 4px 0 0"></div>
+      <div class="agc-header">
+        <div class="agc-dot" style="background:${color}"></div>
+        <div class="agc-name">${agent.name}</div>
+      </div>
+      <div class="agc-mission">${agent.mission}</div>
+      <div class="agc-tags">
+        ${(agent.priority||[]).map(p=>`<span class="agc-tag">${p}</span>`).join('')}
+      </div>
+      <div class="agc-reason">${agent.why_invited}</div>`;
+    grid.appendChild(card);
+  });
+
+  // Missing voices
+  const mv = document.getElementById('missing-voice');
+  if (data.missing_voices && data.missing_voices.length > 0) {
+    mv.innerHTML = `
+      <div class="mv-label">⚠ Missing Voice — この会議に不足している視点</div>
+      <div class="mv-items">
+        ${data.missing_voices.map(v=>`<span class="mv-item">${v.name}</span>`).join('')}
+      </div>
+      <div class="mv-desc">${data.missing_voices.map(v=>v.reason).join('　')}</div>`;
+    mv.style.display = 'block';
+  } else {
+    mv.style.display = 'none';
+  }
+}
+
+// ── Render Conflict Map ──
+function renderConflictMap(data, agentData) {
+  // Summary banner
+  const top = data.conflicts[0];
+  document.getElementById('summary-banner').innerHTML = `
+    <div class="sb-label">Conflict Forecast Result</div>
+    <div class="sb-title">${data.conflict_summary.split('。')[0]}。</div>
+    <div class="sb-body">${data.conflict_summary}</div>`;
+
+  // Build agent name → color map
+  const colorMap = {};
+  agentData.agents.forEach((a, i) => {
+    colorMap[a.name] = AGENT_COLORS[i % AGENT_COLORS.length];
+  });
+
+  // Conflict cards (top 3)
+  const cg = document.getElementById('conflicts-grid');
+  cg.innerHTML = '';
+  data.conflicts.slice(0,3).forEach(c => {
+    const level = (c.level||'Medium').toLowerCase();
+    const card = document.createElement('div');
+    card.className = `conflict-card level-${level}`;
+    card.innerHTML = `
+      <div class="cc-header">
+        <div class="cc-pair">${c.label || `${c.agent_a} vs ${c.agent_b}`}</div>
+        <div class="cc-badge">${c.level||'Medium'}</div>
+      </div>
+      <div class="cc-score-num">Score: ${c.tension_score}</div>
+      <div class="cc-bar-bg"><div class="cc-bar-fill" data-target="${c.tension_score}%"></div></div>
+      <div class="cc-sec">
+        <div class="cc-sec-lbl">Why it matters</div>
+        <div class="cc-sec-body">${c.why}</div>
+      </div>
+      <div class="cc-sec">
+        <div class="cc-sec-lbl">Likely debate</div>
+        <div class="cc-sec-body">${c.debate}</div>
+      </div>
+      <div class="cc-q">${c.human_question}</div>`;
+    cg.appendChild(card);
+  });
+
+  // Alignment
+  const ag = document.getElementById('align-grid');
+  ag.innerHTML = '';
+  (data.alignments||[]).forEach(a => {
+    const score = Math.round(((colorMap[a.agent_a] ? 60 : 50) + (colorMap[a.agent_b] ? 60 : 50)) / 2);
+    const card = document.createElement('div');
+    card.className = 'align-card';
+    card.innerHTML = `
+      <div class="align-pair">${a.label || `${a.agent_a} + ${a.agent_b}`}</div>
+      <div class="align-badge">${a.strength||'Alignment'}</div>
+      <div class="align-bar-bg"><div class="align-bar-fill" data-target="65%"></div></div>`;
+    ag.appendChild(card);
+  });
+
+  // Tradeoff
+  document.getElementById('tradeoff-panel').innerHTML = `
+    <div class="tp-label">Trade-off Summary</div>
+    <div class="tp-body">${data.tradeoff_explanation}</div>`;
+
+  // Animate bars
+  requestAnimationFrame(() => {
+    setTimeout(() => {
+      document.querySelectorAll('[data-target]').forEach(el => {
+        el.style.width = el.dataset.target;
+      });
+    }, 80);
+  });
+}
+
+// ── Render HDL ──
+function renderHDL(data) {
+  const top = data.conflicts[0];
+  if (!top) return;
+
+  const hdl = document.getElementById('hdl-grid');
+  hdl.innerHTML = '';
+  const labels = ['Option A', 'Option B', 'Balanced'];
+  const opts = top.options || ['Option A', 'Option B', 'Balanced'];
+  const descs = top.option_descs || [];
+
+  opts.slice(0,3).forEach((name, i) => {
+    const d = descs[i] || { desc: name, best_for: '—', risk: '—' };
+    const card = document.createElement('div');
+    card.className = 'strategy-card';
+    card.innerHTML = `
+      <div class="sc-check">✓</div>
+      <div class="sc-idx">${labels[i]}</div>
+      <div class="sc-name">${name}</div>
+      <div class="sc-desc">${d.desc}</div>
+      <div class="sc-meta-row"><div class="sc-mkey">Best</div><div class="sc-mval">${d.best_for}</div></div>
+      <div class="sc-meta-row"><div class="sc-mkey">Risk</div><div class="sc-mval">${d.risk}</div></div>`;
+    card.addEventListener('click', () => {
+      document.querySelectorAll('.strategy-card').forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+      selectedOption = { name, desc: d.desc, best_for: d.best_for, risk: d.risk, conflict: top };
+      document.getElementById('confirm-btn').disabled = false;
+    });
+    hdl.appendChild(card);
+  });
+}
+
+// ── Confirm ──
+function confirmDecision() {
+  if (!selectedOption || !lastResult) return;
+  const now = new Date();
+  const dateStr = now.toLocaleDateString('ja-JP', { year:'numeric', month:'2-digit', day:'2-digit' });
+  const timeStr = now.toLocaleTimeString('ja-JP', { hour:'2-digit', minute:'2-digit' });
+  const top = selectedOption.conflict;
+
+  document.getElementById('final-card').innerHTML = `
+    <div class="fc-meta">${dateStr} ${timeStr} &nbsp;·&nbsp; ${lastResult.theme}</div>
+    <h3>${selectedOption.name}</h3>
+    <div class="fc-body">
+      <p style="margin-bottom:10px">${selectedOption.desc}</p>
+      <p style="margin-bottom:4px"><span style="font-family:var(--mono);font-size:0.62rem;color:var(--text-muted);letter-spacing:0.1em">BEST FOR</span><br>${selectedOption.best_for}</p>
+      <p style="margin-top:10px"><span style="font-family:var(--mono);font-size:0.62rem;color:var(--text-muted);letter-spacing:0.1em">RISK</span><br>${selectedOption.risk}</p>
+      <p style="margin-top:14px;font-family:var(--mono);font-size:0.62rem;color:var(--text-muted)">Main Conflict: ${top.label||top.agent_a+' vs '+top.agent_b} (Score: ${top.tension_score})</p>
+    </div>`;
+
+  document.getElementById('final-output').classList.add('visible');
+  setPhase(4);
+  setTimeout(() => {
+    document.getElementById('final-output').scrollIntoView({ behavior:'smooth', block:'nearest' });
+  }, 100);
+}
+
+// ── Export ──
+function exportJSON() {
+  if (!lastResult) return;
+  const out = {
+    generated_at: new Date().toISOString(),
+    theme: lastResult.theme,
+    context: { phase: formState.phase, horizon: formState.horizon },
+    meeting_design: {
+      agents: lastResult.agents.agents,
+      missing_voices: lastResult.agents.missing_voices,
+      theme_summary: lastResult.agents.theme_summary,
+    },
+    conflict_map: lastResult.conflictData.conflicts,
+    alignment_map: lastResult.conflictData.alignments,
+    human_decision: selectedOption ? {
+      option: selectedOption.name,
+      description: selectedOption.desc,
+      best_for: selectedOption.best_for,
+      risk: selectedOption.risk,
+    } : null,
+  };
+  const blob = new Blob([JSON.stringify(out, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'decision-lab-v04.json'; a.click();
+  URL.revokeObjectURL(url);
+}
+
+// ── Reset ──
+function resetAll() {
+  formState = { phase: null, horizon: null };
+  lastResult = null; selectedOption = null; generatedAgents = [];
+  document.querySelectorAll('.seg-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('theme-input').value = '';
+  document.getElementById('results').classList.remove('visible');
+  document.getElementById('final-output').classList.remove('visible');
+  document.getElementById('confirm-btn').disabled = true;
+  document.getElementById('run-btn').disabled = false;
+  setPhase(0);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
