@@ -12584,5 +12584,58 @@
     },
     "article_count": 0,
     "warnings": []
+  },
+  {
+    "type": "quarterly",
+    "id": "2026-04-01_2026-06-30",
+    "title": "2026年Q2（4–6月）総合考察",
+    "period": {
+      "start": "2026-04-01",
+      "end": "2026-06-30"
+    },
+    "articles": [],
+    "essay": {
+      "title": "2026年Q2（4–6月）総合考察",
+      "summary": "Z世代は“意味で選ぶ世代”から、“AI・SNS・社会構造に飲み込まれないため、自分なりの接続ルールを設計する世代”へ進化した四半期",
+      "structure": [],
+      "sections": [
+        {
+          "heading": "AIは「便利な道具」から\"主導権を交渉する存在\"へ",
+          "body": "Q2最大のテーマはAIだった。 4月 AI利用拡大 ↓ 5月 AI疲れ・AI反発 ↓ 6月 AIと共に決めるが、委ねない という流れが見えた。 AIは 便利 ↓ 相棒 ↓ 競合 ↓ 交渉相手 になっている。 若者はAIを拒否しない。 しかし AIに育てられたくない AIに置き換えられたくない AIに思考を奪われたくない という感覚が強くなった。 Key Articles ・「将来が奪われる」AIネイティブのZ世代が抱く切実な拒否感 https://news.yahoo.co.jp/articles/1ce7b7f35760aaaf8d14755dd93c8f61872da793 ・Z世代はAIをどのように活用し、何を恐れているのか https://dhbr.diamond.jp/articles/-/13463 ・Z世代の4割が「AIなしでは仕事不可」 https://forbesjapa"
+        },
+        {
+          "heading": "「意味」から「接続設計」へ",
+          "body": "Q1までは 意味があるか だった。 Q2では どう関わるか になった。 だから メンパ アテンションデトックス クローズドSNS ひとりモード が伸びた。 若者は 社会参加しない ではない。 参加方法を設計し直している。 Key Articles ・メンパ消費 https://news.yahoo.co.jp/articles/25be65f1d0d029d4779bcefda0af28440dc125db ・アテンション・デトックス https://article.auone.jp/detail/1/2/2/333_2_r_20260611_1781128841757522 ・BeReal650万人突破 https://markezine.jp/article/detail/76964 ・「ひとりモード」が主流に https://xtrend.nikkei.com/atcl/conten"
+        },
+        {
+          "heading": "消費は「自己表現」から「自己保全」へ",
+          "body": "Q2では 欲望 ↓ 意味 ↓ 生活維持 へ変化した。 旅行 中古 推し活 コスメ 自己投資 すべてに \"後悔しない\" が入る。 Key Articles ・「欲しい」はある、でも買えない https://www.nli-research.co.jp/report/detail/id=86089 ・中古・リファービッシュ購入 https://mainichi.jp/articles/20260602/pr2/00m/020/048000c ・推し活1万円の壁 https://topics.smt.docomo.ne.jp/article/oshitimes/entertainment/oshitimes-129714 ・フリューガル・シック https://newspicks.com/news/16678184/body/ ・国内旅行を選んだZ世代の過半数は海外断念組 https://for"
+        },
+        {
+          "heading": "レトロ回帰は「懐古」ではなく「抵抗」",
+          "body": "Q2を通して 平成 写ルンです iPod 紙 ハンドメイド が何度も出た。 これは 昔が好き ではない。 AIとアルゴリズムから距離を取るための行動 である。 Key Articles ・平成レトロ https://xtrend.nikkei.com/atcl/contents/18/01389/00001/ ・写ルンです40周年 https://www.asahi.com/articles/ASV711T69V71UQIP036M.html ・CD・DVD回帰 https://forbesjapan.com/articles/detail/99831 ・ハンドメイド愛 https://mery.jp/2494794 ・iPod回帰 https://www.vietnam.vn/ja/gallery-gen-z-bat-ngo-me-ipod-dien-thoai-nap-gap-de-c"
+        },
+        {
+          "heading": "若者は\"報われる努力\"しか選ばない",
+          "body": "Q2では 静かな退職 会社選び AIによる若手縮小 管理職離れ など 働き方の記事が急増した。 しかし 働きたくない ではない。 報われる努力だけしたい のである。 Key Articles ・静かな退職 https://toyokeizai.net/articles/-/943211 ・リーダーになりたい https://forbesjapan.com/articles/detail/99042 ・若手社員の本質的スキルを蝕むAI https://forbesjapan.com/articles/detail/98770 ・AI時代の若者支援 https://news.yahoo.co.jp/articles/ec6c0739812571945168b822db84a6aed4348b09 ・AI時代の切迫感 https://www.businessinsider.jp/article/"
+        },
+        {
+          "heading": "α世代は「体験主権」の世代として登場した",
+          "body": "Q2は α世代 Roblox YouTube Shorts AIネイティブ 広告 教育 の記事が急増した。 Z世代が 納得して動く なら α世代は 体験して初めて動く。 ここがQ3以降の重要テーマになる。 Key Articles ・α世代AI利用 https://www.atpress.ne.jp/news/609962 ・Roblox https://webtan.impress.co.jp/e/2026/07/03/52875 ・YouTube Shorts https://realsound.jp/tech/2026/05/post-2387711.html ・AIネイティブ広告 https://l.smartnews.com/p-80trz7q0/1nKrlN ・α世代は就職しない？ https://tabi-labo.com/312685/gen-alpha-boss-care"
+        }
+      ],
+      "period_definition": "一言で言えば、\n「社会との付き合い方を、自分で設計し直した四半期",
+      "keywords": [
+        "接続ルール自己設計",
+        "AI主導権交渉",
+        "アナログレジスタンス",
+        "メンパ消費",
+        "閉じた生活圏",
+        "報われない構造認識",
+        "参加方法再設計"
+      ]
+    },
+    "article_count": 0,
+    "warnings": []
   }
 ]
