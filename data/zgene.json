@@ -1,6 +1,323 @@
 [
   {
     "type": "weekly",
+    "id": "2026-07-21_2026-07-24",
+    "title": "2026/07/21-07/24 Z世代・若年層関連記事と考察",
+    "period": {
+      "start": "2026-07-21",
+      "end": "2026-07-24"
+    },
+    "articles": [
+      {
+        "title": "疲弊する新卒採用の現場 「生成AIの書いた作文」を読まされる担当者｜日経ビジネス",
+        "url": "https://business.nikkei.com/atcl/gen/19/00087/071600512/",
+        "status": "ok"
+      },
+      {
+        "title": "老朽化で道路陥没…Z世代「年収500万でもブルーカラーは嫌」が引き起こすインフラ整備後回しの実情｜東洋経済",
+        "url": "https://toyokeizai.net/articles/-/950210",
+        "status": "ok"
+      },
+      {
+        "title": "若者の「韓国離れ」が始まった…20代女性が「次の手本」にしているアジアの国｜PRESIDENT Online",
+        "url": "https://president.jp/articles/-/116016",
+        "status": "ok"
+      },
+      {
+        "title": "WAKA「Z世代・α世代のタイパ意識とデジタルサービス利用実態調査」｜dメニューニュース",
+        "url": "https://topics.smt.docomo.ne.jp/article/netkeizai/business/netkeizai-19269",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代が楽しむ「ブレジャー」とは？出張+余暇の新スタイル｜ライフハッカー",
+        "url": "https://www.lifehacker.jp/article/2607how-to-make-workcations-work-workations-work-from-home/",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代がモールの主役に。カナダ発ブランドが証明したTikTokとリアル店舗戦略｜DIGIDAY",
+        "url": "https://digiday.jp/glossy/fashion-briefing-as-gen-z-goes-back-to-the-mall-garage-is-opening-20-profitable-stores-a-year/",
+        "status": "ok"
+      },
+      {
+        "title": "TikTok上半期トレンド大賞2026からみる「共創型トレンド」の方程式｜リアルサウンド",
+        "url": "https://news.yahoo.co.jp/articles/8d248b2cad3c20b29e451c151f359a94738b77d4",
+        "status": "ok"
+      },
+      {
+        "title": "シニア女性の推し活、50・60代の2人に1人が推しアリ 年平均支出11万円超｜よろず〜ニュース",
+        "url": "https://yorozoonews.jp/manamon/article/16733212",
+        "status": "ok"
+      },
+      {
+        "title": "あえて「生活の20%をアナログに」「食事は老舗に」ヒットコンテンツを生む再定義法とは｜GOETHE",
+        "url": "https://goetheweb.jp/person/article/20260720-masumoto-160",
+        "status": "ok"
+      },
+      {
+        "title": "仏議会、15歳未満のSNS利用禁止法案を可決 豪州に続き欧州初｜ロイター",
+        "url": "https://news.yahoo.co.jp/articles/08d04217b0a8f89710d8dc22428ce80a9c2ebdc4",
+        "status": "ok"
+      },
+      {
+        "title": "AI時代の「逆張り就活」──大学をやめて溶接工や電気工を目指すZ世代｜クーリエ・ジャポン",
+        "url": "https://courrier.jp/news/archives/452966/",
+        "status": "ok"
+      },
+      {
+        "title": "Forbes JAPAN: 持ち家も終身雇用も無理な現実、Z世代が模索する新しい大人のカタチ",
+        "url": "https://forbesjapan.com/articles/detail/101124",
+        "status": "ok"
+      },
+      {
+        "title": "「若者が流出していく街」はどこか…日本人20代の「転出超過率」が高い自治体ランキング｜東洋経済",
+        "url": "https://news.yahoo.co.jp/articles/c78427426ce0e367dd1326aa802081ba327d0f5b",
+        "status": "ok"
+      },
+      {
+        "title": "100年前にもZ世代？「最近の若者は」と嘆いた大人たちが理解できなかった「大正青年」とは｜ダイヤモンド・オンライン",
+        "url": "https://diamond.jp/articles/-/394349",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代のおよそ3分の1、相手のスマホの待ち受け画面で人を判断していることが判明｜INTERNET Watch",
+        "url": "https://internet.watch.impress.co.jp/docs/yajiuma/2126445.html",
+        "status": "ok"
+      },
+      {
+        "title": "α・Z世代のコアファン戦略は「フォロワー数」より「個の認知」──熱量でつながるコミュニティ構築術｜PR TIMES",
+        "url": "https://prtimes.jp/main/html/rd/p/000000059.000129874.html",
+        "status": "ok"
+      },
+      {
+        "title": "'It's a Modern-Day Draft': Why Stanford Students Walked Out on Sundar Pichai's Commencement Speech｜WIRED",
+        "url": "https://www.wired.com/story/big-interview-stanford-students-booing-sundar-pichai/",
+        "status": "ok"
+      },
+      {
+        "title": "AIとの「付き合い方」でわかれる、6つの生活者タイプ──3万人調査から解き明かすAI時代の生活者像｜MarkeZine",
+        "url": "https://markezine.jp/article/detail/77062",
+        "status": "ok"
+      },
+      {
+        "title": "「TikTok Shop」で売れる秘訣は？ 松屋フーズの例｜ネットショップ担当者フォーラム",
+        "url": "https://netshop.impress.co.jp/n/2026/07/21/16425",
+        "status": "ok"
+      },
+      {
+        "title": "電通がMetaと提携、大規模インフルエンサー動員の基盤構築｜DIGIDAY",
+        "url": "https://digiday.jp/agencies/dentsu-strikes-meta-deal-to-build-plumbing-for-mass-influencer-activation/",
+        "status": "ok"
+      },
+      {
+        "title": "夏目漱石のAIアンドロイドとの対話体験も、関西万博・石黒浩パビリオンを再構成「いのちの未来＋」｜AdverTimes",
+        "url": "https://www.advertimes.com/20260721/article551136/",
+        "status": "ok"
+      },
+      {
+        "title": "森岡毅氏に直撃 「AI時代、若者はマーケターを目指すべきか」｜日経クロストレンド",
+        "url": "https://xtrend.nikkei.com/atcl/contents/casestudy/00012/01912/",
+        "status": "ok"
+      },
+      {
+        "title": "AI時代の信頼危機、Z世代のPRプロは我々より深く見抜いている｜Forbes JAPAN",
+        "url": "https://forbesjapan.com/articles/detail/101409",
+        "status": "ok"
+      },
+      {
+        "title": "ネットフリックス、全社員にAIリテラシーを求める。若手採用も引き続き重視｜Business Insider Japan",
+        "url": "https://www.businessinsider.jp/article/2607-netflix-employees-ai-fluency/",
+        "status": "ok"
+      },
+      {
+        "title": "令和の若者はなぜ「ポップ×ダーク」な表現に惹かれるのか？ 寺田てらが語る新世代の感性｜オリコン",
+        "url": "https://www.oricon.co.jp/special/75930/",
+        "status": "ok"
+      },
+      {
+        "title": "CDの売り上げが増加中。カギはZ世代の「所有したい」気持ち？｜Gizmodo",
+        "url": "https://news.yahoo.co.jp/articles/1824532e3977ca793266ecc8c54a835f2a3cc25c",
+        "status": "ok"
+      },
+      {
+        "title": "人気SNS「setlog」、デザイン変更に大ブーイング 2日で旧デザインに戻す｜ITmedia NEWS",
+        "url": "https://news.yahoo.co.jp/articles/d1ee42bbd5414e0d6d53c7d2feac237dc165c377",
+        "status": "ok"
+      },
+      {
+        "title": "ホテルでなく「ホステル」を選ぶ旅行者とは？ 若者が求める旅先での出会いと体験共有｜トラベルボイス",
+        "url": "https://www.travelvoice.jp/20260721-160103",
+        "status": "ok"
+      },
+      {
+        "title": "日本の若者の間で韓国語と日本語を混ぜた「韓本語」が流行｜Record China",
+        "url": "https://www.recordchina.co.jp/b986532-s39-c30-d0195.html",
+        "status": "ok"
+      },
+      {
+        "title": "「シニアの趣味」が若者を魅了 世界で広がるバードウォッチング新時代｜クーリエ・ジャポン",
+        "url": "https://courrier.jp/news/archives/453137/",
+        "status": "ok"
+      },
+      {
+        "title": "Qoo10販売Z世代向けカラコンブランドを支援、世界観設計からEC向けクリエイティブまで｜PR TIMES",
+        "url": "https://prtimes.jp/main/html/rd/p/000000041.000048437.html",
+        "status": "ok"
+      },
+      {
+        "title": "WIRED: ローファイによるAIへの抵抗",
+        "url": "https://wired.jp/article/sz-a-lo-fi-rebellion-against-ai/",
+        "status": "ok"
+      },
+      {
+        "title": "なぜ文具女子博はここまで人気なのか｜日経クロストレンド",
+        "url": "https://xtrend.nikkei.com/atcl/contents/watch/00013/02933/",
+        "status": "ok"
+      },
+      {
+        "title": "「新曲」より効く？過去の楽曲カタログを蘇らせるマーケティング戦略｜Forbes JAPAN",
+        "url": "https://forbesjapan.com/articles/detail/101391",
+        "status": "ok"
+      },
+      {
+        "title": "ビックリマン、AIで生成サービス開始へ「世界に一つだけ」のキャラの製造可能に｜オリコン",
+        "url": "https://www.oricon.co.jp/news/2469309/full/",
+        "status": "ok"
+      },
+      {
+        "title": "Juice=JuiceをバズらせたファンTikTok動画、仕掛け人がフレームワークを公開｜日経クロストレンド",
+        "url": "https://xtrend.nikkei.com/atcl/contents/18/01397/00005/",
+        "status": "ok"
+      },
+      {
+        "title": "歌舞伎俳優・四代目市川九團次の声で電話注文する「推し活コマース」｜ネットショップ担当者フォーラム",
+        "url": "https://netshop.impress.co.jp/n/2026/07/22/16421",
+        "status": "ok"
+      },
+      {
+        "title": "DeezerがAI生成楽曲の検出・削除強化 1日のアップロードの50%以上がAI生成と判明｜DIGLE",
+        "url": "https://mag.digle.tokyo/news/278779",
+        "status": "ok"
+      },
+      {
+        "title": "ラグジュアリー 不況でも存在感拡大 オートクチュールがブランドを支える理由｜DIGIDAY",
+        "url": "https://digiday.jp/glossy/haute-couture-younger-luxury-customers-pandora-levis-tory-burch/",
+        "status": "ok"
+      },
+      {
+        "title": "コスメ 売り場の争奪戦が激化。顧客を呼び込む「店舗の新しい生き残り策」とは｜DIGIDAY",
+        "url": "https://digiday.jp/glossy/beauty-briefing-urban-outfitters-doubles-down-on-gen-zalpha-beauty-with-yes-day-and-coty-offloads-gucci-ahead-of-schedule/",
+        "status": "ok"
+      },
+      {
+        "title": "「偽チャッピー」につられる小学生 フィルタリング追いつかず｜毎日新聞",
+        "url": "https://mainichi.jp/articles/20260722/k00/00m/040/155000c",
+        "status": "ok"
+      },
+      {
+        "title": "Banning Social Media for Kids Is a Bad Idea｜WIRED",
+        "url": "https://www.wired.com/story/banning-social-media-for-kids-is-a-bad-idea/",
+        "status": "ok"
+      },
+      {
+        "title": "英国のZ世代投資家の58%、投資判断にAI利用意向 Opinium調査｜디지털투데이",
+        "url": "https://www.digitaltoday.co.kr/jp/view/84605/uk-gen-z-turn-to-chatgpt-for-investment-decisions-survey",
+        "status": "ok"
+      },
+      {
+        "title": "高校生の娘が「整形したい」と軽く口にする時代──ルッキズム広告の罠｜マネーポストWEB",
+        "url": "https://www.moneypost.jp/1421607",
+        "status": "ok"
+      },
+      {
+        "title": "韓国発セルフフォト「PHOTOGRAY」日本上陸へ JO1、INI、NiziUら14組とコラボ｜マイナビニュース",
+        "url": "https://news.mynavi.jp/article/20260724-4734011/",
+        "status": "ok"
+      },
+      {
+        "title": "令和のシール文化 Z世代が調べてみた 平成世代は「進化してる」｜ラジトピ",
+        "url": "https://jocr.jp/raditopi/2026/07/23/696507/",
+        "status": "ok"
+      },
+      {
+        "title": "若者が「旅行に行きたくない」意外な理由。SNSに起きている異変｜女子SPA!",
+        "url": "https://news.yahoo.co.jp/articles/93bab14a0310b71494633b2634c675b76b13c368",
+        "status": "ok"
+      },
+      {
+        "title": "Tinder rebrand: is it too soon to celebrate?｜Creative Bloq",
+        "url": "https://www.creativebloq.com/design/branding/is-the-tinder-rebrand-a-total-success-not-everyone-is-so-sure",
+        "status": "ok"
+      },
+      {
+        "title": "年2万円でもファン集まる注目ランニングブランドに学ぶ「惹きつけるストーリー」｜DIGIDAY",
+        "url": "https://digiday.jp/brands/how-bandit-running-is-expanding-internationally-while-staying-hyperlocal/",
+        "status": "ok"
+      },
+      {
+        "title": "人よりもAIと会話する方が好き！？生活者と生成AIの現在地｜電通報",
+        "url": "https://dentsu-ho.com/articles/9813",
+        "status": "ok"
+      },
+      {
+        "title": "あなたのSNS投稿は巨大ITへの「無償労働」なのか──デジタル地主とレンティア資本主義｜東洋経済",
+        "url": "https://news.yahoo.co.jp/articles/023686b48eead04bca8d5563727f235bdb29cf49",
+        "status": "ok"
+      },
+      {
+        "title": "日本は「縮小」を描き始めた──アニメ・漫画に映る人口減少社会｜note",
+        "url": "https://note.com/vivid_macaw3853/n/n02539bd9be41",
+        "status": "ok"
+      }
+    ],
+    "essay": {
+      "title": "2026/07/21-07/24 週次考察",
+      "summary": "Z世代・若者は、AIやアルゴリズムに最適化された世界の中で、“自分が選んだ・関わった・所有している”と実感できるものを取り戻そうとした週",
+      "structure": [],
+      "sections": [
+        {
+          "heading": "AI不信は「能力への脅威」から、“何を信じればよいか分からない危機”へ進んだ",
+          "body": "今週のAI関連記事では、若者の仕事やキャリアだけでなく、採用、PR、音楽、投資、教育、人格、コンテンツ制作まで論点が広がった。 象徴的なのは、生成AIが書いた応募作文を採用担当者が読み続ける状況である。 応募者はAIを使って効率化する。 採用側もAIを使って選考する。 その結果、応募者本人の思考や人柄がどこにあるのか分かりにくくなる。 これは単なる不正利用の問題ではない。 AIが使われるほど、 - 誰が書いたのか - 誰が考えたのか - 誰の経験なのか - 誰が責任を持つのか - 本人にその能力があるのか という、帰属の問題が大きくなる。 音楽領域では、アップロードされる楽曲の半数以上がAI生成とされ、検出・削除が強化されている。 PR領域でも、Z世代の若手プロフェッショナルは、AI時代の信頼危機を敏感に見抜いていると指摘された。 英国のZ世代投資家にはAIを投資判断に利用する意向がある一"
+        },
+        {
+          "heading": "ローファイ・CD・文具・シールは、“現実に触れている証拠”として選ばれている",
+          "body": "今週は、若者のアナログ回帰を示す記事が特に多かった。 - CD売上の増加 - ローファイによるAIへの抵抗 - 文具女子博 - 令和のシール文化 - 生活の20％をアナログにする発想 - バードウォッチング - 過去の音楽カタログ - セルフフォト - リアル店舗やモールの再評価 これらは、単純なレトロブームではない。 ストリーミングでは、音楽はいつでも聴ける。 生成AIでは、曲も画像も大量につくれる。 SNSでは、写真や言葉が無限に流れていく。 しかし、無限にアクセスできるものは、必ずしも「自分のもの」にはならない。 CDは手元に残る。 文具やシールは触れられる。 セルフフォトは撮影した時間と場所を記録する。 バードウォッチングでは、自分の身体と注意を使わなければ対象を見つけられない。 これらに共通するのは、 «自分がそこにいて、時間を使い、選び、所有したという痕跡が残ること» である。"
+        },
+        {
+          "heading": "若者トレンドは「企業が流行らせるもの」から、“生活者と一緒に成立するもの”へ変わった",
+          "body": "TikTok上半期トレンド大賞、ファン動画によるJuice=Juiceのバズ、コアファン戦略、推し活コマースなど、今週は「誰がトレンドをつくるのか」を考えさせる記事が多かった。 これまでのマーケティングでは、 企業が企画する ↓ メディアが広める ↓ 生活者が受け取る という構造が中心だった。 しかし、現在のトレンドは、 ブランドやIPが素材を出す ↓ ファンが編集・投稿・解釈する ↓ 他のユーザーが模倣・参加する ↓ 企業がその動きを再利用する という循環で成立する。 TikTok上の流行は、企業の完成された広告によって生まれるとは限らない。 むしろ、ユーザーがまねできる余白、改変できる形式、参加したくなる文脈があることが重要になる。 Juice=Juiceをバズらせたのも、公式施策だけではなく、ファンによるTikTok動画だった。 ここでファンは、単なる視聴者でも購買者でもない。 «文"
+        },
+        {
+          "heading": "フォロワー数ではなく、“一人の存在を認識するコミュニティ”が強くなる",
+          "body": "今週のコミュニティ関連の記事では、「個の認知」という言葉が象徴的だった。 α・Z世代のコアファン戦略では、フォロワー数を増やすことよりも、一人ひとりのファンを認識することが重要だとされた。 年間2万円でもファンが集まるランニングブランドも、グローバル化しながらハイパーローカルな関係を維持している。 若者がホテルよりホステルを選ぶ動きも、安さだけでは説明できない。 旅先で他者と出会い、体験を共有し、予定外の関係が生まれることに価値がある。 モールやリアル店舗の再評価も同様である。 オンラインでは商品を効率的に買える。 しかしリアルな場所には、 - 偶然出会う - 試す - 比較する - 友人と過ごす - 店員と話す - その場の空気を共有する という、関係と体験がある。 若者は大規模なコミュニティを拒んでいるのではない。 «自分が数字の一部としてではなく、一人の参加者として認識される場所を求"
+        },
+        {
+          "heading": "AI時代のキャリア不安は、“残る仕事”と“残る技能”の再評価を生んだ",
+          "body": "今週の仕事関連記事には、対照的な二つの流れがあった。 一方では、 - AI時代にマーケターを目指すべきか - 全社員にAIリテラシーを求めるNetflix - AI時代の信頼を見抜くPR人材 - AIを使った採用活動 など、知識労働にAIを組み込む動きがある。 他方では、 - 大学を辞めて溶接工や電気工を目指すZ世代 - ブルーカラー人材不足 - インフラ整備の担い手不足 が取り上げられた。 これは、ホワイトカラーからブルーカラーへの単純な回帰ではない。 若者は、 - AIに代替されにくい - 社会に必要とされる - 技能が蓄積される - 自分の仕事の成果が目に見える - 現場に実体がある 仕事を再評価し始めている。 これまで「良い仕事」とされたホワイトカラー職でも、AIによって初級業務が減り、成長機会が不透明になっている。 一方、溶接、電気、建設、保守などは、身体性と現場判断が必要で、仕"
+        },
+        {
+          "heading": "SNS規制をめぐる議論は、「禁止」か“主導権を育てるか”の対立である",
+          "body": "今週は、フランスで15歳未満のSNS利用禁止法案が可決された一方、WIREDでは子どものSNS禁止に反対する論考が掲載された。 この対立は、若者を守るべきかどうかではない。 両者とも、若年層がSNSによって受ける悪影響を問題視している。 違いは、解決策である。 一方は、 危険な環境から子どもを遠ざける ことを重視する。 もう一方は、 禁止では回避行動を生むだけで、リテラシーや支援を育てられない と考える。 実際、偽のAIサービスに小学生が誘導される問題や、ルッキズム広告によって高校生が整形を身近に感じる問題は、年齢制限だけでは解決しにくい。 SNSを禁止しても、 - AIサービス - 動画プラットフォーム - ゲーム - メッセージアプリ - 検索 - 広告 を通じて、同様のリスクは入り込む。 重要なのは、子どもや若者が、 - 誰が発信しているか - 何の目的で表示されているか - 本物か"
+        },
+        {
+          "heading": "「所有したい」は、モノへの執着ではなく“自分の履歴を残したい”欲求である",
+          "body": "CD、シール、文具、セルフフォト、推し活グッズ、オートクチュール、ラグジュアリー、世界に一つだけのビックリマンキャラクターなど、今週は「所有」に関わる記事も多かった。 若者は所有を嫌い、すべてをシェアやサブスクリプションで済ませる世代だと語られてきた。 しかし今週の記事群は、それだけでは説明できない。 若者が欲しいのは、一般的な大量商品を大量に持つことではない。 - 自分で選んだ - 自分向けにつくられた - 自分の記憶と結びついている - ファン活動の履歴を示す - 他人とは少し違う - デジタル上で消えずに残る ものを所有したい。 ビックリマンのAI生成サービスも、「AIがつくる」こと自体より、世界に一つだけのキャラクターを物理的に製造できる点が重要である。 セルフフォトも、画像データだけでなく、友人や推しとの時間を記録する儀式として機能する。 CDも、音楽を再生する媒体以上に、ファン"
+        }
+      ],
+      "period_definition": "若者が求めているのは、便利な世界ではなく、自分の痕跡が残る世界である。",
+      "keywords": [
+        "AI不信は能力への脅威か",
+        "ローファイ・CD・文具・",
+        "若者トレンドは企業が流行",
+        "フォロワー数ではなく、“",
+        "AI時代のキャリア不安は",
+        "SNS規制をめぐる議論は"
+      ]
+    },
+    "article_count": 52,
+    "warnings": []
+  },
+  {
+    "type": "weekly",
     "id": "2026-07-13_2026-07-17",
     "title": "2026/07/13-07/17 Z世代・若年層関連記事と考察",
     "period": {
