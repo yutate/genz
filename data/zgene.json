@@ -1,6 +1,358 @@
 [
   {
     "type": "weekly",
+    "id": "2026-08-03_2026-08-07",
+    "title": "2026/08/03-08/07 Z世代・若年層関連記事と考察",
+    "period": {
+      "start": "2026-08-03",
+      "end": "2026-08-07"
+    },
+    "articles": [
+      {
+        "title": "中高生1000人に聞いた「将来なりたい職業」男子中学生はITエンジニア、女子中学生は芸能人が1位｜マイナビニュース",
+        "url": "https://news.mynavi.jp/article/20260730-4752864/",
+        "status": "ok"
+      },
+      {
+        "title": "政府は「子ども」ではなく「結婚できない若者」を増やしているだけ 金持ちしか子どもを持てない日本の暗い未来｜PRESIDENT",
+        "url": "https://president.jp/articles/-/116618",
+        "status": "ok"
+      },
+      {
+        "title": "90年代アニメ「ピングー」が再ブームの理由、Z世代もハマる「懐かしい」だけではない魅力｜現代ビジネス",
+        "url": "https://gendai.media/articles/-/169589",
+        "status": "ok"
+      },
+      {
+        "title": "農林水産省「食育白書」 食生活よりも趣味や仕事が優先 野菜や果物の摂取が少ない若年層｜健康通信",
+        "url": "https://htonline.sohjusha.co.jp/729-051/",
+        "status": "ok"
+      },
+      {
+        "title": "ドコモFG、今秋までに金融AI試験版を開始 投資運用を助言し若年層取り込み狙う｜産経ニュース",
+        "url": "https://www.sankei.com/article/20260729-V2AU2TTSHVN6HCSOCHNKDAXK6I/",
+        "status": "ok"
+      },
+      {
+        "title": "海外旅行に興味薄な日本の若者、「経験に投資」する韓国の若者｜ニューズウィーク",
+        "url": "https://www.newsweekjapan.jp/articles/-/329281",
+        "status": "ok"
+      },
+      {
+        "title": "子ども・若者の学びと体験を支える スターバックスが新プログラムを開始（日本上陸30周年）｜SDGs MAGAZINE",
+        "url": "https://sdgsmagazine.jp/2026/07/30/19923/",
+        "status": "ok"
+      },
+      {
+        "title": "仕事のチャットやメールで「！」つけると 20代の50%が「親しみを感じる」｜J-CAST",
+        "url": "https://article.yahoo.co.jp/detail/2725abc65adefe711a44588dd68d65bb8e3da888",
+        "status": "ok"
+      },
+      {
+        "title": "「若者のゲーム離れ」は誤解か？ Z世代の多数が選ぶ「ゲーム環境」に驚愕｜マグミクス",
+        "url": "https://news.yahoo.co.jp/articles/0dea5d378026f60bd1cf055c82f4114a5fb55aa1",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代最強の世界的ポップスター！ オリヴィア・ロドリゴが鳴らしたニューウェイヴ的感性｜Re:minder",
+        "url": "https://article.yahoo.co.jp/detail/4edfb1e952d204c323d1298ac74d6cfba824b229",
+        "status": "ok"
+      },
+      {
+        "title": "若者の「SNS禁止」で得する企業｜newspicks",
+        "url": "https://newspicks.com/news/17219049/body/",
+        "status": "ok"
+      },
+      {
+        "title": "「なりたい職業」公務員、中学生の人気が急落 高校生1位は男女とも同じ｜リセマム",
+        "url": "https://resemom.jp/article/2026/07/31/87015.html",
+        "status": "ok"
+      },
+      {
+        "title": "現役高校生の「変えてほしい校則」1位はスマホ使用 3割は不満なし｜Forbes JAPAN",
+        "url": "https://forbesjapan.com/articles/detail/101867",
+        "status": "ok"
+      },
+      {
+        "title": "脳科学者・池谷裕二「20代から30代前半はAIに頼るな」｜毎日新聞",
+        "url": "https://mainichi.jp/premier/business/articles/20260801/biz/00m/020/003000c",
+        "status": "ok"
+      },
+      {
+        "title": "中学生は生成AI利用が過半数 α世代の実態「依存」とは違う｜AdverTimes",
+        "url": "https://www.advertimes.com/20260730/article552357/",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代が「体験経済」で決済アプリZelleを「動詞」として使う理由｜Forbes JAPAN",
+        "url": "https://forbesjapan.com/articles/detail/102056",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代の大学生の海外旅行意識・実態調査結果を発表｜ラブすぽ",
+        "url": "https://love-spo.com/article/z-sekai-kaigairyoko/",
+        "status": "ok"
+      },
+      {
+        "title": "対面での会話もAIに頼る米国の若者たち｜WSJ",
+        "url": "https://jp.wsj.com/articles/young-adults-are-letting-ai-do-their-talking-for-themeven-in-person-de1c0f25",
+        "status": "ok"
+      },
+      {
+        "title": "日本以外の国の若者は80%が「はい」と答えた質問、日本の大学では47.8%だった｜ゴールドライフ",
+        "url": "https://renaissance-media.jp/articles/-/26898",
+        "status": "ok"
+      },
+      {
+        "title": "アメリカンイーグルの最新Z世代戦略は有名人と学生クリエイターの組み合わせ｜DIGIDAY",
+        "url": "https://digiday.jp/glossy/american-eagle-back-to-school-rushtok-malls/",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代のSNSトレンド調査 Setlogの認知率91.4%、利用者の9割が3カ月以内に利用開始と急拡大｜PR TIMES",
+        "url": "https://prtimes.jp/main/html/rd/p/000000102.000033964.html",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代の約8割が海外旅行実施に関心、旅行経験率は5割｜航空新聞社",
+        "url": "https://www.jwing.net/news/111559",
+        "status": "ok"
+      },
+      {
+        "title": "2026年上半期α世代トレンド調査 中高生が選ぶトレンドを発表｜PR TIMES",
+        "url": "https://prtimes.jp/main/html/rd/p/000000009.000138984.html",
+        "status": "ok"
+      },
+      {
+        "title": "自己コントロールを取り戻す若者のアナログ回帰 手料理に励むZ・α世代｜料理通信",
+        "url": "https://r-tsushin.com/journal/world/norway_2026_7/",
+        "status": "ok"
+      },
+      {
+        "title": "「NISAキャンセル界隈」になってない？ 口座放置の20代・30代が自分のペースで資産形成と向き合う方法｜LIMO",
+        "url": "https://limo.media/articles/-/133962",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代の8割が認めた「働いているフリ」、仕事が早いほど損をする評価の罠 米国｜Forbes JAPAN",
+        "url": "https://forbesjapan.com/articles/detail/102200",
+        "status": "ok"
+      },
+      {
+        "title": "なぜZ世代は今「イタリアン・ノンナ」の美学に惹かれるのか｜Vogue Japan",
+        "url": "https://www.vogue.co.jp/article/fashion-trends-dolce-nonna-gen-z",
+        "status": "ok"
+      },
+      {
+        "title": "「顔ない」「めじるし」「おかずかき氷」Z世代の2026年トレンドは？｜TBS NEWS DIG",
+        "url": "https://news.yahoo.co.jp/articles/ea01d55e553389149a024264e0aef908b6ac9804",
+        "status": "ok"
+      },
+      {
+        "title": "中国Z世代が将来に希望持てず、経済に閉塞感──心の安らぎは歴代王朝｜Bloomberg",
+        "url": "https://www.bloomberg.com/jp/news/articles/2026-07-27/TINN1BR24U8R00",
+        "status": "ok"
+      },
+      {
+        "title": "生涯ブランドを目指すオルビスが10代に「セルフケア」を教える理由｜MarkeZine",
+        "url": "https://markezine.jp/article/detail/77203",
+        "status": "ok"
+      },
+      {
+        "title": "ChatGPTへの恋愛相談、日本は英語圏の3倍 オープンデータの調査｜Business Insider Japan",
+        "url": "https://www.businessinsider.jp/article/2608-japanese-chatgpt-behavior-defying-western-search-centric-ai-norms/",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代向け体験型企画「謎とめぐる記憶の旅」ヤマハ発動機コミュニケーションプラザで実施中｜Motor Fan",
+        "url": "https://motor-fan.jp/article/1588524/",
+        "status": "ok"
+      },
+      {
+        "title": "「天女界隈」「ジェリーバッグ」「ファッションスピ」Z世代の2026年トレンドは？｜auWebポータル",
+        "url": "https://article.auone.jp/a3166d6f-ccdc-41cd-a485-5e12632c3d8b",
+        "status": "ok"
+      },
+      {
+        "title": "「Z世代は初デートの費用すら払えない」 米国の経済苦で「ロマンス」も不況｜中央日報",
+        "url": "https://japanese.joins.com/JArticle/353037",
+        "status": "ok"
+      },
+      {
+        "title": "アジア太平洋地域のZ世代富裕層、旅先では文化交流や食、自然を重視 マリオット調査｜トラベルボイス",
+        "url": "https://www.travelvoice.jp/20260805-160131",
+        "status": "ok"
+      },
+      {
+        "title": "「すぐ飛ばされる動画」と「買いたくなる動画」の差！Z世代の心を掴むヒット動画の法則｜DXマガジン",
+        "url": "https://dxmagazine.jp/news/ytoda2632-10/",
+        "status": "ok"
+      },
+      {
+        "title": "Setlog認知率91.4%、利用率73.7%に到達 学割アプリ調査で判明したZ世代の最新SNS事情｜コマースピック",
+        "url": "https://www.commercepick.com/archives/99672",
+        "status": "ok"
+      },
+      {
+        "title": "若者はSNSで「見る専」、中年の発信のほうが質が高い？ メディアの若者偏重の裏で起きている需要のねじれ｜集英社新書プラス",
+        "url": "https://shinsho-plus.shueisha.co.jp/interview/harada_tanaka/36283",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代は本当に「酒を飲まない」？ 米国で意外な調査結果｜The Independent",
+        "url": "https://app.ekkow.com/1455188958551359686",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代を超えて広がる「キャリアミニマリズム」、その背景にあるもの｜Forbes JAPAN",
+        "url": "https://forbesjapan.com/articles/detail/102229",
+        "status": "ok"
+      },
+      {
+        "title": "「Z世代を追わない」ローラ メルシエが狙うX世代とマイクロクリエイター重視｜DIGIDAY",
+        "url": "https://digiday.jp/glossy/laura-mercier-is-replacing-traditional-influencers-with-tastemaker-consultants/",
+        "status": "ok"
+      },
+      {
+        "title": "【若者と生成AI】検索から相談相手へ AIネイティブ世代に必要な距離感｜Think IT",
+        "url": "https://thinkit.co.jp/article/39415",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代の映画館回帰が示す、共に体験することの価値｜Forbes JAPAN",
+        "url": "https://forbesjapan.com/articles/detail/102366",
+        "status": "ok"
+      },
+      {
+        "title": "AI時代の就職市場で、Z世代が「思わぬ強み」を持つ理由｜Forbes JAPAN",
+        "url": "https://forbesjapan.com/articles/detail/102014",
+        "status": "ok"
+      },
+      {
+        "title": "「アプリより直接会いたい」Z世代の恋愛観の変化、Tinder運営元CEOが語る｜CNET Japan",
+        "url": "https://japan.cnet.com/article/35251367/",
+        "status": "ok"
+      },
+      {
+        "title": "ブランドバッグは「持ち歩ける資産」 推し活するZ世代がリユースを選ぶ理由｜TABI LABO",
+        "url": "https://tabi-labo.com/312815/genz-oshikatsu-brand-reuse",
+        "status": "ok"
+      },
+      {
+        "title": "データとテクノロジーが生んだ「穴のないZ世代」 B・スネデカーが語る今の若手の凄さ｜みんなのゴルフダイジェスト",
+        "url": "https://www.golfdigest-minna.jp/_ct/17856802",
+        "status": "ok"
+      },
+      {
+        "title": "「顔ない」「めじるし」「おかずかき氷」Z世代の2026年トレンドは？｜TBS NEWS DIG",
+        "url": "https://newsdig.tbs.co.jp/articles/-/2848173",
+        "status": "ok"
+      },
+      {
+        "title": "ペイディ「Apple専用プラン」480万利用の4割がZ世代｜Impress Watch",
+        "url": "https://www.watch.impress.co.jp/docs/news/2131196.html",
+        "status": "ok"
+      },
+      {
+        "title": "ヒップホップは「現代の口承文学」でラップは読書 「若者は本を読まない」言説に潜む不平等への無自覚さ｜現代ビジネス",
+        "url": "https://gendai.media/articles/-/169526",
+        "status": "ok"
+      },
+      {
+        "title": "若者が「理想の相手」と友達になれる可能性は低く自分と似た相手と友達になりやすい｜GIGAZINE",
+        "url": "https://gigazine.net/news/20260804-friends-students-want-versus-actually-make/",
+        "status": "ok"
+      },
+      {
+        "title": "「若者から見ても不快」12年ぶりに再結成したアイドル、世代別の踊り方を比較した動画に賛否｜江南タイムズ",
+        "url": "https://www.kangnamtimes.com/ja/entertainment/article/611086/",
+        "status": "ok"
+      },
+      {
+        "title": "和菓子の魅力を若者に伝えたい！ どら焼き×フローズンドリンクなど新たな仕掛けで発信｜ラジトピ",
+        "url": "https://jocr.jp/raditopi/2026/08/04/699355/",
+        "status": "ok"
+      },
+      {
+        "title": "日本のギャル文化で大化け、就職難の若者が熱狂 韓流ガールズグループの下克上｜FNN",
+        "url": "https://www.fnn.jp/articles/FNN/1088064",
+        "status": "ok"
+      },
+      {
+        "title": "スタバの強力ライバルに？ 若者が「ゴンチャ」を選ぶワケ タピオカの次に来た「フルーツティー」｜女子SPA!",
+        "url": "https://joshi-spa.jp/1424996",
+        "status": "ok"
+      },
+      {
+        "title": "10代・20代の若者600人に聞いた流行った言葉 3位「チャッピー構文」、2位「メロい」、1位は？｜@DIME",
+        "url": "https://dime.jp/genre/2141441/",
+        "status": "ok"
+      },
+      {
+        "title": "オーストラリア、10代の若者の多くがSNS規制下でも利用継続｜BANG Showbiz",
+        "url": "https://app.ekkow.com/1457423504291889180",
+        "status": "ok"
+      },
+      {
+        "title": "「好きなことを仕事にしたい」若者への豊田章男の回答が正論すぎた｜ダイヤモンド",
+        "url": "https://diamond.jp/articles/-/396632",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代の「お土産選び」はここまで進化「まず調べる」が新常識 SNS・生成AI・価格検索まで徹底リサーチ｜時事",
+        "url": "https://www.jiji.com/jc/article?k=000000002.000027434&g=prt",
+        "status": "ok"
+      }
+    ],
+    "essay": {
+      "title": "2026/08/03-08/07 週次考察",
+      "summary": "Z世代・若者は、“自分の人生を自分で統治する”段階から、AI・SNS・仕事・消費・人間関係を、自分が心地よく続けられる量へ“調律する”段階に入った週",
+      "structure": [],
+      "sections": [
+        {
+          "heading": "AIは「相談相手」を超え、“意思決定の前室”になった",
+          "body": "今週、AI関連で特徴的だったのは利用率そのものではない。 AIが、 - 恋愛相談 - 投資助言 - 対面会話の補助 - 旅行先の検討 - 勉強 - メイク - キャリア相談 など、実際に行動する前の段階へ入り込んでいることだった。 特に、日本ではChatGPTへの恋愛相談が英語圏より多いという記事は興味深い。 AIは検索エンジンの代替というより、 «人に話す前に一度気持ちを整理する場所» になっている。 これは6〜7月に見えた「AI＝相談相手」の深化である。 一方で、対面会話の内容すらAIに考えてもらう若者の記事もあった。 ここには境界線がある。 AIを使って考えを整理することと、AIに考えること自体を委ねることは違う。 若者自身も、この境界を探している。 だから8月のAIテーマは、単なる「AIとの距離」から、 AIをどこまで自分の意思決定プロセスへ入れるか へ移っている。 示唆 今後のA"
+        },
+        {
+          "heading": "リアル回帰は「デジタル疲れ」ではなく、“身体感覚の回復”へ進んだ",
+          "body": "今週は、アナログ回帰の記事がさらに具体的になった。 - 手料理 - 映画館 - 直接会う恋愛 - 文化や食を楽しむ旅行 - 体験型施設 - 和菓子 - ゴンチャの店舗体験 などである。 7月までは、CD、シール、文具、せいろなど「モノ」への回帰が目立った。 8月最初の週は、そこからさらに、 身体を使って経験すること へ進んでいる。 映画を自宅で見られる時代に映画館へ行く。 デーティングアプリがあるのに直接会いたいと思う。 料理は買えるのに自分でつくる。 そこにあるのは不便さへの憧れではない。 «自分がその場にいて、自分の身体で経験したという確信» である。 AIやデジタルが生活の多くを仲介するほど、身体性そのものが希少価値になる。 示唆 「リアル体験」は、単なる店舗回帰ではない。 - 五感を使う - 人と同じ時間を共有する - 偶然が起きる - その場に行かなければ体験できない - 記憶と"
+        },
+        {
+          "heading": "Setlogの急拡大が示すのは、“SNS離れ”ではなく「公開範囲の縮小」",
+          "body": "今週最も分かりやすいシグナルの一つがSetlogだった。 調査では認知率91.4％、利用者の多くが直近3カ月以内に利用を始めたとされ、急速な浸透が報じられている。 ここで重要なのは、「次のSNSが何か」ではない。 InstagramやTikTokのように、 広く見せるSNS から、 知っている人にだけ見せるSNS へ移っていることである。 若者は発信をやめていない。 むしろ日常共有への欲求は強い。 ただし、 - 不特定多数に見られたくない - 完成された投稿をつくらなくていい - フォロワー数を競いたくない - 文脈を知らない人から評価されたくない という条件が加わっている。 これは7月の「関係圏の自己防衛」が定量的にも確認され始めた、と読める。 示唆 SNSやコミュニティの価値は、 Reach最大化 ではなく、 Context最適化 へ向かう。 ブランドも、若者に広く届けるだけでなく、「"
+        },
+        {
+          "heading": "「キャリアミニマリズム」は、意欲低下ではなく“仕事への投資量の再計算”",
+          "body": "今週の仕事関連記事では、 - キャリアミニマリズム - 働いているフリ - AI時代の就職市場 - 中高生の将来職業 - 「好きなことを仕事にしたい」への問い が目立った。 ここから見えるのは、若者が仕事を嫌っているという単純な構図ではない。 問題は、 «仕事に時間・感情・努力を投資したとき、それが何として返ってくるのか。» である。 「仕事が早いほど損をする」職場では、効率的に働く合理性がない。 頑張れば追加業務が来るだけなら、能力を最大化して見せない方が合理的になる。 キャリアミニマリズムも同じである。 出世や肩書を最大化することより、 - 給与 - 自由時間 - 安定 - 成長 - 心理負担 のバランスを取る。 これは「向上心がない」のではなく、 キャリアROIを見ているのである。 示唆 若手のエンゲージメントには、「もっと頑張れ」ではなく、 - 成果と評価を連動させる - 仕事が早"
+        },
+        {
+          "heading": "消費は「所有」より、“使い切れる価値”へ",
+          "body": "今週の消費記事では、 - 推し活×リユースブランドバッグ - ペイディ - NISAキャンセル - 金融AI - 旅行 - ゴンチャ - お土産の徹底リサーチ などが目立った。 若者は買わなくなったのではない。 むしろ、 買った後に価値が残るか を以前より厳しく見ている。 ブランドバッグをリユースで買うのも象徴的だ。 バッグは、 - 推し活で使える - ファッションとして使える - 再販売できる - 資産性もある という複数価値を持つ。 これは「中古で節約」というだけではない。 一つの支出から複数の効用を回収する消費である。 お土産についても、SNS、生成AI、価格検索まで使って事前に調べる。 「欲しいものを見つける」より、 失敗しない状態をつくってから買うのである。 示唆 若者向け商品では、 価格 だけでなく、 Utility Density＝1回の支出から得られる価値の密度 が重要にな"
+        },
+        {
+          "heading": "「NISAキャンセル」は、自己統治が“やめる権利”まで広がった象徴",
+          "body": "「NISAキャンセル界隈」という言葉は、今週を考える上で象徴的である。 これまで若者には、 - 投資すべき - AIを使うべき - キャリアアップすべき - SNS発信すべき - 海外へ行くべき - 自己投資すべき という「正解」が大量に提示されてきた。 しかし、どれも全員に合うとは限らない。 NISAを始めたが放置している。 投資そのものがストレスになる。 生活資金を優先したい。 ならば、一度止めてもいい。 これは投資リテラシーの低下というより、 «社会が勧める正解を、自分に合わなければ途中で降りる» という行動である。 7月の「NOを言う主導権」が、8月には「やめる主導権」として具体化したとも言える。 示唆 サービス設計では、加入・継続だけでなく、 - 一時停止 - 縮小 - ペース変更 - 再開 - 解約後の復帰 をストレスなくできることが価値になる。 LTVを高める最善策が「逃げら"
+        },
+        {
+          "heading": "レトロ回帰は「過去に戻る」から、“過去から生活技術を借りる”段階へ",
+          "body": "今週も、 - ピングー - イタリアン・ノンナ - 手料理 - ギャル文化 - 和菓子 など過去文化が登場した。 これまでのレトロトレンドは、 「昔のものが新鮮」 という説明が多かった。 しかし現在は少し違う。 例えば「イタリアン・ノンナ」の美学や手料理には、 - 時間をかける - 身近な材料を使う - 家族や人に振る舞う - 生活そのものを楽しむ という価値観が含まれる。 つまり、若者が求めているのは昔の商品だけではない。 «便利になりすぎる前の生活のリズム» である。 過去はノスタルジーの対象ではなく、現在を立て直すための「生活技術のアーカイブ」になっている。 --- 横断考察⑧ 「経験に投資する若者」と「経験を諦める若者」の二極化が見え始めた 旅行関連記事を横断すると興味深い。 一方では、 - Z世代富裕層は文化交流、食、自然を重視 - 少人数旅行が増える - 韓国の若者は経験に投資"
+        }
+      ],
+      "period_definition": "若者が求めているのは最適解ではない。自分にとっての“ちょうどいい”を自分で決められる生活である。",
+      "keywords": [
+        "AIは相談相手を超え、“",
+        "リアル回帰はデジタル疲れ",
+        "Setlogの急拡大が示",
+        "キャリアミニマリズムは、",
+        "消費は所有より、“使い切",
+        "NISAキャンセルは、自"
+      ]
+    },
+    "article_count": 59,
+    "warnings": []
+  },
+  {
+    "type": "weekly",
     "id": "2026-07-27_2026-07-31",
     "title": "2026/07/27-07/31 Z世代・若年層関連記事と考察",
     "period": {
