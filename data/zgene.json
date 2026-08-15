@@ -1,6 +1,393 @@
 [
   {
     "type": "weekly",
+    "id": "2026-08-10_2026-08-15",
+    "title": "2026/08/10-08/15 Z世代・若年層関連記事と考察",
+    "period": {
+      "start": "2026-08-10",
+      "end": "2026-08-15"
+    },
+    "articles": [
+      {
+        "title": "「サナ活」で支持すればするほど貧困地獄に落とされる若者たち｜Yahoo!エキスパート",
+        "url": "https://news.yahoo.co.jp/expert/articles/fa459e5b928d4d9b0c28e4729941256acb2479f2",
+        "status": "ok"
+      },
+      {
+        "title": "【佐藤優】「大学に蛙化」するZ世代に潜む認知の歪み 待ち受けるのは「評価されないまま年をとる」悲惨な未来｜Business Insider Japan",
+        "url": "https://www.businessinsider.jp/article/282224g/",
+        "status": "ok"
+      },
+      {
+        "title": "AI時代の就職市場で、Z世代が「思わぬ強み」を持つ理由｜Forbes JAPAN",
+        "url": "https://forbesjapan.com/articles/detail/102014",
+        "status": "ok"
+      },
+      {
+        "title": "20代の4割超がハマるAIいいなり投資 85%が損失を経験｜Forbes JAPAN",
+        "url": "https://forbesjapan.com/articles/detail/102182",
+        "status": "ok"
+      },
+      {
+        "title": "「デートや飲酒を控える一方、金融リスクには好戦的」一攫千金に賭けるZ世代 背景に「絶望感」｜Yahoo!ニュース",
+        "url": "https://news.yahoo.co.jp/pickup/6591098",
+        "status": "ok"
+      },
+      {
+        "title": "「しまむら」が過去最高益を更新 「ダサい」イメージが一変、Z世代の心をつかむワケ｜現代ビジネス",
+        "url": "https://gendai.media/articles/-/169911",
+        "status": "ok"
+      },
+      {
+        "title": "行列に「並ぶこと」が新しいステータスに？ Z世代の奇妙な消費行動｜クーリエ",
+        "url": "https://courrier.jp/news/archives/455389/",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代はインターネット上で最もアクティブだが、サイバーセキュリティの保護は最小限｜VOI.ID",
+        "url": "https://voi.id/ja/teknologi/588878",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代の注文では、個人的な配慮が最優先事項となっている｜Vietnam.vn",
+        "url": "https://www.vietnam.vn/ja/dau-an-ca-nhan-len-ngoi-trong-cac-don-hang-cua-gen-z",
+        "status": "ok"
+      },
+      {
+        "title": "大人に失望感 トー横に集まる若者｜Yahoo!ニュース",
+        "url": "https://news.yahoo.co.jp/pickup/6591078",
+        "status": "ok"
+      },
+      {
+        "title": "「フレネミー」「冷笑系」…若者に広がる不穏な流行語｜読売新聞",
+        "url": "https://www.yomiuri.co.jp/column/henshu/20260804-GYT8T00114/",
+        "status": "ok"
+      },
+      {
+        "title": "若者に反AI感情のうねり 止まらぬ開発競争、ブームの震源地で何が｜朝日新聞",
+        "url": "https://www.asahi.com/articles/ASV7P5QBYV7PUHBI029M.html",
+        "status": "ok"
+      },
+      {
+        "title": "彼女への返信にAIを使う男「チャピ男」が増加中？ Z世代のコミュニケーション実態調査｜Real Sound",
+        "url": "https://realsound.jp/tech/2026/08/post-2485538.html",
+        "status": "ok"
+      },
+      {
+        "title": "「コト消費」の次は「トキ消費」 Z世代の心をつかむ「謎解きイベント」、ヤマハ発動機のねらい｜レスポンス",
+        "url": "https://response.jp/article/2026/08/08/415085.html",
+        "status": "ok"
+      },
+      {
+        "title": "若年層が出産後に希望する働き方「フルタイムで定時帰宅」が約4割で最多｜マイナビニュース",
+        "url": "https://news.mynavi.jp/article/20260807-4781085/",
+        "status": "ok"
+      },
+      {
+        "title": "生成AIの普及で84.7%が事務・一般職が減ると認識 若年層の「ブルーワーカー職種」への興味広がる｜AMP",
+        "url": "https://ampmedia.jp/2026/08/07/blue-worker-gakujo/",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代を中心に広がる「アナログ回帰」。若い世代はなぜ2000年代のライフスタイルに惹かれるのか｜Vogue Japan",
+        "url": "https://www.vogue.co.jp/article/genz-analog-revival",
+        "status": "ok"
+      },
+      {
+        "title": "20代は「タイパよく」60代は「頼らない」「感情ミュート社会」における私たちの密かな願望｜Yahoo!エキスパート",
+        "url": "https://news.yahoo.co.jp/expert/articles/0805c814922bca87a69884d5821452c0e1bac799",
+        "status": "ok"
+      },
+      {
+        "title": "リクルート、新卒エンジニア向け研修資料を無料公開 AI時代の生き残り方など紹介する13本｜ITmedia AI+",
+        "url": "https://www.itmedia.co.jp/aiplus/article/2608/06/2000000418/",
+        "status": "ok"
+      },
+      {
+        "title": "就活で生成AI利用が当たり前の時代に 各調査で利用は8〜9割超に、落とし穴も｜Yahoo!エキスパート",
+        "url": "https://news.yahoo.co.jp/expert/articles/34763e643648f5a243a216544201c487ee86da20",
+        "status": "ok"
+      },
+      {
+        "title": "夏休みに10社でインターンに挑んだ女子大生 複数業界を見て気付いた「やりたい仕事」｜朝日新聞Thinkキャンパス",
+        "url": "https://www.asahi.com/thinkcampus/article-130711/",
+        "status": "ok"
+      },
+      {
+        "title": "「単位落とすかも…」と悩む「大学生の塾通い」が急増中 保護者の「よかれ」行動の背景｜東洋経済",
+        "url": "https://news.yahoo.co.jp/articles/cf2231ee6c98f9cf021e8b3e8e6088e8802a23b5",
+        "status": "ok"
+      },
+      {
+        "title": "プリ市場は最盛期の2割に激減 活路は脱・女子高生依存と海外｜日経クロストレンド",
+        "url": "https://xtrend.nikkei.com/atcl/contents/casestudy/00012/01916/",
+        "status": "ok"
+      },
+      {
+        "title": "BTSとグーグルAIのコラボ映像 米ラスベガスで公開｜聯合ニュース",
+        "url": "https://news.yahoo.co.jp/articles/365d736ad9348996eee561d2b5777d0146a79ff1",
+        "status": "ok"
+      },
+      {
+        "title": "「うすぐらい」「さむい」「時代遅れ」なだけじゃない…若者が図書館に寄り付かないリアルな理由とは｜文春オンライン",
+        "url": "https://news.yahoo.co.jp/articles/20fdf94258a10bde68679df46fd252f995575dac",
+        "status": "ok"
+      },
+      {
+        "title": "面接に親がついてくる──Z世代の20％が示す新たな現実にどう向き合うか｜Forbes JAPAN",
+        "url": "https://forbesjapan.com/articles/detail/102677",
+        "status": "ok"
+      },
+      {
+        "title": "ケイト・スペード、タイラ起用のキャンペーンが示すZ世代戦略｜fashionunited.jp",
+        "url": "https://fashionunited.jp/news/fashion/keitosupedo-tairaqi-yong-nokiyanpengashi-suzshi-dai-zhan-lue/20260811568787",
+        "status": "ok"
+      },
+      {
+        "title": "管理職にならないまま45歳になるとどうなる？ マネジメントを避ける若者が陥る「3つの誤解」｜ログミーBusiness",
+        "url": "https://logmi.jp/main/management/333602",
+        "status": "ok"
+      },
+      {
+        "title": "若者の新常識「インパ消費」とは？コスパ・タイパの次のお金の使い方｜mymo",
+        "url": "https://mymo-ibank.com/money/9940",
+        "status": "ok"
+      },
+      {
+        "title": "自由研究でのAI活用は9％にとどまる　一方で「AIリテラシーは小学生から」が8割超｜月刊私塾界",
+        "url": "https://www.shijyukukai.jp/2026/08/30551",
+        "status": "ok"
+      },
+      {
+        "title": "デジタル教科書の正式導入は人体実験──デジタル・AI教育の弊害は「既に明らか」だと専門家が指摘する理由｜デイリー新潮",
+        "url": "https://news.yahoo.co.jp/articles/eac299aef3c3b8a4abed00e7ef0516651d681f5d",
+        "status": "ok"
+      },
+      {
+        "title": "親が子にAIを使わせる理由は「勉強に役立つ」ではなく「うちの子だけは遅れさせたくない」？2000人を調査｜ITmedia",
+        "url": "https://www.itmedia.co.jp/news/article/2608/11/2000000474/",
+        "status": "ok"
+      },
+      {
+        "title": "子どもは「使用禁止」 各国が相次いで子どものSNS利用を全力で阻止するワケ｜AdverTimes",
+        "url": "https://www.advertimes.com/20260811/article553035/",
+        "status": "ok"
+      },
+      {
+        "title": "AIで考えなくなる子、AIでもっと考える子。その違いを生む教育とは？｜newspicks",
+        "url": "https://newspicks.com/topics/learn-to-nurture/posts/43",
+        "status": "ok"
+      },
+      {
+        "title": "ITmedia: AI普及で20代の14％が「すでに転職」 エンジニアが最も伸ばしたいスキル、1位は？：「業務代替の可能性」は見解が二分",
+        "url": "https://atmarkit.itmedia.co.jp/ait/articles/2608/12/news043.html",
+        "status": "ok"
+      },
+      {
+        "title": "Vietnam.vn: Gen Alphaがゴススタイルを復活させる。",
+        "url": "https://www.vietnam.vn/ja/gen-alpha-dua-phong-cach-goth-tro-lai",
+        "status": "ok"
+      },
+      {
+        "title": "日経クロストレンド: なぜ黒ラベルは若者をつかめたか 答えは大人価値浸透だったのだ",
+        "url": "https://xtrend.nikkei.com/atcl/contents/18/01443/00004/",
+        "status": "ok"
+      },
+      {
+        "title": "米国の若年層、AI業界のビリオネアCEOに不信感──新たな世論調査（Forbes JAPAN）",
+        "url": "https://news.yahoo.co.jp/articles/4c5ed1d49e95976ce56cd3e1fae111a37af3e910",
+        "status": "ok"
+      },
+      {
+        "title": "AIを愛する若者が「AI被害」の当事者に。デジタルネイティブを脅かす「ディープフェイク脅迫」のリアル（Masumi｜ライター）",
+        "url": "https://news.yahoo.co.jp/expert/articles/c5165b5155233afcce6cf7a7af4a480067dd28a8",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代が「お酒を飲む時代」に突入した…アメリカの若者は、上の世代と同じくらい飲んでいることが判明（海外）（BUSINESS INSIDER JAPAN）",
+        "url": "https://news.yahoo.co.jp/articles/247a82c96e43dd43a04d9eb25efaca44eaaa0e19",
+        "status": "ok"
+      },
+      {
+        "title": "企業向けChatGPTの利用実態「若手ほど高頻度」…OpenAIによる1700万件超分析で判明（ビジネス＋IT）",
+        "url": "https://news.yahoo.co.jp/articles/54640687aba64ffcda1a2bf4da50fb99b179922e",
+        "status": "ok"
+      },
+      {
+        "title": "若者の価値観から考える、個人の幸せな人生と地方創生を両立するヒント ～日本財団18歳意識調査アンケートより～（日本財団ジャーナル）",
+        "url": "https://news.yahoo.co.jp/articles/575f2661f8757a9dbb5933a85bc20726e44961c5",
+        "status": "ok"
+      },
+      {
+        "title": "米タペストリーが全地域で増収、Z世代の新顧客獲得でコーチは24％成長（FASHIONSNAP）",
+        "url": "https://news.yahoo.co.jp/articles/5a72e35894889590830119d08dc0d737a3e8c126",
+        "status": "ok"
+      },
+      {
+        "title": "若者はどうして未来の自分を今つくり出さないのか？　新米のら猫コンサルが見た自動車ディーラー「若者のリアル」（28）（日刊自動車新聞） | 自動車情報・ニュース - carview!",
+        "url": "https://carview.yahoo.co.jp/news/detail/a7d78636d07a535ddd6779e0abef3525de8ac154/",
+        "status": "ok"
+      },
+      {
+        "title": "株式投資からスポーツ賭博へ、変わる米若者の資産形成－Z世代で顕著 | TBS CROSS DIG with Bloomberg",
+        "url": "https://newsdig.tbs.co.jp/articles/withbloomberg/2870610",
+        "status": "ok"
+      },
+      {
+        "title": "ロンドンで「若者のナイトクラブ離れ」進む…代わりに出現した「朗読会・文学イベントブーム」の実態（飯田 一史） | 現代ビジネス | 講談社",
+        "url": "https://gendai.media/articles/-/169759",
+        "status": "ok"
+      },
+      {
+        "title": "Adobeが音楽フェス「大阪ジャイガ」に出展、若年層のクリエイティブ活動を支援する“涼しいブース”を見てきた - ケータイ Watch",
+        "url": "https://k-tai.watch.impress.co.jp/docs/news/2132849.html",
+        "status": "ok"
+      },
+      {
+        "title": "・まとめ・　若者に選ばれる会社は、採用前からズレを整えている｜荒井 知恵｜職場コミュニケーション翻訳者",
+        "url": "https://note.com/aplan5610/n/n59a29caafd33",
+        "status": "ok"
+      },
+      {
+        "title": "イベント中止、保険で費用補償　「推し活」の若者増加で需要増 | NEWSjp",
+        "url": "https://news.jp/i/1460898265969394115",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代が「お酒を飲む時代」に突入した…アメリカの若者は、上の世代と同じくらい飲んでいることが判明 | Business Insider Japan",
+        "url": "https://www.businessinsider.jp/article/2608-gen-z-drinking-alcohol-moderation-sobriety-new-data/",
+        "status": "ok"
+      },
+      {
+        "title": "ASCII.jp：平均年齢60歳の現場を変えたZ世代女子　kintoneで電話・紙・入力をなくしたら、仕事が楽しくなった (1/2)",
+        "url": "https://ascii.jp/elem/000/004/426/4426040/",
+        "status": "ok"
+      },
+      {
+        "title": "定年まで働き続けなくてもいい？ 若者の間で広がる“ミニリタイア”という選択肢 | AMP",
+        "url": "https://ampmedia.jp/2026/08/12/mini-retirement/",
+        "status": "ok"
+      },
+      {
+        "title": "ChatGPT対Gemini、勉強で本当に使えるのはどっち？現役学生が徹底比較レビュー（ライフハッカー・ジャパン）",
+        "url": "https://news.yahoo.co.jp/articles/93629bf0a52625b05d6bd05a637db5378e7643ca",
+        "status": "ok"
+      },
+      {
+        "title": "AI時代にこそ「自由帳」を復活させよう、私を変えた小学校4年生の「自由帳」（Wedge）",
+        "url": "https://news.yahoo.co.jp/articles/c1e68265b1eb08807f594a02f181da2cd3fc01c4",
+        "status": "ok"
+      },
+      {
+        "title": "高校生たちのSNSやAIとの距離感「1日に1時間半まで」「自力でやることを徹底」　識者「危うさへの感性は上の世代より鋭敏」（AERA DIGITAL）",
+        "url": "https://news.yahoo.co.jp/articles/3b85108ff77df52b67dd8cca277d1368886e7f36",
+        "status": "ok"
+      },
+      {
+        "title": "大学生の生成AI継続利用率が84.5％に　ChatGPT利用は9割超、Geminiは1年で約4倍に - KAI-YOU",
+        "url": "https://kai-you.net/article/96244",
+        "status": "ok"
+      },
+      {
+        "title": "楽天ラクマ、2026年版「ファッションの参考にする国」を発表 10～20代女性の1位は韓国が10回連続（日本ネット経済新聞）",
+        "url": "https://news.yahoo.co.jp/articles/da255544d52a2c0d3df0fbf01c00187953936e3d",
+        "status": "ok"
+      },
+      {
+        "title": "日本経済新聞: 20代はいま何を選ぶ？ NISAやAI、起業…「お金と仕事」の現在地",
+        "url": "https://www.nikkei.com/article/DGXZQOUB081OR0Y6A800C2000000/",
+        "status": "ok"
+      },
+      {
+        "title": "at-s.com: スマホを置いて、深山へ。都内から2.5時間。あえて「圏外」を遊ぶ、Z世代の新トレンド「アクティブ・デトックス・リトリート」特集",
+        "url": "https://www.at-s.com/feed/article/pr_times/2035179.html",
+        "status": "ok"
+      },
+      {
+        "title": "Time Out Tokyo: 2026年「Z世代のベストシティ」ランキング、1位は東京",
+        "url": "https://www.timeout.jp/tokyo/ja/news/in-the-world-tokyo-best-city-for-genz-080726",
+        "status": "ok"
+      },
+      {
+        "title": "時事ドットコム: Z世代の消費支出、2030年までに12兆ドルに達する見通し――しかし、ブランドが考えるほど重要ではない理由：時事ドットコム",
+        "url": "https://www.jiji.com/jc/article",
+        "status": "ok"
+      },
+      {
+        "title": "DIGIDAY［日本版］: Z世代をつかむ ビューティーブランド 広告の新常識「商品説明よりエンタメ」",
+        "url": "https://digiday.jp/glossy/your-favorite-beauty-brands-are-now-also-entertainment-brands/",
+        "status": "ok"
+      },
+      {
+        "title": "newspicks.com: 【新事実】映画館復活、支えているのはZ世代だった",
+        "url": "https://newspicks.com/news/17298404/body/",
+        "status": "ok"
+      },
+      {
+        "title": "gigazine.net: AIモデルに子ども向けの動物物語を作らせると女性キャラをほぼ完全に排除してしまう",
+        "url": "https://gigazine.net/news/20260813-ai-erase-female-characters-kids-stories/",
+        "status": "ok"
+      },
+      {
+        "title": "newspicks.com: AIで考えなくなる子、AIでもっと考える子。その違いを生む教育とは？",
+        "url": "https://newspicks.com/topics/learn-to-nurture/posts/43/",
+        "status": "ok"
+      },
+      {
+        "title": "WIRED: People Are ‘Marrying’ Chatbots. These Lawmakers Want to Stop Them",
+        "url": "https://www.wired.com/story/people-are-marrying-chatbots-these-lawmakers-want-to-stop-them/",
+        "status": "ok"
+      }
+    ],
+    "essay": {
+      "title": "2026/08/10-08/15 週次考察",
+      "summary": "Z世代・若者は、“AIを使いながら主導権を守る”段階から、“AIに任せる領域と、人間が引き受ける領域を自分で線引きする”段階へ進んだ週",
+      "structure": [],
+      "sections": [
+        {
+          "heading": "AIは「使うかどうか」ではなく、“どこまで任せるか”を決める段階に入った",
+          "body": "今週のAI関連記事で最も重要なのは、AI利用の拡大そのものではない。 若者のAI利用は、すでに前提になっている。 - 就活で生成AI利用が8〜9割超 - 大学生の生成AI継続利用率84.5％ - 若手ほど企業向けChatGPTを高頻度利用 - 恋愛相談にもChatGPT - 投資判断にもAI - 対人返信にもAI つまり、AIは検索ツールではなく、判断・文章・相談・対話の層として生活に入り込んでいる。 一方で今週は、 - AIいいなり投資で損失 - ディープフェイク脅迫 - AI経営者への不信 - 反AI感情 - 対面会話までAIに頼る若者 - AIによる思考力低下への警告 も並んだ。 ここから見えるのは、 «AIへの依存が問題なのではなく、「判断の責任までAIに移してしまうこと」が問題になり始めた» ということだ。 AIに相談することと、AIに決めてもらうことは違う。 AIに文章を手伝っ"
+        },
+        {
+          "heading": "AI教育の論点は、「使わせるか」から“思考を残せるか”へ変わった",
+          "body": "今週は、子ども・学生のAI利用と教育に関する記事が非常に多かった。 - AIリテラシーは小学生から - 親が「遅れさせたくない」とAIを使わせる - デジタル教科書への警戒 - AIで考えなくなる子／もっと考える子 - 高校生自身がAI利用時間を制御 - 自由帳の復活 - 現役学生によるChatGPTとGemini比較 ここで重要なのは、AI教育の議論が、 「AIを使えるか」 から、 「AIを使っても自分で考えられるか」 へ移っていることだ。 親側には、「自分の子だけAI時代に遅れさせたくない」という不安がある。 一方、教育側には、AIやデジタルを早く導入するほど、基礎的な思考力や身体的経験が失われるのではないかという懸念がある。 高校生自身が「1日1時間半まで」「まず自力でやる」とルールをつくっている点は非常に象徴的である。 大人が利用制限を押し付けるのではなく、若者自身が境界を引き始め"
+        },
+        {
+          "heading": "反AI感情の正体は、“技術嫌い”ではなく「自分の未来を勝手に決められること」への反発",
+          "body": "今週は、若者の反AI感情がさらに具体化した。 米国ではAI企業経営者への不信が高まり、日本でも反AI感情の記事が登場した。 一見すると、「若者はAIネイティブなのにAIを嫌っている」という矛盾に見える。 しかし、実際は矛盾していない。 若者はAIそのものを嫌っているのではない。 嫌っているのは、 - 自分の仕事が減る - 自分の声や顔が使われる - AI導入を拒否できない - 学習方法を一方的に変えられる - 将来必要な技能を大人側に決められる といった、AIによって自分の選択肢が狭まることである。 つまり反AI感情は、 «テクノロジーへの拒否ではなく、主導権を奪われることへの抵抗» と見るべきである。 主な関連記事 - 若者に反AI感情のうねり https://www.asahi.com/articles/ASV7P5QBYV7PUHBI029M.html - 米国の若年層、AI業界のビ"
+        },
+        {
+          "heading": "アナログ回帰は、「昔が好き」から“自己コントロールを回復する技術”へ変わった",
+          "body": "今週もアナログ回帰の記事が多かった。 - 2000年代ライフスタイル - 手料理 - 深山での圏外体験 - 朗読会・文学イベント - 自由帳 - 図書館 - 映画館 重要なのは、これがレトロブームだけではなくなったことだ。 若者は、 - 通知が来ない - アルゴリズムがない - 即レスを求められない - 検索結果が出ない - 手を動かさなければ完成しない 環境を意図的に選び始めている。 「圏外を遊ぶ」という表現は象徴的である。 デジタルから離れることが、我慢ではなく、体験価値になった。 つまりアナログは、 デジタルの代替物 ではなく、 «自分の時間と注意を自分に戻す装置» になっている。 主な関連記事 - Z世代を中心に広がる「アナログ回帰」 https://www.vogue.co.jp/article/genz-analog-revival - 自己コントロールを取り戻す若者のアナログ"
+        },
+        {
+          "heading": "「コト消費」の先で、“その瞬間に居合わせる価値”が強くなっている",
+          "body": "今週、「トキ消費」「インパ消費」という言葉が目立った。 これまで、 モノ消費 ↓ コト消費 と変化してきた。 今はさらに、 その時、その場、その人としか成立しない瞬間 に価値が移っている。 謎解きイベント、映画館、音楽フェス、旅行、体験型企画などが象徴的だ。 これは、AI生成コンテンツが無限供給される環境とも関係する。 何度でも生成できるコンテンツが増えるほど、 - 一度しかない - 同じ人が集まらない - 現地でしか体験できない - 後から完全には再現できない 体験の希少性が高くなる。 主な関連記事 - 「コト消費」の次は「トキ消費」 https://response.jp/article/2026/08/08/415085.html - 若者の新常識「インパ消費」とは？ https://mymo-ibank.com/money/9940 - Z世代向け体験型企画「謎とめぐる記憶の旅」 "
+        },
+        {
+          "heading": "働き方では「昇進する／辞める」ではなく、“人生の中で仕事量を調整する”発想が広がった",
+          "body": "今週は、AI、ブルーカラー、管理職、ミニリタイア、育児後の働き方など、仕事関連の記事が多かった。 注目すべきなのは、若者がキャリアを一本の上昇曲線として見なくなっていることだ。 従来は、 入社 ↓ 昇進 ↓ 管理職 ↓ 定年 だった。 しかし若者は、 - 転職 - ミニリタイア - フルタイム定時帰宅 - ブルーカラーへの転向 - AIを使った技能転換 - 複数業界を見るインターン など、人生の状況に応じて仕事との距離を変える。 これは「仕事に熱意がない」のではない。 «仕事を人生全体の中で配置し直している» のである。 主な関連記事 - 定年まで働き続けなくてもいい？「ミニリタイア」 https://ampmedia.jp/2026/08/12/mini-retirement/ - 若年層が出産後に希望する働き方 https://news.mynavi.jp/article/202608"
+        },
+        {
+          "heading": "若者の投資行動は、“豊かになるため”より「未来を自分で制御したい」という不安から生まれている",
+          "body": "今週は若者のお金に関する記事も非常に強かった。 - AIいいなり投資 - NISA - スポーツ賭博 - 一攫千金志向 - 若者のお金と仕事 - ミニリタイア - 生活防衛 一見すると、Z世代は金融リテラシーが高く、投資に積極的に見える。 しかし同時に、AI投資で大きな損失を経験したり、スポーツ賭博へ流れたり、一攫千金に賭けたりする行動もある。 共通しているのは、 未来への確信が持てない ことだ。 給料を上げるだけでは将来が安定しない。 家も結婚も子どもも簡単ではない。 AIで仕事がどう変わるか分からない。 だから若者は金融市場を使って、 «未来を自分で動かせている感覚» を得ようとする。 主な関連記事 - AIいいなり投資 https://forbesjapan.com/articles/detail/102182 - 一攫千金に賭けるZ世代 https://news.yahoo.co."
+        }
+      ],
+      "period_definition": "AI時代の若者にとって、新しい自由とは“何でも自分でやること”ではなく、“何を自分でやるかを自分で決められること”である。",
+      "keywords": [
+        "AIは使うかどうかではな",
+        "AI教育の論点は、使わせ",
+        "反AI感情の正体は、“技",
+        "アナログ回帰は、昔が好き",
+        "コト消費の先で、“その瞬",
+        "働き方では昇進する／辞め"
+      ]
+    },
+    "article_count": 66,
+    "warnings": []
+  },
+  {
+    "type": "weekly",
     "id": "2026-08-03_2026-08-07",
     "title": "2026/08/03-08/07 Z世代・若年層関連記事と考察",
     "period": {
