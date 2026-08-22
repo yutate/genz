@@ -1,6 +1,333 @@
 [
   {
     "type": "weekly",
+    "id": "2026-08-17_2026-08-21",
+    "title": "2026/08/17-08/21 Z世代・若年層関連記事と考察",
+    "period": {
+      "start": "2026-08-17",
+      "end": "2026-08-21"
+    },
+    "articles": [
+      {
+        "title": "「何者かにならなければ」と焦る若者たち　年収・肩書き・フォロワー数で測る時代に必要なこと（AMP［アンプ］）",
+        "url": "https://news.yahoo.co.jp/articles/2459c9bdb5107d6ff84e81f29194f120213f1c82",
+        "status": "ok"
+      },
+      {
+        "title": "「ゲーム行動症」若年層10% 調査 2026年8月15日",
+        "url": "https://news.yahoo.co.jp/pickup/6591851",
+        "status": "ok"
+      },
+      {
+        "title": "Conscious unbossing isn’t just a Gen Z thing. I’m a CMO who did it",
+        "url": "https://fortune.com/2026/08/16/conscious-unbossing-isnt-just-a-gen-z-thing-im-a-cmo-who-did-it/",
+        "status": "ok"
+      },
+      {
+        "title": "ラッダイト・フェスはZ世代のビッグテックへの抵抗運動だ",
+        "url": "https://wired.jp/article/sz-inside-the-luddite-festival-harnessing-gen-zs-rage-against-big-tech/",
+        "status": "ok"
+      },
+      {
+        "title": "《全世代で進む「テレビ離れ」》SNSや動画の普及だけが原因なのか 「モニター自体持ってない」という若者だけでなく「いまの番組はまどろっこしい」と指摘する60代も",
+        "url": "https://www.moneypost.jp/1434364",
+        "status": "ok"
+      },
+      {
+        "title": "「スピ活」にいそしむ若者たち　「ドパガキ」に疲れた心を整える《SHIBUYA109lab.所長の#これ知ってないと気まずい》",
+        "url": "https://senken.co.jp/posts/shibuya109lab-260814",
+        "status": "ok"
+      },
+      {
+        "title": "仕事の合間の5分で成果が変わる？トップCEOも実践するZ世代の「マイクロ習慣」の驚くべき効果",
+        "url": "https://www.lifehacker.jp/article/2608-gen-zs-newest-workplace-habit-sounds-lazy-until-you-see-what-it-does-for-productivity/",
+        "status": "ok"
+      },
+      {
+        "title": "AI生成「暴力野菜」動画で若者過激化の恐れ　TikTokで拡散",
+        "url": "https://app.ekkow.com/1460636076419318544",
+        "status": "ok"
+      },
+      {
+        "title": "サンリオキャラたちが睡眠をサポート！アプリ「ゆめたび」リリース！#Z世代Pick",
+        "url": "https://gakumado.mynavi.jp/gmd/articles/90499",
+        "status": "ok"
+      },
+      {
+        "title": "「高卒でも生きていけちゃうな」理科大･慶應･日本女子大すべて中退、「大学も会社も住まいも失った」彼女の現在地",
+        "url": "https://news.yahoo.co.jp/articles/078c818f62764a980c5ada9ee51f30109e04c3ee",
+        "status": "ok"
+      },
+      {
+        "title": "15歳未満SNS禁止に違憲判断 仏 2026年8月15日",
+        "url": "https://news.yahoo.co.jp/pickup/6591773",
+        "status": "ok"
+      },
+      {
+        "title": "物価高のお盆、「安・近・短」から「安・近・冷」へ　映画・配信・キダルト消費が伸びる理由",
+        "url": "https://news.yahoo.co.jp/expert/articles/ffdb7b00667d83c9745da527f0113faaa4dc96eb",
+        "status": "ok"
+      },
+      {
+        "title": "マニア垂涎の“懐かしの品々”…大人が「おもちゃ」に夢中になる納得の理由　推し活、ぬい活が盛況！背景には根源的欲求が？",
+        "url": "https://news.yahoo.co.jp/articles/6519e449e286a5b0af0113601ec5238f9cfdb8f7",
+        "status": "ok"
+      },
+      {
+        "title": "「KODAKのキーホルダーカメラ」で改めて気づいた、“平成レトロ”の底知れない魅力",
+        "url": "https://ascii.jp/elem/000/004/424/4424916/",
+        "status": "ok"
+      },
+      {
+        "title": "VR×高音質で究極の没入体験 推し活需要で映画館の閑散期の解消狙う",
+        "url": "https://xtrend.nikkei.com/atcl/contents/watch/00013/02949/",
+        "status": "ok"
+      },
+      {
+        "title": "テック業界の新たな採用基準は「スパイク」…自分のとがった強みを見つける方法",
+        "url": "https://www.businessinsider.jp/article/2608-tech-leaders-hiring-spikes/",
+        "status": "ok"
+      },
+      {
+        "title": "To target Gen Z, premium brands must learn the new codes of luxury",
+        "url": "https://www.creativebloq.com/design/branding/to-target-gen-z-premium-brands-must-learn-the-new-codes-of-luxury",
+        "status": "ok"
+      },
+      {
+        "title": "「将来ニートになる子」は小学生でわかる？ 英国の若者ニート化早期対策 | 16歳でニートになってからでは「遅い」",
+        "url": "https://courrier.jp/news/archives/456024/",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代の新SNS「Setlog（セットログ）」 学生の9割が認知！ 直近3カ月で利用急拡大【学割アプリ調べ】",
+        "url": "https://news.yahoo.co.jp/articles/7ef147cc420bc35b0f9fa3e574347395824b3536",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代に広がる「フレネミー」はあなたの隣にも…敵か味方か分からない“友達”の恐怖",
+        "url": "https://topics.smt.docomo.ne.jp/article/nikkangendai/life/nikkangendai-1240161",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代の富裕層旅行者、ストレスない旅を求め自分で計画・手配をする傾向に 23%がAIツールを活用",
+        "url": "https://honichi.com/news/2026/08/17/marriott-luxury-travel-2026/",
+        "status": "ok"
+      },
+      {
+        "title": "なぜ雇用主はZ世代の採用に消極的なのか？",
+        "url": "https://www.vietnam.vn/ja/vi-sao-nha-tuyen-dung-ngan-ngai-voi-gen-z",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代はETFを好み、他の世代よりもリスクを避ける＝Binance",
+        "url": "https://www.nadanews.com/364233/",
+        "status": "ok"
+      },
+      {
+        "title": "AIに奪われた米IT大手社員の仕事 若者の期待集めるブルーカラー",
+        "url": "https://www.asahi.com/articles/ASV8H1CCWV8HUHBI004M.html",
+        "status": "ok"
+      },
+      {
+        "title": "若者からシニアまで広がる“旅先で働く”「おてつたび」、夏休みは10代の申込数が前年同期比9.7倍に",
+        "url": "https://mantan-web.jp/prtimes/article/20260817prt00m200000031a.html",
+        "status": "ok"
+      },
+      {
+        "title": "AIリスクどう考える「教師も学んで」　シンポで教育関係者ら語る",
+        "url": "https://www.asahi.com/articles/ASV8C761GV8CUTIL002M.html",
+        "status": "ok"
+      },
+      {
+        "title": "『広告界就職ガイド2028』発売 AI時代に生まれた新職種、人に残る力とは？",
+        "url": "https://www.advertimes.com/20260817/article553982/",
+        "status": "ok"
+      },
+      {
+        "title": "学生さん、気を付けて。AIが作った文章に「見えない透かし」が入るってよ",
+        "url": "https://news.yahoo.co.jp/articles/8e1475378295a5fe092187b21f22219100fdfbe6",
+        "status": "ok"
+      },
+      {
+        "title": "きつい・汚い・危険 3Kだった「ブルーカラー」“AIに奪われず稼げる仕事”定着は #マイノーマル",
+        "url": "https://news.yahoo.co.jp/articles/4542579e204737a1c5f4b442de55d1c53e87f5e5",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代の買い物の起点、「SNS4媒体の合計」が45.2％で検索エンジンを逆転／TaTap",
+        "url": "https://markezine.jp/news/detail/77397",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代の会社員はDMするよりポストイット、高級文房具も人気",
+        "url": "https://www.businessinsider.jp/article/2608-genz-office-workers-bringing-pen-and-paper-back-to-workplace/",
+        "status": "ok"
+      },
+      {
+        "title": "AI時代のZ世代、スペシャリストか万能型か 労働市場3つの分岐点",
+        "url": "https://forbesjapan.com/articles/detail/103095",
+        "status": "ok"
+      },
+      {
+        "title": "MERY Z世代研究所",
+        "url": "https://news.nicovideo.jp/watch/nw19675026",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代がAIを友人にするようになり、カスペルスキーは個人データの危険性を警告",
+        "url": "https://voi.id/ja/teknologi/590144",
+        "status": "ok"
+      },
+      {
+        "title": "若者はなぜ「貯金より今」にお金を使うのか──“ドゥームスペンディング”が映す未来への不安",
+        "url": "https://news.yahoo.co.jp/articles/885f91720354b683146e374af6abea211c5689e2",
+        "status": "ok"
+      },
+      {
+        "title": "「神様、推しに会わせてください」若者がハマる“スピ活”の実態と人気の神社、新しくかつ伝統的な神社詣での形",
+        "url": "https://jbpress.ismedia.jp/articles/-/96510",
+        "status": "ok"
+      },
+      {
+        "title": "10 Gen Z Marketing Makeovers, And Whether They're Working",
+        "url": "https://www.adweek.com/brand-marketing/10-gen-z-marketing-makeovers-and-whether-theyre-working/",
+        "status": "ok"
+      },
+      {
+        "title": "高校生の論文が国際学術誌に掲載 AI社会の「落とし穴」を世界に問いかけた",
+        "url": "https://www.koukouseishinbun.jp/articles/-/14521",
+        "status": "ok"
+      },
+      {
+        "title": "＜はなし抄＞Z世代の「それぞれ」 日頃の会話を通じて認識して ニッセイ基礎研究所研究員・廣瀬涼さん",
+        "url": "https://www.hokkaido-np.co.jp/article/1354350/",
+        "status": "ok"
+      },
+      {
+        "title": "MUFGが「こどもNISA」10月受付開始、年間60万円非課税の未成年向け制度",
+        "url": "https://k-tai.watch.impress.co.jp/docs/news/2133214.html",
+        "status": "ok"
+      },
+      {
+        "title": "AIに何を任せ、任せないか——子どもたちは大人よりもはっきり分かっている",
+        "url": "https://www.technologyreview.jp/s/387590/how-kids-feel-about-ai-in-their-own-words/",
+        "status": "ok"
+      },
+      {
+        "title": "美容は「外見を整えるサービス」から「ご自愛体験」へ。サロン利用実態から見えた新しい体験価値",
+        "url": "https://markezine.jp/article/detail/77294",
+        "status": "ok"
+      },
+      {
+        "title": "AIの利用拡大を懸念しているアメリカの若者が過半数を突破、AIにより仕事が奪われると考える人も増加している",
+        "url": "https://gigazine.net/news/20260819-young-americans-increasingly-wary-ai/",
+        "status": "ok"
+      },
+      {
+        "title": "AIへの反発、米若者で急速に強まる－雇用喪失への懸念拡大",
+        "url": "https://newsdig.tbs.co.jp/articles/withbloomberg/2883573",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代、高級品を買う前に中古価格をチェック－将来価値を見極め",
+        "url": "https://www.bloomberg.com/jp/news/articles/2026-08-19/TJZA6WKIUPXY00",
+        "status": "ok"
+      },
+      {
+        "title": "スパイダーマン最新作、Z世代の「観てみたい」をどう生み出した？ BeRealが仕掛けた新たな映画プロモーション",
+        "url": "https://mantan-web.jp/prtimes/article/20260819prt00m200000178a.html",
+        "status": "ok"
+      },
+      {
+        "title": "【東京一極集中の真実】なぜ20代は東京へ向かうのか、就職期の若者流入が企業と人口にもたらす大きなメリット",
+        "url": "https://jbpress.ismedia.jp/articles/-/96532",
+        "status": "ok"
+      },
+      {
+        "title": "α世代・Z世代向けマーケティングとは？市場への影響や事例を解説",
+        "url": "https://www.bthacks.com/16682/",
+        "status": "ok"
+      },
+      {
+        "title": "「TikTok Shop」は循環型のジャーニー「視聴→発見→購入→再視聴」。「継続的な購買関係を築ける可能性のあるチャネル」",
+        "url": "https://netshop.impress.co.jp/n/2026/08/19/16575",
+        "status": "ok"
+      },
+      {
+        "title": "Does AI stop children from learning?",
+        "url": "https://www.economist.com/graphic-detail/2026/08/18/does-ai-stop-children-from-learning",
+        "status": "ok"
+      },
+      {
+        "title": "【衝撃】天才起業家は、子どもに「スマホもAIも」触らせない",
+        "url": "https://newspicks.com/news/17332337/body/",
+        "status": "ok"
+      },
+      {
+        "title": "「推し活」で人生やり直し？エンタメ社会学者がみる欲望と熱狂の正体",
+        "url": "https://www.asahi.com/sp/articles/ASV872Q3JV87ULLI004M.html",
+        "status": "ok"
+      },
+      {
+        "title": "setlogは緩い新Vlog",
+        "url": "https://xtrend.nikkei.com/atcl/contents/casestudy/00012/01925/",
+        "status": "ok"
+      },
+      {
+        "title": "「推し活」や「消費」で世界を捉える危険性とは？　『新・消費論』林凌 × 谷頭和希が語り合う、言語化の罠",
+        "url": "https://realsound.jp/book/2026/08/post-2485046.html",
+        "status": "ok"
+      }
+    ],
+    "essay": {
+      "title": "2026/08/17-08/21 週次考察",
+      "summary": "Z世代・若者は、“AIやSNSを使うか／使わないか”ではなく、“どこまで自分を預けるか”を選び始めた週",
+      "structure": [],
+      "sections": [
+        {
+          "heading": "反AIは「テクノロジー嫌い」ではなく、“支配権を渡したくない”という意思表示になった",
+          "body": "今週の最重要テーマは、AIに対する反発が明確に強まったことである。 ラッダイト・フェス、米若者のAI懸念、AIによる雇用喪失不安、AIを友人化する際の個人データ問題など、AIへの警戒を示す記事が多かった。 ただし、ここで重要なのは、若者がAIそのものを拒絶しているわけではないことだ。 若者はAIを使っている。 - 仕事 - 学習 - 情報収集 - キャリア形成 - 人間関係 - 投資 - 創作 にAIを利用している。 それでも反発が起きるのは、AIが「便利な道具」を超えて、生活の判断そのものへ介入し始めたからである。 つまり若者が嫌がっているのはAIではない。 «AIに自分の人生の運転席を明け渡すこと» である。 AIが推薦する。 AIが採用する。 AIが判断する。 AIが相談相手になる。 AIが友人になる。 こうした状況では、どこまで自分で決めているのかが曖昧になる。 今週はその境界線に"
+        },
+        {
+          "heading": "「アナログ回帰」は懐古ではなく、“自分の感覚を取り戻すためのインターフェース”になった",
+          "body": "今週もアナログ回帰が強く出た。 - ポストイット - 高級文房具 - キーホルダーカメラ - 平成レトロ - 映画館 - 推し活の物理体験 - スピ活 - 小さな習慣 などが象徴的だった。 重要なのは、若者がデジタルを捨てているわけではないことだ。 むしろデジタルを使い続けながら、生活の一部だけを意識的にアナログ化している。 ポストイットはSlackより速いから使われるのではない。 紙に書くことによって、自分で考えた感覚が残る。 キーホルダーカメラも、スマホより高性能だから選ばれるのではない。 撮った瞬間に加工・比較・投稿まで行かない「間」がある。 スピ活も、宗教回帰というより、情報や評価から一時的に離れて自分の感情を整える行動として見る方が近い。 つまりアナログとは、 «情報を減らし、自分の身体や感覚に戻るためのUI» になっている。 示唆 ブランドがアナログ回帰を捉える際に、昔のデザイ"
+        },
+        {
+          "heading": "消費は「今を楽しむ」と「未来を守る」の両極に割れている",
+          "body": "今週は、若者の支出行動の二極化が特に目立った。 一方では、 - ドゥームスペンディング - 推し活 - スピ活 - 美容 - ラグジュアリー - 体験消費 など、「今」にお金を使う行動がある。 一方では、 - ETF - 中古価格チェック - こどもNISA - 再販価値 - リスク回避 など、将来に備える行動も強い。 これは矛盾ではない。 共通しているのは、 «不確実な未来を、自分の手で少しでもコントロールしたい» という心理である。 ドゥームスペンディングは「どうせ未来は良くならないなら今使う」。 ETFや中古価格重視は「未来が不安だから失敗しにくい形で持つ」。 逆方向の行動に見えるが、出発点は同じである。 つまり若者消費は、 楽観的な将来期待を前提とした消費 から、 将来不安を管理するための消費 へ変わっている。 示唆 若者向けの商品や金融サービスでは、 「お得です」 「楽しいです」"
+        },
+        {
+          "heading": "キャリアは「ホワイトカラーが上」から、“AI時代に価値が残る仕事は何か”へ",
+          "body": "今週は、若者のキャリア観にも大きな変化が見えた。 - ブルーカラーへの関心 - AI時代のスペシャリスト／万能型 - 採用での「スパイク」 - ニート化への懸念 - 若者採用への企業の躊躇 などが取り上げられた。 従来のキャリア観では、 大学 ↓ ホワイトカラー ↓ 管理職 が標準ルートとされてきた。 しかしAIが事務・分析・制作・コーディングなどの初級業務に入り込むことで、 「ホワイトカラーだから安全」 という前提が崩れている。 その結果、 - 電気工 - 溶接 - 建設 - 保守 - 専門技能 - 明確な専門分野 といった、AIで簡単に代替しにくい仕事に目が向き始めている。 また、「平均的に何でもできる人」より、「ひとつ強く尖った能力＝スパイク」が評価されるという議論も増えている。 若者のキャリア選択は、 «どの仕事が格好いいかではなく、どの技能なら将来も自分の価値として残るか» へ変"
+        },
+        {
+          "heading": "Setlogの伸長は、「SNS離れ」ではなく“公開SNSから生活SNSへの移行”",
+          "body": "今週もSetlogが重要なシグナルだった。 学生の9割が認知し、短期間で利用が伸びているという記事が出た。 これは、若者がSNSをやめているという見方と矛盾するように見える。 しかし実際には、若者が離れているのはSNSそのものではない。 離れているのは、 - 大勢に見せる - フォロワーを集める - 映える投稿をつくる - 常に反応を気にする - 数字で評価される という、公開SNSの作法である。 Setlogのような「緩いVlog」は、 - 日常 - 仲間内 - 盛らない - 完成させない - 頻繁に投稿しても重くない という生活の延長線上にある。 つまりSNSは、 自分を発信するステージ から、 日常を仲間と共有する部屋 へ変わっている。 示唆 若者向けSNS・コミュニティで重要なのは、拡散性だけではない。 - 閉鎖性 - 小人数性 - 低プレッシャー - 軽い投稿 - 消える／残さな"
+        },
+        {
+          "heading": "「スピ活」は非合理化ではなく、“感情を処理する逃げ場”として見た方がよい",
+          "body": "今週、スピ活が複数の記事で取り上げられた。 合理性・効率性・データを重視するように見えるZ世代が、神社、占い、運、推しの願掛けに向かう。 一見すると矛盾している。 しかし、AIやSNS、就活、投資、将来不安など、あらゆる場面で「正しい判断」を要求される生活を考えると、この動きは理解しやすい。 スピ活には、 - 正解がなくてもよい - 効果を証明しなくてもよい - 自分の感情を外に預けられる - 願うだけでもよい - 一時的に思考を止められる という特徴がある。 つまり、スピ活は合理性からの逃避というより、 «合理的であり続けることから一時的に降りる場所» である。 示唆 今後、若者向けサービスで重要になるのは、問題解決だけではない。 - 癒やす - 気分転換させる - 考えなくてよい時間をつくる - 儀式を提供する - 心理的な区切りをつくる ことも価値になる。 ---"
+        },
+        {
+          "heading": "「何者かにならなければ」という焦燥と、キャリアミニマリズムは同じ根から生まれている",
+          "body": "今週の記事には、 「何者かにならなければ」と焦る若者 というテーマがあった。 年収、肩書き、フォロワー数、キャリア、自己成長など、現代の若者は常に比較可能な指標にさらされている。 その一方で、 - Conscious Unbossing - 管理職回避 - ブルーカラー志向 - 小さな習慣 - 地方での生活 - 無理をしない働き方 も出ている。 これは向上心がなくなったのではない。 むしろ、 終わりのない自己最適化競争から降りようとしている と考えた方が近い。 「何者かになれ」というプレッシャーが強いほど、 「別に偉くならなくてもよい」 という価値観が魅力になる。 示唆 若者向けキャリアコミュニケーションでは、 「成長し続けよう」 「挑戦しよう」 「市場価値を高めよう」 だけでは逆効果になる可能性がある。 - どう生きたいか - 何を守りたいか - どこまで働きたいか - 何をしないか ま"
+        }
+      ],
+      "period_definition": "使う。でも、任せきらない。つながる。でも、飲み込まれない。",
+      "keywords": [
+        "反AIはテクノロジー嫌い",
+        "アナログ回帰は懐古ではな",
+        "消費は今を楽しむと未来を",
+        "キャリアはホワイトカラー",
+        "Setlogの伸長は、S",
+        "スピ活は非合理化ではなく"
+      ]
+    },
+    "article_count": 54,
+    "warnings": []
+  },
+  {
+    "type": "weekly",
     "id": "2026-08-10_2026-08-15",
     "title": "2026/08/10-08/15 Z世代・若年層関連記事と考察",
     "period": {
