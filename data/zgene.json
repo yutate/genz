@@ -1,6 +1,311 @@
 [
   {
     "type": "weekly",
+    "id": "2026-09-14_2026-09-18",
+    "title": "2026/09/14-09/18 Z世代・若年層関連記事と考察",
+    "period": {
+      "start": "2026-09-14",
+      "end": "2026-09-18"
+    },
+    "articles": [
+      {
+        "title": "生成AI利用率が38％から60％へ急増、中高生は約3人に1人が利用（こどもとIT）",
+        "url": "https://news.yahoo.co.jp/articles/6f897c3a2b739df6423ebed7e690e3ee04d99df3",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代の54.3％が「買い物に生成AI」　でも最も信頼する情報源はAIではなかった",
+        "url": "https://dxmagazine.jp/news/2650uk11/",
+        "status": "ok"
+      },
+      {
+        "title": "eBay Japan、「Qoo10」を通じた社会貢献を強化。総額500万円の寄付＋EC・ライブコマースの「職場体験」で若者の将来の選択肢を支援（ネットショップ担当者フォーラム）",
+        "url": "https://news.yahoo.co.jp/articles/8d260944d855e744cd05235f7701337a5b2cd2ce",
+        "status": "ok"
+      },
+      {
+        "title": "スポーツ賭博は「ゼロサム」、投資にあらず－Z世代のリスク浮き彫り",
+        "url": "https://www.bloomberg.com/jp/news/articles/2026-09-13/TKF5Z5KIUPSH00",
+        "status": "ok"
+      },
+      {
+        "title": "20代の若者に告ぐ。逃げ続けた10年後、あなたは貧困層になっている。｜清川忠康｜店舗経営のリアル。MBAより、現場。～直営33店舗の社長が語る「実戦」経営論～",
+        "url": "https://comemo.nikkei.com/n/nf3e420efab1c",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代が嫌うMBTIの決めつけ 関係性を深める3つの言い換え",
+        "url": "https://forbesjapan.com/articles/detail/104325",
+        "status": "ok"
+      },
+      {
+        "title": "「静かな退職」と「辞める気はない」若者から見えるZ世代の仕事観 #エキスパートトピ（道満綾香） - エキスパート - Yahoo!ニュース",
+        "url": "https://news.yahoo.co.jp/expert/articles/f398f1e06ed95e54f8ee11b191439be1ff22323e",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代の“地元愛”ランキング、北海道が首位！ 愛知・大阪が同率2位、最下位は？【日本インフォメーション調べ】",
+        "url": "https://webtan.impress.co.jp/n/2026/09/14/53278",
+        "status": "ok"
+      },
+      {
+        "title": "「死ぬまで退職できない」Z世代　欧州で広がるNERDsとは？ ｜ Euronews (Japanese)",
+        "url": "https://app.ekkow.com/1471707464542781781",
+        "status": "ok"
+      },
+      {
+        "title": "昼から飲む若者が何人も…70年代の“福祉国家”スウェーデンでは「働くより失業保険が得」との話も。街には“大人向けの店”がひしめいていて…｜ゴールドライフオンライン",
+        "url": "https://renaissance-media.jp/articles/-/27543",
+        "status": "ok"
+      },
+      {
+        "title": "ドンキ 若者つかむ「お手頃コスメ」　値上げ時代の賢い選択｜FNNプライムオンライン",
+        "url": "https://www.fnn.jp/articles/FNN/1112882",
+        "status": "ok"
+      },
+      {
+        "title": "｢子どもの顔が同じで気味が悪い｣｢安っぽく見える｣との声も…しまむら系｢バースデイ｣の生成AI広告に批判が殺到した背景",
+        "url": "https://toyokeizai.net/articles/-/957967",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代500人に聞いた生成AIの利用目的、3位悩み相談、2位趣味に関する情報検索、1位は？｜",
+        "url": "https://dime.jp/genre/2152237/",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代はAIを歓迎している。ではなぜ、これほど不安を抱くのか",
+        "url": "https://forbesjapan.com/articles/detail/104682",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代の過半数が「大学より技能職」　安定と起業機会を求める新潮流",
+        "url": "https://forbesjapan.com/articles/detail/104705",
+        "status": "ok"
+      },
+      {
+        "title": "新卒で「四国でいちばん小さい町」へ。大手就職に違和感、ICU卒20代の仕事選び",
+        "url": "https://www.businessinsider.jp/article/2609-icu-grad-chooses-shikoku-smallest-town/",
+        "status": "ok"
+      },
+      {
+        "title": "「アンチエイジング」は古い？ 海外でZ世代を起点に広がる “ロンジェビティ”という新潮流",
+        "url": "https://www.fashionsnap.com/article/agingcare-longevity/",
+        "status": "ok"
+      },
+      {
+        "title": "SNSの若年層への影響を巡り社会心理学者が語る 若者のメンタルヘルス (2026年9月14日掲載) - ライブドアニュース",
+        "url": "https://news.livedoor.com/topics/detail/32316300/",
+        "status": "ok"
+      },
+      {
+        "title": "喜びよりも、理想情は「凪」？　Z世代の感情に寄り添う「お守りコスメ」 - WWDJAPAN ‐ 最新ファッション＆ビューティニュース情報",
+        "url": "https://www.wwdjapan.com/articles/2493818",
+        "status": "ok"
+      },
+      {
+        "title": "そりゃホテル離れも進むわ…「夜行新幹線」「コンテナ」「民泊」が意外に快適と若者から人気の理由｜概要｜ニュース｜ピンズバNEWS",
+        "url": "https://pinzuba.news/articles/-/17864",
+        "status": "ok"
+      },
+      {
+        "title": "How Carter’s is refreshing its brand to reach Gen Z, millennial parents",
+        "url": "https://www.marketingdive.com/news/how-carters-is-refreshing-its-brand-to-reach-gen-z-millennial-parents/830313/",
+        "status": "ok"
+      },
+      {
+        "title": "【20代SNS本音座談会】Instagramは「近況報告の場」へ？ setlog台頭に見るプラットフォーム分断の現在地",
+        "url": "https://www.advertimes.com/20260915/article557246/2/",
+        "status": "ok"
+      },
+      {
+        "title": "【要注意】若者は、大人の安易な「AIスライド」にキレてます",
+        "url": "https://newspicks.com/news/17417951/body/",
+        "status": "ok"
+      },
+      {
+        "title": "プレスリリース：［実態調査＆新機能発表］Z世代の“インテリア迷子”の約8割が「AIでのコーディネート」を希望！最大の壁である『センス・想像力』をAIで解決（PR TIMES）",
+        "url": "https://mainichi.jp/articles/20260916/pr2/00m/020/011000c",
+        "status": "ok"
+      },
+      {
+        "title": "α世代は何が違う？ スマホ・AIネイティブが変えるメディア体験と情報行動 @メ環研フォーラム2026 レポートvol.2",
+        "url": "https://mekanken.com/contents/8921/",
+        "status": "ok"
+      },
+      {
+        "title": "AIと育つ子どもたち。α世代が描く、生活者とAIの未来 @メ環研フォーラム2026 レポートvol.3",
+        "url": "https://mekanken.com/contents/8848/",
+        "status": "ok"
+      },
+      {
+        "title": "AI時代に「私の子どもに何を学ばせるべきか」英オックスフォード大研究者サスキンド氏が説く「基礎への回帰」(1/5)",
+        "url": "https://jbpress.ismedia.jp/articles/-/96962",
+        "status": "ok"
+      },
+      {
+        "title": "企業が知るべき、Z世代が研修に「本当に求めていること」",
+        "url": "https://forbesjapan.com/articles/detail/104675",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代はなぜ「二日酔い」を隠さない？ 完璧なウェルネスを求めない若者たち（AMP［アンプ］）",
+        "url": "https://news.yahoo.co.jp/articles/668ed35cc54c8a36facef5dece7f9cd2a9218c42",
+        "status": "ok"
+      },
+      {
+        "title": "ファッション界からごみゼロの町へ。Z世代リーダーがつくる「捨てない暮らし」【世界クリーンアップデー】",
+        "url": "https://www.ellegirl.jp/career/a73649077/world-cleanup-day-2609-hns/",
+        "status": "ok"
+      },
+      {
+        "title": "【Youth Now! 若年層トレンド調査】Z世代の「買ってよかった」は“かわいい×使える”が条件。ファン化を左右する「初回体験」とは",
+        "url": "https://prtimes.jp/main/html/rd/p/000000069.000129874.html",
+        "status": "ok"
+      },
+      {
+        "title": "サイバーインシデント発生時、Z世代の信頼を守るコミュニケーション術",
+        "url": "https://forbesjapan.com/articles/detail/104798",
+        "status": "ok"
+      },
+      {
+        "title": "SHEINの評価額はなぜ4分の1に暴落したのか？　免税制度終了とZ世代離れの深層",
+        "url": "https://digiday.jp/glossy/the-3-reasons-shein-is-trading-at-a-quarter-of-its-previous-valuation/",
+        "status": "ok"
+      },
+      {
+        "title": "若者は本当に昔より生きにくいのか――仕送り減少、就活早期化、ルッキズム、「全部できて当然」の時代　※土曜日の投稿｜Thomas Red",
+        "url": "https://note.com/thomasmor/n/n17267a820578",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代に大人気！キーボードアプリ「Simeji」、TVアニメ『おそ松さん』と【おそ松さんの世界に転生したら、あなたは何者？診断キャンペーン】開催決定！",
+        "url": "https://prtimes.jp/main/html/rd/p/000000985.000006410.html",
+        "status": "ok"
+      },
+      {
+        "title": "「悩みはAIに相談する」──メーカーのマーケターと高校生・卒業生が本音で語った”α世代の消費行動”",
+        "url": "https://www.advertimes.com/20260916/article557449/",
+        "status": "ok"
+      },
+      {
+        "title": "AIにどう伝わるか、Z世代とどうつくるか 大広の「ブランドが選ばれる環境」のつくり方",
+        "url": "https://www.advertimes.com/20260730/article551491/",
+        "status": "ok"
+      },
+      {
+        "title": "全米オープン熱狂に FOMO 感じる若者を惹きつける。ブランド施策のリアル",
+        "url": "https://digiday.jp/brands/brands-bring-the-us-open-to-fans-with-tennis-themed-pop-ups-around-new-york-city/",
+        "status": "ok"
+      },
+      {
+        "title": "「AIを使えない学生」は門前払い…世界の大手銀行で始まった「新卒採用」の異変（小林 啓倫） | マネー現代",
+        "url": "https://gendai.media/articles/-/171131",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代はなぜ「二日酔い」を隠さない？ 完璧なウェルネスを求めない若者たち",
+        "url": "https://ampmedia.jp/2026/09/16/zgen-hangover/",
+        "status": "ok"
+      },
+      {
+        "title": "EU、15歳未満のSNS利用制限へ　「子どもたちは、子ども時代を奪われている」フォンデアライエン氏（FNNプライムオンライン（フジテレビ系））",
+        "url": "https://news.yahoo.co.jp/articles/7bee6e5e8574cae4766489842cda7aaecc7c13d0",
+        "status": "ok"
+      },
+      {
+        "title": "LinQ、Z世代ならではの行動特性を活かし新たな体験接点の提供へ",
+        "url": "https://www.syogyo.jp/news/2026/09/post_044724",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代を覆う不安",
+        "url": "https://inpsjapan.com/sdgs/generation-z-and-millennials-in-an-age-of-great-anxiety/",
+        "status": "ok"
+      },
+      {
+        "title": "仕事ができる人は、言われた通りに仕事をしない｜今瀧健登 / Z世代の企画屋",
+        "url": "https://comemo.nikkei.com/n/n9390fc96b7ee",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代の移住先はテキサス州が人気、住宅費高騰のニューヨークは約3万人の転出超過に　米国",
+        "url": "https://forbesjapan.com/articles/detail/104834",
+        "status": "ok"
+      },
+      {
+        "title": "「10代のAI利用実態」をGoogleが分析して公開",
+        "url": "https://gigazine.net/news/20260917-5-facts-teens-ai-google-study/",
+        "status": "ok"
+      },
+      {
+        "title": "ASCII.jp：日本のスマホ、Androidが54.1％　10〜20代はiPhone、40代以上はAQUOSが首位",
+        "url": "https://ascii.jp/elem/000/004/435/4435816/",
+        "status": "ok"
+      },
+      {
+        "title": "おしゃれZ世代が考える「センスがいい人」、1位は3年連続で「あさぎーにょ」【双葉通信社調べ】",
+        "url": "https://webtan.impress.co.jp/n/2026/09/18/53313",
+        "status": "ok"
+      },
+      {
+        "title": "山田涼介“ポンコツキャラ”で、SNS頭抱える「戦国のZ世代」「顔以外に長所のない仕上がり」【豊臣兄弟】",
+        "url": "https://www.lmaga.jp/news/2026/09/1100465/",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代スターが集結、YouTube青春バラエティ『アオのまにまに』9月18日（金）より配信開始！",
+        "url": "https://prtimes.jp/main/html/rd/p/000000058.000118235.html",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代のための新しい映画ガイド『20代のうちに観ておきたい映画100』2026年9月17日（木）発売 - PR TIMES｜cinemacafe.net",
+        "url": "https://www.cinemacafe.net/release/prtimes-news/20260917/102475.html",
+        "status": "ok"
+      },
+      {
+        "title": "27卒の就活漢字1位は「苦」！内々定率85.6％の裏にあるリアルな葛藤とは！？ #Z世代Pick | 大学入学・新生活 | 学生トレンド・流行",
+        "url": "https://gakumado.mynavi.jp/gmd/articles/91712",
+        "status": "ok"
+      }
+    ],
+    "essay": {
+      "title": "2026/09/14-09/18 週次考察",
+      "summary": "AIが「前提」になったことで、Z世代はAIを使いながら、AIに飲み込まれない態度を明確に持ち始めた",
+      "structure": [],
+      "sections": [
+        {
+          "heading": "「AIスライドにキレる」——Z世代はAIを使いながら、AIを使ったふりを見抜く",
+          "body": "「AIだと見抜いた瞬間、その人に対する信頼度が一気に下がり、モヤモヤしてしまう自分がいる」 これはNewsPicksに掲載された大学生のマタノ氏が書いた言葉だ。春学期の授業でAI生成スライドが急増した体験からの考察で、多くのコメントがついた。 重要なのは、「AIそのものへの拒絶ではない」という点だ。マタノ氏自身もAIを使う。問題にしているのは「考え抜いた痕跡がないコンテンツ」だ。 NewsPicks上のコメントの多数も同じ構造を指摘している。「まったくその人の考えが見えない、画一的で\"AIが作っただけ\"のスライドは、情報ではなく、責任の放棄なんだと思う」。 この感覚は、Z世代が広告にも向けている。ATLASが9/7から記録してきたsetlogの「疲れないSNS」系列、9/8の「宣伝・広告感が強い投稿を77%がスキップ」、今週の「かわいい×使えるが条件（9/16）」——全て同じ根から来ている"
+        },
+        {
+          "heading": "Googleが示した10代のAI実態——「宿題の答えを出させる」より「学習パートナーとして使う」",
+          "body": "Googleが公開した「U.S. Future Report 2026」は、アメリカの13〜17歳を6州で各1,000人ずつ調査した大規模データだ。 最も重要な数字は「94%が過去1年でAIを使用し、74%が週1回以上、複雑なトピックを解き明かすための対話型学習パートナーとして利用している」だ。「宿題の答えをそのまま出力させる」がメインではない。 具体的な使用例は「宿題に関する調査（61%）」「日々の疑問への答え探し（52%）」「スペルチェックと文章編集（51%）」。AIを「相談相手」「調査補助」として使っている。 また、55%がAIの情報を他の信頼できる情報源と照合して確認し、54%が親や教師に相談している。AIの情報をそのまま信じるのではなく、批判的に検証するという習慣を持っている。 さらに、64%が「5年生（10歳）までにデジタルリテラシー教育を受けるべき」と回答しながら、実際にデジ"
+        },
+        {
+          "heading": "EU KIDS Actと「AIから離れる権利」——社会は「アクセス」と同時に「Exit」も設計し始めた",
+          "body": "「No social media under the age of 13. No personal account under the age of 15.」 フォンデアライエン委員長の言葉はシンプルだが、政策として実現すれば欧州全土の子どもの生活を変える。EU KIDS Act（Keeping Internet Digital Spaces Accountable and Trustworthy Act）は、13歳未満のSNS全面禁止、13〜14歳は保護者監督付き1時間制限、AIチャットボットとオンラインゲームも規制対象に含む。 「What we are witnessing is a great capture of our children」という言葉が核心だ。子どもたちの「注意・集中・心」が捕まれているという認識から出発している。EUの若者が1日4〜6時間をスクリーンに費やし、それ"
+        },
+        {
+          "heading": "「AIを使えないと門前払い」と「AIに相談して買う」——就職と消費の入口が同時に変わった",
+          "body": "9/17に二つの記事が同日に記録された。 一つ目は「世界の大手銀行でAI活用能力が新卒採用の要件になった」という報道。ATLASが9/4に「下積み20年やれと？という若手の問い」として記録した系列が、9/17に「AIを使えないと採用されない」という最も現実的な形で着地した。 二つ目は「悩みはAIに相談し、AIがおすすめした商品を買う」という高校生の購買行動だ。購買の起点が「検索して比較する」から「AIに相談して決める」に移っている。 この二つを並べると、Z世代の生活の中でAIが「前提」になっている局面が見える。就職の入口（AI活用能力の証明）と、消費の入口（AIへの相談）の両方で、AIとの関係が問われている。 しかし、Googleの調査（9/18）と「AIスライドへの批判（9/16）」を重ねると、もう一層の複雑さが見える。Z世代はAIを使いながら、AIが出したものをそのまま受け入れない。A"
+        }
+      ],
+      "period_definition": "Z世代はAIを使いながら、「考えていないAI」を見抜く。その目を甘く見た企業が、信頼を失う。",
+      "keywords": [
+        "AIスライド批判",
+        "EU KIDS Act",
+        "AI採用要件化",
+        "AI学習パートナー",
+        "結婚統計確定",
+        "脱資本主義現実認識"
+      ]
+    },
+    "article_count": 52,
+    "warnings": []
+  },
+  {
+    "type": "weekly",
     "id": "2026-09-07_2026-09-11",
     "title": "2026/09/07-09/11 Z世代・若年層関連記事と考察",
     "period": {
