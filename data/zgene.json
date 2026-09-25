@@ -1,6 +1,359 @@
 [
   {
     "type": "weekly",
+    "id": "2026-09-23_2026-09-25",
+    "title": "2026/09/23-09/25 Z世代・若年層関連記事と考察",
+    "period": {
+      "start": "2026-09-23",
+      "end": "2026-09-25"
+    },
+    "articles": [
+      {
+        "title": "食べログ・価格.com・@cosmeに眠る「次の資産」──AI時代になぜ「人間の口コミ」の価値が高まるのか（AMP［アンプ］）",
+        "url": "https://news.yahoo.co.jp/articles/c7abbc43c13244d345d009b9dca9817f8a2fae76",
+        "status": "ok"
+      },
+      {
+        "title": "若者が「SDGsの次」に重視するのは？最多は「ウェルビーイング」、身近さが関心の入口に（オルタナ）",
+        "url": "https://news.yahoo.co.jp/articles/1853a4fea3102b7927798cb0b81dd791283079d7",
+        "status": "ok"
+      },
+      {
+        "title": "「月58万円を自由に使う」若年富裕層は何を買う？　世帯年収「3000万円超」のお金の使い方とは：博報堂が調査（1/2 ページ） - ITmedia ビジネスオンライン",
+        "url": "https://www.itmedia.co.jp/business/spv/2609/20/news005.html",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代のインフルエンサーは、不動産もジョーク付きでTikTokで売っている（海外）（BUSINESS INSIDER JAPAN）",
+        "url": "https://news.yahoo.co.jp/articles/13bed6febc120aad0588e03c0914f5eee5177c3c",
+        "status": "ok"
+      },
+      {
+        "title": "渋谷で若者離れ? 人流データ分析 2026年9月21日",
+        "url": "https://news.yahoo.co.jp/pickup/6595978",
+        "status": "ok"
+      },
+      {
+        "title": "BeRealの次は韓国発のVlogアプリ「setlog」がブームに？　Z世代の7割超が使う理由と「タイムリミットに追われない」クローズドな魅力（1/3 ページ） - ITmedia Mobile",
+        "url": "https://www.itmedia.co.jp/mobile/spv/2609/22/news004.html",
+        "status": "ok"
+      },
+      {
+        "title": "newspicks.com: 【衝撃データ】AI先進企業は、新卒採用を強化していた",
+        "url": "https://newspicks.com/news/17528447/body/?ref=index",
+        "status": "ok"
+      },
+      {
+        "title": "newspicks.com: 【賭け】こんな時代に10代向け「紙の雑誌」が誕生した",
+        "url": "https://newspicks.com/news/17545028/body/",
+        "status": "ok"
+      },
+      {
+        "title": "Yahoo!ニュース: SNS潮流変化 「仲間内」の安心感",
+        "url": "https://news.yahoo.co.jp/pickup/6596137",
+        "status": "ok"
+      },
+      {
+        "title": "おしゃれZ世代が考える「センスがいい人」、1位は3年連続で「あさぎーにょ」【双葉通信社調べ】（Web担当者Forum） - Yahoo!ニュース",
+        "url": "https://news.yahoo.co.jp/articles/50ed78d29f52d4209490c1685a49f6f2e1cdc499",
+        "status": "ok"
+      },
+      {
+        "title": "Forbes JAPAN: 多くのZ世代とミレニアル世代が「リーダー職を敬遠」、その理由 米国",
+        "url": "https://forbesjapan.com/articles/detail/105069",
+        "status": "ok"
+      },
+      {
+        "title": "Yahoo!ニュース: 仕事は家でできる。それでも会社に行く意味は？ Z世代が問い直すオフィスの役割（AMP［アンプ］）",
+        "url": "https://news.yahoo.co.jp/articles/db398de366673478dc7f1911b91409c584fe667b",
+        "status": "ok"
+      },
+      {
+        "title": "Yahoo!ニュース: AI、子供に深刻な悪影響恐れ 元グーグル幹部、対策要求（共同通信）",
+        "url": "https://news.yahoo.co.jp/articles/fb3e0e167b8a3cb662bec590e417f04294de9fc3",
+        "status": "ok"
+      },
+      {
+        "title": "Yahoo!ニュース: AIを常駐させる大学が、学生に「街を歩く授業」を課す理由 #エキスパートトピ（矢萩邦彦） - エキスパート",
+        "url": "https://news.yahoo.co.jp/expert/articles/bd2f14d1636ca05459eaa29bbf07849e9ffd2c93",
+        "status": "ok"
+      },
+      {
+        "title": "Yahoo!ニュース: Z世代がカジュアルに使う「食事キャンセル界隈」は本当に大丈夫なのか？ 若者が「食べられない」ことを正当化する“危険性”も（AERA DIGITAL） - Yahoo!ニュース",
+        "url": "https://news.yahoo.co.jp/articles/b4fafea8679ab2379eace803c7f1dee289209454",
+        "status": "ok"
+      },
+      {
+        "title": "sankei.com: Z世代が考える未来のチョコ菓子は？ 若者が企業に提言 キャリアサミット、関西で初開催",
+        "url": "https://www.sankei.com/article/20260923-UYZMXYK3JVNO5JXCH2AYDZ2KI4/",
+        "status": "ok"
+      },
+      {
+        "title": "ｄメニューニュース: 「若年層にはびこる孤独感 英国のZ世代に太宰治が人気なわけ」ブレイディみかこ（AERA DIGITAL）｜ｄメニューニュース",
+        "url": "https://topics.smt.docomo.ne.jp/article/dot/nation/dot-292981",
+        "status": "ok"
+      },
+      {
+        "title": "TABI LABO: Z世代の最新侮辱語は「ポリエステル」。素材名が人格を測る時代に",
+        "url": "https://tabi-labo.com/313004/genz-polyester-slang",
+        "status": "ok"
+      },
+      {
+        "title": "Business Insider Japan: 教皇のAI顧問、テクノロジーは子どもたちにとってコカインよりも有害になり得ると語る",
+        "url": "https://www.businessinsider.jp/article/2609-pope-advisor-ai-can-be-worse-for-kids-than-cocaine/",
+        "status": "ok"
+      },
+      {
+        "title": "Business Insider Japan: ザッカーバーグ夫妻、娘のバイブコーディングを制限。「インターネット公開」はNG",
+        "url": "https://www.businessinsider.jp/article/202609-meta-zuckerberg-daughter-vibecoding/",
+        "status": "ok"
+      },
+      {
+        "title": "Business Insider Japan: AIで書いた応募書類はなぜバレる？703件を読んだCEOが見抜いた「人間らしさ」の差",
+        "url": "https://www.businessinsider.jp/article/2609-how-to-tell-job-application-written-by-ai-according-ceo/",
+        "status": "ok"
+      },
+      {
+        "title": "newspicks.com: 【実例集】就活生必見。「AI使い倒し企業」はここだ",
+        "url": "https://newspicks.com/news/17551347/body/",
+        "status": "ok"
+      },
+      {
+        "title": "ダイヤモンド・オンライン: 若者より深刻…「シニアの旅行離れ」を加速させる「お金だけじゃない」理由",
+        "url": "https://diamond.jp/articles/-/399554",
+        "status": "ok"
+      },
+      {
+        "title": "「SNSをやめる」という選択、スモールビジネスは生き残れるか | Forbes JAPAN 公式サイト（フォーブス ジャパン）",
+        "url": "https://forbesjapan.com/articles/detail/105181",
+        "status": "ok"
+      },
+      {
+        "title": "止まらぬテレビ離れ、テレ東が対応策を説明　総個人視聴率が30％下回る…　好調の“スポーツバラエティー”で改善図る | オリコンニュース（ORICON NEWS）",
+        "url": "https://www.oricon.co.jp/news/2481006/full/",
+        "status": "ok"
+      },
+      {
+        "title": "食べログ・価格.com・@cosmeに眠る「次の資産」──AI時代になぜ「人間の口コミ」の価値が高まるのか | AMP[アンプ] - 人生の豊かさを生む瞬間を情報でつくりだす新世代向けビジネスメディア",
+        "url": "https://ampmedia.jp/2026/09/20/comcosme-reddit/",
+        "status": "ok"
+      },
+      {
+        "title": "Tinderが渋谷に無料ゲーセン　若者の「お初キャンセル」に着目、8割超が初対面に不安 | 黃信維（コウ・シンイ） | ニュース - 風傳媒日本語版",
+        "url": "https://japan.storm.mg/articles/1165634",
+        "status": "ok"
+      },
+      {
+        "title": "名門VCのa16z、「AIネイティブな教育」を提供する2年制大学代替プログラムを立ち上げ（Forbes JAPAN）",
+        "url": "https://news.yahoo.co.jp/articles/31eef0095301902eda95071918828a467bc577f9",
+        "status": "ok"
+      },
+      {
+        "title": "推し活が“病気”に変わる瞬間 なぜ本人は気づけない？“自分が贅沢しているわけではない”【新時代の依存症 中編】 | 名古屋・愛知・岐阜・三重のニュース【CBC news】 | CBC web",
+        "url": "https://newsdig.tbs.co.jp/articles/cbc/2942926",
+        "status": "ok"
+      },
+      {
+        "title": "《趣味や推し活が国を潰す？》「超ソロ社会」に突き進む日本、2040年には“半分が独身”へ　独身生活40周年のオバ記者も実感“趣味に全力投球で結婚しない大人たち” (1/2)| 女性セブンプラス",
+        "url": "https://j7p.jp/181723",
+        "status": "ok"
+      },
+      {
+        "title": "「ギャラはわずか」「メイクと衣装は自前」…急増する「ショートドラマ」制作現場は“やりがい搾取”なのか？（伊藤 綾） | 現代ビジネス | 講談社",
+        "url": "https://gendai.media/articles/-/170766",
+        "status": "ok"
+      },
+      {
+        "title": "世界37カ国のうち日本を含むほとんどの国で「AIは雇用増加ではなく雇用喪失を引き起こす」と予想されていることが判明 - GIGAZINE",
+        "url": "https://gigazine.net/news/20260918-more-people-expect-ai-job-loss/",
+        "status": "ok"
+      },
+      {
+        "title": "AI時代、「中間層」が消えていく…人間は“AIが代替できないプロ”と“AIを支えるだけの労働者”に二分。その決定的な分岐点は…｜ゴールドライフオンライン",
+        "url": "https://renaissance-media.jp/articles/-/27560",
+        "status": "ok"
+      },
+      {
+        "title": "200ドル（約3万円）のバッグは買わないZ世代が、スマホで2万ドル（約315万円）のジェットを即予約する理由 | Forbes JAPAN 公式サイト（フォーブス ジャパン）",
+        "url": "https://forbesjapan.com/articles/detail/105260",
+        "status": "ok"
+      },
+      {
+        "title": "「年収500万円でもゼロ」若者がブルーカラーを敬遠する理由…AI時代に求められる“かっこよさ”とキャリアの転換 | 国内 | ABEMA TIMES | アベマタイムズ",
+        "url": "https://times.abema.tv/articles/-/10273862",
+        "status": "ok"
+      },
+      {
+        "title": "若者のジム通いが急増する理由とは？Z世代の価値観と「持ち家離れ」の関係 | TABI LABO",
+        "url": "https://tabi-labo.com/313013/gym-genz-home-diy",
+        "status": "ok"
+      },
+      {
+        "title": "入社3年ですり減る若手が続出する理由…172の研究でわかった｢つらさの正体｣は､能力の欠如ではなく《適合のズレ》だった | ライフ | 東洋経済オンライン",
+        "url": "https://toyokeizai.net/articles/-/956994?utm_source=smartnews&utm_medium=http&utm_campaign=link_back&utm_content=article",
+        "status": "ok"
+      },
+      {
+        "title": "学校での「AI禁止」が招く悲劇、貧富の差による「二重のデジタルデバイド」とは | Forbes JAPAN 公式サイト（フォーブス ジャパン）",
+        "url": "https://forbesjapan.com/articles/detail/105314",
+        "status": "ok"
+      },
+      {
+        "title": "資本主義からTrust Economyへ(後編)｜k",
+        "url": "https://note.com/mptw569/n/n49bf73812e9f?external_type=smart_news&external_position=original_link&rt=external&sub_rt=smart_news",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代が見抜く「ゴーストジョブ」、企業が失う信頼という代償 | Forbes JAPAN 公式サイト（フォーブス ジャパン）",
+        "url": "https://forbesjapan.com/articles/detail/104976",
+        "status": "ok"
+      },
+      {
+        "title": "「ガソリン車 ＝ 時代遅れ」ってマジ？ Z世代の2割以上が「固定電話みたい」と回答！ 最初のクルマ選びで何が起きているのか――英国の若者に広がる「クルマ観」の変化とは | Merkmal（メルクマール）",
+        "url": "https://merkmal-biz.jp/post/123068",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代のインフルエンサーは、不動産もジョーク付きでTikTokで売っている | Business Insider Japan",
+        "url": "https://www.businessinsider.jp/article/2609-gen-z-real-estate-influencers-selling-homes-tiktok-instagram-jokes/",
+        "status": "ok"
+      },
+      {
+        "title": "ナゾロジー: 初デート後の連絡タイミングは「翌朝」が最も効果的だった――焦らし作戦は裏目に",
+        "url": "https://nazology.kusuguru.co.jp/archives/200004",
+        "status": "ok"
+      },
+      {
+        "title": "Business Insider Japan: 「AIへの熱意」をどう演じるか…求職者が身につけつつある新たな面接スキル",
+        "url": "https://www.businessinsider.jp/article/2609-job-search-ai-tools-interviews-enthusiasm-hiring-tech-chatgpt-claude/",
+        "status": "ok"
+      },
+      {
+        "title": "「こういうとこ本当に中国」　異様な熱狂の裏で、中国発スクイーズ「メロジョイ」に起きているファン離れ（東洋経済オンライン）",
+        "url": "https://news.yahoo.co.jp/articles/c48b21d2de67210f9946981cfe7cc4d3d9eaab68",
+        "status": "ok"
+      },
+      {
+        "title": "「こどもNISA」競争に熱 証券各社 2026年9月24日",
+        "url": "https://news.yahoo.co.jp/pickup/6596381",
+        "status": "ok"
+      },
+      {
+        "title": "日経ビジネス電子版: フードデリバリー市場で再編加速 KDDIはサービス終了 Woltも日本撤退",
+        "url": "https://business.nikkei.com/atcl/gen/19/00297/083100312/",
+        "status": "ok"
+      },
+      {
+        "title": "Yahoo!ニュース: 「またAI飯か…」叩かれても企業が使うワケ、AIが進化するほど起きる“逆転”とは（ビジネス＋IT）",
+        "url": "https://news.yahoo.co.jp/articles/9e5397b0c6f810aede4ee038c62e3cbf24231ca3",
+        "status": "ok"
+      },
+      {
+        "title": "クーリエ・ジャポン: なぜ最近、時間が早く過ぎるのか？ 原因は「コロナ禍の期間」にあった",
+        "url": "https://courrier.jp/news/archives/459521/",
+        "status": "ok"
+      },
+      {
+        "title": "クーリエ・ジャポン: 記憶に残る人生にしたければ、退屈せよ──脳科学が示す「空白」の価値",
+        "url": "https://courrier.jp/news/archives/460181/",
+        "status": "ok"
+      },
+      {
+        "title": "Yahoo!ニュース: ＜#ビジュ＞2割が見た目に悩み SNSが増幅する子ども・若者の生きづらさ（毎日新聞） - Yahoo!ニュース",
+        "url": "https://news.yahoo.co.jp/articles/0886c23c6c53fed1e3c47639c9049e86b5568963",
+        "status": "ok"
+      },
+      {
+        "title": "ニューズウィーク日本版: 「国に絶望」した果てに「愛国者」に…中国の「流行語」から見える、若者たちの矛盾と苦しみ | ニューズウィーク日本版 オフィシャルサイト",
+        "url": "https://www.newsweekjapan.jp/articles/-/334945",
+        "status": "ok"
+      },
+      {
+        "title": "PR TIMES: 【ワカモノリサーチ調査】令和の若者に聞いた！実はあまり行きたくないデートスポットランキング！",
+        "url": "https://prtimes.jp/main/html/rd/p/000000234.000162122.html",
+        "status": "ok"
+      },
+      {
+        "title": "クーリエ・ジャポン: Z世代が趣味を自ら「ノルマ化」したあげく疲弊してしまう根深い理由",
+        "url": "https://courrier.jp/news/archives/460072/",
+        "status": "ok"
+      },
+      {
+        "title": "WIRED: Why No One Wants to Date Tech Bros",
+        "url": "https://www.wired.com/story/tech-bros-dating-palantir-tesla/",
+        "status": "ok"
+      },
+      {
+        "title": "Forbes JAPAN: 学生に「生産的な摩擦」は必要か──AI教育をめぐるUAEとニューヨークの対照的アプローチ",
+        "url": "https://forbesjapan.com/articles/detail/105311",
+        "status": "ok"
+      },
+      {
+        "title": "Forbes JAPAN: スクリーン時間の測定はもうやめよう。テクノロジーの功罪を解明する研究が必要だ",
+        "url": "https://forbesjapan.com/articles/detail/105342",
+        "status": "ok"
+      },
+      {
+        "title": "Forbes JAPAN: AIが変えるキャリア構造 「ピラミッド型」から「ダイヤモンド型」へ",
+        "url": "https://forbesjapan.com/articles/detail/105412",
+        "status": "ok"
+      },
+      {
+        "title": "newspicks.com: 【異端】20代は「40代を買う」時期だ",
+        "url": "https://newspicks.com/news/17531222/body/",
+        "status": "ok"
+      },
+      {
+        "title": "日経クロストレンド: AI時代、人はなぜ「あなたに会いに来ました」と販売員を訪ねるのか",
+        "url": "https://xtrend.nikkei.com/atcl/contents/18/01482/00001/?i_cid=nbpnxr_new_top_all_08",
+        "status": "ok"
+      }
+    ],
+    "essay": {
+      "title": "2026/09/23-09/25 週次考察",
+      "summary": "Z世代は、AIが前提になった社会の中で、信頼できる情報と信頼できる関係と信頼できるキャリアを、自分で再定義し始めた週",
+      "structure": [],
+      "sections": [
+        {
+          "heading": "AI時代に人間の口コミが資産になる——信頼の逆説",
+          "body": "食べログ・価格.com・@cosmeの口コミ価値がAI時代に上昇する。AIが要約・生成した情報が氾濫するほど、「実際に行った人」「実際に使った人」の一次体験が希少化する。Z世代はすでに口コミを「AI生成かどうか」で選別し始めており、人間の痕跡こそが信頼の根拠になる時代が来ている。"
+        },
+        {
+          "heading": "「食事キャンセル界隈」「ポリエステル」——言語が価値観を可視化する",
+          "body": "「食事キャンセル界隈」は摂食制限を肯定的に語るコミュニティ。「ポリエステル」はZ世代の最新侮辱語で「安っぽい・本物でない・感情が薄い」人格への批判に使われる。Z世代は「本物か否か」「誠実か否か」という基準を日常言語に組み込んでいる。素材名が人格評価の軸になる時代。"
+        },
+        {
+          "heading": "リーダー職敬遠とゴーストジョブ——「働く場所」への信頼が壊れている",
+          "body": "米国でZ世代・ミレニアル世代の多くが「リーダー職を敬遠」。「ゴーストジョブ（採用する気のない求人）」をZ世代が見抜き企業が信頼を失う。入社3年で若手がすり減る原因は「能力の欠如」ではなく「適合のズレ」。Z世代にとって職場は「信頼に値するか」を問う場所になっている。"
+        },
+        {
+          "heading": "趣味・推し活の「ノルマ化疲弊」——自己統治が自縛になる",
+          "body": "「Z世代が趣味を自らノルマ化して疲弊する」という記事と「推し活が病気に変わる瞬間」という記事が揃った。「好きなことを自分でコントロールしながら続ける」という理想が、「好きなことさえもタスク化してしまう」という自縛に転化している。自己管理能力の高さゆえの逆説。"
+        },
+        {
+          "heading": "「AIが変えるキャリア構造」——ダイヤモンド型の中間層が消える前に",
+          "body": "AIがキャリア構造を「ピラミッド型」から「ダイヤモンド型」へ変える。中間層が消え、AIを使いこなすプロと支えるだけの労働者に二分される。a16zが「AIネイティブな教育」の2年制代替プログラムを立ち上げた。Z世代が向き合う問いは「どちら側に立つか」ではなく「このゲームに乗るべきか」だ。"
+        },
+        {
+          "heading": "「超ソロ社会」と趣味への全力投球——孤独を選ぶのではなく、設計している",
+          "body": "「2040年に日本の半分が独身」という論点が再浮上。英国Z世代に太宰治が人気という記事も孤独感の普遍化を示した。しかしZ世代の独身は「孤独に押し込まれた」のではなく「趣味に全力投球するために設計した生活」という側面がある。身体は投資対象、場所は軽く持つ生活設計。"
+        }
+      ],
+      "period_definition": "Z世代は今週、AIが作る情報・企業が作る求人・SNSが作る関係すべてに本物かどうかを問い始めた。",
+      "keywords": [
+        "口コミ資産化",
+        "食事キャンセル界隈",
+        "ゴーストジョブ不信",
+        "趣味ノルマ化疲弊",
+        "キャリアダイヤモンド型",
+        "超ソロ設計生活"
+      ]
+    },
+    "article_count": 60,
+    "warnings": []
+  },
+  {
+    "type": "weekly",
     "id": "2026-09-14_2026-09-18",
     "title": "2026/09/14-09/18 Z世代・若年層関連記事と考察",
     "period": {
