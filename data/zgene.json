@@ -1,6 +1,302 @@
 [
   {
     "type": "weekly",
+    "id": "2026-10-12_2026-10-16",
+    "title": "2026/10/12-10/16 Z世代・若年層関連記事と考察",
+    "period": {
+      "start": "2026-10-12",
+      "end": "2026-10-16"
+    },
+    "articles": [
+      {
+        "title": "Z世代はなぜ「マイホーム」より先に投資をするのか 20代で「未来の選択肢」を買う若者たち（AMP）",
+        "url": "https://ampmedia.jp/2026/10/11/asset-building/",
+        "status": "ok"
+      },
+      {
+        "title": "「若者の読解力低下」という大きな誤解…実は「ショート動画」や「ミュージックビデオ」視聴にも「読解」は潜んでいた（マネー現代）",
+        "url": "https://gendai.media/articles/-/171873",
+        "status": "ok"
+      },
+      {
+        "title": "「理由はすぐにわかった」だから「若者の読解力不足」を煽る報道が激増した…この問題でビジネスをしたい商売上手な人たち（文春オンライン）",
+        "url": "https://bunshun.jp/articles/-/92750",
+        "status": "ok"
+      },
+      {
+        "title": "「寝る時間がもったいない」Z世代に広がる「睡眠キャンセル界隈」、約6割が睡眠6時間以下（マイナビニュース）",
+        "url": "https://news.mynavi.jp/article/20261009-5100756/",
+        "status": "ok"
+      },
+      {
+        "title": "ポッドキャスト：若者を取り巻くルッキズムの圧力　見た目の悩みとどう付き合う？（毎日新聞）",
+        "url": "https://mainichi.jp/articles/20261009/k00/00m/040/179000c",
+        "status": "ok"
+      },
+      {
+        "title": "「風呂キャン」「勉強キャンセル」キャンセル界隈なぜ広がる？　若者たちの本音を取材（FNNプライムオンライン）",
+        "url": "https://www.fnn.jp/articles/FNN/1130626",
+        "status": "ok"
+      },
+      {
+        "title": "TikTokを見るとお腹が空く!?10代の食行動に与える驚きの影響（@DIME）",
+        "url": "https://dime.jp/genre/2160404/",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代が職場で燃え尽き症候群に陥りやすい理由とは？（GIGAZINE）",
+        "url": "https://gigazine.net/news/20261012-gen-z-is-burning-out-work/",
+        "status": "ok"
+      },
+      {
+        "title": "20代の若者がアナログレコードを買う理由は…ミニマリストが語る「デジタルの仮想社会にないもの」が生み出す効果（FRaU）",
+        "url": "https://gendai.media/articles/-/171965",
+        "status": "ok"
+      },
+      {
+        "title": "AI時代に必要な学びとは 教育現場を変革する20代起業家たち（Forbes JAPAN）",
+        "url": "https://forbesjapan.com/articles/detail/106281/page4",
+        "status": "ok"
+      },
+      {
+        "title": "「AI就活」の実態を独自調査で初公開 Z世代の70.9％が求職活動で生成AIを利用（ニコニコニュース）",
+        "url": "https://news.nicovideo.jp/watch/nw19869868",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代のメンタルヘルス市場：グローバルおよび地域別分析、2026年～2033年（pando.life）",
+        "url": "https://pando.life/article/4693159",
+        "status": "ok"
+      },
+      {
+        "title": "富裕層Z世代、美術品購入額が他世代を大きく上回る＝調査（Reuters）",
+        "url": "https://www.reuters.com/jp/world/6TAJP7H6AJPBNHQEZWFSWRNU2I-2026-10-09/",
+        "status": "ok"
+      },
+      {
+        "title": "親と絶縁する若者 米国で急増の訳（WSJ）",
+        "url": "https://jp.wsj.com/articles/why-are-so-many-adults-cutting-off-their-parents-d497988d",
+        "status": "ok"
+      },
+      {
+        "title": "未婚の若者3割超が「結婚するつもりなし」 「非婚時代」の結婚式は「ふたりらしい自由なスタイル」に（FNNプライムオンライン）",
+        "url": "https://www.fnn.jp/articles/-/1131281",
+        "status": "ok"
+      },
+      {
+        "title": "「NISA貧乏」は本当に多いのか？データで見る若者の投資の実態、むしろ中高所得層は過少投資か（JBpress）",
+        "url": "https://jbpress.ismedia.jp/articles/-/97484",
+        "status": "ok"
+      },
+      {
+        "title": "ノーギアス、AIを活用した「若者の声」の収集・分析基盤を開発（PR TIMES）",
+        "url": "https://prtimes.jp/main/html/rd/p/000000011.000160200.html",
+        "status": "ok"
+      },
+      {
+        "title": "お小遣い以外にフリマやポイ活 α世代のお金事情 物価高とデジタル化が変える新しい金銭感覚（TBS NEWS DIG）",
+        "url": "https://newsdig.tbs.co.jp/articles/withbloomberg/2989409",
+        "status": "ok"
+      },
+      {
+        "title": "アルファ世代がAI広告を嫌う理由。（Vietnam.vn）",
+        "url": "https://www.vietnam.vn/ja/ly-do-gen-alpha-khong-thich-quang-cao-ai",
+        "status": "ok"
+      },
+      {
+        "title": "α世代は何が違う？ スマホ・AIネイティブが変えるメディア体験と情報行動（博報堂）",
+        "url": "https://www.hakuhodo.co.jp/magazine/267388/",
+        "status": "ok"
+      },
+      {
+        "title": "AI時代の人材育成：Z世代が示す「つながり」の価値（Forbes JAPAN）",
+        "url": "https://forbesjapan.com/articles/detail/106533",
+        "status": "ok"
+      },
+      {
+        "title": "【北欧リポート】「グレタの国」でZ世代が右傾化、行き過ぎた環境政策と移民受け入れが変えた意識（JBpress）",
+        "url": "https://jbpress.ismedia.jp/articles/-/97470",
+        "status": "ok"
+      },
+      {
+        "title": "告白のセリフをAIに考えてもらうのはアリ？ Z世代は「相談ならOK」が4割超（Web担当者Forum）",
+        "url": "https://topics.smt.docomo.ne.jp/article/webtan_impress/trend/webtan_impress-webtan.impress.co.jp_node_53433",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代求職者の70.9％が生成AIを活用、最多は履歴書・エントリーシートの作成（こどもとIT）",
+        "url": "https://edu.watch.impress.co.jp/docs/news/2147452.html",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代女性、コスメ・服選びでAIに「自分に合うか」を相談【MERY調査】（株式会社ヴァリューズ）",
+        "url": "https://manamina.valuesccg.com/articles/5347",
+        "status": "ok"
+      },
+      {
+        "title": "AI就活で見えない「職場の雰囲気」 Z世代481人調査で企業研究の課題が明らかに（PR TIMES）",
+        "url": "https://prtimes.jp/main/html/rd/p/000000014.000140950.html",
+        "status": "ok"
+      },
+      {
+        "title": "【新NISA】50歳代が3兆1802億円で買付最多→20歳代とのつみたて投資枠比率の違いは（LIMO）",
+        "url": "https://limo.media/articles/-/141604",
+        "status": "ok"
+      },
+      {
+        "title": "日本の若者に広がる「車離れ」と「NISA貧乏」＝韓国ネット「韓国もそんな感じ」（Record China）",
+        "url": "https://www.recordchina.co.jp/b995013-s39-c30-d0195.html",
+        "status": "ok"
+      },
+      {
+        "title": "マネックス証券、ドコモ協業3年で新規48万口座を開拓　ポイント投資が若年層の呼び水に（ケータイ Watch）",
+        "url": "https://k-tai.watch.impress.co.jp/docs/news/2148022.html",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代はなぜ店に行くのか？ AI普及下で店舗来店数が過去最高を記録（DIGIDAY日本版）",
+        "url": "https://digiday.jp/glossy/the-ai-powered-holiday-shopper-how-prompt-driven-curation-and-gen-alpha-algorithms-will-shape-consumer-behavior/",
+        "status": "ok"
+      },
+      {
+        "title": "「ガクチカがない…」Z世代のリアルな葛藤を描く 東京ガス「家族の絆」新CM公開（AdverTimes）",
+        "url": "https://www.advertimes.com/20261015/article560719/",
+        "status": "ok"
+      },
+      {
+        "title": "ナイキも注目する年間15兆円市場「アルファ世代」 AI広告を嫌う本音とは（DIGIDAY日本版）",
+        "url": "https://digiday.jp/modern-retail/from-influencers-to-ai-heres-what-gen-alpha-thinks-about-your-brand/",
+        "status": "ok"
+      },
+      {
+        "title": "【ワカモノリサーチ調査】令和の若者に聞いた！堺雅人さん主演の好きなテレビドラマランキング（PR TIMES）",
+        "url": "https://prtimes.jp/main/html/rd/p/000000248.000162122.html",
+        "status": "ok"
+      },
+      {
+        "title": "「Z世代×柿の種」を制したのは？ 第2回学生広告日本一決定戦、多摩美術大学が全部門グランプリを獲得（AdverTimes）",
+        "url": "https://www.advertimes.com/20261015/article560609/",
+        "status": "ok"
+      },
+      {
+        "title": "金融ブランドがZ世代とミレニアル世代の信頼を獲得する方法（Forbes JAPAN）",
+        "url": "https://forbesjapan.com/articles/detail/106655",
+        "status": "ok"
+      },
+      {
+        "title": "岩波文庫「全点」品ぞろえが異例の万バズ 郊外書店に若者集うワケ（日経クロストレンド）",
+        "url": "https://xtrend.nikkei.com/atcl/contents/18/01484/00007/",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代のスマホ充電代が月平均1,296円もお得に！大学生が実践する賢いバッテリー節約術とは？（ワカモノリサーチ）",
+        "url": "https://wakamono-research.co.jp/media/gen-z-save-on-phone-charging/",
+        "status": "ok"
+      },
+      {
+        "title": "スペックよりもライフスタイル重視? 「若者のクルマ選び」の実態とは（au Webポータル）",
+        "url": "https://article.auone.jp/a4139e5d-75ee-45a7-9f02-2e05d394a3c2",
+        "status": "ok"
+      },
+      {
+        "title": "若者の可能性を広げたい大人が、知らずに奪っているもの（Lumi Spark）",
+        "url": "https://note.com/lumispark/n/n1a0219d54f6a",
+        "status": "ok"
+      },
+      {
+        "title": "知ってほしい若者の貧困（選挙ドットコム）",
+        "url": "https://go2senkyo.com/seijika/186032/posts/1537062",
+        "status": "ok"
+      },
+      {
+        "title": "米国の若者は、なぜAIを使いながら恐れるのか（NewsPicks）",
+        "url": "https://newspicks.com/news/17687296/body/",
+        "status": "ok"
+      },
+      {
+        "title": "「怠け者なのに権利意識は強い」、Z世代への評価はここが間違い…データが示す若者層の「賢さ」（ニューズウィーク日本版）",
+        "url": "https://www.newsweekjapan.jp/articles/-/337023",
+        "status": "ok"
+      },
+      {
+        "title": "台湾の若者の8割が日本を「最も好き」「最も信頼」…なぜ？ 台湾人が親日的な「3つの理由」（Yahoo!ニュース）",
+        "url": "https://news.yahoo.co.jp/articles/f900afa9776273ba24b9abe1a4f0eb5d2c91edbf",
+        "status": "ok"
+      },
+      {
+        "title": "「ホビ垢」にハマる若者たち　世界観は借りるから作るへ（繊研新聞）",
+        "url": "https://senken.co.jp/posts/shibuya109lab-261014",
+        "status": "ok"
+      },
+      {
+        "title": "「人生で大切なのはお金」と言い切る14歳が、本当は伝えたかったこと――禅僧と10代たちの対話（女子SPA！）",
+        "url": "https://joshi-spa.jp/1433549",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代 – パート1：一つの世代、多様な生き方（Vietnam.vn）",
+        "url": "https://www.vietnam.vn/ja/gen-z-ky-1-mot-the-he-nhieu-cach-song",
+        "status": "ok"
+      },
+      {
+        "title": "「最近の若者は出世したがらない」は本当か 20代の約6割が「昇進したい」意外な調査結果（AERA DIGITAL）",
+        "url": "https://dot.asahi.com/articles/-/294578",
+        "status": "ok"
+      },
+      {
+        "title": "【親ガチャ論争】「親ガチャ失敗」から「産んでもらってる時点で神」まで、若者600人の本音調査（マイナビ子育て）",
+        "url": "https://kosodate.mynavi.jp/articles/46336",
+        "status": "ok"
+      }
+    ],
+    "article_count": 48,
+    "essay": {
+      "title": "「キャンセル界隈」と「AI就活70%」——Z世代の自己管理と外部委託が同時に加速した週",
+      "summary": "今週は二つの大きな流れが交差した。一方では「睡眠キャンセル」「風呂キャン」「勉強キャンセル」という自己統治の放棄が「界隈」として可視化・拡散し、他方では就活の70.9%がAIを活用し、コスメ・服選びもAIに相談するという「外部委託の加速」が進んだ。自分でやめること（キャンセル界隈）と自分でやらないこと（AI委託）が同時に増えているのは矛盾ではない。「本当に自分が関与すべきこと」の選別が精緻化している。岩波文庫が万バズし、郊外書店に若者が集い、アナログレコードを20代が買う——本物の手触りへの需要は今週も続いた。",
+      "period_definition": "2026年10月第2週（10/12-10/16）のZ世代は、自己管理の「やめる領域」と「委託する領域」を同時に拡大しながら、手触りのある本物体験への需要を強めた週だった。キャンセル界隈の可視化とAI活用の深化は、両方とも「何に自分のリソースを使うか」の選別が高度化した表れだ。",
+      "keywords": [
+        "キャンセル界隈拡大",
+        "AI就活70%",
+        "外部委託の精緻化",
+        "アナログ本物需要",
+        "職場燃え尽き構造",
+        "α世代AI広告不信",
+        "ホビ垢世界観自作",
+        "昇進欲求の再評価",
+        "親ガチャ世代論争",
+        "投資より選択肢購入"
+      ],
+      "sections": [
+        {
+          "heading": "「キャンセル界隈」の拡張——自己統治の放棄から連帯へ",
+          "body": "睡眠・風呂・勉強・食事——「キャンセル界隈」が指す対象がこの一週間で一気に拡張した。「寝る時間がもったいない」という睡眠キャンセル（マイナビニュース）、「風呂キャン」「勉強キャンセル」（FNNプライム）が相次いで報じられ、TikTokの食行動への影響（@DIME）も同じ文脈に並ぶ。重要なのは、これらが「意志の弱さ」の告白ではなく「界隈」として共有されている点だ。自己管理に疲れた者同士が、失敗を可視化・命名することでコミュニティを形成している。孤立した罪悪感を連帯に変換する装置として「界隈」が機能している。"
+        },
+        {
+          "heading": "AI就活70.9%——委託が標準化した就職活動",
+          "body": "Z世代求職者の70.9%が生成AIを活用し、最多用途は履歴書・ESの作成（ニコニコニュース・こどもとIT）。一方「AI就活で見えない職場の雰囲気」（PR TIMES）という調査では、AIが情報収集を効率化する一方で、肌感覚・空気感の把握という本質的な課題が残ることが明らかになった。告白のセリフもAI相談が4割超（Web担当者Forum）、コスメ・服選びもAI相談（MERY調査）——意思決定の入口をAIに委ねながら、最終判断は自分で行うという「AIをフィルターとして使う」設計が定着してきた。"
+        },
+        {
+          "heading": "岩波文庫万バズ・アナログレコード・郊外書店——本物体験の磁力",
+          "body": "岩波文庫の全点品ぞろえが「異例の万バズ」を起こし、郊外書店に若者が集まる（日経クロストレンド）。20代がアナログレコードを買う理由として「デジタルの仮想社会にないもの」という言葉が登場（FRaU）。「ホビ垢」では世界観を「借りる」から「作る」へのシフトが起きている（繊研新聞）。AIが何でも生成できる時代に、物理的な重さ・手触り・唯一性が持つ価値が反転上昇している。本物体験への需要は前週のドストエフスキー・スクイーズに続き、今週も多様な形で登場した。"
+        },
+        {
+          "heading": "職場燃え尽きと「昇進したい6割」——Z世代労働観の二層構造",
+          "body": "Z世代が職場で燃え尽き症候群に陥りやすい理由（GIGAZINE）と、20代の約6割が「昇進したい」という調査（AERA DIGITAL）が同週に並んだ。「やる気がない」という外部評価と、「成長・昇進を望む」という実態のギャップ。燃え尽きる原因は意欲の欠如ではなく「適合のズレ」であり、「成長できる環境」なら積極的に関与するという条件付き意欲だ。「怠け者なのに権利意識が強い」というZ世代評価を「間違い」として否定するニューズウィークの記事も同文脈に置かれる。"
+        },
+        {
+          "heading": "α世代はAI広告を嫌う——次の世代が示す「本物性」の閾値",
+          "body": "ナイキも注目する15兆円市場・α世代（DIGIDAY）がAI広告を嫌う。その理由は「作られた感」への拒絶だ（Vietnam.vn）。博報堂の調査でもα世代のスマホ・AIネイティブとしての情報行動はZ世代とは異なる回路を持つことが示された。α世代はAIが「当たり前」として生まれた世代であるがゆえに、「AIで作った感」を瞬時に識別し、嫌悪する。Z世代が「AIの痕跡を見抜く」のに対し、α世代は「AIの匂いそのものを嫌う」——本物性の閾値が世代を経るごとに上がっている。"
+        },
+        {
+          "heading": "「投資よりマイホーム」ではなく「マイホームより選択肢」——Z世代の資産観",
+          "body": "「マイホームより先に投資する」Z世代（AMP）、「NISA貧乏」データ検証（JBpress）、ポイント投資が若年層の入口になる（ケータイWatch）、α世代のフリマ・ポイ活（TBS NEWS DIG）——今週は若年層の資産形成記事が集中した。共通するのは「固定資産より流動性」という価値観だ。マイホームを先に買わないのは夢の喪失ではなく、「未来の選択肢を買う」という合理的設計だ。「人生で大切なのはお金」と言い切る14歳の禅僧との対話（女子SPA）も、お金への執着ではなく「お金がないと選択肢が消える」という現実認識として読み直せる。"
+        }
+      ]
+    },
+    "warnings": []
+  },
+  {
+    "type": "weekly",
     "id": "2026-10-05_2026-10-09",
     "title": "2026/10/05-10/09 Z世代・若年層関連記事と考察",
     "period": {
