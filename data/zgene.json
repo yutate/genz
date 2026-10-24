@@ -1,6 +1,338 @@
 [
   {
     "type": "weekly",
+    "id": "2026-10-19_2026-10-23",
+    "title": "2026/10/19-10/23 Z世代・若年層関連記事と考察",
+    "period": {
+      "start": "2026-10-19",
+      "end": "2026-10-23"
+    },
+    "articles": [
+      {
+        "title": "韓国・聖水でネイバーとグーグルが100mの近距離対決…若者の継続利用狙う（KOREA WAVE／Yahoo!ニュース）",
+        "url": "https://news.yahoo.co.jp/articles/a96e0158eff5f8fff5414aa0cfe05368ebf526ba",
+        "status": "ok"
+      },
+      {
+        "title": "なぜ若い世代は「高い年会費」を払うのか？ プレミアムクレカ人気に見る「節約と贅沢」の新常識（AMP）",
+        "url": "https://ampmedia.jp/2026/10/19/premium-credit/",
+        "status": "ok"
+      },
+      {
+        "title": "この時代に「本を読める」ことは、恋愛市場でも有利だ（クーリエ・ジャポン）",
+        "url": "https://courrier.jp/news/archives/463005/",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代に広がる睡眠キャンセル界隈、実は8割以上が寝ている実態（Forbes JAPAN）",
+        "url": "https://forbesjapan.com/articles/detail/106353",
+        "status": "ok"
+      },
+      {
+        "title": "これらの女性たちは、Z世代の新たな「アイドル」となった。（Vietnam.vn）",
+        "url": "https://www.vietnam.vn/ja/cac-ba-tro-thanh-idol-moi-cua-gen-z",
+        "status": "ok"
+      },
+      {
+        "title": "【ワカモノリサーチ調査】令和の若者のインフルエンサーについて思うこと大調査！（ワカモノリサーチ／PR TIMES）",
+        "url": "https://prtimes.jp/main/html/rd/p/000000255.000162122.html",
+        "status": "ok"
+      },
+      {
+        "title": "11年独身でも約9割は「人生の満足度」が高いままと判明（ナゾロジー）",
+        "url": "https://nazology.kusuguru.co.jp/archives/201867",
+        "status": "ok"
+      },
+      {
+        "title": "スマホ疲れに「セロ活」　「ドパガキ」の時代に考えるネットとの距離（Impress Watch）",
+        "url": "https://www.watch.impress.co.jp/docs/topic/2148127.html",
+        "status": "ok"
+      },
+      {
+        "title": "「環境問題への若者の関心が根源的になった」東大教授が指摘する意識の変化（TBS NEWS DIG）",
+        "url": "https://newsdig.tbs.co.jp/articles/-/3018971",
+        "status": "ok"
+      },
+      {
+        "title": "AI時代、「大学卒」より「手に職」が強い？　Z世代がホワイトカラーを選ばなくなる理由（AMP）",
+        "url": "https://news.yahoo.co.jp/articles/05747cd4e37213c08bfe5334e81dc086ef566c46",
+        "status": "ok"
+      },
+      {
+        "title": "そりゃ辞めるわ…Z世代が会社を見限る「給料じゃない」本質的な理由（ダイヤモンド・オンライン）",
+        "url": "https://news.yahoo.co.jp/articles/0623af0cdb33b9cdc837dc188b82b981004c9975",
+        "status": "ok"
+      },
+      {
+        "title": "ユニクロがフリースの需要拡大に手応え 平成リバイバルを追い風にZ世代へアプローチ（Fashionsnap.com）",
+        "url": "https://www.fashionsnap.com/article/2026-10-19/uniqlo-fleece/",
+        "status": "ok"
+      },
+      {
+        "title": "三菱UFJニコス、推しキャラを表示できるプリペイド決済アプリ（Impress Watch）",
+        "url": "https://www.watch.impress.co.jp/docs/news/2149281.html",
+        "status": "ok"
+      },
+      {
+        "title": "親の経済力で「孫の資産」まで決まってしまう…2027年1月から始まる「こどもNISA」に決定的に欠けているもの（PRESIDENT Online）",
+        "url": "https://president.jp/articles/-/120429",
+        "status": "ok"
+      },
+      {
+        "title": "「虚ろな目で、無言のまま返事をしない」Z世代の「冷めた目線」とは。繰り返される世代間対立は今後どう変わる？（mi-mollet）",
+        "url": "https://mi-mollet.com/articles/-/61680",
+        "status": "ok"
+      },
+      {
+        "title": "なぜ若者は「ひとりドライブ」に向かうのか？ Z世代のソロ活4割強！（Merkmal）",
+        "url": "https://merkmal-biz.jp/post/124626",
+        "status": "ok"
+      },
+      {
+        "title": "韓国の20代が「ちいかわ」に熱狂…映画観客の45％、可愛さと過酷な世界観に共感（AFPBB News）",
+        "url": "https://www.afpbb.com/articles/koreanews/3658138",
+        "status": "ok"
+      },
+      {
+        "title": "α・Z世代が選ぶ2026年冬「映画館で観たい映画」ランキング発表！（PR TIMES）",
+        "url": "https://prtimes.jp/main/html/rd/p/000000034.000061981.html",
+        "status": "ok"
+      },
+      {
+        "title": "【日経ギャルズ】推しのためなら海外へ！インドのZ世代に広がる「音楽遠征」がアツい！（EMMARY）",
+        "url": "https://emmary.jp/ngals/20261019-137560/",
+        "status": "ok"
+      },
+      {
+        "title": "短編動画で「将来展望」能力失う10代の若者（ダイヤモンド・オンライン）",
+        "url": "https://diamond.jp/articles/-/401409",
+        "status": "ok"
+      },
+      {
+        "title": "アテンション型SNSから卒業する若者 「setlog」人気が映す価値観変化（日経クロストレンド）",
+        "url": "https://xtrend.nikkei.com/atcl/contents/casestudy/00012/01964/",
+        "status": "ok"
+      },
+      {
+        "title": "α世代は何が違う？ スマホ・AIネイティブが変えるメディア体験と情報行動 vol.2（博報堂）",
+        "url": "https://www.hakuhodo.co.jp/magazine/267390/",
+        "status": "ok"
+      },
+      {
+        "title": "「広告は正直、邪魔だった」高校生が1日で見方を変えた 虎ノ門広告祭「虎広修学旅行」に密着（アドタイ）",
+        "url": "https://www.advertimes.com/20261020/article560501/",
+        "status": "ok"
+      },
+      {
+        "title": "プラチナ系カードに相次ぐ変化。若年層を開拓（健美家）",
+        "url": "https://www.kenbiya.com/ar/ns/jiji/diversion/10610.html",
+        "status": "ok"
+      },
+      {
+        "title": "「結婚・出産・キャリア」を諦めないママ。Z世代と「これからの当たり前」をつくる新プロジェクト「mewell」始動（PR TIMES）",
+        "url": "https://prtimes.jp/main/html/rd/p/000000062.000108718.html",
+        "status": "ok"
+      },
+      {
+        "title": "若者の失業率20％超え　フランス暴動の背景（dメニューニュース）",
+        "url": "https://topics.smt.docomo.ne.jp/article/ktv_news/region/ktv_news-30420",
+        "status": "ok"
+      },
+      {
+        "title": "「Z世代とマブになる」ギャルマインドが企業を変える! 会社のトップや管理職がギャルに学ぶ若者のリアル（静岡放送）",
+        "url": "https://news.yahoo.co.jp/articles/0217de03a697657b4d9f3c0c4633bf13503c18d7",
+        "status": "ok"
+      },
+      {
+        "title": "ZINEが若者を中心に人気　デジタル時代の同人誌（khb東日本放送）",
+        "url": "https://news.yahoo.co.jp/articles/75b18f0abb6e3ec53e88fa35efc4814b6f73e902",
+        "status": "ok"
+      },
+      {
+        "title": "なぜ、Z世代はSNSで複数のアカウントを使い分けるのか？（インテージ）",
+        "url": "https://www.intage.co.jp/gallery/genz-sns/",
+        "status": "ok"
+      },
+      {
+        "title": "「手書き日記」でストレス発散……沼にハマる若者が相次ぐワケ（日テレNEWS NNN）",
+        "url": "https://news.ntv.co.jp/category/society/b7c603cef5634150993d2bb2b7da8121",
+        "status": "ok"
+      },
+      {
+        "title": "令和の若者は大食いをつい見てしまう！（ワカモノリサーチ／PR TIMES）",
+        "url": "https://prtimes.jp/main/html/rd/p/000000264.000162122.html",
+        "status": "ok"
+      },
+      {
+        "title": "コーヒー1杯420円で何時間いてもOKの「無人カフェ」がZ世代に人気…全国75店舗に急拡大の訳（東洋経済オンライン）",
+        "url": "https://toyokeizai.net/articles/-/961515",
+        "status": "ok"
+      },
+      {
+        "title": "親友より、母親より「対話型AI」のほうが心を許せる…日本の10代〜30代とAIの近すぎる関係（PRESIDENT Online）",
+        "url": "https://president.jp/articles/-/119992",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代の半数が「前の時代に生まれたかった」と思っている（Gizmodo）",
+        "url": "https://www.gizmodo.jp/article/half-of-gen-z-is-concerned-or-anxious-about-ais-impact-on-jobs-survey-dvy/",
+        "status": "ok"
+      },
+      {
+        "title": "AIは孤立する若者たちのカウンセラーになり得るか？一見、思いやりに満ちた共感に要注意（ダイヤモンド・オンライン）",
+        "url": "https://diamond.jp/articles/-/401468",
+        "status": "ok"
+      },
+      {
+        "title": "中国の若者がちいかわに熱狂、日中関係が悪くても「こぞってグッズを買う」その背景（東洋経済オンライン）",
+        "url": "https://toyokeizai.net/articles/-/961607",
+        "status": "ok"
+      },
+      {
+        "title": "【ユニクロ】昔の定番「フリース」、若者には「今っぽい」アイテムに!?（au Webポータル）",
+        "url": "https://article.auone.jp/4babf127-3bfd-49cd-aa30-e1cbf2fde0a7",
+        "status": "ok"
+      },
+      {
+        "title": "自動車教習所、2050年に3割減も 若者はクルマ離れ（日本経済新聞）",
+        "url": "https://www.nikkei.com/prime/minutes/article/DGXZQOFM135KG0T11C26A0000000",
+        "status": "ok"
+      },
+      {
+        "title": "「働きやすい会社」だけでは伝わらない？ Z世代が採用情報に求める「具体性」を独自調査（PR TIMES）",
+        "url": "https://prtimes.jp/main/html/rd/p/000000016.000140950.html",
+        "status": "ok"
+      },
+      {
+        "title": "就活はAIにおまかせ？　「チャピる」学生たちが恐れる「ギュられる」時代（AERA DIGITAL）",
+        "url": "https://dot.asahi.com/articles/-/295660",
+        "status": "ok"
+      },
+      {
+        "title": "新たなSNS「Setlog」はなぜ人気？ トレンドの背景を考える（Steenz）",
+        "url": "https://steenz.jp/64599/",
+        "status": "ok"
+      },
+      {
+        "title": "そりゃ空気に敏感になるわ…Z世代が「ザ・日本人」になった納得のワケ（ニュースな本）",
+        "url": "https://diamond.jp/articles/-/400530",
+        "status": "ok"
+      },
+      {
+        "title": "星野リゾート代表「若者が旅行できない日本」に危機感。国のインバウンド偏重政策に警鐘（Business Insider Japan）",
+        "url": "https://www.businessinsider.jp/article/2610-hoshino-resort-domestic-travel-budget-genz-millennials-inbound/",
+        "status": "ok"
+      },
+      {
+        "title": "若手から「ハマる経験」を奪った組織の代償（NewsPicks）",
+        "url": "https://newspicks.com/news/17734247/body/",
+        "status": "ok"
+      },
+      {
+        "title": "Claudeおじさんに何度説明しても伝わらないので、若者の私は疲れました（note）",
+        "url": "https://note.com/shikina_lab/n/n8cc85f95dd0c",
+        "status": "ok"
+      },
+      {
+        "title": "女子高生に聞いた、買い物で利用する決済方法は? 2位「PayPay」、3位「クレジットカード」（マイナビニュース）",
+        "url": "https://news.mynavi.jp/article/20261022-5169680/",
+        "status": "ok"
+      },
+      {
+        "title": "手書き手帳を使う高校生の6割が実践する意識的なスマホ離れと内省力（Forbes JAPAN）",
+        "url": "https://forbesjapan.com/articles/detail/106723",
+        "status": "ok"
+      },
+      {
+        "title": "若い世代の音楽トレンドを「商機」に変えるBOSE──有線イヤホン復活から異業種連携まで（Forbes JAPAN）",
+        "url": "https://forbesjapan.com/articles/detail/106867",
+        "status": "ok"
+      },
+      {
+        "title": "【ホワイトペーパー公開】Z世代の「ヘビーユーザー」意識と購買行動のギャップ調査（PR TIMES）",
+        "url": "https://prtimes.jp/main/html/rd/p/000000365.000080464.html",
+        "status": "ok"
+      },
+      {
+        "title": "AI時代の採用ジレンマ──新卒に経験を求めすぎる企業の矛盾（Forbes JAPAN）",
+        "url": "https://forbesjapan.com/articles/detail/107012",
+        "status": "ok"
+      },
+      {
+        "title": "「SNSが原因で若者のメンタルヘルスが悪化している」ジョナサン・ハイトNY大教授が警鐘を鳴らす（デイリー新潮）",
+        "url": "https://news.yahoo.co.jp/articles/6484b4929eed7d2eb911da22303bff5b25665c62",
+        "status": "ok"
+      },
+      {
+        "title": "なぜ今「G-SHOCK」が若者に売れるのか 新製品を減らして定番を売る理由（Infoseek）",
+        "url": "https://news.infoseek.co.jp/topics/itmedia_bizmakoto_20261022004/",
+        "status": "ok"
+      },
+      {
+        "title": "Y2Kブームの裏で何が起きている？ 懐かしのメイクとともに蘇る「美の呪縛」（DIGIDAY日本版）",
+        "url": "https://digiday.jp/glossy/beauty-briefing-how-far-can-y2k-nostalgia-go/",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代は傷つきやすい!?…昔の世代との相違点、共通点とは（テンミニッツ・アカデミー）",
+        "url": "https://10mtv.jp/pc/content/detail.php?movie_id=5156",
+        "status": "ok"
+      }
+    ],
+    "article_count": 54,
+    "essay": {
+      "title": "「チャピる」と「セロ活」——Z世代が設計する、AIと感情の棲み分け",
+      "summary": "今週を象徴する二つの言葉が登場した。就活でAIを使うことを「チャピる」と呼び、AIに選別（ギュられる）ことを恐れる学生たち（AERA）。一方、スマホ疲れへの処方箋として「セロ活」（ゼロ=何もしない活動）が浮上し（Impress Watch）、手書き日記・手書き手帳・ZINE・無人カフェが同週に並んだ。AIへの依存と、AIのない時間の意図的な確保——両方が同時に深まっている。「親友より対話型AIに心を許せる」（PRESIDENT Online）と「Z世代の半数が前の時代に生まれたかった」（Gizmodo）も同週に出た。AIが生活に組み込まれるほど、AI以前の感触への渇望が強くなる逆説が、今週の核心だ。",
+      "period_definition": "2026年10月第3週（10/19-10/23）のZ世代は、AIを就活・感情サポート・意思決定に積極的に組み込みながら、同時に「AIのない質感」を意図的に確保しようとした週だった。デジタルと手書き、委託と内省、依存と回帰——二項対立ではなく、それぞれの領域を意識的に使い分ける設計が精緻化している。",
+      "keywords": [
+        "チャピる就活",
+        "ギュられる恐怖",
+        "セロ活",
+        "手書き内省回帰",
+        "ZINE同人誌復活",
+        "対話型AI心を許す",
+        "前の時代願望半数",
+        "ちいかわ越境共感",
+        "setlog卒業宣言",
+        "無人カフェ一人時間",
+        "G-SHOCK定番回帰",
+        "ホワイトカラー離れ"
+      ],
+      "sections": [
+        {
+          "heading": "「チャピる」と「ギュられる」——AI就活の新語が示す二重の不安",
+          "body": "就活でAIを使うことを「チャピる」、AIに弾かれることを「ギュられる」と呼ぶ学生たちが登場した（AERA DIGITAL）。Z世代の70.9%がAIを就活に活用する一方、「AI就活で見えない職場の雰囲気」という課題は前週から続いている。今週新たに加わったのは「採用情報の具体性」を求める声（PR TIMES）と「新卒に経験を求めすぎる企業の矛盾」（Forbes JAPAN）だ。AIが書類を最適化し、AIが選別する——この回路の中で、Z世代は「自分が本当に見られているのか」という不安を抱えている。ツールは使うが、ツールに還元されることへの抵抗が、新語として結晶化している。"
+        },
+        {
+          "heading": "「セロ活」・手書き日記・ZINE——意図的な「AIなし時間」の設計",
+          "body": "スマホ疲れへの処方箋として「セロ活」（何もしない活動）が浮上し（Impress Watch）、手書き日記でストレス発散する若者が急増（日テレNEWS）、手書き手帳を使う高校生の6割が意識的にスマホと距離を置き内省力を高めている（Forbes JAPAN）。ZINEがデジタル時代の同人誌として若者に人気（khb東日本放送）、420円で何時間でもいられる無人カフェがZ世代に急拡大（東洋経済）。これらに共通するのは「何も起きない時間」「誰にも見られない表現」「アルゴリズムのない居場所」への需要だ。AIと常時接続が当たり前になるほど、その外側の時間が意味を持つ。"
+        },
+        {
+          "heading": "「親友よりAIに心を許せる」と「前の時代に生まれたかった半数」——AI親密性の二面",
+          "body": "日本の10代〜30代で「親友より対話型AIのほうが心を許せる」という調査結果が出た（PRESIDENT Online）。同時にZ世代の半数が「前の時代に生まれたかった」と回答し、AIの仕事への影響を懸念・不安に感じている（Gizmodo）。「AIカウンセラーの共感に要注意」という警告記事（ダイヤモンド）も並んだ。AIへの心理的親密性と、AI時代への不安が共存している。これは矛盾ではなく、「目の前のAIには心を開けるが、AI時代という構造全体には不安を感じる」という精緻な分解だ。"
+        },
+        {
+          "heading": "setlog「アテンション型SNS卒業」宣言——可視化から意味へ",
+          "body": "日経クロストレンドがsetlogを「アテンション型SNSからの卒業」と位置づけた（10/20）。Steenzも同週にsetlog人気の背景を分析。「いいね・バズ・フォロワー数」という可視化された評価軸から離れ、「自分の時間軸に残す記録」へのシフトが主流メディアで繰り返し論じられるフェーズに入った。Z世代がSNSで複数アカウントを使い分ける理由の調査（インテージ）も同文脈にあり、「見せる自分」と「残す自分」を意識的に分離する動きが定着している。"
+        },
+        {
+          "heading": "ちいかわの越境——韓国・中国・世界が共鳴する「過酷な世界観」",
+          "body": "韓国映画館でちいかわ観客の45%が20代、映画観客の45%を占め（AFPBB News）、中国の若者が日中関係の悪化にもかかわらずグッズを買い求める（東洋経済）。可愛さと過酷な世界観の共存——「頑張っても報われない」「それでも生きていく」という普遍的な感覚が、国境を越えた共感を生んでいる。キャラクターIPの強度は「かわいさ」ではなく「共感の解像度」で決まる時代に入った。"
+        },
+        {
+          "heading": "G-SHOCK・フリース・有線イヤホン・Y2K——「定番の本物回帰」が加速",
+          "body": "G-SHOCKが新製品を減らして定番を売る戦略でZ世代に刺さっている（Infoseek）。ユニクロフリースが平成リバイバルを追い風に若者に「今っぽい」と映る（Fashionsnap）。BOSEが有線イヤホン復活で若い世代の音楽トレンドを商機に（Forbes JAPAN）。Y2Kビューティーが「美の呪縛」として再評価される（DIGIDAY）。共通するのは「変わらない本物」への信頼だ。毎週新機能が出るAIツールと対照的に、何年経っても変わらないデザイン・素材・音質が「信頼の象徴」として機能している。Z世代は最新を追いながら、定番に安心を求めている。"
+        },
+        {
+          "heading": "「ホワイトカラーを選ばない」と「ハマる経験を奪われた組織」——キャリア観の地殻変動",
+          "body": "AI時代に「大学卒よりも手に職」という価値観が広がり、Z世代がホワイトカラーを選ばなくなる理由が論じられた（AMP）。「給料じゃない理由で辞める」（ダイヤモンド）、「若手からハマる経験を奪った組織の代償」（NewsPicks）——これらは同じ問いの異なる断面だ。Z世代が職場に求めるのは報酬でも安定でもなく、「没入できる経験」だ。「Claudeおじさんに何度説明しても伝わらない」というnote記事（10/23）は、AI活用の世代間断絶を当事者視点で描いており、職場での「経験の非対称」が摩擦を生んでいる現実を示す。"
+        }
+      ]
+    },
+    "warnings": []
+  },
+  {
+    "type": "weekly",
     "id": "2026-10-12_2026-10-16",
     "title": "2026/10/12-10/16 Z世代・若年層関連記事と考察",
     "period": {
