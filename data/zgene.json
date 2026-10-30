@@ -1,6 +1,398 @@
 [
   {
     "type": "weekly",
+    "id": "2026-10-26_2026-10-30",
+    "title": "2026/10/26-10/30 Z世代・若年層関連記事と考察",
+    "period": {
+      "start": "2026-10-26",
+      "end": "2026-10-30"
+    },
+    "articles": [
+      {
+        "title": "経営陣は16歳・19歳・20歳。「宇宙の電力会社」スタートアップが設立6か月で4.7億円集めた（ギズモード・ジャパン）",
+        "url": "https://news.yahoo.co.jp/articles/38194e1e03898d18cae48b6e9fd645ff21da868b",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代の映画館人気が継続中！「多様性」や「希望」のある物語が好まれる――最新調査で判明（The Hollywood Reporter Japan）",
+        "url": "https://news.yahoo.co.jp/articles/cd0d17c8a5ccd87d24ce70116010a14e11f43d5f",
+        "status": "ok"
+      },
+      {
+        "title": "マッチングアプリにもうチャットはいらない？若者の「アプリ疲れ」に応えるBreezeが急成長（AMP）",
+        "url": "https://news.yahoo.co.jp/articles/f0af3e6077407813fd92fed1d8d044c0ab1451b4",
+        "status": "ok"
+      },
+      {
+        "title": "最年少は30歳、資産は9000億円から。若き大富豪10人はどうやってお金持ちになったのか（Business Insider Japan）",
+        "url": "https://news.yahoo.co.jp/articles/0bd8c6690678291381790ee62113556524507d6e",
+        "status": "ok"
+      },
+      {
+        "title": "若年層の流行調査、映画公開でちいかわ首位浮上。ドパガキ、setlog、麻辣湯…バズったモノコト急上昇（オタク総研）",
+        "url": "https://news.yahoo.co.jp/articles/cbaecbbadea2f27a773685b8e5351ef81f16622a",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代の心を守る──メンタルヘルス危機に挑む若手起業家たち（Forbes JAPAN）",
+        "url": "https://forbesjapan.com/articles/detail/107178",
+        "status": "ok"
+      },
+      {
+        "title": "若者に流行する動画共有アプリ「Setlog」と相性抜群！中年男性の参入でエアポートおじさんが再び出現する（au Webポータル）",
+        "url": "https://article.auone.jp/a6cddd9d-bca9-4d5f-a713-54733327b764",
+        "status": "ok"
+      },
+      {
+        "title": "若者が新車を選ぶ背景に、中古車市場への根深い不信感があるとの声（ライブドアニュース）",
+        "url": "https://news.livedoor.com/topics/detail/32651972/",
+        "status": "ok"
+      },
+      {
+        "title": "「こども真ん中」の死角　国勢調査の20代人口ランキングが示す未来図（TBS CROSS DIG with Bloomberg）",
+        "url": "https://newsdig.tbs.co.jp/articles/withbloomberg/3021279",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代は本当に「無関心」なのか──イベント設計を見直す5つの視点（Forbes JAPAN）",
+        "url": "https://forbesjapan.com/articles/detail/107206",
+        "status": "ok"
+      },
+      {
+        "title": "かつての「レトロアニメ」は現代の若者にも刺さるのか？懐かし作品が再アニメ化される背景（マグミクス）",
+        "url": "https://magmix.jp/post/381975",
+        "status": "ok"
+      },
+      {
+        "title": "「もう若い人は来ません」会長が10年後に気づいた、若者が遠ざかる決定的な理由（ゴールドライフオンライン）",
+        "url": "https://renaissance-media.jp/articles/-/28273",
+        "status": "ok"
+      },
+      {
+        "title": "中国で急増する「出社するフリ」　就職難の中で失業隠す若者たち（Times of India Japanese）",
+        "url": "https://app.ekkow.com/1485636663305568738",
+        "status": "ok"
+      },
+      {
+        "title": "20〜30代限定の「ダイナースクラブ ゴールド」登場　スタバやスマホで10倍還元、「食べログプレミアム」が実質無料（ITmedia Mobile）",
+        "url": "https://www.itmedia.co.jp/mobile/spv/2610/26/news057.html#smartnews_mobile",
+        "status": "ok"
+      },
+      {
+        "title": "下積みがAIに消えたら、若手はどこで経験を積むのか（村上臣／日経COMEMO）",
+        "url": "https://comemo.nikkei.com/n/n94f2862a5138",
+        "status": "ok"
+      },
+      {
+        "title": "「1億総ドパガキ時代」に突入…依存症治療専門家が語る「やめたくてもやめられない」脳の恐ろしい構造（現代ビジネス）",
+        "url": "https://gendai.media/articles/-/171914",
+        "status": "ok"
+      },
+      {
+        "title": "AIは若者の仕事を奪い始めたのか　スタンフォード大学の雇用データが示す「19%の差」（note）",
+        "url": "https://note.com/charm_aster9497/n/nce2a10418c98",
+        "status": "ok"
+      },
+      {
+        "title": "母親とお出かけ、同性の友人に誕プレは男女ともに当たり前？最新データから紐解くZ世代の価値観（MarkeZine）",
+        "url": "https://markezine.jp/article/detail/77828",
+        "status": "ok"
+      },
+      {
+        "title": "「ストリーマー界隈」はなぜ影響力を持つのか？双方向の熱量循環から考える企業の向き合い方（MarkeZine）",
+        "url": "https://markezine.jp/article/detail/77802",
+        "status": "ok"
+      },
+      {
+        "title": "わずか4カ月で279万人！BeReal.を超えた新SNS「setlog」とは？（Web担当者Forum）",
+        "url": "https://webtan.impress.co.jp/n/2026/10/23/53484",
+        "status": "ok"
+      },
+      {
+        "title": "AIに代替されない力を育てる──大学教育の価値（Forbes JAPAN）",
+        "url": "https://forbesjapan.com/articles/detail/107228",
+        "status": "ok"
+      },
+      {
+        "title": "その「推しコラボ」にファンが反発するワケ「歓迎されるコラボ」と「嫌われるコラボ」の違いとは（アドタイ）",
+        "url": "https://www.advertimes.com/20261027/article561675/",
+        "status": "ok"
+      },
+      {
+        "title": "「バズ」は狙わない、それでもSNSで話題に――老舗化粧品「ちふれ」が若い世代に接点を変えるもの・変えないもの（東洋経済オンライン）",
+        "url": "https://toyokeizai.net/articles/-/962183",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代のおしゃれな若者の旅行意思決定に関する街頭インタビュー調査（PR TIMES／style-arena.jp）",
+        "url": "https://prtimes.jp/main/html/rd/p/000000025.000152178.html",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代「インフルエンサーより俳優が映画に出てほしい」米調査で判明（THE RIVER）",
+        "url": "https://theriver.jp/gen-z-influencer/",
+        "status": "ok"
+      },
+      {
+        "title": "α世代のSNS・AI意識をさらに深掘り！大人の想像を超える「人間らしさと探究心」（メディア環境研究所）",
+        "url": "https://mekanken.com/contents/9155/",
+        "status": "ok"
+      },
+      {
+        "title": "Google、小中学生向け生成AI体験イベントを12月12日に開催（こどもとIT）",
+        "url": "https://news.yahoo.co.jp/articles/a159a115fd37edec7f12cd1b4597a5a044e3e422",
+        "status": "ok"
+      },
+      {
+        "title": "「若手はAI使うな」は老害なのか？新人教育で「AI禁止」した企業の1年後（ITmedia）",
+        "url": "https://www.itmedia.co.jp/news/article/2610/27/2000002585/",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代の8割が「本業以外」でも稼ぐ。1つの仕事では足りなくなったアメリカの若い世代（Business Insider Japan）",
+        "url": "https://www.businessinsider.jp/article/2610-gen-z-millennials-side-hustles-gig-economy/",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代女性のタイパ生活での未充足の強いニーズは、睡眠確保と生活空間の快適さ（調布経済新聞）",
+        "url": "https://chofu.keizai.biz/release/672640/",
+        "status": "ok"
+      },
+      {
+        "title": "自販機不況でも絶好調　グリコ・セブンティーンアイスの高校生戦略とは（日経クロストレンド）",
+        "url": "https://xtrend.nikkei.com/atcl/contents/18/01318/00013/",
+        "status": "ok"
+      },
+      {
+        "title": "恋愛は「ドキドキ」より「安心」の時代へ　5000人調査で見えた2026年の恋愛観とは（AMP）",
+        "url": "https://ampmedia.jp/2026/10/28/intention-romance/",
+        "status": "ok"
+      },
+      {
+        "title": "「超富裕層」10年で2倍超、メガバンク・証券大手がビジネス拡大競う…若年層の囲い込み重要（読売新聞）",
+        "url": "https://www.yomiuri.co.jp/economy/20261027-GYT1T00042/",
+        "status": "ok"
+      },
+      {
+        "title": "「ビューティー＆ユース」が20周年　課題は若年層開拓（WWD JAPAN）",
+        "url": "https://www.wwdjapan.com/articles/2534287",
+        "status": "ok"
+      },
+      {
+        "title": "関西人じゃないのに「なんでやねん」…若者が「ニセ方言」を使いたがる意外なワケ（ニュースな本）",
+        "url": "https://diamond.jp/articles/-/401134",
+        "status": "ok"
+      },
+      {
+        "title": "仮装は見る専でいい。渋谷の喧騒より、身近な人との時間を選ぶ令和の若者（FINDERS）",
+        "url": "https://finders.me/kqFQxAjpMUcNptjHCA",
+        "status": "ok"
+      },
+      {
+        "title": "若者たち、本格的にハロウィーン離れ？今年の予定「ない」が過半数（LASISA）",
+        "url": "https://lasisa.net/post/166052",
+        "status": "ok"
+      },
+      {
+        "title": "先輩に学びたいのは「AIでは得られないこと」──20代エンジニア3人が明かす、理想の先輩のリアル（CodeZine）",
+        "url": "https://codezine.jp/article/detail/29645",
+        "status": "ok"
+      },
+      {
+        "title": "社会や文化の中にある「ズレ」と向き合い、自分の未来を考える。お茶の水女子大学サマープログラム（電通報）",
+        "url": "https://dentsu-ho.com/articles/9872",
+        "status": "ok"
+      },
+      {
+        "title": "路上から「池ハロ・Dハロ」へ？10代がハロウィン当日の主役に7年ぶり返り咲き（アドタイ）",
+        "url": "https://www.advertimes.com/20261028/article562267/",
+        "status": "ok"
+      },
+      {
+        "title": "SHIBUYA109ラボ　Z世代の知見を生かし企業向けのコンサル拡大（繊研新聞）",
+        "url": "https://senken.co.jp/posts/shibuya109lab-261028",
+        "status": "ok"
+      },
+      {
+        "title": "若者や独身の人の税金で子持ち世帯に再分配？日韓の少子化対策に慶応大・中室牧子教授が指摘（ABEMA TIMES）",
+        "url": "https://topics.smt.docomo.ne.jp/article/abematimes/nation/abematimes-10284510",
+        "status": "ok"
+      },
+      {
+        "title": "若者の62%が「政治に関心」「政策対話・勉強会への参加」は僅か7%——「若者は政治に無関心」は本当か？（Infoseek）",
+        "url": "https://news.infoseek.co.jp/article/prtimes_000000371_000073012/",
+        "status": "ok"
+      },
+      {
+        "title": "HIS、若年層向け旅行ブランド「TABIOOPS!」を販売開始（TRAICY）",
+        "url": "https://www.traicy.com/posts/20261024385472/",
+        "status": "ok"
+      },
+      {
+        "title": "物価高で「弁当男子」が増加　若年層中心、業界も商品開発強化（NEWSjp）",
+        "url": "https://news.jp/i/1487333049402671402",
+        "status": "ok"
+      },
+      {
+        "title": "若者に流行った「マジ卍」は死んだのに、「マジ」は生き残ったワケ（ニュースな本）",
+        "url": "https://diamond.jp/articles/-/401133",
+        "status": "ok"
+      },
+      {
+        "title": "レジャー市場が回復、昨年3.9%増…新型ゲーム機発売で「娯楽」伸びる・若者に「推し活」浸透（読売新聞）",
+        "url": "https://www.yomiuri.co.jp/economy/20261028-GYT1T00277/",
+        "status": "ok"
+      },
+      {
+        "title": "店頭販促物の「生成AI」利用、好印象が悪印象を上回る　20代では約7割が「印象が良くなった」と回答（AMP）",
+        "url": "https://ampmedia.jp/2026/10/27/ai-hansokubutsu/",
+        "status": "ok"
+      },
+      {
+        "title": "「生きづらさを抱える人の指針になる」10代から20代女性に大ヒット…縦画面設計のエッセイがSNSでバズった理由（文春オンライン）",
+        "url": "https://bunshun.jp/articles/-/93143",
+        "status": "ok"
+      },
+      {
+        "title": "もう選ぶことすら面倒…メンパ・チョイパ？女性の61.7%が抱える選択疲れ（mataiku）",
+        "url": "https://mataiku.com/articles/menpa-choipa-sns-20261023/",
+        "status": "ok"
+      },
+      {
+        "title": "「ABEMA MUSIC by AWA」が10月27日提供開始！中学生から月額480円の学生プランで音楽サブスクを（ABEMA）",
+        "url": "https://l.smartnews.com/m-8M1OL5MA/DWmPPx",
+        "status": "ok"
+      },
+      {
+        "title": "アングル：欧州各地に広がるZ世代の抗議デモ、「声が届かない」怒り爆発（ロイター）",
+        "url": "https://www.reuters.com/jp/economy/CXIUYMH5IVI7TIDQBJEDDJP3DM-2026-10-29/",
+        "status": "ok"
+      },
+      {
+        "title": "【逆潮流】Z世代の「難読書ブーム」の真相が、面白かった（NewsPicks）",
+        "url": "https://newspicks.com/news/17706292/body/",
+        "status": "ok"
+      },
+      {
+        "title": "実は男性の方が「映え」重視？広がる「推し活ファッション」市場の現在地（アドタイ）",
+        "url": "https://www.advertimes.com/20261029/article562377/",
+        "status": "ok"
+      },
+      {
+        "title": "生成AIの用途、Z世代は男性の利用率が女性を上回る傾向が顕著に（MarkeZine／サイバーエージェント調査）",
+        "url": "https://markezine.jp/news/detail/77835",
+        "status": "ok"
+      },
+      {
+        "title": "バズっても選ばれないAI時代の採用マーケ　学生は人気企業を知らない（日経クロストレンド）",
+        "url": "https://xtrend.nikkei.com/atcl/contents/18/00669/00015/",
+        "status": "ok"
+      },
+      {
+        "title": "若者の将来にAIの危険性　AIが持つ無意識の思い込みが進路・職業選択に影響か　5分の家族会話でバイアス解消（au Webポータル）",
+        "url": "https://article.auone.jp/8fc8c0a8-fcf5-4427-a7a4-4bcc7ffe9eb6",
+        "status": "ok"
+      },
+      {
+        "title": "水をかけるだけ？中国の若者に広がる「レンガ育て」ブーム──夢中になる意外な理由（フロントロウ）",
+        "url": "https://front-row.jp/_ct/131554/",
+        "status": "ok"
+      },
+      {
+        "title": "渋谷を彩った流行と若者文化のエネルギー、大型再開発でどこへ行く（Nippon.com）",
+        "url": "https://www.nippon.com/ja/articles/-/54397",
+        "status": "ok"
+      },
+      {
+        "title": "【ワカモノリサーチ調査】無線イヤホンが主流でも、令和の若者の4人に1人は有線派！（PR TIMES）",
+        "url": "https://prtimes.jp/main/html/rd/p/000000250.000162122.html",
+        "status": "ok"
+      },
+      {
+        "title": "Facebookで10代の若者が自傷行為に関するコンテンツを繰り返し検索すると、Metaが保護者に通知（Mezha.net）",
+        "url": "https://mezha.net/jp/news/mezha-fe970c7abf6cc526f3ba44c8_meta-will-alert-parents-when-teens/",
+        "status": "ok"
+      },
+      {
+        "title": "若者、余暇に「推し活」楽しむ　レジャー白書2026（NEWSjp）",
+        "url": "https://news.jp/i/1487746157712212446",
+        "status": "ok"
+      },
+      {
+        "title": "20代はもっとお金を使っていい。34歳になって分かった「浪費」の価値（note）",
+        "url": "https://note.com/freeedom_k/n/n5f22a85cf107",
+        "status": "ok"
+      },
+      {
+        "title": "若者と中高年、どちらの「読解力」が優れている？国際調査で判明した意外な事実（PHPオンライン）",
+        "url": "https://shuchi.php.co.jp/article/15323",
+        "status": "ok"
+      },
+      {
+        "title": "推し活経験者の約半数が宿泊遠征を経験　遠征費の最高支出額は中央値が5万円（AMP）",
+        "url": "https://ampmedia.jp/2026/10/28/oshikatsu-subsc/",
+        "status": "ok"
+      },
+      {
+        "title": "節約を心掛けているZ世代は6割以上。メリハリ消費で好きなことを楽しむ！（MERY）",
+        "url": "https://mery.jp/2495993",
+        "status": "ok"
+      }
+    ],
+    "article_count": 67,
+    "essay": {
+      "title": "「メンパ・チョイパ」と「難読書ブーム」——Z世代が選択疲れの時代に意味を探す週",
+      "summary": "今週を貫くテーマは「選択からの疲労」と「意味の再発見」だ。「メンパ（メンタル疲れパリピ）」「チョイパ（チョイス疲れパリピ）」という新語が登場し、女性の61.7%が選択疲れを感じている（mataiku）。同時にZ世代の「難読書ブーム」（NewsPicks）、16〜20歳が経営する宇宙スタートアップの4.7億円調達、欧州でのZ世代抗議デモ「声が届かない」、ハロウィーン離れと10代の屋内イベント回帰——これらは「選ぶのに疲れたが、意味のあることにはエネルギーを出す」という同じ動きの断面だ。setlogが4カ月で279万人・BeReal超えと報じられ（Web担当者Forum）、「アテンション型SNSからの脱却」が数値として裏付けられた週でもある。",
+      "period_definition": "2026年10月第4週（10/26-10/30）のZ世代は、選択疲れ・情報過多・AI不安が重なる中で「意味があると感じるものだけに深く投資する」という行動原理を鮮明にした週だった。消費・娯楽・SNS・仕事すべてにおいて、量より質・バズより信頼・効率より意味という軸への移行が加速している。",
+      "keywords": [
+        "メンパ選択疲れ",
+        "チョイパ新語",
+        "難読書ブーム逆潮流",
+        "setlog279万人",
+        "ハロウィーン離れ屋内化",
+        "欧州Z世代抗議デモ",
+        "下積みAI消滅若手育成危機",
+        "副業8割米国Z世代",
+        "推し活遠征宿泊化",
+        "AI禁止1年後教育",
+        "恋愛安心ドキドキ不要",
+        "若者政治関心行動乖離"
+      ],
+      "sections": [
+        {
+          "heading": "「メンパ」「チョイパ」——選択疲れの言語化と、その先にある難読書ブーム",
+          "body": "女性の61.7%が「選択疲れ」を感じており、「言語化しようとしすぎる」「枠にはめようとする時代で疲れる」という声が「メンパ（メンタル疲れパリピ）」「チョイパ（チョイス疲れパリピ）」という新語に結晶化した（mataiku）。注目すべきはその反動だ。同週、NewsPicsksが「Z世代の難読書ブームの真相が面白かった」と報じた。選択肢が多すぎる日常に疲れたZ世代は、「簡単に消費できないもの」「時間をかけなければ理解できないもの」への投資を始めている。縦画面エッセイが10〜20代女性に大ヒット（文春オンライン）、映画館の継続人気と「多様性・希望のある物語」への選好（Hollywood Reporter Japan）も同文脈に乗る。疲れてもなお、意味があると感じるものにはエネルギーを注ぐ——それがこの週のZ世代の基本姿勢だ。"
+        },
+        {
+          "heading": "setlog279万人・BeReal超え——「記録SNS」の主流化が数値で確定",
+          "body": "わずか4カ月でsetlogが279万人を超え、BeRealを上回ったと報じられた（Web担当者Forum）。先週の日経クロストレンドによる「アテンション型SNS卒業」報道に続き、今週はその規模が数値として裏付けられた。同週には「中年男性のSetlog参入でエアポートおじさんが再出現」という記事も出ており、Z世代が作った文化が上の世代に広がる構造変化も起きている。「4カ月で279万人」という数字は、単なるトレンドではなくSNS市場の構造的転換として記録される数字だ。バズを追わない、いいねを競わない、自分の時間軸で記録する——この需要が市場として確立された週だった。"
+        },
+        {
+          "heading": "「下積みがAIに消えたら若手はどこで経験を積むのか」——育成危機が問われ始めた",
+          "body": "「若手はAI使うな」で「老害」扱いされた企業が、1年後に何を学んだか（ITmedia）。「下積みがAIに消えたら若手はどこで経験を積むのか」（日経COMEMO・村上臣）。先週の「ハマる経験を奪われた組織の代償」（NewsPicks）に続き、若手育成のジレンマが複数の角度から論じられる週になった。「先輩に学びたいのはAIでは得られないこと」と20代エンジニアが語る（CodeZine）。Z世代はAIを道具として使いながら、AIが代替できない学習——失敗・修正・人間からの直接フィードバック——に価値を見出している。採用マーケでも「バズっても選ばれない」（日経クロストレンド）という逆説が指摘された週でもある。"
+        },
+        {
+          "heading": "ハロウィーン離れと10代の屋内回帰——「見る専」という能動的選択",
+          "body": "「仮装は見る専でいい。渋谷の喧騒より、身近な人との時間を選ぶ令和の若者」（FINDERS）。「若者たちのハロウィーン離れ、今年の予定なしが過半数」（LASISA）。一方で「路上から池ハロ・Dハロへ？10代がハロウィン当日の主役に7年ぶり返り咲き」（アドタイ）——屋外の路上イベントは避けるが、整備された屋内イベントには参加する。「見る専」は撤退ではなく、能動的な選択だ。渋谷大規模再開発の中で若者文化のエネルギーが行き場を変えている（Nippon.com）という分析も同週に並んだ。Z世代はイベントの「形式」ではなく「体験の質」で参加を判断する。"
+        },
+        {
+          "heading": "欧州Z世代の抗議デモと中国の「出社するフリ」——世界が共有する構造不満",
+          "body": "欧州各地でZ世代の抗議デモが広がり「声が届かない」という怒りが爆発した（ロイター）。中国では就職難の中で失業を隠す若者が「出社するフリ」をして増加している（Times of India Japanese）。米国ではZ世代の8割が副業で稼ぐ（Business Insider Japan）。スタンフォード大学の雇用データはAIが若者の仕事に「19%の差」を生じさせていると示す（note）。地域は違えど、構造は同じだ——制度に参加してもリターンが得られない、声が届かない、それでも生きなければならない。「若者の62%が政治に関心を持つが、勉強会参加はわずか7%」という日本のデータ（Infoseek）は、関心と行動の断絶を示す。前週のフランス暴動報道と合わせると、世界的なZ世代の制度不信が臨界に近づいている。"
+        },
+        {
+          "heading": "推し活の経済規模拡大と「安心」恋愛——感情投資の行き先が変わった",
+          "body": "推し活経験者の約半数が宿泊遠征を経験し、中央値5万円、最高200万円という支出データが出た（AMP）。レジャー白書2026でも「若者の余暇に推し活が浸透」と確認された（読売新聞）。同時に「恋愛はドキドキより安心の時代へ」という5000人調査が出た（AMP）。感情的エネルギーの配分が変わっている——推しへは大きく深く投資するが、恋愛にはドキドキより安定を求める。Z世代は感情を「散らさない」。信頼できる対象に集中して投資し、不確実な関係には安全を優先する。節約を心がけるZ世代が6割以上（MERY）でも推し活遠征に5万円を出す——メリハリ消費の解像度が上がっている。"
+        },
+        {
+          "heading": "16〜20歳の起業家と「宇宙の電力会社」——Z世代の一部が制度外で動き始めた",
+          "body": "経営陣が16歳・19歳・20歳の宇宙スタートアップが設立6カ月で4.7億円を調達した（ギズモード）。欧州若手起業家がメンタルヘルス危機に挑む（Forbes JAPAN）。Z世代は本当に「無関心」なのか（Forbes JAPAN）という記事が出た週に、最も行動しているZ世代の事例も並んだ。「政治に関心あり62%でも行動7%」という断絶の一方で、制度を迂回して起業・投資・社会課題に直接介入するZ世代も存在する。マジョリティの選択疲れとマイノリティの突破——この両極が今週の記事群に同時に現れている。"
+        }
+      ]
+    },
+    "warnings": []
+  },
+  {
+    "type": "weekly",
     "id": "2026-10-19_2026-10-23",
     "title": "2026/10/19-10/23 Z世代・若年層関連記事と考察",
     "period": {
