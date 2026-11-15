@@ -1,6 +1,383 @@
 [
   {
     "type": "weekly",
+    "id": "2026-11-09_2026-11-13",
+    "title": "2026/11/9-11/13 Z世代・若年層関連記事と考察",
+    "period": {
+      "start": "2026-11-09",
+      "end": "2026-11-13"
+    },
+    "articles": [
+      {
+        "title": "頭のいい若者ほど「仲間の役に立つ」ことで一目置かれると判明",
+        "url": "https://nazology.kusuguru.co.jp/archives/205484",
+        "status": "ok"
+      },
+      {
+        "title": "AIの授業でスマホもPCも禁止、でもAIロボットは置くことにした。米大学の教授の考え",
+        "url": "https://www.gizmodo.jp/article/cornell-ai-classroom-experiments/",
+        "status": "ok"
+      },
+      {
+        "title": "「プログラミングを学ぶ」検索が1年でほぼ半減、「AIに書かせる」は1.8倍──ツール検索1位は「Claude Code」",
+        "url": "https://prtimes.jp/main/html/rd/p/000000017.000188360.html",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代・ミレニアル世代はなぜテキサスへ向かうのか？",
+        "url": "https://news.yahoo.co.jp/articles/77316c0f20adcefa4af7cc74338b92ed6339a70a",
+        "status": "ok"
+      },
+      {
+        "title": "若年層向け「ダイナースクラブ ゴールド」を専門家が分析！",
+        "url": "https://kakakumag.com/money/?id=22548",
+        "status": "ok"
+      },
+      {
+        "title": "AI導入で「新人」を減らす企業は、次世代リーダーを失う",
+        "url": "https://news.yahoo.co.jp/articles/7c099a974e2ded8b23e3bd0c957b1b8e0043fe04",
+        "status": "ok"
+      },
+      {
+        "title": "【お酒のEC購入】若年層はレビュー、シニア層は価格を重視。20代のカゴ落ち経験率は約9割",
+        "url": "https://netshop.impress.co.jp/n/2026/11/06/16994",
+        "status": "ok"
+      },
+      {
+        "title": "「推し活」はまだ伸びる ファンの熱狂が生む3.4兆円市場の攻略法",
+        "url": "https://xtrend.nikkei.com/atcl/contents/18/01405/00032/?i_cid=nbpnxr_events_top_all_01",
+        "status": "ok"
+      },
+      {
+        "title": "昇進意欲はあるが今の形を拒否、Z世代が「中間管理職を拒む」本当の理由",
+        "url": "https://news.yahoo.co.jp/articles/9e69b1bcbd1c81467345b46d267e873ff22af901",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代の半数が学校は退屈と回答 成績低下を止める「個別最適化」の処方箋",
+        "url": "https://news.yahoo.co.jp/articles/bd03c63835a21cc566bb2f4d1200d37903462c05",
+        "status": "ok"
+      },
+      {
+        "title": "イギリスのZ世代が「グラニーホビー」に夢中なワケ…酒片手に編み物？",
+        "url": "https://news.yahoo.co.jp/articles/1d3376d6ff661004f61e671625cd87eb92c5ad14",
+        "status": "ok"
+      },
+      {
+        "title": "「本物の猫みたいな存在」…中国の若者に人気のAIペットロボット",
+        "url": "https://article.yahoo.co.jp/detail/cbe418c49f06dfddbb77d1d1671aa55dae2d6310",
+        "status": "ok"
+      },
+      {
+        "title": "お小遣いはサラリーマン以上？「金持ち大学生」のリアルと消費の二極化",
+        "url": "https://newsdig.tbs.co.jp/articles/withbloomberg/3060033",
+        "status": "ok"
+      },
+      {
+        "title": "午後10時以降のスマホが危険!?10代の睡眠時間が短くなるメカニズム",
+        "url": "https://dime.jp/genre/2169246/",
+        "status": "ok"
+      },
+      {
+        "title": "男尊女卑、ショート動画、AIまで…「5つのネットスラング」が語る、アメリカの若者の「本音」",
+        "url": "https://www.newsweekjapan.jp/articles/-/339305",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代の代弁者をどう選ぶ？アサヒ飲料「green cola」、初週売上170%達成の販売x広告戦略",
+        "url": "https://markezine.jp/article/detail/77730",
+        "status": "ok"
+      },
+      {
+        "title": "Brands Are Finding Eager Ambassadors in Campus Wellness Groups",
+        "url": "https://www.wsj.com/cmo-today/brands-are-finding-eager-ambassadors-in-campus-wellness-groups-cf3faa85",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代が会計職を選ぶ時代、雇用主は彼らをつなぎ留められるか",
+        "url": "https://forbesjapan.com/articles/detail/107934",
+        "status": "ok"
+      },
+      {
+        "title": "8万人の大学生を調査してわかった「若者の幸福度を左右する6つの要因」",
+        "url": "https://courrier.jp/news/archives/464697/",
+        "status": "ok"
+      },
+      {
+        "title": "チャック・写メ・ジーパンは若者に通じない…中高年がつい使ってしまう「死語」7選",
+        "url": "https://news.yahoo.co.jp/articles/cfce855426c1ad9a13a00fb28b45d8cdb9d5c748",
+        "status": "ok"
+      },
+      {
+        "title": "ストレスの原因は男女・年代でこんなに違う!? 30～50代男性は「仕事」、女性や若年層に多い意外な悩みとは",
+        "url": "https://news.mynavi.jp/article/20261110-5291893/",
+        "status": "ok"
+      },
+      {
+        "title": "年齢を偽る13～17歳までの数百万人のユーザーに対してInstagramの10代アカウント保護機能を適用するためAIによる年齢推定技術を世界規模で拡大するとMetaが発表",
+        "url": "https://gigazine.net/news/20261110-expanding-teen-account-protections-teens/",
+        "status": "ok"
+      },
+      {
+        "title": "「ひとりのままでいること」が理想──Z世代のソロマキシング",
+        "url": "https://wired.jp/article/sz-solomaxxing/",
+        "status": "ok"
+      },
+      {
+        "title": "20代の2人が自己資金40億円でロボット起業…採用条件に書いた「信じられない一文」",
+        "url": "https://news.yahoo.co.jp/articles/a4d8b9148b7bd33419c219ebbce8bd1dc72da0f3",
+        "status": "ok"
+      },
+      {
+        "title": "\"一目惚れ\"は昭和の恋愛なのか…。令和時代は自分の直感よりもAIによる効率を重視",
+        "url": "https://news.yahoo.co.jp/articles/cbb3c9b23b4401b58ce1d486042147d92cf810a3",
+        "status": "ok"
+      },
+      {
+        "title": "Maybelline Rewrites Its 35-Year-Old Tagline for Gen Z",
+        "url": "https://www.adweek.com/creativity/maybelline-rewrites-its-35-year-old-tagline-for-gen-z/",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代が選ぶ「SHIBUYA109 lab.トレンド大賞2026」を発表",
+        "url": "https://prtimes.jp/main/html/rd/p/000000445.000033586.html",
+        "status": "ok"
+      },
+      {
+        "title": "米国のZ世代、就職より起業へ──71%がAIを活用も対面型事業が中心",
+        "url": "https://www.zaikei.co.jp/article/20261111/876952.html",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代に広がる「フレネミー」の意外な使われ方 ネガティブな言葉が会話を円滑に？",
+        "url": "https://www.asahi.com/and/entertainment/17038214",
+        "status": "ok"
+      },
+      {
+        "title": "中国の若者が逃げ込む「何もしない町」を訪れて",
+        "url": "https://jp.wsj.com/articles/what-i-learned-in-dalifornia-chinas-laid-back-capital-of-doing-nothing-ae31169c",
+        "status": "ok"
+      },
+      {
+        "title": "「ホビ垢」にハマる若者たち 映えは背景から装いへ",
+        "url": "https://senken.co.jp/posts/shibuya109lab-261111",
+        "status": "ok"
+      },
+      {
+        "title": "結婚はコスパが悪い！若者の35%が「結婚するつもりはない」な世の中",
+        "url": "https://news.yahoo.co.jp/articles/bc061ff52ec9f75975568b24cbb2e43ae6c03f7f",
+        "status": "ok"
+      },
+      {
+        "title": "「ドパフード」「スクイーズ」「スピ活」…Z世代は「ドパ」と「セロ」を行き来 SHIBUYA109 lab.トレンド大賞2026",
+        "url": "https://www.oricon.co.jp/news/2491868/full/",
+        "status": "ok"
+      },
+      {
+        "title": "「推し・オブ・ザ・イヤー2026」結果発表！各部門1位に M!LK・ちいかわ・猫猫・阿部亮平・中島健人ら",
+        "url": "https://gakumado.mynavi.jp/gmd/articles/92882",
+        "status": "ok"
+      },
+      {
+        "title": "三菱UFJ銀行、若年層の「今やりたいこと」応援する新施策",
+        "url": "https://0115765.com/archives/213378",
+        "status": "ok"
+      },
+      {
+        "title": "女子中高生の流行語「冷笑系」って何？ 頑張る人をバカにする態度に物議",
+        "url": "https://otonanswer.jp/post/407100/",
+        "status": "ok"
+      },
+      {
+        "title": "大学生の学業成績に最も悪影響を与えるのはストレスや不安ではなく「先延ばし」",
+        "url": "https://gigazine.net/news/20261110-college-students-procrastination-academic-problem/",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代がAIブームから一斉に「ログアウト」し始めた深刻な理由（米国）",
+        "url": "https://news.yahoo.co.jp/articles/71a114a6cf6f4c9484c2a0365ef02f178adfdac9",
+        "status": "ok"
+      },
+      {
+        "title": "「若者のマンガ離れ」は本当か？ 10代は20代より紙派、意外な読書事情",
+        "url": "https://www.oricon.co.jp/news/2490851/full/",
+        "status": "ok"
+      },
+      {
+        "title": "「孤立してないのに孤独」と悩む20代──出社しても86%が「辞めたい」若手社員の本音",
+        "url": "https://xn--pckua2a7gp15o89zb.com/journal/news/1487/",
+        "status": "ok"
+      },
+      {
+        "title": "SNS依存の弊害が同調圧力の強い日本の女子に強く出ている",
+        "url": "https://www.newsweekjapan.jp/articles/-/339730",
+        "status": "ok"
+      },
+      {
+        "title": "貯金200万円以上の大学生も！平均貯金額、一番高い買い物、バイト月収まで令和の女子大生のお金事情を大調査",
+        "url": "https://nonno.hpplus.jp/lifestyle/topic/416656/",
+        "status": "ok"
+      },
+      {
+        "title": "実は世代で全然違う？ LINEの文章の長さにモヤモヤ！ 若者の短文連投にSNS「小出しにされるとイラッ」",
+        "url": "https://news.yahoo.co.jp/articles/41a47c29c794884918df95de8ff1cf44f96e24a0",
+        "status": "ok"
+      },
+      {
+        "title": "「10代女子が選ぶトレンドランキング」発表 「setlog」「ドパガキ」、TikTok発「ばりきまずい」もランクイン",
+        "url": "https://news.yahoo.co.jp/articles/55b02b495824ab58514e2add61bddc0a609b298e",
+        "status": "ok"
+      },
+      {
+        "title": "「AIが得意なのはベテラン開発者の時短だった」 若手が採られない時代に積み上がる「人材負債」",
+        "url": "https://atmarkit.itmedia.co.jp/ait/articles/2611/11/news033.html",
+        "status": "ok"
+      },
+      {
+        "title": "「死にましたか」→「いますか、いますか」…中国の孤独な若者に大流行したアプリが独居老人に広まった背景",
+        "url": "https://news.yahoo.co.jp/articles/99a2f841f60601e18b00e0018eb0dc4fd5660f36",
+        "status": "ok"
+      },
+      {
+        "title": "「毛沢東選集」が中国の若者の間でなぜかブームに…「努力しても報われない」若者たちから共感を集める理由",
+        "url": "https://news.yahoo.co.jp/articles/9631e7ce4326c10a2490f9c8a4a838a50e8359b0",
+        "status": "ok"
+      },
+      {
+        "title": "「経歴も実績でも勝てない」20歳の東大生起業家が見出した、AI企業の超アナログな勝ち筋",
+        "url": "https://www.businessinsider.jp/article/2611-tokyouniv-entrepreneur-edge-ai/",
+        "status": "ok"
+      },
+      {
+        "title": "若者のスマホ撮影「AI盛り」が常識 高校生と大学生の利用率は8割超",
+        "url": "https://xtrend.nikkei.com/atcl/contents/18/01485/00002/",
+        "status": "ok"
+      },
+      {
+        "title": "手書き日記撮影→SNS投稿の「日記界隈」、Z世代盛り上がり 日付・曜日のみの本が好評",
+        "url": "https://www.sankei.com/article/20261111-6VBZFLYJHJN77ENJEX6H4HBQQQ/",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代の5人に1人が「本音で話せる友達がいない」と回答。独身の日に考える、SNS時代のつながりと孤独",
+        "url": "https://prtimes.jp/main/html/rd/p/000000091.000036471.html",
+        "status": "ok"
+      },
+      {
+        "title": "若者は地方が嫌いなのではない ～ 人口流出を招く「選択肢」の不足",
+        "url": "https://news.yahoo.co.jp/expert/articles/ce05870be5cc40b7fac640243627b38f3668b474",
+        "status": "ok"
+      },
+      {
+        "title": "若者はなぜ熱海を目指すのか──「ホカンス」とレトロ人気が重なる温泉街",
+        "url": "https://news.yahoo.co.jp/expert/articles/ee7bb724c6aabd55973c161d5ecc854668be3e61",
+        "status": "ok"
+      },
+      {
+        "title": "AI時代の若者が求めた、100歳の「生きた言葉」",
+        "url": "https://prtimes.jp/main/html/rd/p/000000001.000194401.html",
+        "status": "ok"
+      },
+      {
+        "title": "「懸命に働く」は美徳51%、若年層ほど低い傾向…読売新聞「働き方」世論調査",
+        "url": "https://www.yomiuri.co.jp/election/20261111-GYT1T00472/",
+        "status": "ok"
+      },
+      {
+        "title": "「ドパガキ」って何？ ショート動画をやめられないのは意思が弱い？",
+        "url": "https://news.yahoo.co.jp/articles/8c2fe3a6de70a96fc6957c81d2aff1b0913f54e7",
+        "status": "ok"
+      },
+      {
+        "title": "「受験なんて、なくなればいいのに」 カロリーメイトが描く「受験消滅」の世界",
+        "url": "https://www.advertimes.com/20261112/article563747/",
+        "status": "ok"
+      },
+      {
+        "title": "2026年10代女子トレンドランキング発表、ヒト部門1位は「M!LK」／マイナビティーンズラボ調査",
+        "url": "https://markezine.jp/news/detail/78051",
+        "status": "ok"
+      },
+      {
+        "title": "子どものネット利用、こども家庭庁が保護者の関わり方を公表。「酒・タバコ・SNS」と括られる時代がくる",
+        "url": "https://newspicks.com/news/17891708/body/",
+        "status": "ok"
+      },
+      {
+        "title": "友達は多いのに、なぜ孤独？ Z世代の6割が孤独を実感、5人に1人が「本音で話せる友達がいない」と回答",
+        "url": "https://news.yahoo.co.jp/articles/f0f8ef004fd0a05529c59f182c9f4c52aee4bdf5",
+        "status": "ok"
+      },
+      {
+        "title": "若者の間で「マチアプ婚活疲れ」が加速 リアル回帰の理由を合コンのプロが解説",
+        "url": "https://news.yahoo.co.jp/articles/b8652bb9eb5fd57ad8858f6e691f6d7402b2f736",
+        "status": "ok"
+      },
+      {
+        "title": "ショート動画で実際にドーパミンは出る？若者だけじゃない「ドパガキ」脳内で何が起きているか専門家と検証",
+        "url": "https://article.auone.jp/c53d50d0-1466-4334-9d0b-a4a9c811aea6",
+        "status": "ok"
+      },
+      {
+        "title": "プロ野球で異例の「20代」が主要ファン層に。千葉ロッテマリーンズが取り組む「戦略的ファンマーケティング」",
+        "url": "https://halftime-media.com/interviews/marines-fan-marketing/",
+        "status": "ok"
+      },
+      {
+        "title": "若者のNISA事情、認知は66.3%に上るも3人に2人は利用せず",
+        "url": "https://ampmedia.jp/2026/11/11/wakamono-nisa-2611/",
+        "status": "ok"
+      },
+      {
+        "title": "推しに本気で恋する「リアコ女子」が増えている？ 女性の5人に1人が経験！ 推し活と現実の恋愛の境界線",
+        "url": "https://wedding.mynavi.jp/us/article/74274/",
+        "status": "ok"
+      }
+    ],
+    "article_count": 65,
+    "essay": {
+      "title": "「ひとり」と「ログアウト」の同時選択──Z世代が距離を置き始めたもの",
+      "summary": "2026年11月第2週は、Z世代が「ひとりのままでいること」を積極的に選ぶ「ソロマキシング」（WIRED）とAIブームからの「ログアウト」（Forbes）が同時に報じられた週だった。SHIBUYA109 lab.トレンド大賞2026では「ドパ」と「セロ」を行き来するZ世代が公式化され、孤独と繋がりの逆説（友達多いのに孤独60%、本音で話せる友達いない20%）が複数の調査で確認された。「冷笑系」「ドパガキ」「ばりきまずい」など新語が次々登場し、Z世代の感情語彙が細分化し続けている。",
+      "period_definition": "「ひとり」と「オフライン」を同時に選択し始めたZ世代──距離を置く相手が人間からAIへと拡張された週。",
+      "keywords": [
+        "ソロマキシング",
+        "AIログアウト",
+        "ドパセロ",
+        "SHIBUYA109トレンド大賞",
+        "孤独と繋がり",
+        "冷笑系",
+        "ドパガキ",
+        "グラニーホビー",
+        "日記界隈",
+        "人材負債"
+      ],
+      "sections": [
+        {
+          "heading": "「ソロマキシング」の登場──ひとりでいることの能動化",
+          "body": "WIRED.jpが報じた「ソロマキシング（Solomaxxing）」は、単なる孤独ではなく「ひとりのままでいることを最大化する」という能動的な選択として定義されている。外食・旅行・趣味をひとりで完結させることへの抵抗感が消え、むしろ他者に合わせることのコストを意識的に避ける行動様式だ。これは今週報じられた「結婚するつもりはない35%」「マチアプ婚活疲れ」「友達多いのに孤独60%」と整合する。Z世代にとって「つながり」は疲弊のリスクを含む選択肢になりつつある。イギリスのグラニーホビー（酒片手に編み物）や日本の「日記界隈」（手書き日記をSNS投稿）も、デジタル的な過接続への反動として読める。"
+        },
+        {
+          "heading": "AIからの「ログアウト」──過熱から距離へ",
+          "body": "Forbes JAPANが報じた「Z世代がAIブームから一斉にログアウトし始めた」は米国の話だが、日本でも相似する動きが見える。ITmediaが指摘した「AIが得意なのはベテランの時短だった」という指摘は若手にとってAIが自分の成長機会を削ぐ存在として認識されはじめていることを示す。「プログラミングを学ぶ」検索が1年で半減し「AIに書かせる」が1.8倍になった一方で、Z世代自身がその恩恵を直接受けているかは別問題だ。東大生起業家が語る「AI時代のアナログな勝ち筋」は、テクノロジーとの適切な距離感を探るZ世代の一つの回答として興味深い。"
+        },
+        {
+          "heading": "「ドパ」と「セロ」の公式化──感情の二軸モデルがトレンドを説明する",
+          "body": "SHIBUYA109 lab.トレンド大賞2026の最大の収穫は「ドパミン（興奮・快楽）」と「セロトニン（穏やか・安心）」という神経科学由来の軸でZ世代のトレンドを整理したことだ。「ドパフード」「スクイーズ」「スピ活」が行き来するという表現は、Z世代が単一のモードに固定されず状況によってギアを切り替えることを示している。「ドパガキ」（ドーパミン中毒気味）という自覚語が10代女子トレンドランキングに入ったことも注目点で、自分のドーパミン反応を客観視するメタ認知が10代に普及している。"
+        },
+        {
+          "heading": "孤独の逆説と「本音の希少化」",
+          "body": "今週は孤独に関する調査が重なった。「友達は多いのに孤独60%」「本音で話せる友達いない20%」「孤立してないのに孤独」という三つの調査がほぼ同時期に出たことは偶然ではないだろう。SNS上の接続数と実質的な情緒的つながりの乖離が、定量的に可視化されはじめている。「フレネミー」（友人と敵の中間）という言葉のZ世代的再解釈（ネガティブな言葉を会話潤滑剤として使う）も、関係性の複雑化と軽量化が同時進行していることを示す。職場でも「出社しても86%が辞めたい」という若手社員調査があり、物理的共在と精神的孤独の乖離は職場にも及んでいる。"
+        },
+        {
+          "heading": "「冷笑系」と新語の細分化──感情の粒度が上がる世代",
+          "body": "女子中高生の流行語として「冷笑系」が登場した。頑張る人をバカにする態度を指すこの語は、単なる蔑みではなく「過剰な熱量を警戒するクールさ」として機能している可能性がある。「ばりきまずい」（非常に気まずい）「ドパガキ」など、感情の細かいニュアンスを言語化する語彙がZ世代から次々生まれている。これは感情リテラシーの高さとも読めるが、同時に「正確に伝えなければ伝わらない」という関係性の希薄化の裏返しでもある。中国でも毛沢東選集が若者にウケる理由として「努力が報われない社会への共感」が挙げられており、感情の言語化と政治的・社会的不満の表出が連動している。"
+        }
+      ]
+    },
+    "warnings": []
+  },
+  {
+    "type": "weekly",
     "id": "2026-11-02_2026-11-06",
     "title": "2026/11/2-11/6 Z世代・若年層関連記事と考察",
     "period": {
@@ -738,7 +1115,7 @@
         "status": "ok"
       }
     ],
-    "article_count": 67,
+    "article_count": 66,
     "essay": {
       "title": "「メンパ・チョイパ」と「難読書ブーム」——Z世代が選択疲れの時代に意味を探す週",
       "summary": "今週を貫くテーマは「選択からの疲労」と「意味の再発見」だ。「メンパ（メンタル疲れパリピ）」「チョイパ（チョイス疲れパリピ）」という新語が登場し、女性の61.7%が選択疲れを感じている（mataiku）。同時にZ世代の「難読書ブーム」（NewsPicks）、16〜20歳が経営する宇宙スタートアップの4.7億円調達、欧州でのZ世代抗議デモ「声が届かない」、ハロウィーン離れと10代の屋内イベント回帰——これらは「選ぶのに疲れたが、意味のあることにはエネルギーを出す」という同じ動きの断面だ。setlogが4カ月で279万人・BeReal超えと報じられ（Web担当者Forum）、「アテンション型SNSからの脱却」が数値として裏付けられた週でもある。",
@@ -1726,7 +2103,8 @@
       ]
     },
     "article_count": 0,
-    "warnings": []
+    "warnings": [],
+    "articles": []
   },
   {
     "type": "quarterly",
@@ -1782,7 +2160,8 @@
       ]
     },
     "article_count": 0,
-    "warnings": []
+    "warnings": [],
+    "articles": []
   },
   {
     "type": "weekly",
@@ -9572,7 +9951,8 @@
         "表現の削減",
         "情報アクセス化"
       ]
-    }
+    },
+    "warnings": []
   },
   {
     "type": "monthly",
@@ -9603,7 +9983,8 @@
         "文脈選別",
         "表現の削減"
       ]
-    }
+    },
+    "warnings": []
   },
   {
     "type": "weekly",
@@ -10988,7 +11369,8 @@
         "信頼構造変化",
         "文脈選別"
       ]
-    }
+    },
+    "warnings": []
   },
   {
     "type": "weekly",
@@ -14355,7 +14737,8 @@
         "AI関係化",
         "文脈選別"
       ]
-    }
+    },
+    "warnings": []
   },
   {
     "type": "monthly",
@@ -14430,7 +14813,8 @@
         "デジタル疲労",
         "信頼構造変化"
       ]
-    }
+    },
+    "warnings": []
   },
   {
     "type": "weekly",
@@ -15621,7 +16005,8 @@
         "信頼構造変化",
         "文脈選別"
       ]
-    }
+    },
+    "warnings": []
   },
   {
     "type": "weekly",
@@ -16747,7 +17132,8 @@
         "感情インフラ",
         "AI関係化"
       ]
-    }
+    },
+    "warnings": []
   },
   {
     "type": "weekly",
@@ -17837,8 +18223,11 @@
         "SNS疲労",
         "AI境界",
         "自己防衛"
-      ]
-    }
+      ],
+      "period_definition": ""
+    },
+    "warnings": [],
+    "title": "2026-03-23_2026-03-27 weekly考察"
   },
   {
     "type": "weekly",
@@ -18489,7 +18878,9 @@
         "低期待社会",
         "防御的消費"
       ]
-    }
+    },
+    "warnings": [],
+    "article_count": 63
   },
   {
     "type": "monthly",
