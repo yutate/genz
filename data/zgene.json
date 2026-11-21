@@ -1,6 +1,273 @@
 [
   {
     "type": "weekly",
+    "id": "2026-11-16_2026-11-20",
+    "title": "2026/11/16-11/20 Z世代・若年層関連記事と考察",
+    "period": {
+      "start": "2026-11-16",
+      "end": "2026-11-20"
+    },
+    "articles": [
+      {
+        "title": "「コーディング面接」は時代遅れ…アンソロピックのマネージャーが語る、若手が頭角を表す方法",
+        "url": "https://news.yahoo.co.jp/articles/1198aa7d85add726c3283aacf2200da14806d6ef",
+        "status": "ok"
+      },
+      {
+        "title": "【生成AI時代】大前研一氏、自身が学長を務める大学の試験で「カンニングを奨励」する真意",
+        "url": "https://news.yahoo.co.jp/articles/e00b117212638f0445b459ddf1508e3bd6167034",
+        "status": "ok"
+      },
+      {
+        "title": "「人工知能学会」で「おじさん構文」の研究発表、問われる「若者に絵文字を使っていいのか」問題",
+        "url": "https://news.yahoo.co.jp/articles/dc105d5bce6f91e416e636572c143f7bfaf95f51",
+        "status": "ok"
+      },
+      {
+        "title": "絵文字で世代バレする？「上の世代ほど有料の動く絵文字を…」チャットで生じる世代間ギャップ",
+        "url": "https://news.yahoo.co.jp/articles/7937afe03bf026752c778e5d2c9bbd7bdacc5418",
+        "status": "ok"
+      },
+      {
+        "title": "23歳の世界最年少セルフメイド・ビリオネア3人組、わずか1年で資産倍増",
+        "url": "https://news.yahoo.co.jp/articles/04b27ed6fdf376ef218a18d4e9b155749233e8e1",
+        "status": "ok"
+      },
+      {
+        "title": "「若い時の苦労」を本当に自分で買わないといけない時代が来てしまった AIが奪う若者のスキル",
+        "url": "https://news.yahoo.co.jp/articles/062c00f0e96d9cee88dfc6e3d200195f8c3d739f",
+        "status": "ok"
+      },
+      {
+        "title": "\"何もしない町\"に逃げ込んだ中国の若者たちが、本当は求めていたもの",
+        "url": "https://courrier.jp/news/archives/465617/",
+        "status": "ok"
+      },
+      {
+        "title": "「Spotify Hits Japan 2026」開催、三菱地所の「フレー！フレー！就活生」がグランプリ受賞",
+        "url": "https://dentsu-ho.com/articles/9918",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代社会人は「半自立」？ 7割が親から援助…物価高以外の要因も",
+        "url": "https://news.yahoo.co.jp/articles/8192468c68a57dbfcf51088f2ca3751e78f60102",
+        "status": "ok"
+      },
+      {
+        "title": "なぜZ世代は突然、旧型のiPhone 5cを買い求めているのか？",
+        "url": "https://iphoneislam.com/ja/2026/11/gen-z-buying-iphone-5c-retro-camera/174134",
+        "status": "ok"
+      },
+      {
+        "title": "もうテレビは流行の中心じゃない？ 流行語大賞で忘れられたテレビ発「5つの言葉」",
+        "url": "https://shueisha.online/articles/-/259235",
+        "status": "ok"
+      },
+      {
+        "title": "AIで買うのは「日用品・家電」が最多！一方で20代の約4割が「選ぶ楽しさが減った」と懸念",
+        "url": "https://dxmagazine.jp/news/2663ko16/",
+        "status": "ok"
+      },
+      {
+        "title": "「出世なんてコスパが悪すぎて、責任を負うくらいなら、リモートでお昼寝してたほうがマシですよ」と言う若手が知らないワナとは？",
+        "url": "https://diamond.jp/articles/-/402778",
+        "status": "ok"
+      },
+      {
+        "title": "「デジタルデトックス」静かなブーム スマホ手放し… 急速に広がる「ドパガキ」SNS依存に年齢制限議論も",
+        "url": "https://newsdig.tbs.co.jp/articles/-/3086664",
+        "status": "ok"
+      },
+      {
+        "title": "都市伝説を信じる若者4割 ワカモノリサーチ調べ",
+        "url": "https://news.yahoo.co.jp/articles/b8d399fd6e3a02ec53f80994f64bd8ebf3eb86d8",
+        "status": "ok"
+      },
+      {
+        "title": "「着ては返品」を繰り返す中国の若者たち…返品率42%→18%を実現した「A4サイズの奇策」",
+        "url": "https://news.yahoo.co.jp/articles/ba2fbcb5138a22fff56b6bef85ea39d30b0dcf99",
+        "status": "ok"
+      },
+      {
+        "title": "【現役学生453名に聞く】Z世代学生の8割超が「情報漏洩が不安」と回答、しかし約8割がパスワードを使い回す矛盾が判明",
+        "url": "https://www.jiji.com/jc/article?k=000000112.000033964&g=prt",
+        "status": "ok"
+      },
+      {
+        "title": "【2500兆円】こどもNISAで「3世代マネー」争奪戦",
+        "url": "https://newspicks.com/news/17922193/",
+        "status": "ok"
+      },
+      {
+        "title": "「割り勘で8,200円送って。正直タイプじゃなかった」初デートの翌朝、彼から",
+        "url": "https://trilltrill.jp/articles/5191199",
+        "status": "ok"
+      },
+      {
+        "title": "韓国Z世代に大人気！SNS発キャラクター「オールモール」2027年3月に日本でカプセルトイの発売決定",
+        "url": "https://news.yahoo.co.jp/articles/1011b3db5324100d452335104c3edc31999732cf",
+        "status": "ok"
+      },
+      {
+        "title": "《中国で「イケメン消費」が流行中》好みの男性を選んでマッサージ、AI彼氏…日中韓3カ国Z世代の欲望の行き先",
+        "url": "https://toyokeizai.net/articles/-/964283",
+        "status": "ok"
+      },
+      {
+        "title": "マイクロマネジメントはもう古い──Z世代が求める5つのリーダー像",
+        "url": "https://forbesjapan.com/articles/detail/108445",
+        "status": "ok"
+      },
+      {
+        "title": "「若者トレンド最前線」もうバズだけじゃない!? Z世代・α世代のコミュニケーション事情",
+        "url": "https://cstation.kodansha.co.jp/article/18599",
+        "status": "ok"
+      },
+      {
+        "title": "若者はもう検索しない? SNSとAIで変わる買い物のカタチ",
+        "url": "https://www.watch.impress.co.jp/docs/topic/2155933.html",
+        "status": "ok"
+      },
+      {
+        "title": "若者6割「調理しない」 入口づくりへ「好き」の後押しこそ",
+        "url": "https://news.yahoo.co.jp/articles/91a0bcc23442ad9b46c97fc4b2d6df1b15c54d75",
+        "status": "ok"
+      },
+      {
+        "title": "【推し活ビジネス大賞2026】推し活未来研究所が選ぶ今年の推し活ビジネス発表！",
+        "url": "https://note.com/oshikatsu_labo/n/nff8eebe7339c",
+        "status": "ok"
+      },
+      {
+        "title": "「酒離れ」が進む今、広がる\"プチ快楽\" ──ドパ・チル・咀嚼。日常に分散する快楽のかたち",
+        "url": "https://dentsu-ho.com/articles/9874",
+        "status": "ok"
+      },
+      {
+        "title": "Over a Third of Gen Z-ers Rely on AI for Friendship",
+        "url": "https://www.wired.com/story/over-a-third-of-gen-z-rely-on-ai-for-friendship/",
+        "status": "ok"
+      },
+      {
+        "title": "「やりたい仕事はないが、優秀ではいたい」 決められない若者の「モラトリアム」と化した「コンサル人気」の裏の本音",
+        "url": "https://news.yahoo.co.jp/articles/238b4435ba1e24c3c4e2bc9b6afb62d6daae582c",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代の約6割は「恋人も好きな人もいない」！？1,000人調査で見えた恋愛との距離感",
+        "url": "https://mery.jp/2496168",
+        "status": "ok"
+      },
+      {
+        "title": "購買にAIが関わる「エージェンティック・コマース」市場規模、12.5兆円に。若年層が支出の41%占める",
+        "url": "https://aismiley.co.jp/ai_news/bcg-agentic-commerce-survey/",
+        "status": "ok"
+      },
+      {
+        "title": "若い観客の「観たい」はどこから？ 大ヒットを後押ししたTikTokともう1つの接点",
+        "url": "https://eigachannel.jp/movie/256009/",
+        "status": "ok"
+      },
+      {
+        "title": "中国の若者が「お金を払って出勤」する理由…失業者が集まる「偽物の会社」の奇妙な実態",
+        "url": "https://www.newsweekjapan.jp/articles/-/340227",
+        "status": "ok"
+      },
+      {
+        "title": "「新人を育てるよりAIを使ったほうがマシ」企業の37%が下した残酷な判断…「若手切り捨て社会」の恐怖",
+        "url": "https://shueisha.online/articles/-/259165",
+        "status": "ok"
+      },
+      {
+        "title": "投資で増やしたお金の使い道、20代は「老後」よりも… 資産のピーク想定は平均50.7歳",
+        "url": "https://gakumado.mynavi.jp/freshers/articles/93031",
+        "status": "ok"
+      },
+      {
+        "title": "「受験なんて、なくなればいいのに」 カロリーメイトが描く「受験消滅」の世界",
+        "url": "https://www.advertimes.com/20261112/article563747/",
+        "status": "ok"
+      },
+      {
+        "title": "「信じた方が人生は面白い」都市伝説と生きる令和の若者、その数は4割",
+        "url": "https://finders.me/kqFQxAijtNQWsqkYQQ",
+        "status": "ok"
+      },
+      {
+        "title": "AIに聞けば秒で答えが返ってくるのに…26歳の読書家が「タイパの悪い本」をあえて読み続ける理由",
+        "url": "https://president.jp/articles/-/121991",
+        "status": "ok"
+      },
+      {
+        "title": "AIを「部下」に持つ若手が「上司の仕事」を担う…コンサル業界で始まった変化",
+        "url": "https://diamond.jp/articles/-/403570",
+        "status": "ok"
+      },
+      {
+        "title": "欧州で広がる「Z世代デモ」が起きない日本。達観した若者はどこへ向かうのか",
+        "url": "https://www.businessinsider.jp/article/2611-gen-z-protests-japan/",
+        "status": "ok"
+      },
+      {
+        "title": "【ワカモノリサーチ調査】令和の若者に物価高はどのくらい影響しているのか？大調査！",
+        "url": "https://prtimes.jp/main/html/rd/p/000000268.000162122.html",
+        "status": "ok"
+      },
+      {
+        "title": "TikTok Shop が有料会員制度を導入 大手小売も続々参入する米国ECの最前線",
+        "url": "https://digiday.jp/modern-retail/exclusive-tiktok-shop-launches-a-paid-premium-tier-for-1m-of-its-top-us-shoppers/",
+        "status": "ok"
+      },
+      {
+        "title": "若者が避ける「話がつまらない年上」の特徴6選",
+        "url": "https://machicon.jp/koigaku/column/479192/",
+        "status": "ok"
+      }
+    ],
+    "article_count": 43,
+    "essay": {
+      "title": "「若手切り捨て」と「AI友情」──Z世代が直面する二つの不在",
+      "summary": "2026年11月第3週は、企業の37%が「新人を育てるよりAIを使ったほうがマシ」と判断したという報告と、Z世代の3人に1人以上がAIに友情を求めているというWIREDの調査が、奇妙な対称性を持って並んだ週だった。職場では若手が排除され、私生活ではAIが人間の代替になっている。「欧州でZ世代デモが起きない日本」「7割が親から援助」「恋人も好きな人もいない6割」が示すのは、怒りでも熱狂でもなく、静かな「達観」として現れるZ世代の適応戦略だ。",
+      "period_definition": "育てられず、AIに友を求め、達観することで生き延びようとするZ世代が照射された週。",
+      "keywords": [
+        "若手切り捨て",
+        "AI友情",
+        "デジタルデトックス",
+        "半自立",
+        "達観",
+        "エージェンティックコマース",
+        "おじさん構文",
+        "モラトリアム",
+        "ドパガキ",
+        "都市伝説"
+      ],
+      "sections": [
+        {
+          "heading": "「若手切り捨て」の構造化──育成コストvsAI効率",
+          "body": "企業の37%が「新人を育てるよりAIを使ったほうがマシ」と判断したという集英社オンラインの報告は、前週のITmedia「人材負債」論から一歩進んだ。育成しないのは怠慢ではなく、合理的選択として正当化されはじめている。コーディング面接が「時代遅れ」とされ（Anthropicマネージャー発言）、大前研一氏がカンニングを奨励し、AIを「部下」に持つ若手がコンサルで台頭しているという三つの記事は、評価軸そのものが変容していることを示す。若者がスキルを積む機会が構造的に消えつつある中で、「AIが奪う若者のスキル」という問いは個人の問題ではなくシステムの問題になった。"
+        },
+        {
+          "heading": "AIに友情を求めるZ世代──孤独の代替か、新しい関係性か",
+          "body": "WIREDが報じた「Z世代の3人に1人以上がAIに友情を求めている」は、先週の「本音で話せる友達いない20%」「友達多いのに孤独60%」の延長線上にある。人間関係のコスト（気遣い・裏切り・すれ違い）が高まるほど、応答が確実でジャッジしないAIへの移行は合理的だ。「恋人も好きな人もいない6割」「マチアプ婚活疲れ」と合わせると、Z世代にとって関係性の最小コスト点がAIにシフトしつつある可能性がある。これは孤立ではなく、接続コストに対する適応として読むべきだろう。"
+        },
+        {
+          "heading": "「デジタルデトックス」と「ドパガキ」の同時流行",
+          "body": "デジタルデトックスへの関心とSNS依存への年齢制限議論（TBS）が高まる一方で、「ドパガキ」という自覚語は依然トレンドワードとして使われ続けている。電通報が「酒離れが進む今、広がるプチ快楽──ドパ・チル・咀嚼」と分析したように、快楽の形式が大きな刺激から小さな日常的快楽へと分散している。iPhone 5cのようなレトロデバイスへの需要も同じ文脈で読める──デジタル疲弊への対抗として「制約のあるデバイス」が選ばれている。Z世代が矛盾した行動（依存しながら離脱を望む）を見せるのは、意志の弱さではなく環境設計の問題だ。"
+        },
+        {
+          "heading": "「半自立」と「達観」──怒らずに適応するZ世代",
+          "body": "Z世代の7割が親から経済的援助を受ける「半自立」状態（Yahoo!ニュース）は、物価高だけでなく「キャリア機会の消失」とも連動している。欧州でZ世代デモが起きている一方で、日本のZ世代が「達観」して政治運動に向かわない理由をBusiness Insider Japanが問うたが、答えの一つはこの半自立構造にあるかもしれない。変化を起こすコストより現状維持のコストが低い状況では、達観は合理的帰結だ。「やりたい仕事はないが優秀ではいたい」というコンサル志望の本音、「出世よりリモートでお昼寝」という若手発言も、同じ達観の変奏として読める。"
+        },
+        {
+          "heading": "「おじさん構文」の学術化と世代間コミュニケーションの断絶",
+          "body": "人工知能学会で「おじさん構文」が研究発表されたことは、世代間コミュニケーションギャップが学術対象になったことを意味する。絵文字の使い方で「世代バレ」し「余計な感情労働が発生する」という問題は、単なる笑い話ではなく職場のコミュニケーションコストに直結している。Z世代にとって上の世代のコミュニケーション様式は解読コストの高い「外国語」に近い。同時に「若者が避ける話のつまらない年上の特徴6選」「Z世代が求める5つのリーダー像」という記事群は、Z世代側から上の世代への要件定義が活発化していることを示す。世代間の非対称性が可視化され、言語化されはじめている。"
+        }
+      ]
+    },
+    "warnings": []
+  },
+  {
+    "type": "weekly",
     "id": "2026-11-09_2026-11-13",
     "title": "2026/11/9-11/13 Z世代・若年層関連記事と考察",
     "period": {
