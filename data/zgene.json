@@ -1,6 +1,303 @@
 [
   {
     "type": "weekly",
+    "id": "2026-11-24_2026-11-27",
+    "title": "2026/11/24-11/27 Z世代・若年層関連記事と考察",
+    "period": {
+      "start": "2026-11-24",
+      "end": "2026-11-27"
+    },
+    "articles": [
+      {
+        "title": "20〜30代の4割超が「仕事の半分以上が無意味」…管理職より未来ある若手が絶望する日本企業の構造的欠陥",
+        "url": "https://news.yahoo.co.jp/articles/700175c2011f4a7a81aa079170318c9b66253f2e",
+        "status": "ok"
+      },
+      {
+        "title": "野村総研調査で日本人半数が努力したくないと回答、増加が話題に",
+        "url": "https://search.yahoo.co.jp/realtime/search/matome/d4f559465cfd4d87bb208dad2bea1286-1795258500",
+        "status": "ok"
+      },
+      {
+        "title": "若者の手芸ブーム AI時代になぜ",
+        "url": "https://news.yahoo.co.jp/pickup/6603515",
+        "status": "ok"
+      },
+      {
+        "title": "AI生成の「過激なショートドラマ」、未成年者への影響が問題視",
+        "url": "https://news.yahoo.co.jp/articles/a8ef3b6f2fd81f8dd3e296a43313a3aa4674fab7",
+        "status": "ok"
+      },
+      {
+        "title": "英研究者「中国の若者は『ちいかわ』を通して静かな抵抗を続けている」",
+        "url": "https://courrier.jp/news/archives/465694/",
+        "status": "ok"
+      },
+      {
+        "title": "世界の若者、結婚や子どもを望むも経済的余力なし 国連が警鐘",
+        "url": "https://app.ekkow.com/1496546075127398562",
+        "status": "ok"
+      },
+      {
+        "title": "社会に絶望するZ世代は実は「恵まれた勝ち組」？ Z世代の「不満」と「相続」が生む皮肉な未来",
+        "url": "https://www.newsweekjapan.jp/articles/-/340834",
+        "status": "ok"
+      },
+      {
+        "title": "「若者が旅行できない日本」に違和感。星野リゾート代表に伝えたい、令和の「貧乏旅」事情",
+        "url": "https://www.businessinsider.jp/article/2611-student-budget-travel/",
+        "status": "ok"
+      },
+      {
+        "title": "「食事キャンセル」の裏にある真実。若者が食費を削ってまで「推し活」に走る理由",
+        "url": "https://newsdig.tbs.co.jp/articles/withbloomberg/3077975",
+        "status": "ok"
+      },
+      {
+        "title": "AIに聞く「米国の若者に麻雀クラブが人気なのはなぜ？」",
+        "url": "https://news.yahoo.co.jp/pickup/6603717",
+        "status": "ok"
+      },
+      {
+        "title": "会員200人に迫るNY麻雀クラブ なぜアメリカの若者はリーチ麻雀にハマるのか 「第3の居場所」として広がる魅力",
+        "url": "https://dot.asahi.com/articles/-/298079",
+        "status": "ok"
+      },
+      {
+        "title": "2027年、「Z世代が上司」になる時代へ 新任マネジャーが信頼を勝ち取る5つの鉄則",
+        "url": "https://forbesjapan.com/articles/detail/108687",
+        "status": "ok"
+      },
+      {
+        "title": "スマホで何でも買える時代に、なぜZ世代は「95分」かけて店舗に行くのか SNSが生む新たな消費行動",
+        "url": "https://news.yahoo.co.jp/articles/72e514751bf0861b1e60ee3396962206702805a8",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代トレンド大賞「ドパガキ」",
+        "url": "https://news.yahoo.co.jp/pickup/6603814",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代の抗議デモがアジア各国で拡大している理由は？",
+        "url": "https://app.ekkow.com/1497119134930338458",
+        "status": "ok"
+      },
+      {
+        "title": "10代4割が情報源を未確認、AI時代のリテラシー課題",
+        "url": "https://dxmagazine.jp/sn/sotokoto-ai-dx-20261124-32/",
+        "status": "ok"
+      },
+      {
+        "title": "「酒離れ」でもバーには通う若者──デジタル世代が求めるリアルな交流とは",
+        "url": "https://news.yahoo.co.jp/articles/9a293ee3d1783f9d677fb61d4c64d049ec00cd80",
+        "status": "ok"
+      },
+      {
+        "title": "「ナイトライフ」には興味なし…Z世代が旅行に求めているもの",
+        "url": "https://www.businessinsider.jp/article/2611-what-gen-z-wants-in-travel/",
+        "status": "ok"
+      },
+      {
+        "title": "20代は「個性的・自由」、60代は「アナログからデジタルへ」世代ごとにこんなに違う「平成」の姿",
+        "url": "https://www.advertimes.com/20261124/article564744/",
+        "status": "ok"
+      },
+      {
+        "title": "ミセス、=LOVE、恋愛シミュレーション…「若者」を振り向かせたい政府の数々の試行錯誤の歴史",
+        "url": "https://www.advertimes.com/20261118/article564344/",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代が節約したいものは「食費・外食」が最多、減らしたくない支出は「趣味」【MERY調査】",
+        "url": "https://markezine.jp/news/detail/78137",
+        "status": "ok"
+      },
+      {
+        "title": "若者消費は「ドパ」と「セロ」を往復 「トレンド大賞」に見るマーケの軸",
+        "url": "https://xtrend.nikkei.com/atcl/contents/casestudy/00012/01995/",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代トレンドアワード2026の年間トレンド大賞は「ドパガキ」",
+        "url": "https://news.yahoo.co.jp/articles/8528adbe7275602059f88fc1dcd17fb6476c639d",
+        "status": "ok"
+      },
+      {
+        "title": "「自立」の7割、親から援助 Z世代社会人の価値観──民間調査",
+        "url": "https://www.jiji.com/jc/article?k=2026112400212&g=soc",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代の約3割がAIを「話し相手」に。16カ国の調査で見えたつながりの実態",
+        "url": "https://wired.jp/article/over-a-third-of-gen-z-rely-on-ai-for-friendship/",
+        "status": "ok"
+      },
+      {
+        "title": "若者の「非婚宣言」と向き合おう",
+        "url": "https://news.yahoo.co.jp/articles/02520d606ffa3d313d767ec9ae1cf62ed3fefe01",
+        "status": "ok"
+      },
+      {
+        "title": "メンズメイク 若者を悩ます世代差",
+        "url": "https://news.yahoo.co.jp/pickup/6603512",
+        "status": "ok"
+      },
+      {
+        "title": "モナキ「Z世代トレンドアワード」ヒト部門大賞に、M!LK塩﨑太智やEBiDANらもランクイン",
+        "url": "https://natalie.mu/music/news/699368",
+        "status": "ok"
+      },
+      {
+        "title": "「ドパガキ」が「Z世代の年間トレンド大賞」に その意味とは Simejiが選定",
+        "url": "https://japan.cnet.com/article/35255347/",
+        "status": "ok"
+      },
+      {
+        "title": "小1がAIを使い、小4はゲーム開発が夢…AIネイティブ世代のリアル",
+        "url": "https://news.yahoo.co.jp/articles/b7bdd2fecb7774efbb9aa3d28a7c8f494c32716a",
+        "status": "ok"
+      },
+      {
+        "title": "「悲しい歌が心を癒やす」なぜ若者は昭和歌謡にひかれるのか",
+        "url": "https://news.yahoo.co.jp/articles/bf64cf498825d4bd02d7535bf0fee91ca17dcd22",
+        "status": "ok"
+      },
+      {
+        "title": "韓国の20・30代、SNSでは高級ホテル、週末は自宅で休息…動画が描く若者の日常",
+        "url": "https://www.afpbb.com/articles/koreanews/3664146",
+        "status": "ok"
+      },
+      {
+        "title": "食費は抑えて「美容と体験」へ？ デロイト トーマツ調査に見る「若年富裕層」のリアルな消費行動",
+        "url": "https://www.advertimes.com/20261125/article565076/",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代の仮想通貨保有率2割以上、一般層への普及の壁は「金融サービスの分断」",
+        "url": "https://coinpost.jp/?p=749460",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代は値上げにどう対応している? 女性は「クーポン活用」が最多、男性の約3倍",
+        "url": "https://news.infoseek.co.jp/article/mynavi_3249483/",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代の85%が年末に自分へのギフトを購入 米アパレルが掴んだ販売戦略",
+        "url": "https://digiday.jp/glossy/urban-outfitters-is-tapping-into-gen-zs-holiday-ritual-of-shopping-for-themselves/",
+        "status": "ok"
+      },
+      {
+        "title": "アルファ世代・Z世代に企業メッセージをどう届けるか？ アサヒ飲料がRobloxを起点とした「共創型」ブランドコミュニケーション",
+        "url": "https://digiday.jp/brands/261125_asahi-soft-drinks_transcosmos/",
+        "status": "ok"
+      },
+      {
+        "title": "調査で判明、職場でのAIに最も関心が薄いのはZ世代",
+        "url": "https://mezha.net/jp/news/mezha-289e24d879fa18c7e8ce6a51_gen-z-shows-the-least-interest/",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代1万人超が選んだ2026年の流行語は「ドパガキ」！ ショート動画とAIが変える若者の日常とは？",
+        "url": "https://dxmagazine.jp/news/ytoda2651-15/",
+        "status": "ok"
+      },
+      {
+        "title": "米若年層の孤独感、60歳以上の2倍──18〜29歳の79%に社会的つながりの欠如",
+        "url": "https://www.zaikei.co.jp/article/20261125/879127.html",
+        "status": "ok"
+      },
+      {
+        "title": "世帯年収2000万円以上、20〜30代の「若年富裕層」は何にお金を使う？ 価値観や購買行動で3タイプに分類",
+        "url": "https://gakumado.mynavi.jp/freshers/articles/93286",
+        "status": "ok"
+      },
+      {
+        "title": "若年者のキャリア意識と労働実態に関する調査2026",
+        "url": "https://ichioshi.allabout.co.jp/articles/news/130524",
+        "status": "ok"
+      },
+      {
+        "title": "TikTok、若年層の「発見」を追う初のグローバルレポートを発表",
+        "url": "https://mag.digle.tokyo/news/290926",
+        "status": "ok"
+      },
+      {
+        "title": "「人間に指示を出すより楽」生成AIを「パシリにして」25歳で年収2000万円、Geminiの勧めでタイに移住…若き女性経営者が従業員を雇わないワケ",
+        "url": "https://news.yahoo.co.jp/articles/ddb8aa13582bcaec5c31a5708511b5d5da032ebb",
+        "status": "ok"
+      },
+      {
+        "title": "Z世代は職場のAI活用にほとんど興味なし──米調査",
+        "url": "https://japan.zdnet.com/article/35255420/",
+        "status": "ok"
+      },
+      {
+        "title": "スタンフォード大、15.9億円を投じて「大学専攻の再構築」に着手 AI時代の学びを模索",
+        "url": "https://news.yahoo.co.jp/articles/96e8488c4cff073557e9c4ed57e2b92ded9c4be3",
+        "status": "ok"
+      },
+      {
+        "title": "通話とSMSだけの「INFOBAR ZERO」は若者に刺さるか？ 米国のダムフォンブームが日本で起きない理由",
+        "url": "https://news.yahoo.co.jp/articles/0eec455e5651879ae5f66de192152899edee04ac",
+        "status": "ok"
+      },
+      {
+        "title": "AIとの秘密の会話が競売に 未成年210万、全米の司法長官ら反対",
+        "url": "https://news.yahoo.co.jp/articles/2dd04f49dfdd62c9ccf132d8e3880a6389546675",
+        "status": "ok"
+      },
+      {
+        "title": "アーバンリサーチが挑む「脱・同質化」 渋谷パルコの新業態は若手社員の熱量で勝負",
+        "url": "https://news.yahoo.co.jp/articles/e676b75d06f039e58a58054d85019e4e93b3a4a0",
+        "status": "ok"
+      }
+    ],
+    "article_count": 49,
+    "essay": {
+      "title": "「ドパガキ」が年間大賞になった週──Z世代の2026年をひとつの語が総括する",
+      "summary": "2026年11月第4週は、SimejiとモナキがともにZ世代年間トレンド大賞として「ドパガキ」を選定したことで、2026年のZ世代を象徴するキーワードが確定した週だった。同時に「職場のAIに最も関心が薄いのはZ世代」という逆説的な調査結果が複数メディアで報じられ、AIをめぐるZ世代像が「活用する世代」から「距離を置く世代」へと反転しはじめている。孤独（米18〜29歳の79%に社会的つながりの欠如）、非婚、半自立、仕事の無意味感（4割超）が重なり、「ちいかわによる静かな抵抗」という英研究者の分析が象徴するように、Z世代の対抗戦略は叫びではなく可愛さと沈黙に宿っている。",
+      "period_definition": "「ドパガキ」が2026年を代表する語として確定し、Z世代の一年がひとつの神経科学的比喩で総括された週。",
+      "keywords": [
+        "ドパガキ",
+        "年間トレンド大賞",
+        "職場AIへの無関心",
+        "孤独の数値化",
+        "ちいかわ抵抗論",
+        "若年富裕層",
+        "AI話し相手",
+        "第三の居場所",
+        "非婚宣言",
+        "半自立"
+      ],
+      "sections": [
+        {
+          "heading": "「ドパガキ」の戴冠──神経科学的比喩が年間語になるまで",
+          "body": "Simeji（バイドゥ）とモナキという異なるプラットフォームが同週に「ドパガキ」を2026年Z世代トレンド大賞に選んだことは、この語がすでに揺るぎない地位を獲得したことを示す。ドーパミン中毒気味の行動様式を自嘲的に指すこの語は、先週のSHIBUYA109 lab.トレンド大賞でも「ドパ/セロ」軸が公式化され、今週の日経クロストレンドも「若者消費はドパとセロを往復する」と分析した。神経科学の語彙がマーケティング言語になり、さらに若者の自己記述語になるという三段階の浸透は、Z世代が自分の欲動を客観視するメタ認知の高さを示している。同時に、この語が「大賞」になること自体、ドパミン的刺激への批判的距離も内包している。"
+        },
+        {
+          "heading": "「職場AIに最も無関心なのはZ世代」──逆説的調査の読み方",
+          "body": "ZDNet Japan、Mezha.netが同週に報じた「Z世代は職場のAI活用にほとんど興味がない」は、先週の「Z世代のAIログアウト」（Forbes）に続く流れだ。AIを私的に使いこなし（友人代替、画像生成、検索代替）ながら、職場での組織的AI活用には冷淡というねじれは、AI活用を「会社のためにやること」と認識していることを示唆する。「企業の37%が若手育成よりAIを優先」（先週）の裏返しとして、Z世代も「職場=自分が育つ場ではない」と認識し、コミットメントを留保しているとも読める。25歳女性経営者が「AIをパシリにして年収2000万円」というケースは、個人的AI活用の対極にある。"
+        },
+        {
+          "heading": "孤独の数値化と「ちいかわ」という静かな抵抗",
+          "body": "米18〜29歳の79%に社会的つながりの欠如（財経新聞）、Z世代の3割がAIを話し相手に（WIRED日本版）、NY麻雀クラブが若者の「第三の居場所」になっている──これらは同じ孤独の問題が異なる解決策を生んでいることを示す。クーリエ・ジャポンが紹介した英研究者の分析「中国の若者はちいかわを通して静かな抵抗を続けている」は特に示唆的だ。可愛いキャラクターの受難と再起という物語が、努力しても報われない社会への隠語的共感として機能しているという読み方は、日本のZ世代にも通じる。叫ばず、デモに出ず、ちいかわに共感することで生き延びる──これが2026年のZ世代的対抗戦略の一形態だ。"
+        },
+        {
+          "heading": "消費の二極化と「推し活>食費」の価値序列",
+          "body": "「食費を削って推し活」（TBS）、「節約したいのは食費・外食、減らしたくないのは趣味」（MERY調査）、「Z世代の85%が年末に自分へのギフトを購入」（Digiday）という三つの消費データは、Z世代の価値序列を明確にする。生存コストは最小化し、意味的コスト（推し・体験・自己へのギフト）は維持または拡大する。同時に「若年富裕層」（世帯年収2000万円以上の20〜30代）が「食費は抑えて美容と体験へ」という全く同じパターンを示しているのは、節約の理由が違えど消費の形は一致するという逆説だ。Z世代を「貧困」と「富裕」で分けることより、「何のために使うか」の価値軸で分析する方が実態に近い。"
+        },
+        {
+          "heading": "「第三の居場所」需要の多様化──麻雀、バー、手芸、昭和歌謡",
+          "body": "今週は「第三の居場所」の具体的な顔が多様に並んだ。NYの麻雀クラブ、「酒離れ」でもバーには通う若者、手芸ブーム（先週のグラニーホビーに続く）、昭和歌謡への回帰。共通するのは「スマホ不要、身体が動く、他者と場を共有する」という要素だ。「Z世代が旅行に求めているのはナイトライフではなく体験と安心」「スマホで買えるのに95分かけて店舗へ行く」という消費行動も同じ文脈に置ける。デジタルが徹底的に利便を提供する時代に、あえてアナログなコストを払うことで「いる感覚」を取り戻そうとする動きが、様々な形で顕在化している。"
+        }
+      ]
+    },
+    "warnings": []
+  },
+  {
+    "type": "weekly",
     "id": "2026-11-16_2026-11-20",
     "title": "2026/11/16-11/20 Z世代・若年層関連記事と考察",
     "period": {
